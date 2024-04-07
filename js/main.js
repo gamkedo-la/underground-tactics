@@ -114,13 +114,12 @@ function drawEverything() {
 		canvasContext.drawImage(titleScreenWizardPic, titleScreenWizardX, titleScreenWizardY);
 		if(titleScreenWizardXWaitTime > 100){
 			colorRect(200, 300, 400, 100, "blue")
-			colorText("Underground Tactics", 250, 370, "white", "36px Arial Black")
+			colorText("Underground Tactics", 250, 370, "white", "24px Arial Black")
 		}
 		if(titleScreenWizardXWaitTime > 130){
 			mainMenu = false;
 			liveGame = true;
 		}
-
 	}
 	if(liveGame){
 		colorRect(0,0,canvas.width,canvas.height, 'black');

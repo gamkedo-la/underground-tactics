@@ -89,6 +89,9 @@ function gameCoordToIsoCoord (pixelX, pixelY){
 function tileCoordToIsoCoord(tileC, tileR ){
 	gameCoordToIsoCoord(tileC * ROOM_W, tileR * ROOM_H);
 }
+
+var drawTileIndicators = true
+var showTileNumber = true;
 					
 function drawTracks(){
 	var tileIndex = 0;
@@ -98,8 +101,6 @@ function drawTracks(){
 	var isoTileTopEdgeY = 0;
 	var miniMapX = 750;
 	var miniMapY = 2;
-	var drawTileIndicators = true
-	var showTileNumber = true;
 	sharedAnimCycle++;
 	
 	for(var eachRow = 0; eachRow < ROOM_ROWS; eachRow++){

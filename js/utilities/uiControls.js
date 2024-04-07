@@ -10,6 +10,7 @@ const KEY_RIGHT_ARROW = 39;
 const KEY_DOWN_ARROW = 40;
 
 const KEY_P = 80;
+const KEY_1 = 49;
 
 
 function initInput(){
@@ -34,9 +35,16 @@ function keyPressed(evt) {
 	
 	var paused = KEY_P;
 	var toggleMovement = KEY_SPACEBAR;
+	var toggleDrawTileIndicators = KEY_1;
+
 	if(paused == evt.keyCode){
 		changePauseState();
 	}
+	if(toggleDrawTileIndicators == evt.keyCode){
+		drawTileIndicators = !drawTileIndicators;
+		console.log(drawTileIndicators)
+	}
+
 	if(toggleMovement == evt.keyCode){
 		playerOne.usingPath = !playerOne.usingPath;
 	}
