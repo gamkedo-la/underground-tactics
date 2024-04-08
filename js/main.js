@@ -57,6 +57,7 @@ function imageLoadingDoneSoStartGame(){
 	}, 1000/framesPerSecond);
 	loadLevel(levelOne)
 	playerOne.init(wizardPic, "Nesquit");
+
 }
 
 function nextLevel() {
@@ -68,13 +69,21 @@ function nextLevel() {
 }
 
 function loadLevel(whichLevel) {	
-	resetEnemyLists();
+	//resetEnemyLists();
 	roomGrid = whichLevel.slice();
+	for(var i = 0; i < roomGrid.length; i++){
+		if(roomGrid[i] == TILE_POTION_MANA){
+			addPotion();
+		}
+	}
+	for(var i = 0; i < potionList.length; i++){
+		potionList[i].init(potionManaPic, "Mana Potion", TILE_POTION_MANA);
+		//console.log(potionManaPic, potionName[i], TILE_POTION_MANA);
+	}
 	playerOne.warriorReset();
 	console.log("Finish Load Level");
 }
-
-			
+		
 //All movement occurs here.  This is called every frame.
 function moveEverything() {
 	if(liveGame){
@@ -126,6 +135,9 @@ function drawEverything() {
 		shiftForCameraPan();
 		drawTracks();
 		playerOne.draw();
+		for(var i = 0; i < potionList.length; i++){
+			potionList[i].draw();
+		}
 		finishedCameraPan();
 		colorText("Keys: " + playerOne.keysHeld, 20, 582, "black", "14px Arial Black");
 	}

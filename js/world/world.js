@@ -28,7 +28,7 @@ var levelOne = [
 					 50, 12,  1,  4,  2,  1,  1,  2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
 					 50, 12,  1,  3,  1,  1,  2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
 					 51, 15,  1,  1,  1,  1,  1,  1,  3,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
-					 52,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  4,  1,  1,  1,  1,
+					 52,  1,  1,  1,  1,  1,150,  1,  1,  1,  1,  1,  1,  1,  1,  4,  1,  1,  1,  1,
 					 50,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
 					 53,  1,  1,  1,  1,  1, 55,  1,  1,  1,  1,  3,  1,  1,  1, 55,  1,  1,  1,  1,
 					 50,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  3,  1,  3,  1,  1,  1,  1,  1,
@@ -54,6 +54,7 @@ var levelTwo =[
 					1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
 				];
 					
+	//Floor tiles 1 through 49
 	const TILE_FLOOR_STONE_1 = 1;
 	const TILE_FLOOR_STONE_2 = 2;
 	const TILE_FLOOR_STONE_3 = 3;
@@ -67,13 +68,17 @@ var levelTwo =[
 	const TILE_FLOOR_SEWER_7 = 16;
 	const TILE_FLOOR_SEWER_8 = 17;
 	const TILE_FLOOR_SEWER_9 = 18;
+	//Wall Tiles 50 through 99
 	const TILE_WALL_STONE_1 = 50;
 	const TILE_WALL_STONE_2 = 51;
 	const TILE_WALL_STONE_3 = 52;
 	const TILE_WALL_STONE_4 = 53;
 	const TILE_WALL_STONE_5 = 54;
 	const TILE_COLUMN_STONE_1 = 55;
+	//Player and Enemies 100 through 149
 	const TILE_PLAYER = 100;
+	//Pick up items 150 through 199
+	const TILE_POTION_MANA = 150;
 
 	
 function gameCoordToIsoCoord (pixelX, pixelY){
@@ -127,8 +132,6 @@ function drawTracks(){
 						textColor = "orange"
 					}
 					colorText(tileIndex, isoDrawX-10, isoDrawY-20, textColor, "10px Arial Black" );
-					//var playerTile = getTileIndexAtPixelCoord(playerOne.x,playerOne.y);
-				//	console.log(playerTile)
 				}
 			}	 
 			tileIndex++;
