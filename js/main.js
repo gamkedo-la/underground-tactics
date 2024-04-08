@@ -72,13 +72,33 @@ function loadLevel(whichLevel) {
 	//resetEnemyLists();
 	roomGrid = whichLevel.slice();
 	for(var i = 0; i < roomGrid.length; i++){
-		if(roomGrid[i] == TILE_POTION_MANA){
-			addPotion();
+		if( roomGrid[i] == TILE_POTION_MANA ||
+			roomGrid[i] == TILE_POTION_HEALTH ||
+			roomGrid[i] == TILE_POTION_STAMINA){
+			
+			let whichPotion = roomGrid[i];
+			if(roomGrid[i] == TILE_POTION_MANA){
+				whichPotion = "Mana Potion";
+			} else if (roomGrid[i] == TILE_POTION_HEALTH){
+				whichPotion = "Health Potion";
+			} else if (roomGrid[i] == TILE_POTION_STAMINA){
+				whichPotion = "Stamina Potion";
+			} else {
+				whichPotion = "Not listed";
+			}
+			addPotion(whichPotion);
 		}
 	}
+
 	for(var i = 0; i < potionList.length; i++){
-		potionList[i].init(potionManaPic, "Mana Potion", TILE_POTION_MANA);
-		//console.log(potionManaPic, potionName[i], TILE_POTION_MANA);
+		console.log("Name: " + potionList[i].myName)
+		if(potionList[i].myName == "Mana Potion" ){
+			potionList[i].init(potionManaPic, "Mana Potion", TILE_POTION_MANA);
+		} else if (potionList[i].myName == "Health Potion"){
+			potionList[i].init(potionHealthPic, "Health Potion", TILE_POTION_HEALTH);
+		} else if (potionList[i].myName == "Stamina Potion"){
+			potionList[i].init(potionStaminaPic, "Stamina Potion", TILE_POTION_STAMINA);
+		}
 	}
 	playerOne.warriorReset();
 	console.log("Finish Load Level");
