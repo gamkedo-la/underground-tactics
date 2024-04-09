@@ -74,6 +74,7 @@ function loadLevel(whichLevel) {
 	for(var i = 0; i < roomGrid.length; i++){
 		if( roomGrid[i] == TILE_POTION_MANA ||
 			roomGrid[i] == TILE_POTION_HEALTH ||
+			roomGrid[i] == TILE_POTION_LEVITATION ||
 			roomGrid[i] == TILE_POTION_STAMINA){
 			
 			let whichPotion = roomGrid[i];
@@ -83,6 +84,8 @@ function loadLevel(whichLevel) {
 				whichPotion = "Health Potion";
 			} else if (roomGrid[i] == TILE_POTION_STAMINA){
 				whichPotion = "Stamina Potion";
+			} else if (roomGrid[i] == TILE_POTION_LEVITATION){
+				whichPotion = "Levitation Potion";
 			} else {
 				whichPotion = "Not listed";
 			}
@@ -96,6 +99,8 @@ function loadLevel(whichLevel) {
 			potionList[i].init(potionManaPic, "Mana Potion", TILE_POTION_MANA);
 		} else if (potionList[i].myName == "Health Potion"){
 			potionList[i].init(potionHealthPic, "Health Potion", TILE_POTION_HEALTH);
+		} else if (potionList[i].myName == "Levitation Potion"){
+			potionList[i].init(potionLevitationPic, "Stamina Potion", TILE_POTION_LEVITATION);
 		} else if (potionList[i].myName == "Stamina Potion"){
 			potionList[i].init(potionStaminaPic, "Stamina Potion", TILE_POTION_STAMINA);
 		}
