@@ -243,7 +243,8 @@ function warriorClass() {
 		gameCoordToIsoCoord(this.x,this.y);
 		canvasContext.drawImage(this.myBitmap, this.offSetWidth, this.offSetHeight, this.width, this.height, 
 								isoDrawX-(this.width/2), isoDrawY-this.height - ISO_CHAR_FOOT_Y, this.width, this.height);
-		colorRect(isoDrawX-(this.width/2), isoDrawY-this.height - ISO_CHAR_FOOT_Y, 10, 10, 'white');
+		canvasContext.drawImage(playerPositionPic, 0, 0, this.width, this.height, 
+								isoDrawX-(this.width/2), isoDrawY-this.height - ISO_CHAR_FOOT_Y, this.width, this.height);
 	}
 		
 	//this delivers damage to the player when setting off a trap
