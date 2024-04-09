@@ -96,13 +96,13 @@ function loadLevel(whichLevel) {
 	for(var i = 0; i < potionList.length; i++){
 		console.log("Name: " + potionList[i].myName)
 		if(potionList[i].myName == "Mana Potion" ){
-			potionList[i].init(potionManaPic, "Mana Potion", TILE_POTION_MANA);
+			potionList[i].init(potionManaPic, 75, "Mana Potion", TILE_POTION_MANA);
 		} else if (potionList[i].myName == "Health Potion"){
-			potionList[i].init(potionHealthPic, "Health Potion", TILE_POTION_HEALTH);
+			potionList[i].init(potionHealthPic, 225, "Health Potion", TILE_POTION_HEALTH);
 		} else if (potionList[i].myName == "Levitation Potion"){
-			potionList[i].init(potionLevitationPic, "Stamina Potion", TILE_POTION_LEVITATION);
+			potionList[i].init(potionLevitationPic, 0, "Stamina Potion", TILE_POTION_LEVITATION);
 		} else if (potionList[i].myName == "Stamina Potion"){
-			potionList[i].init(potionStaminaPic, "Stamina Potion", TILE_POTION_STAMINA);
+			potionList[i].init(potionStaminaPic, 150, "Stamina Potion", TILE_POTION_STAMINA);
 		}
 	}
 	playerOne.warriorReset();

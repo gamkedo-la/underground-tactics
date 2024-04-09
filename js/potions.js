@@ -15,6 +15,8 @@ function potionClass(potionType) {
 	this.offSetHeight = 0;
     this.manaRestore = 10;
     this.myName = potionType;
+	this.frameTimer = 0;
+	this.totalFrames = 5;
 		
 	this.reset = function() {
 		if(this.homeX == undefined) {
@@ -35,11 +37,11 @@ function potionClass(potionType) {
 		this.y = this.homeY;
 	}
 					
-	this.init = function(whichGraphic, whichName, whichTile) {
+	this.init = function(whichGraphic, whichSy, whichName, whichTile) {
 		this.myBitmap = whichGraphic;
+		this.offSetHeight = whichSy
         this.myName = whichName;
 		this.myTile = whichTile;
-        console.log("graphic: " + this.myBitmap + " Name: " +  this.myName + " Tile: " + this.myTile);
 		this.reset();
 	}	
 
@@ -50,9 +52,21 @@ function potionClass(potionType) {
 		}
 		return false;
 	}
+
+	this.animatePotions = function(){
+		this.frameTimer++;
+		if(this.frameTimer > 5){
+			this.offSetWidth = this.offSetWidth + this.width;
+			this.frameTimer = 0;
+			if(this.offSetWidth > (this.totalFrames * this.width)){
+				this.offSetWidth = 0;
+			}
+		}
+	}
 		
 	this.draw = function(){
 		gameCoordToIsoCoord(this.x,this.y);
+		this.animatePotions();
 	//	canvasContext.drawImage(shadowPic,isoDrawX-(this.width/2), isoDrawY-this.height - ISO_CHAR_FOOT_Y);
 		canvasContext.drawImage(this.myBitmap, this.offSetWidth, this.offSetHeight, this.width, this.height, 
 								isoDrawX-(this.width/2), isoDrawY-this.height - ISO_CHAR_FOOT_Y, this.width, this.height);

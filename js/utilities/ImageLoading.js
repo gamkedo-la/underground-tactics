@@ -36,14 +36,14 @@ function loadImages() {
 	
 		var imageList = [
 			//menuScreens
-			{varName: titleScreenPic, theFile: "titleScreen.png"},
-			{varName: titleScreenWizardPic, theFile: "titleScreenWizard.png"},
-			{varName: titleScreenFireBAllPic, theFile: "titleScreenFireBall.png"},
-			{varName: tileIndicatorPic, theFile: "tileIndicator.png"},
-			{varName: potionManaPic, theFile: "potion_mana.png"},
-			{varName: potionHealthPic, theFile: "potion_health.png"},
-			{varName: potionStaminaPic, theFile: "potion_stamina.png"},
-			{varName: potionLevitationPic, theFile: "potion_levitation.png"},
+			{varName: titleScreenPic, theFile: "titleScreen.png", sx: 0, sy: 0},
+			{varName: titleScreenWizardPic, theFile: "titleScreenWizard.png",sx: 0, sy: 0},
+			{varName: titleScreenFireBAllPic, theFile: "titleScreenFireBall.png",sx: 0, sy: 0},
+			{varName: tileIndicatorPic, theFile: "tileIndicator.png",sx: 0, sy: 0},
+			{varName: potionManaPic, theFile: "potionTiles.png",sx: 0, sy: 0},
+			{varName: potionHealthPic, theFile: "potionTiles.png",sx: 0, sy: 0},
+			{varName: potionStaminaPic, theFile: "potionTiles.png",sx: 0, sy: 0},
+			{varName: potionLevitationPic, theFile: "potionTiles.png",sx: 0, sy: 0},
 
 			//characters
 			{varName: wizardPic, theFile: "wizard.png"},
@@ -76,7 +76,7 @@ function loadImages() {
 			loadImageForRoomCode(imageList[i].trackType, imageList[i].theFile, imageList[i].sx, imageList[i].sy);
 		}
 		else {
-			beginLoadingImage(imageList[i].varName, imageList[i].theFile);
+			beginLoadingImage(imageList[i].varName, imageList[i].theFile, imageList[i].sx, imageList[i].sy);
 		}
 	}
 }
