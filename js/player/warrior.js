@@ -131,12 +131,16 @@ function warriorClass() {
 				}
 			} else if (this.movementArray[lastNode] == tileN) {
 				this.y -= this.playerMovementSpeed;
+				this.offSetHeight = 2 * this.height;
 			} else if (this.movementArray[lastNode] == tileS) {
 				this.y += this.playerMovementSpeed;
+				this.offSetHeight = 0 * this.height;
 			} else if (this.movementArray[lastNode] == tileW) {
 				this.x -= this.playerMovementSpeed;
+				this.offSetHeight = 3 * this.height;;
 			} else if (this.movementArray[lastNode] == tileE) {
 				this.x += this.playerMovementSpeed;
+				this.offSetHeight = 1 * this.height;
 			}
 		}
 
