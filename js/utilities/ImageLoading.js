@@ -46,32 +46,32 @@ function loadImages() {
 			//characters
 			{varName: wizardPic, theFile: "wizard.png"},
 	
-			{trackType: TILE_FLOOR_STONE_1, theFile: "floor.png"},
-			{trackType: TILE_FLOOR_STONE_2, theFile: "floor_stone_2.png"},
-			{trackType: TILE_FLOOR_STONE_3, theFile: "floor_stone_3.png"},
-			{trackType: TILE_FLOOR_STONE_4, theFile: "floor_stone_4.png"},
-			{trackType: TILE_FLOOR_SEWER_1, theFile: "floor_sewer_1.png"},
-			{trackType: TILE_FLOOR_SEWER_2, theFile: "floor_sewer_2.png"},
-			{trackType: TILE_FLOOR_SEWER_3, theFile: "floor_sewer_3.png"},
-			{trackType: TILE_FLOOR_SEWER_4, theFile: "floor_sewer_4.png"},
-			{trackType: TILE_FLOOR_SEWER_5, theFile: "floor_sewer_5.png"},
-			{trackType: TILE_FLOOR_SEWER_6, theFile: "floor_sewer_6.png"},
-			{trackType: TILE_FLOOR_SEWER_7, theFile: "floor_sewer_7.png"},
-			{trackType: TILE_FLOOR_SEWER_8, theFile: "floor_sewer_8.png"},
-			{trackType: TILE_FLOOR_SEWER_9, theFile: "floor_sewer_9.png"},
-			{trackType: TILE_WALL_STONE_1, theFile: "wall_stone_1.png"},
-			{trackType: TILE_WALL_STONE_2, theFile: "wall_stone_2.png"},
-			{trackType: TILE_WALL_STONE_3, theFile: "wall_stone_3.png"},
-			{trackType: TILE_WALL_STONE_4, theFile: "wall_stone_4.png"},
-			{trackType: TILE_WALL_STONE_5, theFile: "wall_stone_5.png"},
-			{trackType: TILE_COLUMN_STONE_1, theFile: "column_stone_1.png"}
+			{trackType: TILE_FLOOR_STONE_1, theFile: "floor.png", sx: 0, sy: 0},
+			{trackType: TILE_FLOOR_STONE_2, theFile: "floor_stone_2.png", sx: 0, sy: 0},
+			{trackType: TILE_FLOOR_STONE_3, theFile: "floor_stone_3.png", sx: 50, sy: 0},
+			{trackType: TILE_FLOOR_STONE_4, theFile: "floor_stone_4.png", sx: 100, sy: 0},
+			{trackType: TILE_FLOOR_SEWER_1, theFile: "floor_sewer_1.png", sx: 150, sy: 0},
+			{trackType: TILE_FLOOR_SEWER_2, theFile: "floor_sewer_2.png", sx: 200, sy: 0},
+			{trackType: TILE_FLOOR_SEWER_3, theFile: "floor_sewer_3.png", sx: 250, sy: 0},
+			{trackType: TILE_FLOOR_SEWER_4, theFile: "floor_sewer_4.png", sx: 300, sy: 0},
+			{trackType: TILE_FLOOR_SEWER_5, theFile: "floor_sewer_5.png", sx: 350, sy: 0},
+			{trackType: TILE_FLOOR_SEWER_6, theFile: "floor_sewer_6.png", sx: 400, sy: 0},
+			{trackType: TILE_FLOOR_SEWER_7, theFile: "floor_sewer_7.png", sx: 0, sy: 75},
+			{trackType: TILE_FLOOR_SEWER_8, theFile: "floor_sewer_8.png", sx: 50, sy: 75},
+			{trackType: TILE_FLOOR_SEWER_9, theFile: "floor_sewer_9.png", sx: 100, sy: 75},
+			{trackType: TILE_WALL_STONE_1, theFile: "wall_stone_1.png", sx: 0, sy: 0},
+			{trackType: TILE_WALL_STONE_2, theFile: "wall_stone_2.png", sx: 50, sy: 0},
+			{trackType: TILE_WALL_STONE_3, theFile: "wall_stone_3.png", sx: 100, sy: 0},
+			{trackType: TILE_WALL_STONE_4, theFile: "wall_stone_4.png", sx: 150, sy: 0},
+			{trackType: TILE_WALL_STONE_5, theFile: "wall_stone_5.png", sx: 200, sy: 0},
+			{trackType: TILE_COLUMN_STONE_1, theFile: "column_stone_1.png", sx: 250, sy: 0}
 		];
 			
 	picsToLoad = imageList.length;
 
 	for(var i=0; i<imageList.length; i++) {
 		if(imageList[i].trackType != undefined){
-			loadImageForRoomCode(imageList[i].trackType, imageList[i].theFile);
+			loadImageForRoomCode(imageList[i].trackType, imageList[i].theFile, imageList[i].sx, imageList[i].sy);
 		}
 		else {
 			beginLoadingImage(imageList[i].varName, imageList[i].theFile);
