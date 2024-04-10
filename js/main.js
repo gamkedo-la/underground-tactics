@@ -163,6 +163,8 @@ function drawEverything() {
 			potionList[i].draw();
 		}
 		finishedCameraPan();
-		colorText("Keys: " + playerOne.keysHeld, 20, 582, "black", "14px Arial Black");
+		drawInitiativeOrder();
+		drawPlayerOptions();
+
 	}
 }

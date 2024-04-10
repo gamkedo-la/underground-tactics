@@ -10,6 +10,7 @@ var potionHealthPic = document.createElement("img");
 var potionStaminaPic = document.createElement("img");
 var potionLevitationPic = document.createElement("img");
 var playerPositionPic = document.createElement("img");
+var wizardMovementPic = document.createElement("img");
 
 var trackPics = [];
 
@@ -50,10 +51,10 @@ function loadImages() {
 			{varName: potionStaminaPic, theFile: "potionTiles.png",sx: 0, sy: 0},
 			{varName: potionLevitationPic, theFile: "potionTiles.png",sx: 0, sy: 0},
 			{varName: playerPositionPic, theFile: "playerPosition.png",sx: 0, sy: 0},
+			{varName: wizardMovementPic, theFile:  "wizardWalk.png", sx: 0, sy: 0},
 
 			//characters
 			{varName: wizardPic, theFile: "wizard.png"},
-	
 			{trackType: TILE_FLOOR_STONE_1, theFile: "floor.png", sx: 0, sy: 0},
 			{trackType: TILE_FLOOR_STONE_2, theFile: "floor_stone_2.png", sx: 0, sy: 0},
 			{trackType: TILE_FLOOR_STONE_3, theFile: "floor_stone_3.png", sx: 50, sy: 0},

@@ -245,8 +245,14 @@ function warriorClass() {
 								isoDrawX, isoDrawY, this.width, this.height);
 		canvasContext.drawImage(playerPositionPic, 0, 0, this.width, this.height, 
 								isoDrawX, isoDrawY, this.width, this.height);
+	
+		//add logic for what options are available
 	}
 		
+
+
+	
+
 	//this delivers damage to the player when setting off a trap
 	this.takeDamageFromTrap = function(howMuchDamage){
 		if(this.trapCoolDownCounter == 0){
