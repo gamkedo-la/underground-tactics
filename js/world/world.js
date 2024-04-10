@@ -124,18 +124,32 @@ function drawTracks(){
 			tileCoordToIsoCoord(eachCol, eachRow);		
 			canvasContext.drawImage(trackPics[trackTypeHere], isoDrawX - ISO_GRID_W/2, isoDrawY - ISO_TILE_GROUND_Y);
 			if(drawTileIndicators){
-				canvasContext.drawImage(tileIndicatorPic, isoDrawX - ISO_GRID_W/2, isoDrawY - ISO_TILE_GROUND_Y);
-				if(showTileNumber){
-					var textColor;
-					if(playerOne.movementArray[0]==tileIndex){
-						textColor = "white";
-					} else if(playerOne.movementArray.includes(tileIndex)){
-						textColor = "cyan";
-					}else {
-						textColor = "orange"
-					}
-					colorText(tileIndex, isoDrawX-10, isoDrawY-20, textColor, "10px Arial Black" );
+				if(	trackTypeHere == TILE_FLOOR_STONE_1 ||
+					trackTypeHere == TILE_FLOOR_STONE_2 ||
+					trackTypeHere == TILE_FLOOR_STONE_3 ||
+					trackTypeHere == TILE_FLOOR_STONE_4 ||
+					trackTypeHere == TILE_FLOOR_SEWER_1 ||
+					trackTypeHere == TILE_FLOOR_SEWER_2 ||
+					trackTypeHere == TILE_FLOOR_SEWER_3 ||
+					trackTypeHere == TILE_FLOOR_SEWER_4 ||
+					trackTypeHere == TILE_FLOOR_SEWER_5 ||
+					trackTypeHere == TILE_FLOOR_SEWER_6 ||
+					trackTypeHere == TILE_FLOOR_SEWER_7){
+						canvasContext.drawImage(tileIndicatorPic, isoDrawX - ISO_GRID_W/2, isoDrawY - ISO_TILE_GROUND_Y);
+						textColor = "black"
 				}
+
+				var textColor;
+				if(playerOne.movementArray[0]==tileIndex){
+					textColor = "white";
+					canvasContext.drawImage(tileIndicatorWhitePic, isoDrawX - ISO_GRID_W/2, isoDrawY - ISO_TILE_GROUND_Y);
+				} else if(playerOne.movementArray.includes(tileIndex)){
+					textColor = "cyan";
+					canvasContext.drawImage(tileIndicatorCyanPic, isoDrawX - ISO_GRID_W/2, isoDrawY - ISO_TILE_GROUND_Y);
+				}else {
+						
+				}
+				colorText(tileIndex, isoDrawX-10, isoDrawY-20, textColor, "10px Arial Black" );
 			}	 
 			tileIndex++;
 		} // end of each col

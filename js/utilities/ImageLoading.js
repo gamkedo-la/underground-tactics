@@ -3,6 +3,8 @@ var titleScreenPic = document.createElement("img");
 var titleScreenWizardPic = document.createElement("img");
 var titleScreenFireBAllPic = document.createElement("img");
 var tileIndicatorPic = document.createElement("img");
+var tileIndicatorWhitePic = document.createElement("img");
+var tileIndicatorCyanPic = document.createElement("img");
 var potionManaPic = document.createElement("img");
 var potionHealthPic = document.createElement("img");
 var potionStaminaPic = document.createElement("img");
@@ -41,6 +43,8 @@ function loadImages() {
 			{varName: titleScreenWizardPic, theFile: "titleScreenWizard.png",sx: 0, sy: 0},
 			{varName: titleScreenFireBAllPic, theFile: "titleScreenFireBall.png",sx: 0, sy: 0},
 			{varName: tileIndicatorPic, theFile: "tileIndicator.png",sx: 0, sy: 0},
+			{varName: tileIndicatorWhitePic, theFile: "tileIndicatorWhite.png",sx: 0, sy: 0},
+			{varName: tileIndicatorCyanPic, theFile: "tileIndicatorCyan.png",sx: 0, sy: 0},
 			{varName: potionManaPic, theFile: "potionTiles.png",sx: 0, sy: 0},
 			{varName: potionHealthPic, theFile: "potionTiles.png",sx: 0, sy: 0},
 			{varName: potionStaminaPic, theFile: "potionTiles.png",sx: 0, sy: 0},

@@ -94,7 +94,6 @@ function loadLevel(whichLevel) {
 	}
 
 	for(var i = 0; i < potionList.length; i++){
-		console.log("Name: " + potionList[i].myName)
 		if(potionList[i].myName == "Mana Potion" ){
 			potionList[i].init(potionManaPic, 75, "Mana Potion", TILE_POTION_MANA);
 		} else if (potionList[i].myName == "Health Potion"){

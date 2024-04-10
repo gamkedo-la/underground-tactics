@@ -17,6 +17,10 @@ function potionClass(potionType) {
     this.myName = potionType;
 	this.frameTimer = 0;
 	this.totalFrames = 5;
+	this.manaPotion = 0;
+	this.healingPotion = 0;
+	this.staminaPotion = 0;
+
 		
 	this.reset = function() {
 		if(this.homeX == undefined) {
@@ -42,6 +46,15 @@ function potionClass(potionType) {
 		this.offSetHeight = whichSy
         this.myName = whichName;
 		this.myTile = whichTile;
+
+		if(this.myName == "Mana Potion"){
+			this.manaPotion++;
+		} else if (this.myName == "Health Potion"){
+			this.healingPotion++;
+		} else if (this.myName == "Stamina Potion"){
+			this.staminaPotion++;
+		}
+		
 		this.reset();
 	}	
 
