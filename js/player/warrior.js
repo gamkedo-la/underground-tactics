@@ -4,8 +4,8 @@ const COLLIDE_BUMP_MULT = 2; // this needs to be improved.  This could potential
 function warriorClass() {
 	this.x = 600;
 	this.y = 800;
-	this.width = 32;
-	this.height = 60;
+	this.width = 50;
+	this.height = 75;
 	this.offSetWidth = 0;
 	this.offSetHeight = 0;
 	this.miniMapX = 630;
@@ -137,7 +137,7 @@ function warriorClass() {
 				this.offSetHeight = 0 * this.height;
 			} else if (this.movementArray[lastNode] == tileW) {
 				this.x -= this.playerMovementSpeed;
-				this.offSetHeight = 3 * this.height;;
+				this.offSetHeight = 3 * this.height;
 			} else if (this.movementArray[lastNode] == tileE) {
 				this.x += this.playerMovementSpeed;
 				this.offSetHeight = 1 * this.height;
@@ -242,9 +242,9 @@ function warriorClass() {
 	this.draw = function(){
 		gameCoordToIsoCoord(this.x,this.y);
 		canvasContext.drawImage(this.myBitmap, this.offSetWidth, this.offSetHeight, this.width, this.height, 
-								isoDrawX-(this.width/2), isoDrawY-this.height - ISO_CHAR_FOOT_Y, this.width, this.height);
+								isoDrawX, isoDrawY, this.width, this.height);
 		canvasContext.drawImage(playerPositionPic, 0, 0, this.width, this.height, 
-								isoDrawX-(this.width/2), isoDrawY-this.height - ISO_CHAR_FOOT_Y, this.width, this.height);
+								isoDrawX, isoDrawY, this.width, this.height);
 	}
 		
 	//this delivers damage to the player when setting off a trap
