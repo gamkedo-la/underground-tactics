@@ -113,6 +113,7 @@ function moveEverything() {
 	if(liveGame){
 		playerOne.movement();
 		updatedCameraPosition();
+		checkPlayerOptionBoxes();
 	}
 }
 

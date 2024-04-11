@@ -46,8 +46,8 @@ function warriorClass() {
 				var tileLeftEdgeX = 700
 				var tileTopEdgeY = 0;
 
-				this.homeX = tileCol * ROOM_W + 0.5 * ROOM_W; 
-				this.homeY = tileRow * ROOM_H + 0.5 * ROOM_H; 
+				this.homeX = tileCol * ROOM_W; 
+				this.homeY = tileRow * ROOM_H; 
 
 				roomGrid[i] = TILE_FLOOR_STONE_1;
 				break;

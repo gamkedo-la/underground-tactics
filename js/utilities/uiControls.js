@@ -11,6 +11,8 @@ const KEY_DOWN_ARROW = 40;
 
 const KEY_P = 80;
 const KEY_1 = 49;
+var MousePosX;
+var MousePosY;
 
 
 function initInput(){
