@@ -19,13 +19,13 @@ function determineSequenceOrder (){
 }
 
 function drawInitiativeOrder (){
-    colorText("INITIATIVE", canvas.width - 100, 30, "green");
+    colorText("INITIATIVE", canvas.width - 100, 30, "WHITE");
     let yPos = 20;
     for(var i = 0; i < turnOrderList.length; i++){
         if(i == turnNumber){
-            colorText(turnOrderList[i].name, canvas.width - 100, yPos * i + 50, "green");
+            colorText("-" + turnOrderList[i].name, canvas.width - 100, yPos * i + 50, "lime");
         } else {
-            colorText(turnOrderList[i].name, canvas.width - 100, yPos * i + 50, "red");
+            colorText(" " + turnOrderList[i].name, canvas.width - 100, yPos * i + 50, "red");
         }
     }
 }
@@ -56,6 +56,14 @@ var endTurnBoxOptionX = 730;
 var endTurnBoxOptionY = 525;
 var endTurnBoxHovering = false;
 
+function turnAdvance(){
+    if(endTurnBoxHovering){
+        turnNumber++;
+        if(turnNumber >= turnOrderList.length){
+            turnNumber = 0;
+        }
+    }
+}
 
 
 function checkPlayerOptionBoxes(){
@@ -72,25 +80,25 @@ function drawPlayerOptions () {
     colorText("Turn Options", canvas.width-200, canvas.height-90, "red", "14px Arial Black" );
     canvasContext.drawImage(useItemPic, useItemX, useItemY);
     if(useItemBoxHovering){
-        colorText("Items", useItemX+5, useItemY+65, "green", "14px Arial Black" );    
+        colorText("Items", useItemX+5, useItemY+65, "lime", "14px Arial Black" );    
     } else {
         colorText("Items", useItemX+5, useItemY+65, "red", "14px Arial Black" );
     }
     canvasContext.drawImage(wizardMovementPic, moveOptionX, moveOptionY);
     if(moveBoxHovering){
-        colorText("Move", moveOptionX+5, moveOptionY+65, "green", "14px Arial Black" );    
+        colorText("Move", moveOptionX+5, moveOptionY+65, "lime", "14px Arial Black" );    
     } else {
         colorText("Move", moveOptionX+5, moveOptionY+65, "red", "14px Arial Black" );
     }
     canvasContext.drawImage(wizardSpellPic, spellBoxOptionX, spellBoxOptionY);
     if(spellBoxHovering){
-        colorText("Spell", spellBoxOptionX+5, spellBoxOptionY+65, "green", "14px Arial Black" );
+        colorText("Spell", spellBoxOptionX+5, spellBoxOptionY+65, "lime", "14px Arial Black" );
     } else {
         colorText("Spell", spellBoxOptionX+5, spellBoxOptionY+65, "red", "14px Arial Black" );
     }
     canvasContext.drawImage(endTurnPic, endTurnBoxOptionX, endTurnBoxOptionY);
    if(endTurnBoxHovering){
-        colorText("End Turn", endTurnBoxOptionX-10, endTurnBoxOptionY+65, "green", "14px Arial Black" );
+        colorText("End Turn", endTurnBoxOptionX-10, endTurnBoxOptionY+65, "lime", "14px Arial Black" );
    } else {
         colorText("End Turn", endTurnBoxOptionX-10, endTurnBoxOptionY+65, "red", "14px Arial Black" );
    }

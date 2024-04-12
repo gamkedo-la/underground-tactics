@@ -24,6 +24,11 @@ function initInput(){
 		MousePosX = mousePos.x;
 		MousePosY = mousePos.y;
 	});
+
+	canvas.addEventListener('mousedown', function(evt){
+		console.log("click")
+		turnAdvance();
+	});
 	
 	document.addEventListener("keydown", keyPressed);
 	document.addEventListener("keyup", keyReleased);
