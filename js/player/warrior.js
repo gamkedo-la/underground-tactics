@@ -50,6 +50,8 @@ function warriorClass() {
 				this.homeX = tileCol * ROOM_W; 
 				this.homeY = tileRow * ROOM_H; 
 
+				this.movementArray = [i];
+
 				roomGrid[i] = TILE_FLOOR_STONE_1;
 				break;
 			}
