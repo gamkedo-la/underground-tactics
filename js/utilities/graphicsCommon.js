@@ -24,3 +24,9 @@ function colorText(showWords, textX, textY, fillColor, fontStyle) {
   canvasContext.font = fontStyle; //"14px Arial Black"
   canvasContext.fillText(showWords, textX, textY);
 }
+
+function drawIsoCharacterByFeet(graphic, footX, footY, spriteClass){
+	canvasContext.drawImage(graphic, spriteClass.offSetWidth, spriteClass.offSetHeight, spriteClass.width, spriteClass.height, 
+		footX-spriteClass.width/2, footY-58, spriteClass.width, spriteClass.height);	
+
+}

@@ -41,6 +41,7 @@ function warriorClass() {
 					
 		for(var i=0; i<roomGrid.length; i++){
 			if( roomGrid[i] == TILE_PLAYER) {
+				console.log("Found Player")
 				var tileRow = Math.floor(i/ROOM_COLS);
 				var tileCol	= i%ROOM_COLS;
 				var tileLeftEdgeX = 700
@@ -241,10 +242,10 @@ function warriorClass() {
 		
 	this.draw = function(){
 		gameCoordToIsoCoord(this.x,this.y);
-		canvasContext.drawImage(this.myBitmap, this.offSetWidth, this.offSetHeight, this.width, this.height, 
-								isoDrawX, isoDrawY, this.width, this.height);
-		canvasContext.drawImage(playerPositionPic, 0, 0, this.width, this.height, 
-								isoDrawX, isoDrawY, this.width, this.height);
+		drawIsoCharacterByFeet(this.myBitmap,isoDrawX, isoDrawY, this);
+		drawIsoCharacterByFeet(playerPositionPic,isoDrawX, isoDrawY, this);
+
+		//colorCircle(isoDrawX, isoDrawY, 3, "lime")
 	
 		//add logic for what options are available
 	}
