@@ -1,5 +1,7 @@
 var turnOrderList = [];
 
+var turnNumber = 0;
+
 function addCreatureTurn(whichName, initiaveScore){
     var tempCreature = new TurnOrderClass(whichName, initiaveScore);
 	turnOrderList.push(tempCreature);
@@ -8,6 +10,7 @@ function addCreatureTurn(whichName, initiaveScore){
 function TurnOrderClass(whichName, initiaveScore) {
     this.name = whichName;
     this.initiaveScore = initiaveScore;
+    this.myTurn = false;
 }
 
 
@@ -17,13 +20,15 @@ function determineSequenceOrder (){
 
 function drawInitiativeOrder (){
     colorText("INITIATIVE", canvas.width - 100, 30, "green");
+    let yPos = 20;
     for(var i = 0; i < turnOrderList.length; i++){
-        colorText(turnOrderList[i].name, canvas.width - 100, 50, "red");
+        if(i == turnNumber){
+            colorText(turnOrderList[i].name, canvas.width - 100, yPos * i + 50, "green");
+        } else {
+            colorText(turnOrderList[i].name, canvas.width - 100, yPos * i + 50, "red");
+        }
     }
-    colorText("Enemy 1", canvas.width - 100, 70, "white");
-    colorText("Enemy 2", canvas.width - 100, 90, "white");}
-
-
+}
 
 function checkMousePositionInBox(posX, posY, height, width){
     let boxX = posX;
@@ -37,6 +42,7 @@ function checkMousePositionInBox(posX, posY, height, width){
             return false;
         }
 }
+
 var useItemX = 535;
 var useItemY = 525;
 var useItemBoxHovering = false;

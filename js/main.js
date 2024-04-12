@@ -9,6 +9,7 @@ function resetEnemyLists(){
 
 //game states
 var liveGame = true;
+
 var pauseScreen = false;
 var inventoryScreen = false;
 var mainMenu = false;
@@ -36,6 +37,8 @@ window.onload = function(){
 	
 	playerOne.warriorReset();
 	addCreatureTurn("Wizard", 5);
+	addCreatureTurn("Enemy 1", 1); //Vince 4/11/24 temporary:  Will be removed when Enemy Class created
+	addCreatureTurn("Enemy 2", 2); //Vince 4/11/24 temporary:  Will be removed when Enemy Class created
 }
 
 function calculateMousePos(evt) {
