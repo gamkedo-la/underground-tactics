@@ -35,6 +35,7 @@ window.onload = function(){
 	document.addEventListener("keyup", keyReleased);
 	
 	playerOne.warriorReset();
+	addCreatureTurn("Wizard", 5);
 }
 
 function calculateMousePos(evt) {

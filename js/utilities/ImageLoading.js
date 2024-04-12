@@ -13,6 +13,7 @@ var playerPositionPic = document.createElement("img");
 var wizardMovementPic = document.createElement("img");
 var wizardSpellPic = document.createElement("img");
 var endTurnPic = document.createElement("img");
+var useItemPic = document.createElement("img");
 
 var trackPics = [];
 
@@ -56,6 +57,7 @@ function loadImages() {
 			{varName: wizardMovementPic, theFile:  "wizardWalk.png", sx: 0, sy: 0},
 			{varName: wizardSpellPic, theFile:  "wizardSpell.png", sx: 0, sy: 0},
 			{varName: endTurnPic, theFile:  "endTurn.png", sx: 0, sy: 0},
+			{varName: useItemPic, theFile:  "useItem.png", sx: 0, sy: 0},
 
 			//characters
 			{varName: wizardPic, theFile: "wizard.png"},
