@@ -65,7 +65,6 @@ function turnAdvance(){
     }
 }
 
-
 function checkPlayerOptionBoxes(){
     for(var i = 0; i < turnOrderList.length; i++){
         if(turnOrderList[i].name == "Wizard"){
