@@ -65,15 +65,23 @@ function turnAdvance(){
     }
 }
 
+function wizardWalk(){
+    playerOne.usingPath = !playerOne.usingPath;
+    playerOne.animateWalk = true;
+}
+
 function checkPlayerOptionBoxes(){
     for(var i = 0; i < turnOrderList.length; i++){
         if(turnOrderList[i].name == "Wizard"){
-            moveBoxHovering = checkMousePositionInBox(moveOptionX, moveOptionY, 50, 50);
+            if(playerOne.movementArray.length > 0){
+                moveBoxHovering = checkMousePositionInBox(moveOptionX, moveOptionY, 50, 50);
+            }
             spellBoxHovering = checkMousePositionInBox(spellBoxOptionX, spellBoxOptionY, 50, 50);
             endTurnBoxHovering = checkMousePositionInBox(endTurnBoxOptionX, endTurnBoxOptionY, 50, 50);
         }
     }
-}
+    }
+
 
 function drawPlayerOptions () {
     colorText("Turn Options", canvas.width-200, canvas.height-90, "red", "14px Arial Black" );
@@ -96,9 +104,9 @@ function drawPlayerOptions () {
         colorText("Spell", spellBoxOptionX+5, spellBoxOptionY+65, "red", "14px Arial Black" );
     }
     canvasContext.drawImage(endTurnPic, endTurnBoxOptionX, endTurnBoxOptionY);
-   if(endTurnBoxHovering){
+    if(endTurnBoxHovering){
         colorText("End Turn", endTurnBoxOptionX-10, endTurnBoxOptionY+65, "lime", "14px Arial Black" );
-   } else {
-        colorText("End Turn", endTurnBoxOptionX-10, endTurnBoxOptionY+65, "red", "14px Arial Black" );
-   }
+    } else {
+         colorText("End Turn", endTurnBoxOptionX-10, endTurnBoxOptionY+65, "red", "14px Arial Black" );
+    }
 }

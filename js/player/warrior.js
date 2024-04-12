@@ -25,6 +25,10 @@ function warriorClass() {
 	this.trapCoolDownCounter = 0;
 	this.movementArray = [67];
 	this.usingPath = false;
+	this.animateWalk = false;
+	this.ticks = 0;
+	this.frame = 0;
+	this.frames = 4;
 
 	this.warriorPic = document.createElement("img");
 	
@@ -59,8 +63,6 @@ function warriorClass() {
 	
 		this.x = this.homeX;
 		this.y = this.homeY;
-		this.miniMapX = this.homeX + 750;
-		this.miniMapY = this.homeY + 2;
 	}
 					
 	this.init = function(whichGraphic, whichName) {
@@ -244,6 +246,17 @@ function warriorClass() {
 		
 	this.draw = function(){
 		gameCoordToIsoCoord(this.x,this.y);
+		if(this.animateWalk){
+			this.ticks++;
+			if(this.ticks > 3){
+				this.frame++;
+				this.ticks = 0;
+			}
+			if(this.frame > this.frames){
+				this.frame = 1;
+			}
+			this.offSetWidth = this.frame * this.width;
+		}
 		drawIsoCharacterByFeet(this.myBitmap,isoDrawX, isoDrawY, this);
 		drawIsoCharacterByFeet(playerPositionPic,isoDrawX, isoDrawY, this);
 
@@ -252,10 +265,6 @@ function warriorClass() {
 		//add logic for what options are available
 	}
 		
-
-
-	
-
 	//this delivers damage to the player when setting off a trap
 	this.takeDamageFromTrap = function(howMuchDamage){
 		if(this.trapCoolDownCounter == 0){

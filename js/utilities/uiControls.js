@@ -28,6 +28,7 @@ function initInput(){
 	canvas.addEventListener('mousedown', function(evt){
 		console.log("click")
 		turnAdvance();
+		wizardWalk();
 	});
 	
 	document.addEventListener("keydown", keyPressed);
@@ -50,10 +51,6 @@ function keyPressed(evt) {
 	if(toggleDrawTileIndicators == evt.keyCode){
 		drawTileIndicators = !drawTileIndicators;
 		console.log(drawTileIndicators)
-	}
-
-	if(toggleMovement == evt.keyCode){
-		playerOne.usingPath = !playerOne.usingPath;
 	}
 }
 
