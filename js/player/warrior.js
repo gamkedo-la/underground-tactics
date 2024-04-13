@@ -29,6 +29,10 @@ function warriorClass() {
 	this.ticks = 0;
 	this.frame = 0;
 	this.frames = 4;
+	this.healingPotion = 0;
+	this.manaPotion = 0;
+	this.staminaPotion = 0;
+	this.levitatePotion = 0;
 
 	this.warriorPic = document.createElement("img");
 	
@@ -235,6 +239,17 @@ function warriorClass() {
 			this.canMoveWest = true;
 		}
 	}
+
+	this.checkCollisionsAgainstItem = function(item){
+		if(this.collisionTest(item)){
+			console.log("Picked up " + item.myName);
+			if(item.healingPotion){
+				this.healingPotion++;
+			}
+			return true;
+		}
+	}
+
 	
 	this.collisionTest = function(otherHumanoid){
 		if(	this.x > otherHumanoid.x - 20 && this.x < otherHumanoid.x + 20 &&

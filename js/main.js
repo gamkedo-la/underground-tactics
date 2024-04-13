@@ -117,6 +117,13 @@ function moveEverything() {
 	if(liveGame){
 		playerOne.movement();
 		updatedCameraPosition();
+		for(i = 0; i < potionList.length; i++){
+			if(playerOne.checkCollisionsAgainstItem(potionList[i])){
+				console.log(potionList.length)
+				potionList.splice(i,1);
+				console.log(potionList.length)
+			}
+		}
 		checkPlayerOptionBoxes();
 	}
 }
