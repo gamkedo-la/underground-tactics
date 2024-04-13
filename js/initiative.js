@@ -86,45 +86,84 @@ function wizardWalk() {
     }
 }
 
-function checkPlayerOptionBoxes() {
-    for (var i = 0; i < turnOrderList.length; i++) {
-        if (turnOrderList[i].name == "Wizard") {
-            if (playerOne.movementArray.length > 0) {
+function displaySpells(){
+    if (spellBoxHovering) {
+        mainOptions = false;
+        spellOptions = true;
+        potionOptions = false;
+    }
+}
+
+var mainOptions = true;
+var spellOptions = false;
+var potionOptions = false;
+
+function checkPlayerOptionBoxes() { 
+    for(var i = 0; i < turnOrderList.length; i++){
+        if (turnOrderList[i].myTurn == true && turnOrderList[i].name == "Wizard") {
+            if(mainOptions){
+                if (playerOne.movementArray.length > 0) {
+                    moveBoxHovering = checkMousePositionInBox(moveOptionX, moveOptionY, 50, 50);
+                }
+                spellBoxHovering = checkMousePositionInBox(spellBoxOptionX, spellBoxOptionY, 50, 50);
+                endTurnBoxHovering = checkMousePositionInBox(endTurnBoxOptionX, endTurnBoxOptionY, 50, 50);
+            } else if (spellOptions){
                 moveBoxHovering = checkMousePositionInBox(moveOptionX, moveOptionY, 50, 50);
+                endTurnBoxHovering = checkMousePositionInBox(endTurnBoxOptionX, endTurnBoxOptionY, 50, 50);
             }
-            spellBoxHovering = checkMousePositionInBox(spellBoxOptionX, spellBoxOptionY, 50, 50);
-            endTurnBoxHovering = checkMousePositionInBox(endTurnBoxOptionX, endTurnBoxOptionY, 50, 50);
         }
     }
 }
 
-
 function drawPlayerOptions() {
     colorText("Turn Options", canvas.width - 200, canvas.height - 90, "red", "14px Arial Black");
-    if (turnOrderList[0].myTurn == true) {
-        canvasContext.drawImage(useItemPic, useItemX, useItemY);
-        if (useItemBoxHovering) {
-            colorText("Items", useItemX + 5, useItemY + 65, "lime", "14px Arial Black");
-        } else {
-            colorText("Items", useItemX + 5, useItemY + 65, "red", "14px Arial Black");
+    for(var i = 0; i < turnOrderList.length; i++){
+        if (turnOrderList[i].myTurn == true && turnOrderList[i].name == "Wizard") {
+            if(mainOptions){
+                canvasContext.drawImage(useItemPic, useItemX, useItemY);
+                if (useItemBoxHovering) {
+                    colorText("Items", useItemX + 5, useItemY + 65, "lime", "14px Arial Black");
+                } else {
+                    colorText("Items", useItemX + 5, useItemY + 65, "red", "14px Arial Black");
+                }
+                canvasContext.drawImage(wizardMovementPic, moveOptionX, moveOptionY);
+                if (moveBoxHovering) {
+                    colorText("Move", moveOptionX + 5, moveOptionY + 65, "lime", "14px Arial Black");
+                } else {
+                    colorText("Move", moveOptionX + 5, moveOptionY + 65, "red", "14px Arial Black");
+                }
+                canvasContext.drawImage(wizardSpellPic, spellBoxOptionX, spellBoxOptionY);
+                if (spellBoxHovering) {
+                    colorText("Spell", spellBoxOptionX + 5, spellBoxOptionY + 65, "lime", "14px Arial Black");
+                } else {
+                    colorText("Spell", spellBoxOptionX + 5, spellBoxOptionY + 65, "red", "14px Arial Black");
+                }
+                canvasContext.drawImage(endTurnPic, endTurnBoxOptionX, endTurnBoxOptionY);
+                if (endTurnBoxHovering) {
+                    colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "lime", "14px Arial Black");
+                } else {
+                    colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "red", "14px Arial Black");
+                }
+            } else if (spellOptions){
+                canvasContext.drawImage(spellFirePic, moveOptionX, moveOptionY);
+                if (moveBoxHovering) {
+                    colorText("Fire", moveOptionX + 5, moveOptionY + 65, "lime", "14px Arial Black");
+                } else {
+                    colorText("Fire", moveOptionX + 5, moveOptionY + 65, "red", "14px Arial Black");
+                }
+                canvasContext.drawImage(magicMissilePic, spellBoxOptionX, spellBoxOptionY);
+                if (spellBoxHovering) {
+                    colorText("Spell", spellBoxOptionX + 5, spellBoxOptionY + 65, "lime", "14px Arial Black");
+                } else {
+                    colorText("Spell", spellBoxOptionX + 5, spellBoxOptionY + 65, "red", "14px Arial Black");
+                }
+                canvasContext.drawImage(endTurnPic, endTurnBoxOptionX, endTurnBoxOptionY);
+                if (endTurnBoxHovering) {
+                    colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "lime", "14px Arial Black");
+                } else {
+                    colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "red", "14px Arial Black");
+                }
+            }
         }
-        canvasContext.drawImage(wizardMovementPic, moveOptionX, moveOptionY);
-        if (moveBoxHovering) {
-            colorText("Move", moveOptionX + 5, moveOptionY + 65, "lime", "14px Arial Black");
-        } else {
-            colorText("Move", moveOptionX + 5, moveOptionY + 65, "red", "14px Arial Black");
-        }
-        canvasContext.drawImage(wizardSpellPic, spellBoxOptionX, spellBoxOptionY);
-        if (spellBoxHovering) {
-            colorText("Spell", spellBoxOptionX + 5, spellBoxOptionY + 65, "lime", "14px Arial Black");
-        } else {
-            colorText("Spell", spellBoxOptionX + 5, spellBoxOptionY + 65, "red", "14px Arial Black");
-        }
-        canvasContext.drawImage(endTurnPic, endTurnBoxOptionX, endTurnBoxOptionY);
-        if (endTurnBoxHovering) {
-            colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "lime", "14px Arial Black");
-        } else {
-            colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "red", "14px Arial Black");
-        }
-    }
+    }       
 }

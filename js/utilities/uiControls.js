@@ -29,6 +29,7 @@ function initInput(){
 		console.log("click")
 		turnAdvance();
 		wizardWalk();
+		displaySpells();
 	});
 	
 	document.addEventListener("keydown", keyPressed);
