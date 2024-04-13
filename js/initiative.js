@@ -76,6 +76,9 @@ function turnAdvance() {
         if (turnNumber >= turnOrderList.length) {
             turnNumber = 0;
         }
+        mainOptions = true;
+        spellOptions = false;
+        potionOptions = false;
     }
 }
 
@@ -94,6 +97,14 @@ function displaySpells(){
     }
 }
 
+function displayItems(){
+    if (useItemBoxHovering) {
+        mainOptions = false;
+        spellOptions = false;
+        potionOptions = true;
+    }
+}
+
 var mainOptions = true;
 var spellOptions = false;
 var potionOptions = false;
@@ -102,6 +113,7 @@ function checkPlayerOptionBoxes() {
     for(var i = 0; i < turnOrderList.length; i++){
         if (turnOrderList[i].myTurn == true && turnOrderList[i].name == "Wizard") {
             if(mainOptions){
+                useItemBoxHovering = checkMousePositionInBox(useItemX, useItemY, 50, 50);
                 if (playerOne.movementArray.length > 0) {
                     moveBoxHovering = checkMousePositionInBox(moveOptionX, moveOptionY, 50, 50);
                 }
@@ -109,6 +121,7 @@ function checkPlayerOptionBoxes() {
                 endTurnBoxHovering = checkMousePositionInBox(endTurnBoxOptionX, endTurnBoxOptionY, 50, 50);
             } else if (spellOptions){
                 moveBoxHovering = checkMousePositionInBox(moveOptionX, moveOptionY, 50, 50);
+                spellBoxHovering = checkMousePositionInBox(spellBoxOptionX, spellBoxOptionY, 50, 50);
                 endTurnBoxHovering = checkMousePositionInBox(endTurnBoxOptionX, endTurnBoxOptionY, 50, 50);
             }
         }
@@ -163,7 +176,25 @@ function drawPlayerOptions() {
                 } else {
                     colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "red", "14px Arial Black");
                 }
+            } else if (potionOptions)                
+                canvasContext.drawImage(potionManaPic, moveOptionX, moveOptionY);
+                if (moveBoxHovering) {
+                    colorText("Fire", moveOptionX + 5, moveOptionY + 65, "lime", "14px Arial Black");
+                } else {
+                    colorText("Fire", moveOptionX + 5, moveOptionY + 65, "red", "14px Arial Black");
+                }
+                canvasContext.drawImage(magicMissilePic, spellBoxOptionX, spellBoxOptionY);
+                if (spellBoxHovering) {
+                    colorText("Spell", spellBoxOptionX + 5, spellBoxOptionY + 65, "lime", "14px Arial Black");
+                } else {
+                    colorText("Spell", spellBoxOptionX + 5, spellBoxOptionY + 65, "red", "14px Arial Black");
+                }
+                canvasContext.drawImage(endTurnPic, endTurnBoxOptionX, endTurnBoxOptionY);
+                if (endTurnBoxHovering) {
+                    colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "lime", "14px Arial Black");
+                } else {
+                    colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "red", "14px Arial Black");
+                }
             }
-        }
     }       
 }

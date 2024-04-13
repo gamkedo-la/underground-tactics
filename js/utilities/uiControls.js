@@ -30,6 +30,7 @@ function initInput(){
 		turnAdvance();
 		wizardWalk();
 		displaySpells();
+		displayItems();
 	});
 	
 	document.addEventListener("keydown", keyPressed);
