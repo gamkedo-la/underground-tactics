@@ -39,6 +39,7 @@ window.onload = function(){
 	addCreatureTurn("Wizard", 5);
 	addCreatureTurn("Enemy 1", 1); //Vince 4/11/24 temporary:  Will be removed when Enemy Class created
 	addCreatureTurn("Enemy 2", 2); //Vince 4/11/24 temporary:  Will be removed when Enemy Class created
+	addCreatureTurn("Enemy 3", 4); //Vince 4/13/24 temporary:  Will be removed when Enemy Class created
 }
 
 function calculateMousePos(evt) {
