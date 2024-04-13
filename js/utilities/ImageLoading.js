@@ -16,6 +16,9 @@ var wizardSpellPic = document.createElement("img");
 var endTurnPic = document.createElement("img");
 var useItemPic = document.createElement("img");
 var magicMissilePic = document.createElement("img");
+var manaPotionPic = document.createElement("img");
+var healthPotionPic = document.createElement("img");
+
 
 var trackPics = [];
 
@@ -62,6 +65,8 @@ function loadImages() {
 			{varName: endTurnPic, theFile:  "endTurn.png", sx: 0, sy: 0},
 			{varName: useItemPic, theFile:  "useItem.png", sx: 0, sy: 0},
 			{varName: magicMissilePic, theFile:  "spellMagicMissle.png", sx: 0, sy: 0},
+			{varName: manaPotionPic, theFile:  "manaPotion.png", sx: 0, sy: 0},
+			{varName: healthPotionPic, theFile:  "healthPotion.png", sx: 0, sy: 0},
 
 			//characters
 			{varName: wizardPic, theFile: "wizard.png"},

@@ -123,6 +123,10 @@ function checkPlayerOptionBoxes() {
                 moveBoxHovering = checkMousePositionInBox(moveOptionX, moveOptionY, 50, 50);
                 spellBoxHovering = checkMousePositionInBox(spellBoxOptionX, spellBoxOptionY, 50, 50);
                 endTurnBoxHovering = checkMousePositionInBox(endTurnBoxOptionX, endTurnBoxOptionY, 50, 50);
+            } else if (potionOptions){
+                moveBoxHovering = checkMousePositionInBox(moveOptionX, moveOptionY, 50, 50);
+                spellBoxHovering = checkMousePositionInBox(spellBoxOptionX, spellBoxOptionY, 50, 50);
+                endTurnBoxHovering = checkMousePositionInBox(endTurnBoxOptionX, endTurnBoxOptionY, 50, 50);
             }
         }
     }
@@ -172,29 +176,30 @@ function drawPlayerOptions() {
                 }
                 canvasContext.drawImage(endTurnPic, endTurnBoxOptionX, endTurnBoxOptionY);
                 if (endTurnBoxHovering) {
-                    colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "lime", "14px Arial Black");
+                    colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "lime", "15px Arial Black");
                 } else {
                     colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "red", "14px Arial Black");
                 }
-            } else if (potionOptions)                
-                canvasContext.drawImage(potionManaPic, moveOptionX, moveOptionY);
+            } else if (potionOptions)  {              
+                canvasContext.drawImage(manaPotionPic, moveOptionX, moveOptionY);
                 if (moveBoxHovering) {
-                    colorText("Fire", moveOptionX + 5, moveOptionY + 65, "lime", "14px Arial Black");
+                    colorText("Mana", moveOptionX + 5, moveOptionY + 65, "lime", "15px Arial Black");
                 } else {
-                    colorText("Fire", moveOptionX + 5, moveOptionY + 65, "red", "14px Arial Black");
+                    colorText("Mana", moveOptionX + 5, moveOptionY + 65, "red", "14px Arial Black");
                 }
-                canvasContext.drawImage(magicMissilePic, spellBoxOptionX, spellBoxOptionY);
+                canvasContext.drawImage(healthPotionPic, spellBoxOptionX, spellBoxOptionY);
                 if (spellBoxHovering) {
-                    colorText("Spell", spellBoxOptionX + 5, spellBoxOptionY + 65, "lime", "14px Arial Black");
+                    colorText("Health", spellBoxOptionX, spellBoxOptionY + 65, "lime", "15px Arial Black");
                 } else {
-                    colorText("Spell", spellBoxOptionX + 5, spellBoxOptionY + 65, "red", "14px Arial Black");
+                    colorText("Health", spellBoxOptionX, spellBoxOptionY + 65, "red", "14px Arial Black");
                 }
                 canvasContext.drawImage(endTurnPic, endTurnBoxOptionX, endTurnBoxOptionY);
                 if (endTurnBoxHovering) {
-                    colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "lime", "14px Arial Black");
+                    colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "lime", "15px Arial Black");
                 } else {
                     colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "red", "14px Arial Black");
                 }
             }
+        }
     }       
 }
