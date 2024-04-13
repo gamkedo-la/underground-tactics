@@ -128,7 +128,7 @@ function warriorClass() {
 			var tileW = indexW(currentIndex);
 			var tileE = indexE(currentIndex);
 			var lastNode = this.movementArray.length - 1;
-			console.log(this.movementArray[lastNode], currentIndex);
+			//console.log(this.movementArray[lastNode], currentIndex);
 			if(this.movementArray[lastNode] == currentIndex){
 				var col = currentIndex%ROOM_COLS;
 				var row = Math.floor(currentIndex/ROOM_COLS);
@@ -245,7 +245,14 @@ function warriorClass() {
 			console.log("Picked up " + item.myName);
 			if(item.healingPotion){
 				this.healingPotion++;
+			} else if(item.staminaPotion){
+				this.staminaPotion++;
+			} else if(item.manaPotion){
+				this.manaPotion++;
+			} else if(item.levitatePotion){
+				this.levitatePotion++;
 			}
+
 			return true;
 		}
 	}

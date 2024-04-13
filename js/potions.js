@@ -20,6 +20,7 @@ function potionClass(potionType) {
 	this.manaPotion = 0;
 	this.healingPotion = 0;
 	this.staminaPotion = 0;
+	this.levitationPotion = 0;
 
 		
 	this.reset = function() {
@@ -53,6 +54,8 @@ function potionClass(potionType) {
 			this.healingPotion++;
 		} else if (this.myName == "Stamina Potion"){
 			this.staminaPotion++;
+		} else if (this.myName == "Levitation Potion"){
+			this.levitationPotion++;
 		}
 		
 		this.reset();
