@@ -70,3 +70,8 @@ function BackgroundMusicClass() {
 		}
     }
 }
+
+function toggleMute() {
+	isMuted = !isMuted;
+  document.getElementById("debugText").innerHTML = isMuted ? "mute" : "unmute";
+}
