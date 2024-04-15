@@ -86,7 +86,9 @@ function setKeyHoldState(thisKey, thisWarrior, setTo) {
 function changePauseState(){
 	if(pauseScreen){
 		pauseScreen = false;
+		liveGame = true;
 	} else {
 		pauseScreen = true;
+		liveGame = false;
 	}	
 }

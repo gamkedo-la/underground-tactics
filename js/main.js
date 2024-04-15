@@ -127,6 +127,10 @@ function moveEverything() {
 		}
 		checkPlayerOptionBoxes();
 	}
+	
+	if (pauseScreen) {
+		return;
+	}
 }
 
 //This checks player and enemy collisions.  This is called every frame.
