@@ -305,6 +305,4 @@ function warriorClass() {
 			this.trapCoolDownTimer = false;
 		}
 	}
-	
-	
 }

@@ -14,7 +14,6 @@ var pauseScreen = false;
 var inventoryScreen = false;
 var mainMenu = false;
 
-
 window.onload = function(){
 			
 	canvas = document.getElementById('gameCanvas');

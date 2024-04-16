@@ -1,4 +1,11 @@
-  function enemyClass() {
+var enemyList = [];
+
+function addEnemy(whichEnemy){
+    var tempEnemy = new enemyClass(whichEnemy);
+	enemyList.push(tempEnemy);
+}  
+ 
+ function enemyClass() {
 	this.x = 600;
 	this.y = 800;
 	this.width = 30; //30
