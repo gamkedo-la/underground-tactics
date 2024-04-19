@@ -71,8 +71,7 @@ function loadImages() {
 			{varName: magicMissilePic, theFile:  "spellMagicMissle.png", sx: 0, sy: 0},
 			{varName: manaPotionPic, theFile:  "manaPotion.png", sx: 0, sy: 0},
 			{varName: healthPotionPic, theFile:  "healthPotion.png", sx: 0, sy: 0},
-			//{varName: spellBookIconPic, theFile:  "spellbookIcon.png", sx: 0, sy: 0},
-
+		
 
 			//characters
 			{varName: wizardPic, theFile: "wizard.png"},
@@ -94,7 +93,8 @@ function loadImages() {
 			{trackType: TILE_WALL_STONE_3, theFile: "wall_stone_3.png", sx: 100, sy: 0},
 			{trackType: TILE_WALL_STONE_4, theFile: "wall_stone_4.png", sx: 150, sy: 0},
 			{trackType: TILE_WALL_STONE_5, theFile: "wall_stone_5.png", sx: 200, sy: 0},
-			{trackType: TILE_COLUMN_STONE_1, theFile: "column_stone_1.png", sx: 250, sy: 0}
+			{trackType: TILE_COLUMN_STONE_1, theFile: "column_stone_1.png", sx: 250, sy: 0},
+			{trackType: TILE_WATER, theFile: "water.png", sx: 0, sy: 0},
 		];
 			
 	picsToLoad = imageList.length;

@@ -33,6 +33,7 @@ function warriorClass() {
 	this.manaPotion = 0;
 	this.staminaPotion = 0;
 	this.levitatePotion = 0;
+	this.levitating = false;
 
 	this.warriorPic = document.createElement("img");
 	
@@ -87,6 +88,9 @@ function warriorClass() {
 					this.movementArray.shift();
 				} else if(tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_WALKABLE){
 					this.movementArray.unshift(currentIndex);
+				} else if (tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_FLYABLE && this.levitating){
+					console.log("water");
+					this.movementArray.unshift(currentIndex);
 				}
 				this.keyHeld_North = false;
 			}
@@ -96,6 +100,9 @@ function warriorClass() {
 					this.movementArray.shift();
 				} else if(tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_WALKABLE){
 					this.movementArray.unshift(currentIndex);
+				} else if (tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_FLYABLE && this.levitating){
+					this.movementArray.unshift(currentIndex);	
+					console.log("water");
 				}
 				this.keyHeld_South = false;
 			}
@@ -104,6 +111,8 @@ function warriorClass() {
 				if(this.movementArray.length > 1 && this.movementArray[1] == currentIndex){
 					this.movementArray.shift();
 				} else if(tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_WALKABLE){
+					this.movementArray.unshift(currentIndex);
+				} else if (tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_FLYABLE && this.levitating){
 					this.movementArray.unshift(currentIndex);
 				}
 				this.keyHeld_West = false;
@@ -114,11 +123,15 @@ function warriorClass() {
 					this.movementArray.shift();
 				} else if(tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_WALKABLE){
 					this.movementArray.unshift(currentIndex);
+				} else if (tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_FLYABLE && this.levitating){
+					this.movementArray.unshift(currentIndex);
 				}
+				console.log("water");
+
 				this.keyHeld_East = false;
 			}
 
-			if(this.movementArray.length > 7){
+			if(this.movementArray.length > 10){
 				this.movementArray.shift();
 			}
 		} else {
