@@ -85,7 +85,7 @@ function warriorClass() {
 				currentIndex = indexN(currentIndex);
 				if(this.movementArray.length > 1 && this.movementArray[1] == currentIndex){
 					this.movementArray.shift();
-				} else {
+				} else if(tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_WALKABLE){
 					this.movementArray.unshift(currentIndex);
 				}
 				this.keyHeld_North = false;
@@ -94,7 +94,7 @@ function warriorClass() {
 				currentIndex = indexS(currentIndex);
 				if(this.movementArray.length > 1 && this.movementArray[1] == currentIndex){
 					this.movementArray.shift();
-				} else {
+				} else if(tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_WALKABLE){
 					this.movementArray.unshift(currentIndex);
 				}
 				this.keyHeld_South = false;
@@ -103,7 +103,7 @@ function warriorClass() {
 				currentIndex = indexW(currentIndex);
 				if(this.movementArray.length > 1 && this.movementArray[1] == currentIndex){
 					this.movementArray.shift();
-				} else {
+				} else if(tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_WALKABLE){
 					this.movementArray.unshift(currentIndex);
 				}
 				this.keyHeld_West = false;
@@ -112,7 +112,7 @@ function warriorClass() {
 				currentIndex = indexE(currentIndex);
 				if(this.movementArray.length > 1 && this.movementArray[1] == currentIndex){
 					this.movementArray.shift();
-				} else {
+				} else if(tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_WALKABLE){
 					this.movementArray.unshift(currentIndex);
 				}
 				this.keyHeld_East = false;

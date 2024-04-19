@@ -27,7 +27,7 @@ var levelOne = [							//7
 					 54, 14,  3,  3,  2,  1,  1,  3,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
 					 50, 12,  1,  4,  2,  1,100,  2,  1,  1,154,  1,  1,152,  1,  1,  1,  1,  1,  1,
 					 50, 12,  1,  3,  1,  1,  2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
-					 51, 15,  1,  1,  1,  1,  1,  1,  3,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
+					 51, 15,  1,  1,  1, 51, 50, 50,  3,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
 					 52,  1,  1,  1,  1,  1,150,  1,  1,  1,151,  1,  1,  1,  1,  4,  1,  1,  1,  1,
 					 50,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
 					 53,  1,  1,  1,  1,  1, 55,  1,  1,  1,  1,  3,  1,  1,  1, 55,  1,  1,  1,  1,
@@ -83,6 +83,30 @@ var levelTwo =[
 	const TILE_POTION_STAMINA = 152;
 	const TILE_POTION_LEVITATION = 153;
 	const TILE_SPELL_BOOK = 154;
+
+    const NAVMODE_IMPASSIBLE = 0;
+	const NAVMODE_WALKABLE = 1;
+	const NAVMODE_FLYABLE = 2;
+	const NAVMODE_LOCKED = 3;
+	const NAVMODE_HARMFUL = 4;
+	const NAVMODE_PICKUP = 5;
+
+	var tileNavData = [
+		{navMode: NAVMODE_IMPASSIBLE, tileTypes: [TILE_WALL_STONE_1, TILE_WALL_STONE_2, TILE_WALL_STONE_3, TILE_WALL_STONE_4, TILE_WALL_STONE_5, TILE_COLUMN_STONE_1]},
+		{navMode: NAVMODE_WALKABLE, tileTypes: [TILE_FLOOR_SEWER_1, TILE_FLOOR_SEWER_2, TILE_FLOOR_SEWER_3, TILE_FLOOR_SEWER_4, TILE_FLOOR_SEWER_5, TILE_FLOOR_SEWER_6, TILE_FLOOR_SEWER_7, TILE_FLOOR_SEWER_8, TILE_FLOOR_SEWER_9, TILE_FLOOR_STONE_1, TILE_FLOOR_STONE_2, TILE_FLOOR_STONE_3, TILE_FLOOR_STONE_4]},
+	];
+
+	function tileTypeNavMode(tiletype){
+		for (var i = 0; i<tileNavData.length; i++){
+			for (var ii = 0; ii<tileNavData[i].tileTypes.length; ii++){
+				console.log(tiletype, tileNavData[i].tileTypes[ii])
+				if(tiletype == tileNavData[i].tileTypes[ii]){
+					return tileNavData[i].navMode;
+				}
+			}
+		}
+		return NAVMODE_IMPASSIBLE;
+	}
 
 	
 function gameCoordToIsoCoord (pixelX, pixelY){
