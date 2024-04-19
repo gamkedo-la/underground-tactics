@@ -56,8 +56,9 @@ function potionClass(potionType) {
 			this.staminaPotion++;
 		} else if (this.myName == "Levitation Potion"){
 			this.levitationPotion++;
+		} else if (this.myName == "Spell Book"){
+			
 		}
-		
 		this.reset();
 	}	
 

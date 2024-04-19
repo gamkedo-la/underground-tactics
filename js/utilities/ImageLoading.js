@@ -18,6 +18,9 @@ var useItemPic = document.createElement("img");
 var magicMissilePic = document.createElement("img");
 var manaPotionPic = document.createElement("img");
 var healthPotionPic = document.createElement("img");
+var spellBookPic = document.createElement("img");
+var spellBookIconPic = document.createElement("img");
+
 
 
 var trackPics = [];
@@ -58,15 +61,18 @@ function loadImages() {
 			{varName: potionHealthPic, theFile: "potionTiles.png",sx: 0, sy: 0},
 			{varName: potionStaminaPic, theFile: "potionTiles.png",sx: 0, sy: 0},
 			{varName: potionLevitationPic, theFile: "potionTiles.png",sx: 0, sy: 0},
+			{varName: spellBookPic, theFile:  "potionTiles.png", sx: 0, sy: 0},
 			{varName: spellFirePic, theFile: "spellFire.png",sx: 0, sy: 0},
 			{varName: playerPositionPic, theFile: "playerPosition.png",sx: 0, sy: 0},
 			{varName: wizardMovementPic, theFile:  "wizardWalk.png", sx: 0, sy: 0},
-			{varName: wizardSpellPic, theFile:  "wizardSpell.png", sx: 0, sy: 0},
+			{varName: wizardSpellPic, theFile:  "spellbookIcon.png", sx: 0, sy: 0},
 			{varName: endTurnPic, theFile:  "endTurn.png", sx: 0, sy: 0},
 			{varName: useItemPic, theFile:  "useItem.png", sx: 0, sy: 0},
 			{varName: magicMissilePic, theFile:  "spellMagicMissle.png", sx: 0, sy: 0},
 			{varName: manaPotionPic, theFile:  "manaPotion.png", sx: 0, sy: 0},
 			{varName: healthPotionPic, theFile:  "healthPotion.png", sx: 0, sy: 0},
+			//{varName: spellBookIconPic, theFile:  "spellbookIcon.png", sx: 0, sy: 0},
+
 
 			//characters
 			{varName: wizardPic, theFile: "wizard.png"},

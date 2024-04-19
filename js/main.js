@@ -79,7 +79,8 @@ function loadLevel(whichLevel) {
 		if( roomGrid[i] == TILE_POTION_MANA ||
 			roomGrid[i] == TILE_POTION_HEALTH ||
 			roomGrid[i] == TILE_POTION_LEVITATION ||
-			roomGrid[i] == TILE_POTION_STAMINA){
+			roomGrid[i] == TILE_POTION_STAMINA ||
+			roomGrid[i] == TILE_SPELL_BOOK){
 			
 			let whichPotion = roomGrid[i];
 			if(roomGrid[i] == TILE_POTION_MANA){
@@ -90,6 +91,8 @@ function loadLevel(whichLevel) {
 				whichPotion = "Stamina Potion";
 			} else if (roomGrid[i] == TILE_POTION_LEVITATION){
 				whichPotion = "Levitation Potion";
+			} else if (roomGrid[i] == TILE_SPELL_BOOK){
+				whichPotion = "Spell Book";
 			} else {
 				whichPotion = "Not listed";
 			}
@@ -106,6 +109,8 @@ function loadLevel(whichLevel) {
 			potionList[i].init(potionLevitationPic, 0, "Stamina Potion", TILE_POTION_LEVITATION);
 		} else if (potionList[i].myName == "Stamina Potion"){
 			potionList[i].init(potionStaminaPic, 150, "Stamina Potion", TILE_POTION_STAMINA);
+		} else if (potionList[i].myName == "Spell Book"){
+			potionList[i].init(potionStaminaPic, 300, "Spell Book", TILE_SPELL_BOOK);
 		}
 	}
 	playerOne.warriorReset();
