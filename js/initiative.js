@@ -79,6 +79,9 @@ function turnAdvance() {
         mainOptions = true;
         spellOptions = false;
         potionOptions = false;
+        if(playerOne.levitating){
+            playerOne.levitationTurn++;
+        }
     }
 }
 
@@ -189,9 +192,9 @@ function drawPlayerOptions() {
                 }
                 canvasContext.drawImage(healthPotionPic, spellBoxOptionX, spellBoxOptionY);
                 if (spellBoxHovering) {
-                    colorText("Health", spellBoxOptionX, spellBoxOptionY + 65, "lime", "15px Arial Black");
+                    colorText("Levitation", spellBoxOptionX, spellBoxOptionY + 65, "lime", "15px Arial Black");
                 } else {
-                    colorText("Health", spellBoxOptionX, spellBoxOptionY + 65, "red", "14px Arial Black");
+                    colorText("Levitation", spellBoxOptionX, spellBoxOptionY + 65, "red", "14px Arial Black");
                 }
                 canvasContext.drawImage(endTurnPic, endTurnBoxOptionX, endTurnBoxOptionY);
                 if (endTurnBoxHovering) {

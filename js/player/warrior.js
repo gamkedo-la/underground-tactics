@@ -34,6 +34,7 @@ function warriorClass() {
 	this.staminaPotion = 0;
 	this.levitatePotion = 0;
 	this.levitating = false;
+	this.levitationTurn = 0;
 
 	this.warriorPic = document.createElement("img");
 	
@@ -75,10 +76,24 @@ function warriorClass() {
 		this.myName = whichName;
 		this.warriorReset();
 	}	
+
+	this.levitate = function(){
+		if(spellBoxHovering){
+			this.levitating = true;
+			mainOptions = true;
+			spellOptions = false;
+			potionOptions = false;
+		}
+	}
 	 
 	this.movement = function() {
 		
 		var currentIndex;
+
+		if(this.levitationTurn > 6){
+			this.levitating = false;
+			this.levitationTurn = 0;
+		}
 
 		if(this.usingPath == false){
 			currentIndex = this.movementArray[0];

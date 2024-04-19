@@ -32,6 +32,7 @@ function initInput(){
 		wizardWalk();
 		displaySpells();
 		displayItems();
+		playerOne.levitate();
 	});
 	
 	document.addEventListener("keydown", keyPressed);
