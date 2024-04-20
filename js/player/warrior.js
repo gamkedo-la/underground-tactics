@@ -168,16 +168,32 @@ function warriorClass() {
 				}
 			} else if (this.movementArray[lastNode] == tileN) {
 				this.y -= this.playerMovementSpeed;
-				this.offSetHeight = 2 * this.height;
+				if(this.levitating){
+					this.offSetHeight = 6 * this.height;
+				} else {
+					this.offSetHeight = 2 * this.height
+				}
 			} else if (this.movementArray[lastNode] == tileS) {
 				this.y += this.playerMovementSpeed;
-				this.offSetHeight = 0 * this.height;
+				if(this.levitating){
+					this.offSetHeight = 4 * this.height;
+				} else {
+					this.offSetHeight = 0 * this.height;
+				}
 			} else if (this.movementArray[lastNode] == tileW) {
 				this.x -= this.playerMovementSpeed;
-				this.offSetHeight = 3 * this.height;
+				if(this.levitating){
+					this.offSetHeight = 7 * this.height;
+				} else {
+					this.offSetHeight = 3 * this.height;
+				}
 			} else if (this.movementArray[lastNode] == tileE) {
 				this.x += this.playerMovementSpeed;
-				this.offSetHeight = 1 * this.height;
+				if(this.levitating){
+					this.offSetHeight = 5 * this.height;
+				} else {
+					this.offSetHeight = 1 * this.height;
+				}
 			}
 		}
 
