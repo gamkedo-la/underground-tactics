@@ -74,8 +74,10 @@ function enemyClass(enemyType) {
     }
 
     this.move = function() {
-
         var currentIndex;
+        var playerIndex = getTileIndexAtPixelCoord(playerOne.x,playerOne.y);
+        var enemyIndex = getTileIndexAtPixelCoord(this.x,this.y);
+        console.log("player Index: " + playerIndex + " Enemy Index: " + enemyIndex);
 
         if (this.usingPath == false) {
             currentIndex = this.movementArray[0];

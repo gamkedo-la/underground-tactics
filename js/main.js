@@ -129,6 +129,11 @@ function loadLevel(whichLevel) {
 function moveEverything() {
 	if(liveGame){
 		playerOne.movement();
+		for(var i = 0; i < turnOrderList.length; i++ ){
+			if(turnOrderList[i].myTurn == true && turnOrderList[i].name == "Enemy 1"){
+				console.log("Enemy 1 turn")
+			}
+		} 
 		updatedCameraPosition();
 		for(i = 0; i < potionList.length; i++){
 			if(playerOne.checkCollisionsAgainstItem(potionList[i])){
