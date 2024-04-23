@@ -85,6 +85,19 @@ function warriorClass() {
 			potionOptions = false;
 		}
 	}
+
+	this.processTileAtIndex = function(currentIndex) {
+		if(this.movementArray.length > 1 && this.movementArray[1] == currentIndex){
+			this.movementArray.shift();
+		} else if(tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_WALKABLE){
+			this.movementArray.unshift(currentIndex);
+		} else if (tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_FLYABLE && this.levitating){
+			console.log("water");
+			this.movementArray.unshift(currentIndex);
+		} else {
+			console.log("cannot pass");
+		}
+	}
 	 
 	this.movement = function() {
 		
@@ -99,50 +112,22 @@ function warriorClass() {
 			currentIndex = this.movementArray[0];
 			if(this.keyHeld_North){
 				currentIndex = indexN(currentIndex);
-				if(this.movementArray.length > 1 && this.movementArray[1] == currentIndex){
-					this.movementArray.shift();
-				} else if(tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_WALKABLE){
-					this.movementArray.unshift(currentIndex);
-				} else if (tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_FLYABLE && this.levitating){
-					console.log("water");
-					this.movementArray.unshift(currentIndex);
-				}
+				this.processTileAtIndex(currentIndex);
 				this.keyHeld_North = false;
 			}
 			if(this.keyHeld_South){
 				currentIndex = indexS(currentIndex);
-				if(this.movementArray.length > 1 && this.movementArray[1] == currentIndex){
-					this.movementArray.shift();
-				} else if(tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_WALKABLE){
-					this.movementArray.unshift(currentIndex);
-				} else if (tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_FLYABLE && this.levitating){
-					this.movementArray.unshift(currentIndex);	
-					console.log("water");
-				}
+				this.processTileAtIndex(currentIndex);
 				this.keyHeld_South = false;
 			}
 			if(this.keyHeld_West){
 				currentIndex = indexW(currentIndex);
-				if(this.movementArray.length > 1 && this.movementArray[1] == currentIndex){
-					this.movementArray.shift();
-				} else if(tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_WALKABLE){
-					this.movementArray.unshift(currentIndex);
-				} else if (tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_FLYABLE && this.levitating){
-					this.movementArray.unshift(currentIndex);
-				}
+				this.processTileAtIndex(currentIndex);
 				this.keyHeld_West = false;
 			}
 			if(this.keyHeld_East){
 				currentIndex = indexE(currentIndex);
-				if(this.movementArray.length > 1 && this.movementArray[1] == currentIndex){
-					this.movementArray.shift();
-				} else if(tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_WALKABLE){
-					this.movementArray.unshift(currentIndex);
-				} else if (tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_FLYABLE && this.levitating){
-					this.movementArray.unshift(currentIndex);
-				}
-				console.log("water");
-
+				this.processTileAtIndex(currentIndex);
 				this.keyHeld_East = false;
 			}
 
