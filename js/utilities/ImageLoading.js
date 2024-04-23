@@ -20,6 +20,7 @@ var manaPotionPic = document.createElement("img");
 var healthPotionPic = document.createElement("img");
 var spellBookPic = document.createElement("img");
 var spellBookIconPic = document.createElement("img");
+var kobaldPic = document.createElement("img");
 
 
 
@@ -71,10 +72,10 @@ function loadImages() {
 			{varName: magicMissilePic, theFile:  "spellMagicMissle.png", sx: 0, sy: 0},
 			{varName: manaPotionPic, theFile:  "manaPotion.png", sx: 0, sy: 0},
 			{varName: healthPotionPic, theFile:  "healthPotion.png", sx: 0, sy: 0},
-		
-
+			
 			//characters
 			{varName: wizardPic, theFile: "wizard.png"},
+			{varName: kobaldPic, theFile:  "kobald.png"},
 			{trackType: TILE_FLOOR_STONE_1, theFile: "floor.png", sx: 0, sy: 0},
 			{trackType: TILE_FLOOR_STONE_2, theFile: "floor_stone_2.png", sx: 0, sy: 0},
 			{trackType: TILE_FLOOR_STONE_3, theFile: "floor_stone_3.png", sx: 50, sy: 0},

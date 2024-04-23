@@ -96,7 +96,10 @@ function loadLevel(whichLevel) {
 			} else {
 				whichPotion = "Not listed";
 			}
-			addPotion(whichPotion);
+			addPotion(whichPotion, "Kobald");
+		}
+		if(roomGrid[i] == TILE_KOBALD){
+			addKobald();
 		}
 	}
 
@@ -110,9 +113,14 @@ function loadLevel(whichLevel) {
 		} else if (potionList[i].myName == "Stamina Potion"){
 			potionList[i].init(potionStaminaPic, 150, "Stamina Potion", TILE_POTION_STAMINA);
 		} else if (potionList[i].myName == "Spell Book"){
-			potionList[i].init(potionStaminaPic, 300, "Spell Book", TILE_SPELL_BOOK);
+			potionList[i].init(spellBookPic, 300, "Spell Book", TILE_SPELL_BOOK);
 		}
 	}
+
+	for(var i = 0; i < kobaldList.length; i++){
+		kobaldList[i].init(wizardPic);
+	}
+
 	playerOne.warriorReset();
 	console.log("Finish Load Level");
 }
@@ -129,6 +137,9 @@ function moveEverything() {
 				console.log(potionList.length)
 			}
 		}
+		for(i = 0; i < kobaldList.length; i++){
+			kobaldList[i].move();
+		}
 		checkPlayerOptionBoxes();
 	}
 	
@@ -142,7 +153,6 @@ function moveEverything() {
 function checkAllPlayerAndEnemyCollisions(){
 	 
 }
-
 
 //All movement occurs here.  This is called every frame.
 var titleScreenWizardX = -100;
@@ -182,7 +192,10 @@ function drawEverything() {
 		playerOne.draw();
 		for(var i = 0; i < potionList.length; i++){
 			potionList[i].draw();
-		}
+		};
+		for(var i = 0; i < kobaldList.length; i++){
+			kobaldList[i].draw();
+		};
 		finishedCameraPan();
 		drawInitiativeOrder();
 		drawPlayerOptions();

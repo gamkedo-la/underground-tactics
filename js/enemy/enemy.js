@@ -1,7 +1,12 @@
 
+var kobaldList = [];
 
+function addKobald(){
+    var tempEnemy = new enemyClass("Kobald");
+	kobaldList.push(tempEnemy);
+}
 
-function enemyClass() {
+function enemyClass(enemyType) {
     this.x = 600;
     this.y = 800;
     this.width = 50;
@@ -29,6 +34,7 @@ function enemyClass() {
     this.manaPotion = 0;
     this.staminaPotion = 0;
     this.levitatePotion = 0;
+    this.enemy = enemyType;
 
     this.setupControls = function(northKey, eastKey, southKey, westKey) {
         this.controlKeyForNorth = northKey;
@@ -39,15 +45,13 @@ function enemyClass() {
 
     this.reset = function() {
         this.speed = 0;
-        this.keysHeld = 1;
+        this.keysHeld = 0;
 
         for (var i = 0; i < roomGrid.length; i++) {
-            if (roomGrid[i] == TILE_PLAYER) {
-                console.log("Found Player")
+            if (roomGrid[i] == TILE_KOBALD) {
+                console.log("Found Kobald")
                 var tileRow = Math.floor(i / ROOM_COLS);
                 var tileCol = i % ROOM_COLS;
-                var tileLeftEdgeX = 700
-                var tileTopEdgeY = 0;
 
                 this.homeX = tileCol * ROOM_W;
                 this.homeY = tileRow * ROOM_H;
@@ -69,7 +73,7 @@ function enemyClass() {
         this.reset();
     }
 
-    this.movement = function() {
+    this.move = function() {
 
         var currentIndex;
 
@@ -193,7 +197,9 @@ function enemyClass() {
             }
             this.offSetWidth = this.frame * this.width;
         }
-        drawIsoCharacterByFeet(this.myBitmap, isoDrawX, isoDrawY, this);
-        drawIsoCharacterByFeet(playerPositionPic, isoDrawX, isoDrawY, this);
+
+        drawIsoCharacterByFeet(kobaldPic, isoDrawX, isoDrawY, this);
+        //drawIsoCharacterByFeet(this.myBitmap, isoDrawX, isoDrawY, this);
+       // drawIsoCharacterByFeet(playerPositionPic, isoDrawX, isoDrawY, this);
     }
 }
