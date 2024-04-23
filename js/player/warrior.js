@@ -278,12 +278,16 @@ function warriorClass() {
 			console.log("Picked up " + item.myName);
 			if(item.healingPotion){
 				this.healingPotion++;
+				itemPickUpSound.play();
 			} else if(item.staminaPotion){
 				this.staminaPotion++;
+				itemPickUpSound.play();
 			} else if(item.manaPotion){
 				this.manaPotion++;
+				itemPickUpSound.play();
 			} else if(item.levitatePotion){
 				this.levitatePotion++;
+				itemPickUpSound.play();
 			}
 
 			return true;
@@ -309,7 +313,7 @@ function warriorClass() {
 				this.frame++;
 				this.ticks = 0;
 				footStepSoundTurn++
-				if(footStepSoundTurn > 2){
+				if(footStepSoundTurn > 2 && !this.levitating){
 					footstepsSound.play();
 					console.log("Play")
 					footStepSoundTurn = 0;

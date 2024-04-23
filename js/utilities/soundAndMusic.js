@@ -1,5 +1,6 @@
 //sounds
 var footstepsSound = new SoundOverlapsClass("footsteps");
+var itemPickUpSound = new SoundOverlapsClass("pickUpItem");
 
 function setFormat() {
     var audio = new Audio();
