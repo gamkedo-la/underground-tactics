@@ -55,6 +55,7 @@ function keyPressed(evt) {
 	}
 	if(toggleDrawTileIndicators == evt.keyCode){
 		drawTileIndicators = !drawTileIndicators;
+		footstepsSound.play();
 		console.log(drawTileIndicators)
 	}
 	if(mute == evt.keyCode) {

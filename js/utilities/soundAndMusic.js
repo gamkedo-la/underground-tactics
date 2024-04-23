@@ -1,17 +1,18 @@
-var audioFormat;
-var isMuted = false;
-var soundSetforMeetings = false; //make false to hear at normal level
-
 //sounds
+var footstepsSound = new SoundOverlapsClass("crashCone");
 
 function setFormat() {
     var audio = new Audio();
-    if (audio.canPlayType("audio/mp3")) {
-		audioFormat = ".mp3";
+    if (audio.canPlayType("audio/mp3")) { 
+        // fully supported by all browsers and platforms
+        // see https://caniuse.com/?search=mp3
+        audioFormat = ".mp3";
     } else {
-		audioFormat = ".ogg";
+		audioFormat = ".ogg"; // never used
     }
 }
+
+var mainBackgroundMusic = new BackgroundMusicClass();
 
 function SoundOverlapsClass(filenameWithPath) {
     setFormat();
@@ -20,21 +21,11 @@ function SoundOverlapsClass(filenameWithPath) {
     var altSound = new Audio("sound/" + filenameWithPath + audioFormat);
     
     this.play = function() {
-    	if (isMuted) {
-    		console.log ("sound muted");
-    		return;
-    	}
 		if (altSoundTurn) {
 			altSound.currentTime = 0;
-			if(soundSetforMeetings){
-				altSound.volume = 0.05;  //quieter for screen sharing during meetings
-			}
 			altSound.play();
 		} else {
 			mainSound.currentTime = 0;
-			if(soundSetforMeetings){
-				mainSound.volume = 0.05; //quieter for screen sharing during meetings
-			}
 			mainSound.play();
 		}
 		altSoundTurn = !altSoundTurn;
@@ -50,10 +41,8 @@ function BackgroundMusicClass() {
 			musicSound.pause();
 			musicSound = null;
 		}
-		musicSound = new Audio("sound/music/" + filenameWithPath + audioFormat);
-		if(soundSetforMeetings){
-			musicSound.volume = 0.04; //quieter for screen sharing during meetings
-		}
+		musicSound = new Audio("sound/" + filenameWithPath + audioFormat);
+
 		musicSound.loop = true;
 		musicSound.play();
     }
@@ -69,9 +58,4 @@ function BackgroundMusicClass() {
 			musicSound.pause();
 		}
     }
-}
-
-function toggleMute() {
-	isMuted = !isMuted;
-  document.getElementById("debugText").innerHTML = isMuted ? "mute" : "unmute";
 }
