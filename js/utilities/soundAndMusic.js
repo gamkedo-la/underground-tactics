@@ -1,5 +1,5 @@
 //sounds
-var footstepsSound = new SoundOverlapsClass("crashCone");
+var footstepsSound = new SoundOverlapsClass("footsteps");
 
 function setFormat() {
     var audio = new Audio();

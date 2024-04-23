@@ -89,7 +89,6 @@ function wizardWalk() {
     if (moveBoxHovering) {
         playerOne.usingPath = !playerOne.usingPath;
         playerOne.animateWalk = true;
-        footstepsSound.play();
     }
 }
 

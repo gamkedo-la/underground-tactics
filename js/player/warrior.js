@@ -108,6 +108,10 @@ function warriorClass() {
 			this.levitationTurn = 0;
 		}
 
+		if(this.movementArray.length < 2){
+			this.animateWalk = false;
+		}
+
 		if(this.usingPath == false){
 			currentIndex = this.movementArray[0];
 			if(this.keyHeld_North){
@@ -294,6 +298,8 @@ function warriorClass() {
 		}
 		return false;
 	}
+
+	var footStepSoundTurn = 0;
 		
 	this.draw = function(){
 		gameCoordToIsoCoord(this.x,this.y);
@@ -302,6 +308,12 @@ function warriorClass() {
 			if(this.ticks > 3){
 				this.frame++;
 				this.ticks = 0;
+				footStepSoundTurn++
+				if(footStepSoundTurn > 2){
+					footstepsSound.play();
+					console.log("Play")
+					footStepSoundTurn = 0;
+				}
 			}
 			if(this.frame > this.frames){
 				this.frame = 1;
