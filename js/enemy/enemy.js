@@ -35,13 +35,8 @@ function enemyClass(enemyType) {
     this.staminaPotion = 0;
     this.levitatePotion = 0;
     this.enemy = enemyType;
-
-    this.setupControls = function(northKey, eastKey, southKey, westKey) {
-        this.controlKeyForNorth = northKey;
-        this.controlKeyForEast = eastKey;
-        this.controlKeyForSouth = southKey;
-        this.controlKeyForWest = westKey;
-    }
+    this.movementArray = [293];
+    this.usingPath = false;
 
     this.reset = function() {
         this.speed = 0;
@@ -75,9 +70,12 @@ function enemyClass(enemyType) {
 
     this.move = function() {
         var currentIndex;
+        //console.log("Kobald move")
         var playerIndex = getTileIndexAtPixelCoord(playerOne.x,playerOne.y);
         var enemyIndex = getTileIndexAtPixelCoord(this.x,this.y);
-        console.log("player Index: " + playerIndex + " Enemy Index: " + enemyIndex);
+        //console.log("player Index: " + playerIndex + " Enemy Index: " + enemyIndex);
+
+        
 
         if (this.usingPath == false) {
             currentIndex = this.movementArray[0];
@@ -156,7 +154,6 @@ function enemyClass(enemyType) {
 
     this.checkCollisionsAgainst = function(otherHumanoid) {
         if (this.collisionTest(otherHumanoid)) {
-            console.log("collision");
             if (this.keyHeld_North) {
                 this.canMoveNorth = false;
                 this.y += this.movementSpeed * COLLIDE_BUMP_MULT;

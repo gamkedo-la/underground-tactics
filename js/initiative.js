@@ -34,11 +34,18 @@ function drawInitiativeOrder() {
     //temporary code to advance enemies until Enemy AI implemented
     if (turnNumber > 0) {
         turnTicks++;
-        if (turnTicks > 30) {
+        if (turnNumber == 1){
+            kobaldList[0].move();
+            if(turnTicks>30){
+                kobaldWalk();
+                turnTicks = 0;
+            }
+        }
+        if (turnTicks > 30 && turnNumber != 1){
             turnNumber++;
             turnTicks = 0;
         }
-        if (turnNumber == 4) {
+        if (turnNumber == 4){
             turnNumber = 0;
         }
     }
@@ -90,6 +97,12 @@ function wizardWalk() {
         playerOne.usingPath = !playerOne.usingPath;
         playerOne.animateWalk = true;
     }
+}
+
+function kobaldWalk(){
+    kobaldList[0].keyHeld_West = true;
+    kobaldList[0].usingPath = !this.usingPath;
+    turnNumber++;
 }
 
 function displaySpells(){

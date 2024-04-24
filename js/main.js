@@ -142,9 +142,9 @@ function moveEverything() {
 				console.log(potionList.length)
 			}
 		}
-		for(i = 0; i < kobaldList.length; i++){
+	/*	for(i = 0; i < kobaldList.length; i++){
 			kobaldList[i].move();
-		}
+		} */
 		checkPlayerOptionBoxes();
 	}
 	
