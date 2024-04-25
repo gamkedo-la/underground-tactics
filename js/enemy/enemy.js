@@ -118,6 +118,7 @@ function enemyClass(enemyType) {
             if (this.movementArray.length > 7) {
                 this.movementArray.shift();
             }
+           // console.log("Movement Array: " + this.movementArray.length)
         } else {
             currentIndex = getTileIndexAtPixelCoord(this.x, this.y);
             var tileN = indexN(currentIndex);
@@ -125,7 +126,7 @@ function enemyClass(enemyType) {
             var tileW = indexW(currentIndex);
             var tileE = indexE(currentIndex);
             var lastNode = this.movementArray.length - 1;
-            //console.log(this.movementArray[lastNode], currentIndex);
+            console.log(this.movementArray[lastNode], currentIndex);
             if (this.movementArray[lastNode] == currentIndex) {
                 var col = currentIndex % ROOM_COLS;
                 var row = Math.floor(currentIndex / ROOM_COLS);

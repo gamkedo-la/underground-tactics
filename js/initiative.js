@@ -41,8 +41,11 @@ function drawInitiativeOrder() {
             kobaldList[0].usingPath = false;
             kobaldList[0].keyHeld_West = true;
             kobaldList[0].move();
-            if(turnTicks > 30){
-                turnTicks = 0;
+            if(turnTicks > 10){
+                kobaldWalk();
+            }
+            if(turnTicks > 20){
+                turnTicks = 0
                 turnNumber++;
             }
         }
@@ -107,7 +110,6 @@ function wizardWalk() {
 function kobaldWalk(){
     kobaldList[0].usingPath = true;
     kobaldList[0].move();
-    turnNumber++;
 }
 
 function displaySpells(){
