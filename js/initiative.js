@@ -34,11 +34,16 @@ function drawInitiativeOrder() {
     //temporary code to advance enemies until Enemy AI implemented
     if (turnNumber > 0) {
         turnTicks++;
+     //   console.log("Turn Number: " + turnNumber)
         if (turnNumber == 1){
+            moveBoxHovering = true;
+           // console.log("kobald should walk every tick");
+            kobaldList[0].usingPath = false;
+            kobaldList[0].keyHeld_West = true;
             kobaldList[0].move();
-            if(turnTicks>30){
-                kobaldWalk();
+            if(turnTicks > 30){
                 turnTicks = 0;
+                turnNumber++;
             }
         }
         if (turnTicks > 30 && turnNumber != 1){
@@ -100,8 +105,8 @@ function wizardWalk() {
 }
 
 function kobaldWalk(){
-    kobaldList[0].keyHeld_West = true;
-    kobaldList[0].usingPath = !this.usingPath;
+    kobaldList[0].usingPath = true;
+    kobaldList[0].move();
     turnNumber++;
 }
 

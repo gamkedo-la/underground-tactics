@@ -13,13 +13,9 @@ function addEnemy(whichEnemy){
 	this.isoEnemyFootY = 8;
 	this.offSetWidth = 0;
 	this.offSetHeight = 0;
-	this.miniMapX = 630;
-	this.miniMapY = 30;
-	
 	this.maxHealth = 2;
 	this.speed = 3;
 	this.health = this.maxHealth;
-	
 	this.movementTimer = 0;
 	this.moveNorth = false;
 	this.keyHeld_East = false;
@@ -29,6 +25,8 @@ function addEnemy(whichEnemy){
 	this.canMoveEast = true;
 	this.canMoveSouth = true;
 	this.canMoveWest = true;
+	this.movementArray = [];
+	this.usingPath = false;
 	
 	this.enemyReset = function() {
 		this.speed = 3;
@@ -59,99 +57,97 @@ function addEnemy(whichEnemy){
 		this.enemyReset();
 	}	
 	 
-	this.movement = function() {
+	this.move = function() {
 		
 		var nextX = this.x; 
 		var nextY = this.y; 
-		
-		this.randomMovements();
-		this.speed = 1.0;
-		
-		 if(this.moveNorth && this.canMoveNorth){
-			nextY -= this.speed;
-			this.offSetHeight = this.height * 4;
-		} else if(this.moveEast && this.canMoveEast){
-			nextX += this.speed;
-			this.offSetHeight = this.height * 1;
-		} else if(this.moveSouth && this.canMoveSouth){
-			nextY += this.speed;
-			this.offSetHeight = this.height * 2;
-		} else if(this.moveWest && this.canMoveWest){
-			nextX -= this.speed;
-			this.offSetHeight = this.height * 3;
+		console.log("Step 1 Move");
+
+		if(this.usingPath == false){
+			currentIndex = this.movementArray[0];
+			if(this.keyHeld_North){
+				currentIndex = indexN(currentIndex);
+				this.processTileAtIndex(currentIndex);
+				this.keyHeld_North = false;
+			}
+			if(this.keyHeld_South){
+				currentIndex = indexS(currentIndex);
+				this.processTileAtIndex(currentIndex);
+				this.keyHeld_South = false;
+			}
+			if(this.keyHeld_West){
+				currentIndex = indexW(currentIndex);
+				this.processTileAtIndex(currentIndex);
+				this.keyHeld_West = false;
+				console.log("West");
+			}
+			if(this.keyHeld_East){
+				currentIndex = indexE(currentIndex);
+				this.processTileAtIndex(currentIndex);
+				this.keyHeld_East = false;
+			}
+			if(this.movementArray.length > 10){
+				this.movementArray.shift();
+			}
 		} else {
-			this.offSetHeight = 0;
-		}
-		this.miniMapX = nextX;
-		this.miniMapY = nextY;
-		
-		var walkIntoTileIndex = getTileIndexAtPixelCoord(nextX,nextY);
-		var walkIntoTileType = TILE_WALL;
-		
-		if(walkIntoTileType != undefined){	
-			walkIntoTileType = roomGrid[walkIntoTileIndex];
-		}
-	
-		switch(walkIntoTileType) {
-			case TILE_ROAD:
-			case TILE_YELLOW_KEY:	
-				this.x = nextX;
-				this.y = nextY;
-				break;					
-			case TILE_WALL:
-			case TILE_SPIKES_ARMED:
-			case TILE_SPIKES_UNARMED:
-			case TILE_PITTRAP_ARMED:
-			case TILE_PITTRAP_UNARMED:
-			case TILE_TREASURE:
-			case TILE_FINISH:			
-			case TILE_YELLOW_DOOR:
-			case TILE_RED_DOOR:
-			case TILE_BLUE_DOOR:
-			case TILE_TABLE:
-			default:
-				this.movementTimer = 0;
-				break;
+			currentIndex = getTileIndexAtPixelCoord(this.x,this.y);
+			var tileN = indexN(currentIndex);
+			var tileS = indexS(currentIndex);
+			var tileW = indexW(currentIndex);
+			var tileE = indexE(currentIndex);
+			var lastNode = this.movementArray.length - 1;
+			//console.log(this.movementArray[lastNode], currentIndex);
+			if(this.movementArray[lastNode] == currentIndex){
+				var col = currentIndex%ROOM_COLS;
+				var row = Math.floor(currentIndex/ROOM_COLS);
+				this.x = col * ROOM_W + ROOM_W * 0.5;
+				this.y = row * ROOM_H + ROOM_H * 0.5;
+				this.movementArray.pop();
+				if(this.movementArray.length == 1){
+					this.usingPath = false;
+				}
+			} else if (this.movementArray[lastNode] == tileN) {
+				this.y -= this.playerMovementSpeed;
+				if(this.levitating){
+					this.offSetHeight = 6 * this.height;
+				} else {
+					this.offSetHeight = 2 * this.height
+				}
+			} else if (this.movementArray[lastNode] == tileS) {
+				this.y += this.playerMovementSpeed;
+				if(this.levitating){
+					this.offSetHeight = 4 * this.height;
+				} else {
+					this.offSetHeight = 0 * this.height;
+				}
+			} else if (this.movementArray[lastNode] == tileW) {
+				this.x -= this.playerMovementSpeed;
+				if(this.levitating){
+					this.offSetHeight = 7 * this.height;
+				} else {
+					this.offSetHeight = 3 * this.height;
+				}
+			} else if (this.movementArray[lastNode] == tileE) {
+				this.x += this.playerMovementSpeed;
+				if(this.levitating){
+					this.offSetHeight = 5 * this.height;
+				} else {
+					this.offSetHeight = 1 * this.height;
+				}
+			}
 		} 
 	}	
-	
-	this.randomMovements = function(){
-		var whichDirection =  Math.round(Math.random() * 10);
-		this.movementTimer--;
-	
-		if(this.movementTimer <= 0){
-			switch(whichDirection) {
-				case 0:
-				case 1:
-					this.resetDirections();
-					this.moveNorth = true;					
-					this.movementTimer = 300;
-					break;
-				case 2:
-				case 3:
-					this.resetDirections();
-					this.moveWest = true;
-					this.movementTimer = 300;
-					break;
-				case 4:
-				case 5:
-					this.resetDirections();
-					this.moveSouth = true;
-					this.movementTimer = 300;
-					break;
-				case 6:
-				case 7:
-					this.resetDirections();
-					this.moveEast = true;
-					this.movementTimer = 300;
-					break;
-				case 8:
-				case 9:
-				case 10:
-					this.resetDirections();
-					this.movementTimer = 300;
-					break;
-			}
+
+	this.processTileAtIndex = function(currentIndex) {
+		if(this.movementArray.length > 1 && this.movementArray[1] == currentIndex){
+			this.movementArray.shift();
+		} else if(tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_WALKABLE){
+			this.movementArray.unshift(currentIndex);
+		} else if (tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_FLYABLE && this.levitating){
+			console.log("water");
+			this.movementArray.unshift(currentIndex);
+		} else {
+			console.log("cannot pass");
 		}
 	}
 	
@@ -163,34 +159,7 @@ function addEnemy(whichEnemy){
 	}	
 	
 	this.checkCollisionsAgainst = function(otherHumanoid){
-		if(this.collisionTest(otherHumanoid)){
-			if(this.moveNorth){
-				this.canMoveNorth = false;
-				this.resetDirections();
-				this.moveSouth = true;
-				this.y += this.speed;
-			} else if(this.moveEast){
-				this.canMoveEast = false;
-				this.resetDirections();
-				this.moveWest = true;
-				this.x -= this.speed;
-			} else if(this.moveSouth){
-				this.canMoveSouth = false;
-				this.resetDirections();
-				this.moveNorth = true;
-				this.y -= this.speed;
-			} else if(this.moveWest){
-				this.canMoveWest = false;
-				this.resetDirections();
-				this.moveEast = true;
-				this.x += this.speed;				
-			}
-		} else {
-			this.canMoveNorth = true;
-			this.canMoveEast = true;
-			this.canMoveSouth = true;
-			this.canMoveWest = true;
-		}
+		
 	}
 	
 	this.collisionTest = function(otherHumanoid){

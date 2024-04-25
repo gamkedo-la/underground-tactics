@@ -70,12 +70,10 @@ function enemyClass(enemyType) {
 
     this.move = function() {
         var currentIndex;
-        //console.log("Kobald move")
+     //   console.log("Kobald move")
         var playerIndex = getTileIndexAtPixelCoord(playerOne.x,playerOne.y);
         var enemyIndex = getTileIndexAtPixelCoord(this.x,this.y);
         //console.log("player Index: " + playerIndex + " Enemy Index: " + enemyIndex);
-
-        
 
         if (this.usingPath == false) {
             currentIndex = this.movementArray[0];
@@ -105,6 +103,7 @@ function enemyClass(enemyType) {
                     this.movementArray.unshift(currentIndex);
                 }
                 this.keyHeld_West = false;
+                console.log("Move West")
             }
             if (this.keyHeld_East) {
                 currentIndex = indexE(currentIndex);
