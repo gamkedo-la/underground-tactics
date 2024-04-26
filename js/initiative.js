@@ -32,33 +32,33 @@ function drawInitiativeOrder() {
         }
     }
     //temporary code to advance enemies until Enemy AI implemented
-    if (turnNumber > 0) {
+    if (turnNumber > 0){
         turnTicks++;
-     //   console.log("Turn Number: " + turnNumber)
         if (turnNumber == 1){
             moveBoxHovering = true;
-           // console.log("kobald should walk every tick");
-            for(i = 0; i < kobaldList[0].maxMovement; i++){
-                kobaldList[0].usingPath = false;
-                kobaldList[0].keyHeld_West = true;
-                kobaldList[0].move();
-                turnTicks++;
-                console.log(kobaldList[0].movementArray.length, kobaldList[0].maxMovement)
-                if(kobaldList[0].movementArray.length == kobaldList[0].maxMovement){
-                    kobaldWalk();
-                    if(turnTicks == 90){
-                        turnTicks = 0;
-                        turnNumber++;
-                    }
+            if(turnTicks == 2){
+                for(i = 0; i < kobaldList[0].maxMovement; i++){
+                    kobaldList[0].usingPath = false;
+                    kobaldList[0].keyHeld_North = true;
+                    kobaldList[0].move();
+                    turnTicks++;
                 }
+                console.log("Kobald List: " + kobaldList[0].movementArray.length)
+            } else if (turnTicks > 2) {
+                kobaldWalk();
             }
-        }
-        if (turnTicks > 30 && turnNumber != 1){
-            turnNumber++;
-            turnTicks = 0;
-        }
-        if (turnNumber == 4){
-            turnNumber = 0;
+            if(turnTicks == 90){
+                turnTicks = 0;
+                turnNumber++;
+            }
+        } else {
+            if (turnTicks > 30){
+                turnNumber++;
+                turnTicks = 0;
+                if (turnNumber == 4){
+                    turnNumber = 0;
+                }        
+            } 
         }
     }
 }
