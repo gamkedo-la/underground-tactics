@@ -85,7 +85,7 @@ function warriorClass() {
 	}
 
 	this.processTileAtIndex = function(currentIndex) {
-		if(this.movementArray.length > 1 && this.movementArray[1] == currentIndex){
+		if(this.movementArray.length > 1 && this.movementArray[1] == currentIndex){ //backtracking
 			this.movementArray.shift();
 		} else if(tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_WALKABLE){
 			this.movementArray.unshift(currentIndex);
@@ -150,8 +150,9 @@ function warriorClass() {
 				this.x = col * ROOM_W + ROOM_W * 0.5;
 				this.y = row * ROOM_H + ROOM_H * 0.5;
 				this.movementArray.pop();
-				if(this.movementArray.length == 1){
+				if(this.movementArray.length == 0){
 					this.usingPath = false;
+					this.movementArray[0] = currentIndex; // setting the head of the next array movement
 				}
 			} else if (this.movementArray[lastNode] == tileN) {
 				this.y -= this.playerMovementSpeed;
