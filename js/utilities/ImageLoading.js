@@ -19,6 +19,7 @@ var magicMissilePic = document.createElement("img");
 var manaPotionPic = document.createElement("img");
 var healthPotionPic = document.createElement("img");
 var spellBookPic = document.createElement("img");
+var spellBook2Pic = document.createElement("img");
 var spellBookIconPic = document.createElement("img");
 var kobaldPic = document.createElement("img");
 
@@ -58,12 +59,15 @@ function loadImages() {
 			{varName: tileIndicatorPic, theFile: "tileIndicator.png",sx: 0, sy: 0},
 			{varName: tileIndicatorWhitePic, theFile: "tileIndicatorWhite.png",sx: 0, sy: 0},
 			{varName: tileIndicatorCyanPic, theFile: "tileIndicatorCyan.png",sx: 0, sy: 0},
+			//pick up items
 			{varName: potionManaPic, theFile: "potionTiles.png",sx: 0, sy: 0},
 			{varName: potionHealthPic, theFile: "potionTiles.png",sx: 0, sy: 0},
 			{varName: potionStaminaPic, theFile: "potionTiles.png",sx: 0, sy: 0},
 			{varName: potionLevitationPic, theFile: "potionTiles.png",sx: 0, sy: 0},
 			{varName: spellBookPic, theFile:  "potionTiles.png", sx: 0, sy: 0},
+			{varName: spellBook2Pic, theFile:  "potionTiles.png", sx: 0, sy: 0},
 			{varName: spellFirePic, theFile: "spellFire.png",sx: 0, sy: 0},
+
 			{varName: playerPositionPic, theFile: "playerPosition.png",sx: 0, sy: 0},
 			{varName: wizardMovementPic, theFile:  "wizardWalk.png", sx: 0, sy: 0},
 			{varName: wizardSpellPic, theFile:  "spellbookIcon.png", sx: 0, sy: 0},
@@ -76,6 +80,7 @@ function loadImages() {
 			//characters
 			{varName: wizardPic, theFile: "wizard.png"},
 			{varName: kobaldPic, theFile:  "kobald.png"},
+			//tiles (Will eventually move to one sprite sheet)
 			{trackType: TILE_FLOOR_STONE_1, theFile: "floor.png", sx: 0, sy: 0},
 			{trackType: TILE_FLOOR_STONE_2, theFile: "floor_stone_2.png", sx: 0, sy: 0},
 			{trackType: TILE_FLOOR_STONE_3, theFile: "floor_stone_3.png", sx: 50, sy: 0},

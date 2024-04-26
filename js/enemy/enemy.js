@@ -14,7 +14,7 @@ function enemyClass(enemyType) {
     this.offSetWidth = 0;
     this.offSetHeight = 0;
     this.movementSpeed = 3.0;
-    this.maxMovement = 3;
+    this.maxMovement = 2;
     this.keyHeld_North = false;
     this.keyHeld_East = false;
     this.keyHeld_South = false;
@@ -30,7 +30,7 @@ function enemyClass(enemyType) {
     this.animateWalk = false;
     this.ticks = 0;
     this.frame = 0;
-    this.frames = 4;
+    this.frames = 3;
     this.healingPotion = 0;
     this.manaPotion = 0;
     this.staminaPotion = 0;
@@ -131,11 +131,12 @@ function enemyClass(enemyType) {
             if (this.movementArray[lastNode] == currentIndex) {
                 var col = currentIndex % ROOM_COLS;
                 var row = Math.floor(currentIndex / ROOM_COLS);
-                this.x = col * ROOM_W + ROOM_W * 0.5;
-                this.y = row * ROOM_H + ROOM_H * 0.5;
+                this.x = col * ROOM_W - ROOM_W * 0.5;
+                this.y = row * ROOM_H - ROOM_H * 0.5;
                 this.movementArray.pop();
-                if (this.movementArray.length == 1) {
+                if (this.movementArray.length == 0) {
                     this.usingPath = false;
+                    this.movementArray[0] = currentIndex; // setting the head of the next array movement
                 }
             } else if (this.movementArray[lastNode] == tileN) {
                 this.y -= this.movementSpeed;
@@ -193,7 +194,7 @@ function enemyClass(enemyType) {
                 this.ticks = 0;
             }
             if (this.frame > this.frames) {
-                this.frame = 1;
+                this.frame = 0;
             }
             this.offSetWidth = this.frame * this.width;
         }
