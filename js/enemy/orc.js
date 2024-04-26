@@ -1,3 +1,0 @@
-/* 	To become Orc Class
-	This is a sub to Enemy Class
-*/

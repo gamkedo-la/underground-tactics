@@ -1,3 +1,0 @@
-/* 	To become ogre Class
-	This is a sub to Enemy Class
-*/

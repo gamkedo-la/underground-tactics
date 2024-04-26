@@ -1,3 +1,0 @@
-/* 	To become goblin Class
-	This is a sub to Enemy Class
-*/

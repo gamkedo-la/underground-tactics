@@ -14,6 +14,7 @@ function enemyClass(enemyType) {
     this.offSetWidth = 0;
     this.offSetHeight = 0;
     this.movementSpeed = 3.0;
+    this.maxMovement = 3;
     this.keyHeld_North = false;
     this.keyHeld_East = false;
     this.keyHeld_South = false;
@@ -72,8 +73,8 @@ function enemyClass(enemyType) {
         var currentIndex;
      //   console.log("Kobald move")
         var playerIndex = getTileIndexAtPixelCoord(playerOne.x,playerOne.y);
-        var enemyIndex = getTileIndexAtPixelCoord(this.x,this.y);
-        //console.log("player Index: " + playerIndex + " Enemy Index: " + enemyIndex);
+        var enemyIndex = getTileIndexAtPixelCoord(this.x, this.y);
+        console.log("player Index: " + playerIndex + " Enemy Index: " + enemyIndex);
 
         if (this.usingPath == false) {
             currentIndex = this.movementArray[0];
@@ -103,7 +104,7 @@ function enemyClass(enemyType) {
                     this.movementArray.unshift(currentIndex);
                 }
                 this.keyHeld_West = false;
-                console.log("Move West")
+                console.log("Array: " + this.movementArray.length)
             }
             if (this.keyHeld_East) {
                 currentIndex = indexE(currentIndex);
@@ -115,7 +116,7 @@ function enemyClass(enemyType) {
                 this.keyHeld_East = false;
             }
 
-            if (this.movementArray.length > 7) {
+            if (this.movementArray.length > this.maxMovement) {
                 this.movementArray.shift();
             }
            // console.log("Movement Array: " + this.movementArray.length)
@@ -199,6 +200,6 @@ function enemyClass(enemyType) {
 
         drawIsoCharacterByFeet(kobaldPic, isoDrawX, isoDrawY, this);
         //drawIsoCharacterByFeet(this.myBitmap, isoDrawX, isoDrawY, this);
-       // drawIsoCharacterByFeet(playerPositionPic, isoDrawX, isoDrawY, this);
+         drawIsoCharacterByFeet(playerPositionPic, isoDrawX, isoDrawY, this);
     }
 }

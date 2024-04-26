@@ -38,15 +38,19 @@ function drawInitiativeOrder() {
         if (turnNumber == 1){
             moveBoxHovering = true;
            // console.log("kobald should walk every tick");
-            kobaldList[0].usingPath = false;
-            kobaldList[0].keyHeld_West = true;
-            kobaldList[0].move();
-            if(turnTicks > 10){
-                kobaldWalk();
-            }
-            if(turnTicks > 20){
-                turnTicks = 0
-                turnNumber++;
+            for(i = 0; i < kobaldList[0].maxMovement; i++){
+                kobaldList[0].usingPath = false;
+                kobaldList[0].keyHeld_West = true;
+                kobaldList[0].move();
+                turnTicks++;
+                console.log(kobaldList[0].movementArray.length, kobaldList[0].maxMovement)
+                if(kobaldList[0].movementArray.length == kobaldList[0].maxMovement){
+                    kobaldWalk();
+                    if(turnTicks == 90){
+                        turnTicks = 0;
+                        turnNumber++;
+                    }
+                }
             }
         }
         if (turnTicks > 30 && turnNumber != 1){
