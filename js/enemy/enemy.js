@@ -14,7 +14,7 @@ function enemyClass(enemyType) {
     this.offSetWidth = 0;
     this.offSetHeight = 0;
     this.movementSpeed = 3.0;
-    this.maxMovement = 2;
+    this.maxMovement = 5;
     this.keyHeld_North = false;
     this.keyHeld_East = false;
     this.keyHeld_South = false;
@@ -70,11 +70,29 @@ function enemyClass(enemyType) {
     }
 
     this.move = function() {
-        var currentIndex;
-     //   console.log("Kobald move")
         var playerIndex = getTileIndexAtPixelCoord(playerOne.x,playerOne.y);
         var enemyIndex = getTileIndexAtPixelCoord(this.x, this.y);
-        console.log("player Index: " + playerIndex + " Enemy Index: " + enemyIndex);
+        // console.log("player Index: " + playerIndex + " Enemy Index: " + enemyIndex);
+        var enemyCol = whichCol(kobaldList[0].x);
+        var enemyRow = whichRow(enemyIndex);
+        var playerCol = whichCol(playerOne.x);
+        var playerRow = whichRow(playerIndex);
+        this.keyHeld_North = false;
+        this.keyHeld_South = false;
+        this.keyHeld_West = false;
+        this.keyHeld_East = false;
+
+        console.log("P col: " + playerCol + " P row: " + playerRow + " E col: " + enemyCol + " E row: " + enemyRow);
+
+        if(playerCol < enemyCol){
+            this.keyHeld_North = true;
+        } else if (playerCol > enemyCol){
+            this.keyHeld_South = true;
+        } else if (playerRow < enemyRow ){
+            this.keyHeld_West = true;
+        } else if (playerRow > enemyRow){
+            this.keyHeld_East = true;
+        }
 
         if (this.usingPath == false) {
             currentIndex = this.movementArray[0];
@@ -127,7 +145,7 @@ function enemyClass(enemyType) {
             var tileW = indexW(currentIndex);
             var tileE = indexE(currentIndex);
             var lastNode = this.movementArray.length - 1;
-            console.log(this.movementArray[lastNode], currentIndex);
+        //    console.log(this.movementArray[lastNode], currentIndex);
             if (this.movementArray[lastNode] == currentIndex) {
                 var col = currentIndex % ROOM_COLS;
                 var row = Math.floor(currentIndex / ROOM_COLS);

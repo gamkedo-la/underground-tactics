@@ -25,13 +25,13 @@ var levelOne = [
 					 53,  1,  1,  2,  2,  1,  1,  1,  1,  1,  1, 19,  1,153,  1,  1,  1,  1,  1,  1,
 					 51,  1,  1,  1,  1,  1,  2,  1,  4,  1,  1, 19,  1,  1,  1,  1,  1,  1,  1,  1,
 					 54, 14,  3,  3,  2,  1,  1,  3,  1,  1,  1, 19,  1,  1,  1,  1,  1,  1,  1,  1,
-					 50, 12,  1,  4,  2,  1,100,  2,  1,  1,154, 19,  1,152,  1,  1,  1,  1,  1,  1,
+					 50, 12,  1,  4,  2,  1,  2,100,  1,  1,154, 19,  1,152,  1,  1,  1,  1,  1,  1,
 					 50, 12,  1,  3,  1,  1,  2,  1,  1,  1,  1, 19,  1,  1,  1,  1,  1,  1,  1,  1,
-					 51, 15,  1,  1,  1, 1,   1,  1,  3,  1,  1, 19,  1,  1,  1,  1,  1,  1,  1,  1,
-					 52,  1,  1,  1,  1,  1,150,  1,  1,  1,151, 19,  1,  1,  1,  4,  1,  1,  1,  1,
+					 51, 15,  1,  1,  1, 1,   1,  1,  3,110,  1, 19,  1,  1,  1,  1,  1,  1,  1,  1,
+					 52,  1,  1,  1,  1,  1,150,  1,  1,  1,  1, 19,  1,  1,  1,  4,  1,  1,  1,  1,
 					 50,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 19,  1,  1,  1,  1,  1,  1,  1,  1,
 					 53,  1,  1,  1,  1,  1, 55,  1,  1,  1,  1, 19,  1,  1,  1, 55,  1,  1,  1,  1,
-					 50,  1,  1,  1,  1,  1,  1,  1,  1,  1,110, 19,  3,  1,  3,  1,  1,  1,  1,  1,
+					 50,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 19,  3,  1,  3,  1,  1,  1,  1,  1,
 					 52, 18,  1,  1,  1,  1,  1,  3,  1,  1,  1, 19,  4,  1,  1,  1,  1,  1,  1,  1,
 					 54, 14,  1,  1,  1,  1,155,  1,  3,  1,  1, 19,  1,  1,  1,  1,  1,  1,  1,  1,
 					 52, 12,  1,  1,  1,  1,  1,  3,  1,  1,  1, 19,  1,  1,  1,  1,  4,  1,  1,  1,
@@ -143,16 +143,15 @@ function drawTracks(){
 	
 	for(var eachRow = 0; eachRow < ROOM_ROWS; eachRow++){
 		tileLeftEdgeX = 7;
-		miniMapX = 730;
 		
 		for(var eachCol = 0; eachCol < ROOM_COLS; eachCol++) {
 			var trackTypeHere = roomGrid[tileIndex];
 			tileLeftEdgeX += ROOM_W;
-			miniMapX += 4;
 			isoTileLeftEdgeX = (tileLeftEdgeX - tileTopEdgeY)/2;
 			isoTileTopEdgeY = (tileLeftEdgeX + tileTopEdgeY)/4;
 			tileCoordToIsoCoord(eachCol, eachRow);		
 			canvasContext.drawImage(trackPics[trackTypeHere], isoDrawX - ISO_GRID_W/2, isoDrawY - ISO_TILE_GROUND_Y);
+			var textColor;
 			if(drawTileIndicators){
 				if(	trackTypeHere == TILE_FLOOR_STONE_1 ||
 					trackTypeHere == TILE_FLOOR_STONE_2 ||
@@ -169,14 +168,15 @@ function drawTracks(){
 						textColor = "black"
 				}
 
-				var textColor;
-				if(playerOne.movementArray[0]==tileIndex){
-					textColor = "white";
-					canvasContext.drawImage(tileIndicatorWhitePic, isoDrawX - ISO_GRID_W/2, isoDrawY - ISO_TILE_GROUND_Y);
-				} else if(playerOne.movementArray.includes(tileIndex)){
-					textColor = "cyan";
-					canvasContext.drawImage(tileIndicatorCyanPic, isoDrawX - ISO_GRID_W/2, isoDrawY - ISO_TILE_GROUND_Y);
-				}else {
+				if(	playerOne.movementArray[0]==tileIndex ||
+					kobaldList[0].movementArray[0]==tileIndex){
+						textColor = "white";
+						canvasContext.drawImage(tileIndicatorWhitePic, isoDrawX - ISO_GRID_W/2, isoDrawY - ISO_TILE_GROUND_Y);
+				} else if(playerOne.movementArray.includes(tileIndex) ||
+						kobaldList[0].movementArray.includes(tileIndex)){
+							textColor = "cyan";
+							canvasContext.drawImage(tileIndicatorCyanPic, isoDrawX - ISO_GRID_W/2, isoDrawY - ISO_TILE_GROUND_Y);
+				} else {
 						
 				}
 				colorText(tileIndex, isoDrawX-10, isoDrawY, textColor, "10px Arial Black" );
@@ -195,8 +195,8 @@ function tileTypeHasRoadTransparency(checkTileType) {
 }
 
 function isWallAtTileCoord(trackTileCol, trackTileRow){
-				var tileIndex = roomTileToIndex(tileCol, tileRow);
-				return tileIndex;
+	var tileIndex = roomTileToIndex(tileCol, tileRow);
+	return tileIndex;
 }
 
 function rowColToArrayIndex(col, row) {
@@ -240,3 +240,14 @@ function indexW(fromIndex){
 function indexE(fromIndex){
 	return fromIndex + 1;
 }
+
+function whichCol(xPos){
+	var col =  xPos / ROOM_W;
+	return col = Math.floor(col)
+}
+
+function whichRow(index){
+	var row = Math.floor(index / ROOM_COLS);
+	return row;
+}
+

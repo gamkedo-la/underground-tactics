@@ -39,7 +39,6 @@ function drawInitiativeOrder() {
             if(turnTicks == 2){
                 for(i = 0; i < kobaldList[0].maxMovement; i++){
                     kobaldList[0].usingPath = false;
-                    kobaldList[0].keyHeld_South = true;
                     kobaldList[0].move();
                     turnTicks++;
                 }
