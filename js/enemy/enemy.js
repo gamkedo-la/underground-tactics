@@ -46,7 +46,6 @@ function enemyClass(enemyType) {
 
         for (var i = 0; i < roomGrid.length; i++) {
             if (roomGrid[i] == TILE_KOBALD) {
-                console.log("Found Kobald")
                 var tileRow = Math.floor(i / ROOM_COLS);
                 var tileCol = i % ROOM_COLS;
 
@@ -71,9 +70,9 @@ function enemyClass(enemyType) {
     }
 
     this.processTileAtIndex = function(currentIndex) {
-		if(this.movementArray.length > 1 && this.movementArray[1] == currentIndex){ //backtracking
-			this.movementArray.shift();
-		} else if(tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_WALKABLE){
+	//	if(this.movementArray.length > 1 && this.movementArray[1] == currentIndex){ //backtracking
+	//		this.movementArray.shift();
+		if(tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_WALKABLE){
 			this.movementArray.unshift(currentIndex);
 		} else if (tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_FLYABLE && this.levitating){
 			console.log("water");
@@ -84,29 +83,17 @@ function enemyClass(enemyType) {
 	}
 
     this.move = function() {
-        var playerIndex = getTileIndexAtPixelCoord(playerOne.x,playerOne.y);
-        var enemyIndex = getTileIndexAtPixelCoord(this.x, this.y);
-        // console.log("player Index: " + playerIndex + " Enemy Index: " + enemyIndex);
-        var enemyCol = whichCol(kobaldList[0].x);
-        var enemyRow = whichRow(enemyIndex);
-        var playerCol = whichCol(playerOne.x);
-        var playerRow = whichRow(playerIndex);
-        this.keyHeld_North = false;
-        this.keyHeld_South = false;
-        this.keyHeld_West = false;
-        this.keyHeld_East = false;
+        var currentIndex;
 
         //console.log("P col: " + playerCol + " P row: " + playerRow + " E col: " + enemyCol + " E row: " + enemyRow);
         // this.checkPlayerLocationForNextMove(playerCol, enemyCol);
-		
-        var currentIndex;
-
+      
         if(this.levitationTurn > 6){
             this.levitating = false;
             this.levitationTurn = 0;
         }
 
-        if(this.movementArray.length < 2){
+        if(this.movementArray.length < 1){
             this.animateWalk = false;
         }
 
@@ -114,8 +101,8 @@ function enemyClass(enemyType) {
             currentIndex = this.movementArray[0];
             if(this.movementArray.length == 1){
                 this.keyHeld_North = true;
-                console.log(this.movementArray.length)
             }
+    
             if(this.keyHeld_North){
                 currentIndex = indexN(currentIndex);
                 this.processTileAtIndex(currentIndex);
@@ -134,13 +121,13 @@ function enemyClass(enemyType) {
                 this.processTileAtIndex(currentIndex);
                 this.keyHeld_West = false;
             }
-            this.checkPlayerLocationForNextMove(currentIndex);
+           // this.checkPlayerLocationForNextMove(currentIndex);
             if(this.keyHeld_East){
                 currentIndex = indexE(currentIndex);
                 this.processTileAtIndex(currentIndex);
                 this.keyHeld_East = false;
             }
-            this.checkPlayerLocationForNextMove(currentIndex);
+          //  this.checkPlayerLocationForNextMove(currentIndex);
             if(this.movementArray.length > 10){
                 this.movementArray.shift();
             }
@@ -151,7 +138,7 @@ function enemyClass(enemyType) {
             var tileW = indexW(currentIndex);
             var tileE = indexE(currentIndex);
             var lastNode = this.movementArray.length - 1;
-            //console.log(this.movementArray[lastNode], currentIndex);
+           // console.log(this.movementArray[lastNode], currentIndex);
             if(this.movementArray[lastNode] == currentIndex){
                 var col = currentIndex%ROOM_COLS;
                 var row = Math.floor(currentIndex/ROOM_COLS);
@@ -196,14 +183,18 @@ function enemyClass(enemyType) {
     }
 
     this.checkPlayerLocationForNextMove = function(currentIndex){
-        var currentIndex = currentIndex;
-        var enemyCol = whichCol(kobaldList[0].x);
         var enemyRow = whichRow(currentIndex);
         var playerIndex = getTileIndexAtPixelCoord(playerOne.x,playerOne.y);
-        var playerCol = whichCol(playerOne.x);
         var playerRow = whichRow(playerIndex);
+        var enemyCol = currentIndex%ROOM_COLS;
+        var playerCol = Math.floor(playerOne.x/ROOM_W);
 
         console.log("Player Row: " + playerRow + " Enemy Row: " + enemyRow);
+
+        this.keyHeld_North = false;
+        this.keyHeld_South = false;
+        this.keyHeld_West = false;
+        this.keyHeld_East = false;
 
         if (playerRow < enemyRow ){
             this.keyHeld_North = true;
@@ -211,8 +202,11 @@ function enemyClass(enemyType) {
         } else if (playerRow > enemyRow){
             this.keyHeld_South = true;
             console.log("Go South, CI: " + currentIndex);
-        } 
-        
+        } else if (playerCol < enemyCol){
+            this.keyHeld_West = true;
+        } else if (playerCol > enemyCol){
+            this.keyHeld_East = true;
+        }
     }
 
     this.checkCollisionsAgainst = function(otherHumanoid) {

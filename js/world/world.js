@@ -103,9 +103,7 @@ var levelTwo =[
 	function tileTypeNavMode(tiletype){
 		for (var i = 0; i<tileNavData.length; i++){
 			for (var ii = 0; ii<tileNavData[i].tileTypes.length; ii++){
-				console.log(tiletype, tileNavData[i].tileTypes[ii])
 				if(tiletype == tileNavData[i].tileTypes[ii]){
-					console.log(tileNavData[i].navMode)
 					return tileNavData[i].navMode;
 				}
 			}
