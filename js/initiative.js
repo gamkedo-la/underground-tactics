@@ -46,7 +46,7 @@ function drawInitiativeOrder() {
             } else if (turnTicks > 2) {
                 kobaldWalk();
             }
-            if(turnTicks == 90){
+            if(turnTicks == 60){
                 turnTicks = 0;
                 turnNumber++;
             }

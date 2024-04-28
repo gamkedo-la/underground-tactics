@@ -82,47 +82,41 @@ function enemyClass(enemyType) {
         this.keyHeld_West = false;
         this.keyHeld_East = false;
 
-        console.log("P col: " + playerCol + " P row: " + playerRow + " E col: " + enemyCol + " E row: " + enemyRow);
-
-        if(playerCol < enemyCol){
-            this.keyHeld_North = true;
-        } else if (playerCol > enemyCol){
-            this.keyHeld_South = true;
-        } else if (playerRow < enemyRow ){
-            this.keyHeld_West = true;
-        } else if (playerRow > enemyRow){
-            this.keyHeld_East = true;
-        }
+        //console.log("P col: " + playerCol + " P row: " + playerRow + " E col: " + enemyCol + " E row: " + enemyRow);
+        this.checkPlayerLocationForNextMove(playerCol, enemyCol);
 
         if (this.usingPath == false) {
             currentIndex = this.movementArray[0];
+            
             if (this.keyHeld_North) {
                 currentIndex = indexN(currentIndex);
                 if (this.movementArray.length > 1 && this.movementArray[1] == currentIndex) {
                     this.movementArray.shift();
                 } else {
-                    this.movementArray.unshift(currentIndex);
+                    this.movementArray.unshift(currentIndex);    
                 }
                 this.keyHeld_North = false;
+                this.checkPlayerLocationForNextMove(currentIndex);
             }
             if (this.keyHeld_South) {
                 currentIndex = indexS(currentIndex);
                 if (this.movementArray.length > 1 && this.movementArray[1] == currentIndex) {
                     this.movementArray.shift();
                 } else {
-                    this.movementArray.unshift(currentIndex);
+                    this.movementArray.unshift(currentIndex);    
                 }
                 this.keyHeld_South = false;
+                this.checkPlayerLocationForNextMove(currentIndex);
             }
             if (this.keyHeld_West) {
                 currentIndex = indexW(currentIndex);
                 if (this.movementArray.length > 1 && this.movementArray[1] == currentIndex) {
                     this.movementArray.shift();
                 } else {
-                    this.movementArray.unshift(currentIndex);
+                    this.movementArray.unshift(currentIndex);    
                 }
                 this.keyHeld_West = false;
-                console.log("Array: " + this.movementArray.length)
+                this.checkPlayerLocationForNextMove(currentIndex);
             }
             if (this.keyHeld_East) {
                 currentIndex = indexE(currentIndex);
@@ -132,6 +126,7 @@ function enemyClass(enemyType) {
                     this.movementArray.unshift(currentIndex);
                 }
                 this.keyHeld_East = false;
+                this.checkPlayerLocationForNextMove(currentIndex);
             }
 
             if (this.movementArray.length > this.maxMovement) {
@@ -172,6 +167,25 @@ function enemyClass(enemyType) {
         }
     }
 
+    this.checkPlayerLocationForNextMove = function(currentIndex){
+        var currentIndex = currentIndex;
+        var enemyCol = whichCol(kobaldList[0].x);
+        var enemyRow = whichRow(currentIndex);
+        var playerIndex = getTileIndexAtPixelCoord(playerOne.x,playerOne.y);
+        var playerCol = whichCol(playerOne.x);
+        var playerRow = whichRow(playerIndex);
+
+
+        if (playerRow > enemyRow ){
+            this.keyHeld_North = true;
+            console.log("Go North, CI: " + currentIndex);
+        } else if (playerRow < enemyRow){
+            this.keyHeld_South = true;
+            console.log("Go South, CI: " + currentIndex);
+        }
+        
+    }
+
     this.checkCollisionsAgainst = function(otherHumanoid) {
         if (this.collisionTest(otherHumanoid)) {
             if (this.keyHeld_North) {
@@ -204,6 +218,10 @@ function enemyClass(enemyType) {
     }
 
     this.draw = function() {
+        if(this.movementArray.length < 2){
+			this.animateWalk = false;
+		}
+
         gameCoordToIsoCoord(this.x, this.y);
         if (this.animateWalk) {
             this.ticks++;
