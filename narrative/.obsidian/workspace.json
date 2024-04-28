@@ -13,24 +13,10 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Welcome.md",
+                "file": "Brainstorming.md",
                 "mode": "source",
                 "source": false
               }
-            }
-          }
-        ]
-      },
-      {
-        "id": "f6023363212b7cf6",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "c66426ca37df2ebd",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
             }
           }
         ]
@@ -99,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Welcome.md",
+                "file": "Brainstorming.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Welcome.md",
+                "file": "Brainstorming.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Welcome.md"
+                "file": "Brainstorming.md"
               }
             }
           }
@@ -162,6 +148,9 @@
   },
   "active": "7c2888fdcdb774c4",
   "lastOpenFiles": [
+    "Narrative States.canvas",
+    "Game Info.canvas",
+    "Brainstorming.md",
     "Welcome.md"
   ]
 }

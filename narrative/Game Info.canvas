@@ -1,0 +1,9 @@
+{
+	"nodes":[
+		{"id":"66589fee1b0bb316","x":60,"y":-520,"width":680,"height":480,"type":"group","label":"Inspiration"},
+		{"id":"68848482e48cf5f5","x":-740,"y":-420,"width":640,"height":360,"type":"link","url":"https://www.youtube.com/watch?v=Ue6haKceSWA"},
+		{"id":"56099bcf65690ca8","x":80,"y":-420,"width":640,"height":360,"type":"link","url":"https://www.youtube.com/watch?v=3vVyyBflqVk&list=PLvmG5iKV-Y21ZZulKsdNWjF7cNdp35dxX"},
+		{"id":"97558122dbfd5501","x":248,"y":-500,"width":305,"height":50,"type":"text","text":"Gameplay Inspiration Research"}
+	],
+	"edges":[]
+}
