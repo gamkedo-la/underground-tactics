@@ -209,6 +209,6 @@ function drawEverything() {
 		finishedCameraPan();
 		drawInitiativeOrder();
 		drawPlayerOptions();
-
+		drawUiElements();
 	}
 }
