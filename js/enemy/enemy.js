@@ -38,6 +38,7 @@ function enemyClass(enemyType) {
     this.enemy = enemyType;
     this.movementArray = [293];
     this.usingPath = false;
+    this.levitating = false;
 
     this.reset = function() {
         this.speed = 0;
@@ -69,6 +70,19 @@ function enemyClass(enemyType) {
         this.reset();
     }
 
+    this.processTileAtIndex = function(currentIndex) {
+		if(this.movementArray.length > 1 && this.movementArray[1] == currentIndex){ //backtracking
+			this.movementArray.shift();
+		} else if(tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_WALKABLE){
+			this.movementArray.unshift(currentIndex);
+		} else if (tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_FLYABLE && this.levitating){
+			console.log("water");
+			this.movementArray.unshift(currentIndex);
+		} else {
+			console.log("cannot pass");
+		}
+	}
+
     this.move = function() {
         var playerIndex = getTileIndexAtPixelCoord(playerOne.x,playerOne.y);
         var enemyIndex = getTileIndexAtPixelCoord(this.x, this.y);
@@ -83,88 +97,102 @@ function enemyClass(enemyType) {
         this.keyHeld_East = false;
 
         //console.log("P col: " + playerCol + " P row: " + playerRow + " E col: " + enemyCol + " E row: " + enemyRow);
-        this.checkPlayerLocationForNextMove(playerCol, enemyCol);
+        // this.checkPlayerLocationForNextMove(playerCol, enemyCol);
+		
+        var currentIndex;
 
-        if (this.usingPath == false) {
+        if(this.levitationTurn > 6){
+            this.levitating = false;
+            this.levitationTurn = 0;
+        }
+
+        if(this.movementArray.length < 2){
+            this.animateWalk = false;
+        }
+
+        if(this.usingPath == false){
             currentIndex = this.movementArray[0];
-            
-            if (this.keyHeld_North) {
+            if(this.movementArray.length == 1){
+                this.keyHeld_North = true;
+                console.log(this.movementArray.length)
+            }
+            if(this.keyHeld_North){
                 currentIndex = indexN(currentIndex);
-                if (this.movementArray.length > 1 && this.movementArray[1] == currentIndex) {
-                    this.movementArray.shift();
-                } else {
-                    this.movementArray.unshift(currentIndex);    
-                }
+                this.processTileAtIndex(currentIndex);
                 this.keyHeld_North = false;
                 this.checkPlayerLocationForNextMove(currentIndex);
+                console.log(this.movementArray.length);
             }
-            if (this.keyHeld_South) {
+            if(this.keyHeld_South){
                 currentIndex = indexS(currentIndex);
-                if (this.movementArray.length > 1 && this.movementArray[1] == currentIndex) {
-                    this.movementArray.shift();
-                } else {
-                    this.movementArray.unshift(currentIndex);    
-                }
+                this.processTileAtIndex(currentIndex);
                 this.keyHeld_South = false;
                 this.checkPlayerLocationForNextMove(currentIndex);
             }
-            if (this.keyHeld_West) {
+            if(this.keyHeld_West){
                 currentIndex = indexW(currentIndex);
-                if (this.movementArray.length > 1 && this.movementArray[1] == currentIndex) {
-                    this.movementArray.shift();
-                } else {
-                    this.movementArray.unshift(currentIndex);    
-                }
+                this.processTileAtIndex(currentIndex);
                 this.keyHeld_West = false;
-                this.checkPlayerLocationForNextMove(currentIndex);
             }
-            if (this.keyHeld_East) {
+            this.checkPlayerLocationForNextMove(currentIndex);
+            if(this.keyHeld_East){
                 currentIndex = indexE(currentIndex);
-                if (this.movementArray.length > 1 && this.movementArray[1] == currentIndex) {
-                    this.movementArray.shift();
-                } else {
-                    this.movementArray.unshift(currentIndex);
-                }
+                this.processTileAtIndex(currentIndex);
                 this.keyHeld_East = false;
-                this.checkPlayerLocationForNextMove(currentIndex);
             }
-
-            if (this.movementArray.length > this.maxMovement) {
+            this.checkPlayerLocationForNextMove(currentIndex);
+            if(this.movementArray.length > 10){
                 this.movementArray.shift();
             }
-           // console.log("Movement Array: " + this.movementArray.length)
         } else {
-            currentIndex = getTileIndexAtPixelCoord(this.x, this.y);
+            currentIndex = getTileIndexAtPixelCoord(this.x,this.y);
             var tileN = indexN(currentIndex);
             var tileS = indexS(currentIndex);
             var tileW = indexW(currentIndex);
             var tileE = indexE(currentIndex);
             var lastNode = this.movementArray.length - 1;
-        //    console.log(this.movementArray[lastNode], currentIndex);
-            if (this.movementArray[lastNode] == currentIndex) {
-                var col = currentIndex % ROOM_COLS;
-                var row = Math.floor(currentIndex / ROOM_COLS);
-                this.x = col * ROOM_W - ROOM_W * 0.5;
-                this.y = row * ROOM_H - ROOM_H * 0.5;
+            //console.log(this.movementArray[lastNode], currentIndex);
+            if(this.movementArray[lastNode] == currentIndex){
+                var col = currentIndex%ROOM_COLS;
+                var row = Math.floor(currentIndex/ROOM_COLS);
+                this.x = col * ROOM_W + ROOM_W * 0.5;
+                this.y = row * ROOM_H + ROOM_H * 0.5;
                 this.movementArray.pop();
-                if (this.movementArray.length == 0) {
+                if(this.movementArray.length == 0){
                     this.usingPath = false;
                     this.movementArray[0] = currentIndex; // setting the head of the next array movement
                 }
             } else if (this.movementArray[lastNode] == tileN) {
                 this.y -= this.movementSpeed;
-                this.offSetHeight = 2 * this.height;
+                if(this.levitating){
+                    this.offSetHeight = 6 * this.height;
+                } else {
+                    this.offSetHeight = 2 * this.height
+                }
             } else if (this.movementArray[lastNode] == tileS) {
                 this.y += this.movementSpeed;
-                this.offSetHeight = 0 * this.height;
+                if(this.levitating){
+                    this.offSetHeight = 4 * this.height;
+                } else {
+                    this.offSetHeight = 0 * this.height;
+                }
             } else if (this.movementArray[lastNode] == tileW) {
                 this.x -= this.movementSpeed;
-                this.offSetHeight = 3 * this.height;
+                if(this.levitating){
+                    this.offSetHeight = 7 * this.height;
+                } else {
+                    this.offSetHeight = 3 * this.height;
+                }
             } else if (this.movementArray[lastNode] == tileE) {
                 this.x += this.movementSpeed;
-                this.offSetHeight = 1 * this.height;
+                if(this.levitating){
+                    this.offSetHeight = 5 * this.height;
+                } else {
+                    this.offSetHeight = 1 * this.height;
+                }
             }
         }
+        
     }
 
     this.checkPlayerLocationForNextMove = function(currentIndex){
@@ -175,14 +203,15 @@ function enemyClass(enemyType) {
         var playerCol = whichCol(playerOne.x);
         var playerRow = whichRow(playerIndex);
 
+        console.log("Player Row: " + playerRow + " Enemy Row: " + enemyRow);
 
-        if (playerRow > enemyRow ){
+        if (playerRow < enemyRow ){
             this.keyHeld_North = true;
             console.log("Go North, CI: " + currentIndex);
-        } else if (playerRow < enemyRow){
+        } else if (playerRow > enemyRow){
             this.keyHeld_South = true;
             console.log("Go South, CI: " + currentIndex);
-        }
+        } 
         
     }
 
