@@ -39,6 +39,7 @@ function enemyClass(enemyType) {
     this.movementArray = [293];
     this.usingPath = false;
     this.levitating = false;
+    this.combatEngaged = false;
 
     this.reset = function() {
         this.speed = 0;
@@ -82,6 +83,11 @@ function enemyClass(enemyType) {
 		}
 	}
 
+    this.meleeCombat = function(){
+        console.log("Initiate Melee Combat")
+        this.combatEngaged = true;
+    }
+
     this.move = function() {
         var currentIndex;
 
@@ -97,6 +103,10 @@ function enemyClass(enemyType) {
             this.animateWalk = false;
         }
 
+        if(this.combatEngaged){
+            this.meleeCombat();
+            return;
+        }
         if(this.usingPath == false){
             currentIndex = this.movementArray[0];
             if(this.movementArray.length == 1){
@@ -178,30 +188,32 @@ function enemyClass(enemyType) {
                     this.offSetHeight = 1 * this.height;
                 }
             }
-        }
-        
+        }        
     }
 
     this.checkPlayerLocationForNextMove = function(currentIndex){
         var enemyRow = whichRow(currentIndex);
         var playerIndex = getTileIndexAtPixelCoord(playerOne.x,playerOne.y);
-        var playerRow = whichRow(playerIndex);
+        var enemyDestinationIndex = indexS(playerIndex);
+        var destinationRow = whichRow(enemyDestinationIndex);
         var enemyCol = currentIndex%ROOM_COLS;
         var playerCol = Math.floor(playerOne.x/ROOM_W);
 
-        console.log("Player Row: " + playerRow + " Enemy Row: " + enemyRow);
+        if(enemyDestinationIndex == currentIndex){
+            this.meleeCombat();
+        }
+
+       // console.log("Player Row: " + playerRow + " Enemy Row: " + enemyRow);
 
         this.keyHeld_North = false;
         this.keyHeld_South = false;
         this.keyHeld_West = false;
         this.keyHeld_East = false;
 
-        if (playerRow < enemyRow ){
+        if (destinationRow < enemyRow ){
             this.keyHeld_North = true;
-            console.log("Go North, CI: " + currentIndex);
-        } else if (playerRow > enemyRow){
+        } else if (destinationRow > enemyRow){
             this.keyHeld_South = true;
-            console.log("Go South, CI: " + currentIndex);
         } else if (playerCol < enemyCol){
             this.keyHeld_West = true;
         } else if (playerCol > enemyCol){
