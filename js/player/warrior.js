@@ -17,7 +17,7 @@ function warriorClass() {
 	this.canMoveEast = true;
 	this.canMoveSouth = true;
 	this.canMoveWest = true;	
-	this.health = 4;
+	this.health = 10;
 	this.maxHealth = 4;
 	this.trapCoolDownTimer = 0;
 	this.trapCoolDownCounter = 0;

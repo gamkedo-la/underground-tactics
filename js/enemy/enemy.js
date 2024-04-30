@@ -40,6 +40,7 @@ function enemyClass(enemyType) {
     this.usingPath = false;
     this.levitating = false;
     this.combatEngaged = false;
+    this.attackTurn = true;
 
     this.reset = function() {
         this.speed = 0;
@@ -84,8 +85,25 @@ function enemyClass(enemyType) {
 	}
 
     this.meleeCombat = function(){
-        console.log("Initiate Melee Combat")
+        console.log("Initiate Melee Combat");
         this.combatEngaged = true;
+        if(this.attackTurn){
+            //kobald will attack with a dagger
+            //1d20 + 4 to hit to beat opponents AC (10)
+
+            let attackRoll = getRndInteger(1, 20) + 4;
+            let damageRoll = getRndInteger(1,4) + 4
+            console.log("Attack Roll: " + attackRoll)
+            
+            //1d4 + 2 for damage
+
+            if(attackRoll > 10){
+                playerOne.health = playerOne.health - damageRoll
+                console.log("Health: " + playerOne.health)
+            }
+
+            this.attackTurn = false;
+        }
     }
 
     this.move = function() {

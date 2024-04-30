@@ -1,3 +1,4 @@
 function getRndInteger(min, max) {
-    return Math.random() * (max - min) + min;
+    var Number = Math.random() * (max - min) + min;
+    return Math.floor(Number);
   }
