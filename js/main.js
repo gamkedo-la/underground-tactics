@@ -55,6 +55,8 @@ function calculateMousePos(evt) {
 function imageLoadingDoneSoStartGame(){
 	var framesPerSecond = 30;
 	setInterval(function() {
+		resetViewStates();
+		handleMousePosition();
 		moveEverything();
 		checkAllPlayerAndEnemyCollisions();
 		drawEverything();
