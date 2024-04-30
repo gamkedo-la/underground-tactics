@@ -42,12 +42,30 @@ function drawInitiativeOrder() {
                     kobaldList[0].move();
                     turnTicks++;
                 }
-                console.log("Kobald List: " + kobaldList[0].movementArray.length)
+                //console.log("Kobald List: " + kobaldList[0].movementArray.length)
             } else if (turnTicks > 2) {
-                kobaldWalk();
+                kobaldWalk(0);
             }
             if(turnTicks == 60){
                 turnTicks = 0;
+                kobaldList[0].attackTurn = true;
+                turnNumber++;
+            }
+        } else if(turnNumber == 2){
+            moveBoxHovering = true;
+            if(turnTicks == 2){
+                for(i = 0; i < kobaldList[1].maxMovement; i++){
+                    kobaldList[1].usingPath = false;
+                    kobaldList[1].move();
+                    turnTicks++;
+                }
+                //console.log("Kobald List: " + kobaldList[1].movementArray.length)
+            } else if (turnTicks > 2) {
+                kobaldWalk(1);
+            }
+            if(turnTicks == 60){
+                turnTicks = 0;
+                kobaldList[1].attackTurn = true;
                 turnNumber++;
             }
         } else {
@@ -110,10 +128,10 @@ function wizardWalk() {
     }
 }
 
-function kobaldWalk(){
-    kobaldList[0].usingPath = true;
-    kobaldList[0].move();
-    kobaldList[0].animateWalk = true;
+function kobaldWalk(whichKobald){
+    kobaldList[whichKobald].usingPath = true;
+    kobaldList[whichKobald].move();
+    kobaldList[whichKobald].animateWalk = true;
 }
 
 function displaySpells(){

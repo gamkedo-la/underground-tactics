@@ -97,7 +97,7 @@ function enemyClass(enemyType) {
             
             //1d4 + 2 for damage
 
-            if(attackRoll > 10){
+            if(attackRoll >= playerOne.defense){
                 playerOne.health = playerOne.health - damageRoll
                 console.log("Health: " + playerOne.health)
             }
