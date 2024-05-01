@@ -48,8 +48,8 @@ function UIView(x, y, width, height) {
 	this.handleMousePosition = function(mouseX, mouseY) {
 		if (mouseX >= this.x && mouseX < this.x + this.width && mouseY >= this.y && mouseY < this.y + this.height) {
 			for (const subview of this.subviews) {
-				const mouseXInSub = mouseX + subview.x;
-				const mouseYInSub = mouseY + subview.y;
+				const mouseXInSub = mouseX - this.x;
+				const mouseYInSub = mouseY - this.y;
 				if (subview.handleMousePosition(mouseXInSub, mouseYInSub)) {
 					return false;
 				}
@@ -87,7 +87,7 @@ exampleMenuThing.backgroundColor = 'purple';
 addView(exampleMenuThing);
 
 // TODO: create actual UILabel class
-const exampleLabel = new UIView(0, 0, 150, 30);
+const exampleLabel = new UIView(5, 5, 150, 30);
 exampleLabel.drawCustomContent = function() {
 	colorText("New UI Thingy", 15, 20, "white", "14px Arial Black");
 }
