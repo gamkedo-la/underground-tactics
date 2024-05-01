@@ -248,6 +248,10 @@ function warriorClass() {
 		*/
 	}	// END OF THIS.MOVEMENT
 
+	this.fireBolt = function(){
+		
+	}
+
 		
 	this.checkCollisionsAgainst = function(otherHumanoid){
 		if(this.collisionTest(otherHumanoid)){
@@ -294,7 +298,6 @@ function warriorClass() {
 		}
 	}
 
-	
 	this.collisionTest = function(otherHumanoid){
 		if(	this.x > otherHumanoid.x - 20 && this.x < otherHumanoid.x + 20 &&
 			this.y > otherHumanoid.y - 20 && this.y < otherHumanoid.y + 20){

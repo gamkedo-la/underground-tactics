@@ -22,6 +22,7 @@ var spellBookPic = document.createElement("img");
 var spellBook2Pic = document.createElement("img");
 var spellBookIconPic = document.createElement("img");
 var kobaldPic = document.createElement("img");
+var fireBoltPic = document.createElement("img");
 
 
 
@@ -67,6 +68,8 @@ function loadImages() {
 			{varName: spellBookPic, theFile:  "potionTiles.png", sx: 0, sy: 0},
 			{varName: spellBook2Pic, theFile:  "potionTiles.png", sx: 0, sy: 0},
 			{varName: spellFirePic, theFile: "spellFire.png",sx: 0, sy: 0},
+			//spells and attacks
+			{varName: fireBoltPic, theFile: "fireBolt.png",sx: 0, sy: 0},
 
 			{varName: playerPositionPic, theFile: "playerPosition.png",sx: 0, sy: 0},
 			{varName: wizardMovementPic, theFile:  "wizardWalk.png", sx: 0, sy: 0},
