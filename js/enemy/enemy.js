@@ -9,38 +9,6 @@ function addKobald(){
 enemyClass.prototype = new CharacterBase();
 
 function enemyClass(enemyType) {
-    this.width = 50;
-    this.height = 75;
-    this.offSetWidth = 0;
-    this.offSetHeight = 0;
-    this.movementSpeed = 3.0;
-    this.maxMovement = 5;
-    this.keyHeld_North = false;
-    this.keyHeld_East = false;
-    this.keyHeld_South = false;
-    this.keyHeld_West = false;
-    this.canMoveNorth = true;
-    this.canMoveEast = true;
-    this.canMoveSouth = true;
-    this.canMoveWest = true;
-    this.health = 4;
-    this.maxHealth = 4;
-    this.movementArray = [67];
-    this.usingPath = false;
-    this.animateWalk = false;
-    this.ticks = 0;
-    this.frame = 0;
-    this.frames = 3;
-    this.healingPotion = 0;
-    this.manaPotion = 0;
-    this.staminaPotion = 0;
-    this.levitatePotion = 0;
-    this.enemy = enemyType;
-    this.movementArray = [293];
-    this.usingPath = false;
-    this.levitating = false;
-    this.combatEngaged = false;
-    this.attackTurn = true;
 
 	this.superInit = this.init;
 	this.init = function (whichGraphic, whichName){

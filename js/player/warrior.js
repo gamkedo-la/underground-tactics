@@ -4,36 +4,7 @@ const COLLIDE_BUMP_MULT = 2; // this needs to be improved.  This could potential
 warriorClass.prototype = new CharacterBase();
 
 function warriorClass() {
-	this.width = 50;
-	this.height = 75;
-	this.offSetWidth = 0;
-	this.offSetHeight = 0;
-	this.playerMovementSpeed = 3.0;
-	this.keyHeld_North = false;
-	this.keyHeld_East = false;
-	this.keyHeld_South = false;
-	this.keyHeld_West = false;
-	this.canMoveNorth = true;
-	this.canMoveEast = true;
-	this.canMoveSouth = true;
-	this.canMoveWest = true;	
-	this.health = 10;
-	this.defense = 10;
-	this.maxHealth = 4;
-	this.trapCoolDownTimer = 0;
-	this.trapCoolDownCounter = 0;
-	this.movementArray = [67];
-	this.usingPath = false;
-	this.animateWalk = false;
-	this.ticks = 0;
-	this.frame = 0;
-	this.frames = 4;
-	this.healingPotion = 0;
-	this.manaPotion = 0;
-	this.staminaPotion = 0;
-	this.levitatePotion = 0;
-	this.levitating = false;
-	this.levitationTurn = 0;
+
 
 	this.warriorPic = document.createElement("img");
 	
