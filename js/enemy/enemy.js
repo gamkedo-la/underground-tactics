@@ -42,34 +42,10 @@ function enemyClass(enemyType) {
     this.combatEngaged = false;
     this.attackTurn = true;
 
-    this.reset = function() {
-        this.speed = 0;
-        this.keysHeld = 0;
-
-        for (var i = 0; i < roomGrid.length; i++) {
-            if (roomGrid[i] == TILE_KOBALD) {
-                var tileRow = Math.floor(i / ROOM_COLS);
-                var tileCol = i % ROOM_COLS;
-
-                this.homeX = tileCol * ROOM_W;
-                this.homeY = tileRow * ROOM_H;
-
-                this.movementArray = [i];
-
-                roomGrid[i] = TILE_FLOOR_STONE_1;
-                break;
-            }
-        }
-
-        this.x = this.homeX;
-        this.y = this.homeY;
-    }
-
-    this.init = function(whichGraphic, whichName) {
-        this.myBitmap = whichGraphic;
-        this.myName = whichName;
-        this.reset();
-    }
+	this.superInit = this.init;
+	this.init = function (whichGraphic, whichName){
+		this.superInit(whichGraphic, whichName, TILE_KOBALD);
+	}
 
     this.processTileAtIndex = function(currentIndex) {
 	//	if(this.movementArray.length > 1 && this.movementArray[1] == currentIndex){ //backtracking

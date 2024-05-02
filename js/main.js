@@ -34,7 +34,7 @@ window.onload = function(){
 	document.addEventListener("keydown", keyPressed);
 	document.addEventListener("keyup", keyReleased);
 	
-	playerOne.warriorReset();
+	playerOne.reset();
 	addCreatureTurn("Wizard", 5);
 	addCreatureTurn("Enemy 1", 1); //Vince 4/11/24 temporary:  Will be removed when Enemy Class created
 	addCreatureTurn("Enemy 2", 2); //Vince 4/11/24 temporary:  Will be removed when Enemy Class created
@@ -128,7 +128,7 @@ function loadLevel(whichLevel) {
 		kobaldList[i].init(wizardPic);
 	}
 
-	playerOne.warriorReset();
+	playerOne.reset();
 	console.log("Finish Load Level");
 }
 		

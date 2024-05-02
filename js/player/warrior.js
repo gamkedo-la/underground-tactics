@@ -44,39 +44,11 @@ function warriorClass() {
 		this.controlKeyForWest = westKey;
 	}
 
-	this.warriorReset = function() {
-		this.speed = 0;
-		this.keysHeld = 1;
-					
-		for(var i=0; i<roomGrid.length; i++){
-			if( roomGrid[i] == TILE_PLAYER) {
-				console.log("Found Player")
-				var tileRow = Math.floor(i/ROOM_COLS);
-				var tileCol	= i%ROOM_COLS;
-				var tileLeftEdgeX = 700
-				var tileTopEdgeY = 0;
-
-				this.homeX = tileCol * ROOM_W; 
-				this.homeY = tileRow * ROOM_H; 
-
-				this.movementArray = [i];
-
-				roomGrid[i] = TILE_FLOOR_STONE_1;
-				break;
-			}
-		}
-	
-		this.x = this.homeX;
-		this.y = this.homeY;
-
-		this.popToGrid(); // initial movement of player to draw to grid.
+	this.superInit = this.init;
+	this.init = function (whichGraphic, whichName){
+		this.superInit(whichGraphic, whichName, TILE_PLAYER);
 	}
-					
-	this.init = function(whichGraphic, whichName) {
-		this.myBitmap = whichGraphic;
-		this.myName = whichName;
-		this.warriorReset();
-	}	
+
 
 	this.levitate = function(){
 		if(spellBoxHovering){
@@ -100,14 +72,6 @@ function warriorClass() {
 		}
 	}
 
-	this.popToGrid = function(){
-		var currentIndex = getTileIndexAtPixelCoord(this.x,this.y);
-		var col = currentIndex%ROOM_COLS;
-		var row = Math.floor(currentIndex/ROOM_COLS);
-		this.x = col * ROOM_W + ROOM_W * 0.5; 
-		this.y = row * ROOM_H + ROOM_H * 0.5;
-	}
-	 
 	this.movement = function() {
 		
 		var currentIndex;
