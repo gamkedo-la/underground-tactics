@@ -100,16 +100,16 @@ function rockBulletClass(xPos, yPos){
 			console.log("collision");
 			if(this.keyHeld_North){
 				this.canMoveNorth = false;
-				this.y += this.playerMovementSpeed * COLLIDE_BUMP_MULT;
+				this.y += this.movementSpeed * COLLIDE_BUMP_MULT;
 			} else if(this.keyHeld_East){
 				this.canMoveEast = false;
-				this.x -= this.playerMovementSpeed * COLLIDE_BUMP_MULT;
+				this.x -= this.movementSpeed * COLLIDE_BUMP_MULT;
 			} else if(this.keyHeld_South){
 				this.canMoveSouth = false;
-				this.y -= this.playerMovementSpeed * COLLIDE_BUMP_MULT;
+				this.y -= this.movementSpeed * COLLIDE_BUMP_MULT;
 			} else if(this.keyHeld_West){
 				this.canMoveWest = false;
-				this.x += this.playerMovementSpeed * COLLIDE_BUMP_MULT;				
+				this.x += this.movementSpeed * COLLIDE_BUMP_MULT;				
 			}
 			this.collision();
 		} else {

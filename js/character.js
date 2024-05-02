@@ -5,7 +5,7 @@ function CharacterBase (){
 	this.height = 75;
 	this.offSetWidth = 0;
 	this.offSetHeight = 0;
-	this.playerMovementSpeed = 3.0;
+	this.movementSpeed = 3.0;
 	this.keyHeld_North = false;
 	this.keyHeld_East = false;
 	this.keyHeld_South = false;
@@ -101,25 +101,43 @@ function CharacterBase (){
 
 		if(this.usingPath == false){
 			currentIndex = this.movementArray[0];
+			if(this.findPlayer){
+				if(this.movementArray.length == 1){
+					this.keyHeld_North = true;
+				}
+			}
 			if(this.keyHeld_North){
 				currentIndex = indexN(currentIndex);
 				this.processTileAtIndex(currentIndex);
 				this.keyHeld_North = false;
+				if(this.findPlayer){
+					this.checkPlayerLocationForNextMove(currentIndex);
+				}
 			}
 			if(this.keyHeld_South){
 				currentIndex = indexS(currentIndex);
 				this.processTileAtIndex(currentIndex);
 				this.keyHeld_South = false;
+				if(this.findPlayer){
+					this.checkPlayerLocationForNextMove(currentIndex);
+				}
 			}
 			if(this.keyHeld_West){
 				currentIndex = indexW(currentIndex);
 				this.processTileAtIndex(currentIndex);
 				this.keyHeld_West = false;
+				if(this.findPlayer){
+					this.checkPlayerLocationForNextMove(currentIndex);
+				}
 			}
 			if(this.keyHeld_East){
 				currentIndex = indexE(currentIndex);
 				this.processTileAtIndex(currentIndex);
 				this.keyHeld_East = false;
+				if(this.findPlayer){
+					this.checkPlayerLocationForNextMove(currentIndex);
+				}
+
 			}
 
 			if(this.movementArray.length > 10){
@@ -141,28 +159,28 @@ function CharacterBase (){
 					this.movementArray[0] = currentIndex; // setting the head of the next array movement
 				}
 			} else if (this.movementArray[lastNode] == tileN) {
-				this.y -= this.playerMovementSpeed;
+				this.y -= this.movementSpeed;
 				if(this.levitating){
 					this.offSetHeight = 6 * this.height;
 				} else {
 					this.offSetHeight = 2 * this.height
 				}
 			} else if (this.movementArray[lastNode] == tileS) {
-				this.y += this.playerMovementSpeed;
+				this.y += this.movementSpeed;
 				if(this.levitating){
 					this.offSetHeight = 4 * this.height;
 				} else {
 					this.offSetHeight = 0 * this.height;
 				}
 			} else if (this.movementArray[lastNode] == tileW) {
-				this.x -= this.playerMovementSpeed;
+				this.x -= this.movementSpeed;
 				if(this.levitating){
 					this.offSetHeight = 7 * this.height;
 				} else {
 					this.offSetHeight = 3 * this.height;
 				}
 			} else if (this.movementArray[lastNode] == tileE) {
-				this.x += this.playerMovementSpeed;
+				this.x += this.movementSpeed;
 				if(this.levitating){
 					this.offSetHeight = 5 * this.height;
 				} else {

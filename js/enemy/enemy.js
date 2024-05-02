@@ -9,6 +9,7 @@ function addKobald(){
 enemyClass.prototype = new CharacterBase();
 
 function enemyClass(enemyType) {
+    this.findPlayer = true;
 
 	this.superInit = this.init;
 	this.init = function (whichGraphic, whichName){

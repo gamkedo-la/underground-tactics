@@ -28,11 +28,11 @@ function initInput(){
 
 	canvas.addEventListener('mousedown', function(evt){
 		console.log("click")
-		//turnAdvance();
+		turnAdvance();
 		wizardWalk();
-		//displaySpells();
-		//displayItems();
-		//playerOne.levitate(); 
+		displaySpells();
+		displayItems();
+		playerOne.levitate(); 
 	});
 	
 	document.addEventListener("keydown", keyPressed);

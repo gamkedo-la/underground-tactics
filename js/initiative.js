@@ -107,6 +107,7 @@ var endTurnBoxOptionY = 525;
 var endTurnBoxHovering = false;
 
 function turnAdvance() {
+    console.log("Turn Advance")
     if (endTurnBoxHovering) {
         turnNumber++;
         if (turnNumber >= turnOrderList.length) {
@@ -130,7 +131,7 @@ function wizardWalk() {
 
 function kobaldWalk(whichKobald){
     kobaldList[whichKobald].usingPath = true;
-    kobaldList[whichKobald].move();
+    kobaldList[whichKobald].movement();
     kobaldList[whichKobald].animateWalk = true;
 }
 

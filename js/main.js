@@ -138,7 +138,7 @@ function moveEverything() {
 		playerOne.movement();
 		for(var i = 0; i < turnOrderList.length; i++ ){
 			if(turnOrderList[i].myTurn == true && turnOrderList[i].name == "Enemy 1"){
-		//		console.log("Enemy 1 turn")
+
 			}
 		} 
 		updatedCameraPosition();
@@ -149,9 +149,9 @@ function moveEverything() {
 				console.log(potionList.length)
 			}
 		}
-	/*	for(i = 0; i < kobaldList.length; i++){
-			kobaldList[i].move();
-		} */
+		for(i = 0; i < kobaldList.length; i++){
+			kobaldList[i].movement();
+		} 
 		checkPlayerOptionBoxes();
 	}
 	
