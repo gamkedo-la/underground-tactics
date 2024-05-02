@@ -27,6 +27,6 @@ function colorText(showWords, textX, textY, fillColor, fontStyle) {
 
 function drawIsoCharacterByFeet(graphic, footX, footY, spriteClass){
 	canvasContext.drawImage(graphic, spriteClass.offSetWidth, spriteClass.offSetHeight, spriteClass.width, spriteClass.height, 
-		footX-spriteClass.width/2, footY-58, spriteClass.width, spriteClass.height);	
+		footX-spriteClass.width/2, footY-58-12.5, spriteClass.width, spriteClass.height);	
 
 }

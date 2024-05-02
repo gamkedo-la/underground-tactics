@@ -68,6 +68,8 @@ function warriorClass() {
 	
 		this.x = this.homeX;
 		this.y = this.homeY;
+
+		this.popToGrid(); // initial movement of player to draw to grid.
 	}
 					
 	this.init = function(whichGraphic, whichName) {
@@ -96,6 +98,14 @@ function warriorClass() {
 		} else {
 			console.log("cannot pass");
 		}
+	}
+
+	this.popToGrid = function(){
+		var currentIndex = getTileIndexAtPixelCoord(this.x,this.y);
+		var col = currentIndex%ROOM_COLS;
+		var row = Math.floor(currentIndex/ROOM_COLS);
+		this.x = col * ROOM_W + ROOM_W * 0.5; 
+		this.y = row * ROOM_H + ROOM_H * 0.5;
 	}
 	 
 	this.movement = function() {
@@ -144,12 +154,9 @@ function warriorClass() {
 			var tileW = indexW(currentIndex);
 			var tileE = indexE(currentIndex);
 			var lastNode = this.movementArray.length - 1;
-			//console.log(this.movementArray[lastNode], currentIndex);
+
 			if(this.movementArray[lastNode] == currentIndex){
-				var col = currentIndex%ROOM_COLS;
-				var row = Math.floor(currentIndex/ROOM_COLS);
-				this.x = col * ROOM_W + ROOM_W * 0.5;
-				this.y = row * ROOM_H + ROOM_H * 0.5;
+				this.popToGrid();
 				this.movementArray.pop();
 				if(this.movementArray.length == 0){
 					this.usingPath = false;
@@ -249,7 +256,7 @@ function warriorClass() {
 	}	// END OF THIS.MOVEMENT
 
 	this.fireBolt = function(){
-		
+
 	}
 
 		
