@@ -47,19 +47,6 @@ function enemyClass(enemyType) {
 		this.superInit(whichGraphic, whichName, TILE_KOBALD);
 	}
 
-    this.processTileAtIndex = function(currentIndex) {
-	//	if(this.movementArray.length > 1 && this.movementArray[1] == currentIndex){ //backtracking
-	//		this.movementArray.shift();
-		if(tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_WALKABLE){
-			this.movementArray.unshift(currentIndex);
-		} else if (tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_FLYABLE && this.levitating){
-			console.log("water");
-			this.movementArray.unshift(currentIndex);
-		} else {
-			console.log("cannot pass");
-		}
-	}
-
     this.meleeCombat = function(){
         console.log("Initiate Melee Combat");
         this.combatEngaged = true;
@@ -80,109 +67,6 @@ function enemyClass(enemyType) {
 
             this.attackTurn = false;
         }
-    }
-
-    this.move = function() {
-        var currentIndex;
-
-        //console.log("P col: " + playerCol + " P row: " + playerRow + " E col: " + enemyCol + " E row: " + enemyRow);
-        // this.checkPlayerLocationForNextMove(playerCol, enemyCol);
-      
-        if(this.levitationTurn > 6){
-            this.levitating = false;
-            this.levitationTurn = 0;
-        }
-
-        if(this.movementArray.length < 1){
-            this.animateWalk = false;
-        }
-
-        if(this.combatEngaged){
-            this.meleeCombat();
-            return;
-        }
-        if(this.usingPath == false){
-            currentIndex = this.movementArray[0];
-            if(this.movementArray.length == 1){
-                this.keyHeld_North = true;
-            }
-    
-            if(this.keyHeld_North){
-                currentIndex = indexN(currentIndex);
-                this.processTileAtIndex(currentIndex);
-                this.keyHeld_North = false;
-                this.checkPlayerLocationForNextMove(currentIndex);
-                console.log(this.movementArray.length);
-            }
-            if(this.keyHeld_South){
-                currentIndex = indexS(currentIndex);
-                this.processTileAtIndex(currentIndex);
-                this.keyHeld_South = false;
-                this.checkPlayerLocationForNextMove(currentIndex);
-            }
-            if(this.keyHeld_West){
-                currentIndex = indexW(currentIndex);
-                this.processTileAtIndex(currentIndex);
-                this.keyHeld_West = false;
-            }
-           // this.checkPlayerLocationForNextMove(currentIndex);
-            if(this.keyHeld_East){
-                currentIndex = indexE(currentIndex);
-                this.processTileAtIndex(currentIndex);
-                this.keyHeld_East = false;
-            }
-          //  this.checkPlayerLocationForNextMove(currentIndex);
-            if(this.movementArray.length > 10){
-                this.movementArray.shift();
-            }
-        } else {
-            currentIndex = getTileIndexAtPixelCoord(this.x,this.y);
-            var tileN = indexN(currentIndex);
-            var tileS = indexS(currentIndex);
-            var tileW = indexW(currentIndex);
-            var tileE = indexE(currentIndex);
-            var lastNode = this.movementArray.length - 1;
-           // console.log(this.movementArray[lastNode], currentIndex);
-            if(this.movementArray[lastNode] == currentIndex){
-                var col = currentIndex%ROOM_COLS;
-                var row = Math.floor(currentIndex/ROOM_COLS);
-                this.x = col * ROOM_W + ROOM_W * 0.5;
-                this.y = row * ROOM_H + ROOM_H * 0.5;
-                this.movementArray.pop();
-                if(this.movementArray.length == 0){
-                    this.usingPath = false;
-                    this.movementArray[0] = currentIndex; // setting the head of the next array movement
-                }
-            } else if (this.movementArray[lastNode] == tileN) {
-                this.y -= this.movementSpeed;
-                if(this.levitating){
-                    this.offSetHeight = 6 * this.height;
-                } else {
-                    this.offSetHeight = 2 * this.height
-                }
-            } else if (this.movementArray[lastNode] == tileS) {
-                this.y += this.movementSpeed;
-                if(this.levitating){
-                    this.offSetHeight = 4 * this.height;
-                } else {
-                    this.offSetHeight = 0 * this.height;
-                }
-            } else if (this.movementArray[lastNode] == tileW) {
-                this.x -= this.movementSpeed;
-                if(this.levitating){
-                    this.offSetHeight = 7 * this.height;
-                } else {
-                    this.offSetHeight = 3 * this.height;
-                }
-            } else if (this.movementArray[lastNode] == tileE) {
-                this.x += this.movementSpeed;
-                if(this.levitating){
-                    this.offSetHeight = 5 * this.height;
-                } else {
-                    this.offSetHeight = 1 * this.height;
-                }
-            }
-        }        
     }
 
     this.checkPlayerLocationForNextMove = function(currentIndex){
