@@ -1,9 +1,9 @@
 const ISO_CHAR_FOOT_Y = 8;
 const COLLIDE_BUMP_MULT = 2; // this needs to be improved.  This could potentially cause enemy or player in an illegal position (wall)
 
+warriorClass.prototype = new CharacterBase();
+
 function warriorClass() {
-	this.x = 600;
-	this.y = 800;
 	this.width = 50;
 	this.height = 75;
 	this.offSetWidth = 0;
@@ -258,7 +258,6 @@ function warriorClass() {
 	this.fireBolt = function(){
 
 	}
-
 		
 	this.checkCollisionsAgainst = function(otherHumanoid){
 		if(this.collisionTest(otherHumanoid)){

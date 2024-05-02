@@ -6,9 +6,9 @@ function addKobald(){
 	kobaldList.push(tempEnemy);
 }
 
+enemyClass.prototype = new CharacterBase();
+
 function enemyClass(enemyType) {
-    this.x = 600;
-    this.y = 800;
     this.width = 50;
     this.height = 75;
     this.offSetWidth = 0;
