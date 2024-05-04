@@ -25,13 +25,13 @@ function warriorClass() {
 	this.levitate = function(){
 		if(spellBoxHovering){
 			this.levitating = true;
-			mainOptions = true;
+		//	mainOptions = true;
 			spellOptions = false;
 			potionOptions = false;
 		}
 	}
 
-
+console.log(mainOptions)
 
 	this.fireBolt = function(){
 

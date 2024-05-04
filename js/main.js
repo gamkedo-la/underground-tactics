@@ -41,6 +41,7 @@ window.onload = function(){
 	addCreatureTurn("Enemy 3", 4); //Vince 4/13/24 temporary:  Will be removed when Enemy Class created
 
 	setupMenus();
+	mainOptions = true;
 }
 
 function calculateMousePos(evt) {

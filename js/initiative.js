@@ -1,6 +1,10 @@
 var turnOrderList = [];
 var turnNumber = 0;
 
+var mainOptions = false;
+var spellOptions = false;
+var potionOptions = false;
+
 function addCreatureTurn(whichName, initiaveScore) {
     var tempCreature = new TurnOrderClass(whichName, initiaveScore);
     turnOrderList.push(tempCreature);
@@ -107,7 +111,6 @@ var endTurnBoxOptionY = 525;
 var endTurnBoxHovering = false;
 
 function turnAdvance() {
-    console.log("Turn Advance")
     if (endTurnBoxHovering) {
         turnNumber++;
         if (turnNumber >= turnOrderList.length) {
@@ -136,13 +139,15 @@ function kobaldWalk(whichKobald){
 }
 
 function displaySpells(){
+    console.log("spellBoxHovering:" + spellBoxHovering)
     if (spellBoxHovering) {
         mainOptions = false;
         spellOptions = true;
         potionOptions = false;
+        console.log(mainOptions, spellOptions, potionOptions)    
     }
 }
-
+ 
 function displayItems(){
     if (useItemBoxHovering) {
         mainOptions = false;
@@ -150,10 +155,6 @@ function displayItems(){
         potionOptions = true;
     }
 }
-
-var mainOptions = true;
-var spellOptions = false;
-var potionOptions = false;
 
 function checkPlayerOptionBoxes() { 
     for(var i = 0; i < turnOrderList.length; i++){
@@ -182,6 +183,7 @@ function drawPlayerOptions() {
     colorText("Turn Options", canvas.width - 200, canvas.height - 90, "red", "14px Arial Black");
     for(var i = 0; i < turnOrderList.length; i++){
         if (turnOrderList[i].myTurn == true && turnOrderList[i].name == "Wizard") {
+            console.log(mainOptions, spellOptions, potionOptions)
             if(mainOptions){
                 canvasContext.drawImage(useItemPic, useItemX, useItemY);
                 if (useItemBoxHovering) {
@@ -210,9 +212,9 @@ function drawPlayerOptions() {
             } else if (spellOptions){
                 canvasContext.drawImage(spellFirePic, moveOptionX, moveOptionY);
                 if (moveBoxHovering) {
-                    colorText("Fire", moveOptionX + 5, moveOptionY + 65, "lime", "14px Arial Black");
+                    colorText("Fire Bolt", moveOptionX + 5, moveOptionY + 65, "lime", "14px Arial Black");
                 } else {
-                    colorText("Fire", moveOptionX + 5, moveOptionY + 65, "red", "14px Arial Black");
+                    colorText("Fire Bolt", moveOptionX + 5, moveOptionY + 65, "red", "14px Arial Black");
                 }
                 canvasContext.drawImage(magicMissilePic, spellBoxOptionX, spellBoxOptionY);
                 if (spellBoxHovering) {

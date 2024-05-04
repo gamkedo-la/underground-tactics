@@ -32,7 +32,7 @@ function initInput(){
 		wizardWalk();
 		displaySpells();
 		displayItems();
-		playerOne.levitate(); 
+	//	playerOne.levitate(); 
 	});
 	
 	document.addEventListener("keydown", keyPressed);
