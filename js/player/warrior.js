@@ -34,7 +34,7 @@ function warriorClass() {
 console.log(mainOptions)
 
 	this.fireBolt = function(){
-
+		console.log("Fire Bolt Spell")
 	}
 		
 	this.checkCollisionsAgainst = function(otherHumanoid){
