@@ -3,55 +3,52 @@ how does the party grow?  Maybe captured players that are freed then join the pa
 Intro story and maybe after certain milestones?  Some dialog between player/enemies?
 
 ## Clarifying Questions/Actions
-- What happens when PCs die?
 - Analyzing Narrative for tech debt/Ideate implementation to reduce tech debt
-- Can PCs (attempt to) flee combat?
-- How do PCs move out of encounters?/Is there an "Out-of-encounter"?
 - Narrative Bottlenecks (What **must** happen?)
 
 # Current Assumptions
 #### Premise:
-- 4-5 PCs
-- Character Roles
+- ###### 4-6 PCs
+- ###### Character Roles
 	- Wizard
 	- Paladin
 	- Cleric
 	- Rogue
-	- Druid
+	- Fighter/Barbarian
 	- Ranger
-- Different kinds of encounters in each room (Combat, traps, puzzles, negotiations, etc)
-- Player interacting with environment
-- Story exists and develops within one big area
-- Multiple kinds of enemies
-- Player starts with one character and has to discover party members
+- ###### Different kinds of encounters in each room (Combat, traps, puzzles, negotiations, etc)
+- ###### Player interacting with environment
+- ###### Story exists and develops within one big area
+- ###### Multiple kinds of enemies
+- ###### Player starts with one character and has to discover party members
 	- Party was split-up
 	- Split happened accidentally
 	- Split also began game narrative/story
 	- PCs split while entering game area
 	- PCs have different requirements for rejoining party
-- PCs can wait to let NPCs move within repeating patterns
-- PC stealth/surprise mechanic
+- ###### ~~PCs can wait to let NPCs move within repeating patterns~~
+- ###### PC stealth/surprise mechanic (?)
 #### Goal:
 - Reunite party
 	- Survive through dungeon
-- escape, sabotage, or defeat BBEG
+- escape, sabotage, or defeat BBEG(s?)
 - Roadblocks to goals:
 	- New, unexplored areas
 	- unknown enemies
-	- traps (?)
+	- traps
 	- puzzles (?)
-	- environment(?)
+	- environment
 #### Choices:
-- When to fight
+- When to fight (?)
 	- When to negotiate
 	- When to run
-- Who to fight
+- Who to fight (?)
 - When to use limited resources
 	- Who to save
 	- What NPC interactions to complete
 	- What risks to take
 - Where to explore
-	- What rooms to avoid
+	- What rooms to avoid (?)
 - What path to victory to take
 - How to engage with NPCs
 #### Player Actions:
@@ -124,6 +121,8 @@ Intro story and maybe after certain milestones?  Some dialog between player/enem
 	- Characters can only take (up to) one movement and one non-movement action per turn
 		- Certain skills/items can generate reactions allowing for extra ability use per turn
 	- Action cost depends on character stats and strength of power/utility of said action
+	- Player characters can exit combat encounters by one character exiting 
+	- When a character loses all their HP that character dies permanently
 - Interaction Rules
 	- Combat encounters start when non-hidden PC enters encounter range for hostile NPCs
 	- Neutral/friendly NPCs without urgent dialogue will wait for PC interaction
@@ -132,6 +131,8 @@ Intro story and maybe after certain milestones?  Some dialog between player/enem
 	- Certain hostile enemies will wait to ambush PCs
 		- PCs can notice ambushes and reverse surprise rounds
 - Environment Rules
+	- Character Movement happens independently on each character's turn
+		- Characters can flee by exiting enemy "leash range" or escaping the current room through designated evacuation zones
 	- Trap encounters:
 	- Puzzle encounters:
 	- Hidden item encounters:
