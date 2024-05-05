@@ -5,6 +5,7 @@ warriorClass.prototype = new CharacterBase();
 
 function warriorClass() {
 	this.findPlayer = false;
+	this.fireBoltList = [];
 
 
 	this.warriorPic = document.createElement("img");
@@ -31,11 +32,19 @@ function warriorClass() {
 		}
 	}
 
-console.log(mainOptions)
-
 	this.fireBolt = function(){
 		console.log("Fire Bolt Spell")
+		let tempShot = new shotClass();
+		tempShot.shootFrom(this);
+		this.fireBoltList.push(tempShot);
 	}
+
+	/*this.superMovement = this.movement;
+	this.movement = function(){
+		for (i=0; i < this.fireBoltList.length ; i++){
+			this.fireBoltList[i].movement();
+		}
+	} */
 		
 	this.checkCollisionsAgainst = function(otherHumanoid){
 		if(this.collisionTest(otherHumanoid)){
@@ -91,9 +100,13 @@ console.log(mainOptions)
 	}
 
 	var footStepSoundTurn = 0;
+
 		
 	this.draw = function(){
 		gameCoordToIsoCoord(this.x,this.y);
+		for (i=0; i < this.fireBoltList.length ; i++){
+			this.fireBoltList[i].draw();
+		}
 		if(this.animateWalk){
 			this.ticks++;
 			if(this.ticks > 3){

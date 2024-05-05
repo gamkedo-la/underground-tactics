@@ -1,4 +1,4 @@
-const SHOT_SPEED = 6.0;
+const SHOT_SPEED = 1.0;
 const SHOT_LIFE = 30;
 const SHOT_DISPLAY_RADIUS = 2.0;
 
@@ -23,18 +23,16 @@ function shotClass(){
 		this.x = character.x;
 		this.y = character.y;
 		
-		this.xv = SHOT_SPEED + shipFiring.xv;
-		this.yv = Math.sin(shipFiring.ang) * SHOT_SPEED + shipFiring.yv;
+		this.xv = 0;
+		this.yv = SHOT_SPEED;
 		
 		this.shotLife = SHOT_LIFE;
 	}
 
 	this.movement = function() {
- 
-		if(this.shotLife > 0){
-			this.shotLife--;
-			this.superclassMove();
-		}
+		this.X = this.x + this.xv;
+		this.y = this.y + this.yv;
+		console.log("move")
 	}	
 	
 	this.hitTest = function(thisEnemy) {
@@ -43,7 +41,9 @@ function shotClass(){
 	}
 	
 	this.draw = function(){
+		gameCoordToIsoCoord(this.x,this.y);
 		if(this.shotLife > 0){
+			gameCoordToIsoCoord(this.x,this.y);
 			colorCircle(this.x, this.y, SHOT_DISPLAY_RADIUS, 'white')
 		}
 	}
