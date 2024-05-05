@@ -1,0 +1,6 @@
+- ###### Player starts with one character and has to discover party members
+	- Party was split-up
+	- Split happened accidentally
+	- Split also began game narrative/story
+	- PCs split while entering game area
+	- PCs have different requirements for rejoining party

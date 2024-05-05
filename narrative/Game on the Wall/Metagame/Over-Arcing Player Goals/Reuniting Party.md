@@ -1,0 +1,4 @@
+- Reinforce/Showcase Goals
+- Call Player to Action
+- Give player feedback on choices
+- Provide break/reward after heavy action
