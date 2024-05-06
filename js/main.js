@@ -1,6 +1,6 @@
 var canvas;
 var canvasContext;
-
+//Git practice commit will remove
 //characters (Player, NPC's, Enemies)
 var playerOne = new warriorClass();
 
