@@ -29,7 +29,9 @@ function warriorClass() {
 			mainOptions = true;
 			mainOptionsMenu.hidden = false;
 			spellOptions = false;
+			spellOptionsMenu.hidden = true;
 			potionOptions = false;
+			potionOptionsMenu.hidden = true;
 		}
 	}
 

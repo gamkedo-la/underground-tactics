@@ -122,7 +122,9 @@ function turnAdvance() {
         mainOptions = true;
         mainOptionsMenu.hidden = false;
         spellOptions = false;
+        spellOptionsMenu.hidden = true;
         potionOptions = false;
+        potionOptionsMenu.hidden = true;
         if(playerOne.levitating){
             playerOne.levitationTurn++;
         }
@@ -148,7 +150,9 @@ function displaySpells(){
         mainOptions = false;
         mainOptionsMenu.hidden = true;
         spellOptions = true;
+        spellOptionsMenu.hidden = false;
         potionOptions = false;
+        potionOptionsMenu.hidden = true;
         console.log(mainOptions, spellOptions, potionOptions)    
     }
 }
@@ -158,7 +162,9 @@ function displayItems(){
         mainOptions = false;
         mainOptionsMenu.hidden = true;
         spellOptions = false;
+        spellOptionsMenu.hidden = true;
         potionOptions = true;
+        potionOptionsMenu.hidden = false;
     }
 }
 
@@ -167,7 +173,9 @@ function useFireBolt(){
         mainOptions = true;
         mainOptionsMenu.hidden = false;
         spellOptions = false;
+        spellOptionsMenu.hidden = true;
         potionOptions = false;
+        potionOptionsMenu.hidden = true;
         playerOne.fireBolt();
     }
 }
