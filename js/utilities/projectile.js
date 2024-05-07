@@ -1,5 +1,5 @@
 const SHOT_SPEED = 4.0;
-const SHOT_LIFE = 30;
+const SHOT_LIFE = 60;
 
 var fireBoltList = [];
 
@@ -38,9 +38,23 @@ function shotClass(){
 	this.shootFrom = function(character){
 		this.projectileX = character.x;
 		this.projectileY = character.y;
-		
+
 		this.projectileXV = 0;
-		this.projectileYV = SHOT_SPEED;
+		this.projectileYV = 0;
+
+		if(playerOne.offSetHeight == 0){
+			this.projectileYV = SHOT_SPEED;
+			this.offSetHeight = 100; 
+		} else if (playerOne.offSetHeight == 75){
+			this.projectileXV = SHOT_SPEED;
+			this.offSetHeight = 150;
+		} else if (playerOne.offSetHeight == 150){
+			this.projectileYV = -SHOT_SPEED;
+			this.offSetHeight = 50;
+		} else if (playerOne.offSetHeight == 225){
+			this.projectileXV = -SHOT_SPEED;
+			this.offSetHeight = 0;
+		}
 		
 		this.shotLife = SHOT_LIFE;
 	}
