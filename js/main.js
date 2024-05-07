@@ -138,6 +138,12 @@ function loadLevel(whichLevel) {
 function moveEverything() {
 	if(liveGame){
 		playerOne.movement();
+		for(i = 0; i< fireBoltList.length; i++){
+			fireBoltList[i].move();
+		}
+		for(i = 0; i< smokeList.length; i++){
+			smokeList[i].move();
+		}
 		for(var i = 0; i < turnOrderList.length; i++ ){
 			if(turnOrderList[i].myTurn == true && turnOrderList[i].name == "Enemy 1"){
 
@@ -204,12 +210,20 @@ function drawEverything() {
 		shiftForCameraPan();
 		drawTracks();
 		playerOne.draw();
+		for(i = 0; i<fireBoltList.length; i++){
+			fireBoltList[i].draw();
+		}
 		for(var i = 0; i < potionList.length; i++){
 			potionList[i].draw();
 		};
 		for(var i = 0; i < kobaldList.length; i++){
 			kobaldList[i].draw();
 		};
+		for(i = 0; i<smokeList.length; i++){
+			smokeList[i].draw();
+		}
+		removeSmokeFromList();
+		removeFireBoltFromList();
 		finishedCameraPan();
 		drawInitiativeOrder();
 		drawPlayerOptions();

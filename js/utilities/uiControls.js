@@ -32,7 +32,7 @@ function initInput(){
 		wizardWalk();
 		displaySpells();
 		displayItems();
-		useFireBolt();
+		playerOne.fireBolt();
 	//	playerOne.levitate(); 
 	});
 	

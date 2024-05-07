@@ -26,25 +26,20 @@ function warriorClass() {
 	this.levitate = function(){
 		if(spellBoxHovering){
 			this.levitating = true;
-		//	mainOptions = true;
+			mainOptions = true;
 			spellOptions = false;
 			potionOptions = false;
 		}
 	}
 
 	this.fireBolt = function(){
-		console.log("Fire Bolt Spell")
-		let tempShot = new shotClass();
-		tempShot.shootFrom(this);
-		this.fireBoltList.push(tempShot);
-	}
-
-	/*this.superMovement = this.movement;
-	this.movement = function(){
-		for (i=0; i < this.fireBoltList.length ; i++){
-			this.fireBoltList[i].movement();
+		if(fireBoltBoxHovering){
+			console.log("Fire Bolt Spell")
+			let tempShot = new shotClass();
+			tempShot.shootFrom(this);
+			fireBoltList.push(tempShot);
 		}
-	} */
+	}
 		
 	this.checkCollisionsAgainst = function(otherHumanoid){
 		if(this.collisionTest(otherHumanoid)){
@@ -104,9 +99,7 @@ function warriorClass() {
 		
 	this.draw = function(){
 		gameCoordToIsoCoord(this.x,this.y);
-		for (i=0; i < this.fireBoltList.length ; i++){
-			this.fireBoltList[i].draw();
-		}
+
 		if(this.animateWalk){
 			this.ticks++;
 			if(this.ticks > 3){

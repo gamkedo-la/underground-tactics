@@ -1,17 +1,33 @@
-const SHOT_SPEED = 1.0;
+const SHOT_SPEED = 4.0;
 const SHOT_LIFE = 30;
-const SHOT_DISPLAY_RADIUS = 2.0;
+
+var fireBoltList = [];
+
+function removeFireBoltFromList() {
+	for(var i=0; i<fireBoltList.length; i++) {
+        if(fireBoltList[i].readyToRemove){
+            fireBoltList.splice(i,1);
+        }
+	}
+}
 
 function shotClass(){
-	this.x;
-	this.y;
+	this.projectileX;
+	this.projectileY;
 	this.readyToRemove = false;
+	this.offSetWidth = 0; 
+	this.offSetHeight = 100; 
+	this.width = 50; 
+	this.height = 50;
+	this.ticks = 0;
+	this.frame = 0;
+	this.frames = 3;
 	
 	this.picture = document.createElement("img");
 	
 	this.reset = function() {
 		this.shotLife = 0;
-		this.x, this.y;
+		this.projectileX, this.projectileY;
 		this.readyToRemove = true;
 	}
 		
@@ -20,31 +36,44 @@ function shotClass(){
 	}
 	
 	this.shootFrom = function(character){
-		this.x = character.x;
-		this.y = character.y;
+		this.projectileX = character.x;
+		this.projectileY = character.y;
 		
-		this.xv = 0;
-		this.yv = SHOT_SPEED;
+		this.projectileXV = 0;
+		this.projectileYV = SHOT_SPEED;
 		
 		this.shotLife = SHOT_LIFE;
 	}
 
-	this.movement = function() {
-		this.X = this.x + this.xv;
-		this.y = this.y + this.yv;
-		console.log("move")
+	this.move = function() {
+		this.projectileX = this.projectileX + this.projectileXV;
+		this.projectileY = this.projectileY + this.projectileYV;
+		addSmoke(this.projectileX-50, this.projectileY-20, 10);
+		if(	this.projectileX < 0 || this.projectileX > canvas.width ||
+			this.projectileY < 0 || this.projectileY > canvas.height){
+				this.readyToRemove = true;
+			}
 	}	
 	
 	this.hitTest = function(thisEnemy) {
 
-		return thisEnemy.isOverlappingPoint(this.x,this.y);
+		//return thisEnemy.isOverlappingPoint(this.x,this.y);
 	}
 	
 	this.draw = function(){
-		gameCoordToIsoCoord(this.x,this.y);
-		if(this.shotLife > 0){
-			gameCoordToIsoCoord(this.x,this.y);
-			colorCircle(this.x, this.y, SHOT_DISPLAY_RADIUS, 'white')
+		this.ticks++;
+		if(this.ticks > 3){
+			this.frame++;
+			this.ticks = 0;
 		}
+
+		if(this.frame > this.frames){
+			this.frame = 1;
+		}
+
+		this.offSetWidth = this.frame * this.width;
+		
+		gameCoordToIsoCoord(this.projectileX,this.projectileY);
+		drawIsoCharacterByFeet(fireBoltPic,isoDrawX, isoDrawY, this);
 	}
 }
