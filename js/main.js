@@ -41,6 +41,7 @@ window.onload = function(){
 
 	setupMenus();
 	mainOptions = true;
+	mainOptionsMenu.hidden = false;
 }
 
 function calculateMousePos(evt) {

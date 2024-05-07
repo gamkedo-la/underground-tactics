@@ -6,6 +6,7 @@ function UIView(x, y, width, height) {
 
 	this.backgroundColor = null;
 	this.isHighlighted = null;
+	this.hidden = false;
 	this.highlightColor = null;
 	this.userInteractionEnabled = true;
 	this.subviews = [];
@@ -23,6 +24,10 @@ function UIView(x, y, width, height) {
 	}
 
 	this.handleMousePosition = function(mouseX, mouseY) {
+		if (this.hidden) {
+			return false;
+		}
+
 		if (mouseX >= this.x && mouseX < this.x + this.width && mouseY >= this.y && mouseY < this.y + this.height) {
 			for (const subview of this.subviews) {
 				const mouseXInSub = mouseX - this.x;
@@ -38,6 +43,9 @@ function UIView(x, y, width, height) {
 	}
 
 	this.draw = function() {
+		if (this.hidden) {
+			return;
+		}
 		canvasContext.save();
 	  canvasContext.translate(this.x, this.y);
 

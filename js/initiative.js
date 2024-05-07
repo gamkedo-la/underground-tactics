@@ -120,6 +120,7 @@ function turnAdvance() {
             turnNumber = 0;
         }
         mainOptions = true;
+        mainOptionsMenu.hidden = false;
         spellOptions = false;
         potionOptions = false;
         if(playerOne.levitating){
@@ -145,6 +146,7 @@ function displaySpells(){
     console.log("spellBoxHovering:" + spellBoxHovering)
     if (spellBoxHovering) {
         mainOptions = false;
+        mainOptionsMenu.hidden = true;
         spellOptions = true;
         potionOptions = false;
         console.log(mainOptions, spellOptions, potionOptions)    
@@ -154,6 +156,7 @@ function displaySpells(){
 function displayItems(){
     if (useItemBoxHovering) {
         mainOptions = false;
+        mainOptionsMenu.hidden = true;
         spellOptions = false;
         potionOptions = true;
     }
@@ -162,6 +165,7 @@ function displayItems(){
 function useFireBolt(){
     if (fireBoltBoxHovering) {
         mainOptions = true;
+        mainOptionsMenu.hidden = false;
         spellOptions = false;
         potionOptions = false;
         playerOne.fireBolt();
@@ -196,6 +200,7 @@ function drawPlayerOptions() {
     for(var i = 0; i < turnOrderList.length; i++){
         if (turnOrderList[i].myTurn == true && turnOrderList[i].name == "Wizard") {
             if(mainOptions){
+                mainOptionsMenu.hidden = false;
                 canvasContext.drawImage(useItemPic, useItemX, useItemY);
                 if (useItemBoxHovering) {
                     colorText("Items", useItemX + 5, useItemY + 65, "lime", "14px Arial Black");
@@ -260,5 +265,5 @@ function drawPlayerOptions() {
                 }
             }
         }
-    }       
+    }
 }

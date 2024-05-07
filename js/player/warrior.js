@@ -27,6 +27,7 @@ function warriorClass() {
 		if(spellBoxHovering){
 			this.levitating = true;
 			mainOptions = true;
+			mainOptionsMenu.hidden = false;
 			spellOptions = false;
 			potionOptions = false;
 		}
