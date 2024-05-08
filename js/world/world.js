@@ -168,11 +168,11 @@ function drawTracks(){
 				}
 
 				if(	playerOne.movementArray[0]==tileIndex ||
-					kobaldList[0].movementArray[0]==tileIndex){
+					enemyList[0].movementArray[0]==tileIndex){
 						textColor = "white";
 						canvasContext.drawImage(tileIndicatorWhitePic, isoDrawX - ISO_GRID_W/2, isoDrawY - ISO_TILE_GROUND_Y);
 				} else if(playerOne.movementArray.includes(tileIndex) ||
-						kobaldList[0].movementArray.includes(tileIndex)){
+						enemyList[0].movementArray.includes(tileIndex)){
 							textColor = "cyan";
 							canvasContext.drawImage(tileIndicatorCyanPic, isoDrawX - ISO_GRID_W/2, isoDrawY - ISO_TILE_GROUND_Y);
 				} else {

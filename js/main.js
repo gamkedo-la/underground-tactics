@@ -106,11 +106,8 @@ function loadLevel(whichLevel) {
 			}
 			addPotion(whichPotion, "Kobald");
 		}
-		if(roomGrid[i] == TILE_KOBALD){
-			addKobald();
-		}
-		if(roomGrid[i] == TILE_KOA_TOA){
-			addKoaToa();
+		if(roomGrid[i] == TILE_KOBALD || roomGrid[i] == TILE_KOA_TOA){
+			addEnemy(roomGrid[i]);
 		}
 	}
 
@@ -128,14 +125,6 @@ function loadLevel(whichLevel) {
 		} else if (potionList[i].myName == "Spell Book 2"){
 			potionList[i].init(spellBookPic, 375, "Spell Book 2", TILE_SPELL_BOOK_2);
 		}
-	}
-
-	for(var i = 0; i < kobaldList.length; i++){
-		kobaldList[i].init(kobaldPic,"Kobald", TILE_KOBALD);		
-	}
-	
-	for(var i = 0; i < kaoToaList.length; i++){
-		kaoToaList[i].init(koaToaPic,"Koa Toa", TILE_KOA_TOA);
 	}
 
 	playerOne.reset();
@@ -165,11 +154,8 @@ function moveEverything() {
 				console.log(potionList.length)
 			}
 		}
-		for(i = 0; i < kobaldList.length; i++){
-			kobaldList[i].movement();
-		} 
-		for(i = 0; i < kaoToaList.length; i++){
-			kaoToaList[i].movement();
+		for(i = 0; i < enemyList.length; i++){
+			enemyList[i].movement();
 		} 
 		checkPlayerOptionBoxes();
 	}
@@ -227,13 +213,9 @@ function drawEverything() {
 		for(var i = 0; i < potionList.length; i++){
 			potionList[i].draw();
 		};
-		for(var i = 0; i < kobaldList.length; i++){
-			kobaldList[i].draw();
+		for(var i = 0; i < enemyList.length; i++){
+			enemyList[i].draw();
 		};
-		for(var i = 0; i < kaoToaList.length; i++){
-			kaoToaList[i].draw();
-		};
-
 		for(i = 0; i<smokeList.length; i++){
 			smokeList[i].draw();
 		}

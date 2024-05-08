@@ -1,4 +1,4 @@
-const SHOT_SPEED = 4.0;
+const SHOT_SPEED = 6.0;
 const SHOT_LIFE = 60;
 
 var fireBoltList = [];

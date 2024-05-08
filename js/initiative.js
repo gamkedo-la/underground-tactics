@@ -41,9 +41,9 @@ function drawInitiativeOrder() {
         if (turnNumber == 1){
             moveBoxHovering = true;
             if(turnTicks == 2){
-                for(i = 0; i < kobaldList[0].maxMovement; i++){
-                    kobaldList[0].usingPath = false;
-                    kobaldList[0].movement();
+                for(i = 0; i < enemyList[0].maxMovement; i++){
+                    enemyList[0].usingPath = false;
+                    enemyList[0].movement();
                     turnTicks++;
                 }
             } else if (turnTicks > 2) {
@@ -51,15 +51,15 @@ function drawInitiativeOrder() {
             }
             if(turnTicks == 60){
                 turnTicks = 0;
-                kobaldList[0].attackTurn = true;
+                enemyList[0].attackTurn = true;
                 turnNumber++;
             }
         } else if(turnNumber == 2){
             moveBoxHovering = true;
             if(turnTicks == 2){
-                for(i = 0; i < kobaldList[1].maxMovement; i++){
-                    kobaldList[1].usingPath = false;
-                    kobaldList[1].movement();
+                for(i = 0; i < enemyList[1].maxMovement; i++){
+                    enemyList[1].usingPath = false;
+                    enemyList[1].movement();
                     turnTicks++;
                 }
             } else if (turnTicks > 2) {
@@ -67,15 +67,15 @@ function drawInitiativeOrder() {
             }
             if(turnTicks == 60){
                 turnTicks = 0;
-                kobaldList[1].attackTurn = true;
+                enemyList[1].attackTurn = true;
                 turnNumber++;
             }
         } else if(turnNumber == 3){
             moveBoxHovering = true;
             if(turnTicks == 2){
-                for(i = 0; i < kaoToaList[1].maxMovement; i++){
-                    kaoToaList[0].usingPath = false;
-                    kaoToaList[0].movement();
+                for(i = 0; i < enemyList[0].maxMovement; i++){
+                    enemyList[0].usingPath = false;
+                    enemyList[0].movement();
                     turnTicks++;
                 }
             } else if (turnTicks > 2) {
@@ -83,7 +83,7 @@ function drawInitiativeOrder() {
             }
             if(turnTicks == 60){
                 turnTicks = 0;
-                kaoToaList[0].attackTurn = true;
+                enemyList[0].attackTurn = true;
                 turnNumber++;
             }
         } else {
@@ -153,15 +153,15 @@ function wizardWalk() {
 }
 
 function kobaldWalk(whichKobald){
-    kobaldList[whichKobald].usingPath = true;
-    kobaldList[whichKobald].movement();
-    kobaldList[whichKobald].animateWalk = true;
+    enemyList[whichKobald].usingPath = true;
+    enemyList[whichKobald].movement();
+    enemyList[whichKobald].animateWalk = true;
 }
 
 function koaToaWalk(whichkoaToa){
-    kaoToaList[whichkoaToa].usingPath = true;
-    kaoToaList[whichkoaToa].movement();
-    kaoToaList[whichkoaToa].animateWalk = true;
+    enemyList[whichkoaToa].usingPath = true;
+    enemyList[whichkoaToa].movement();
+    enemyList[whichkoaToa].animateWalk = true;
 }
 function displaySpells(){
     console.log("spellBoxHovering:" + spellBoxHovering)

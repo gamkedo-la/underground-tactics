@@ -1,34 +1,31 @@
 
-var kobaldList = [];
-var kaoToaList = [];
+var enemyList = [];
 
-function addKobald(){
-    var tempEnemy = new enemyClass("Kobald");
-	kobaldList.push(tempEnemy);
-}
+function addEnemy(enemyTileType){
+    var tempEnemy = new enemyClass();
+	tempEnemy.init(enemyTileType);
+    enemyList.push(tempEnemy);
 
-function addKoaToa(){
-    var tempEnemy = new enemyClass("Kao Toa");
-    kaoToaList.push(tempEnemy);
 }
 
 enemyClass.prototype = new CharacterBase();
 
-function enemyClass(enemyType) {
+function enemyClass() {
     this.findPlayer = true;
-    this.myPic = koaToaPic;
 
 	this.superInit = this.init;
-	this.init = function (whichGraphic, whichName, whichTile){
-		this.superInit(whichGraphic, whichName, whichTile);
-        console.log(whichGraphic, whichName, whichTile)
-        if(whichName == "Kobald"){
-            this.myPic = kobaldPic;
+	this.init = function (whichTile){
+        var whichGraphic; 
+        if(whichTile == TILE_KOBALD){
+            whichGraphic = kobaldPic;
             this.maxMovement = 8;
-        } else if (whichName == "Kao Toa"){
-            this.myPic = koaToaPic;
+        } else if (whichTile == TILE_KOA_TOA){
+            whichGraphic = koaToaPic;
             this.maxMovement = 6;
         }
+		this.superInit(whichGraphic,'enemy', whichTile);
+        console.log(whichTile)
+        
 	}
 
     this.meleeCombat = function(){
@@ -132,7 +129,7 @@ function enemyClass(enemyType) {
             this.offSetWidth = this.frame * this.width;
         }
 
-        drawIsoCharacterByFeet(this.myPic, isoDrawX, isoDrawY, this);
+        drawIsoCharacterByFeet(this.myBitmap, isoDrawX, isoDrawY, this);
         //drawIsoCharacterByFeet(this.myBitmap, isoDrawX, isoDrawY, this);
         // drawIsoCharacterByFeet(playerPositionPic, isoDrawX, isoDrawY, this);
     }
