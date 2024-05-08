@@ -22,6 +22,7 @@ var spellBookPic = document.createElement("img");
 var spellBook2Pic = document.createElement("img");
 var spellBookIconPic = document.createElement("img");
 var kobaldPic = document.createElement("img");
+var koaToaPic = document.createElement("img");
 var fireBoltPic = document.createElement("img");
 
 
@@ -83,6 +84,7 @@ function loadImages() {
 			//characters
 			{varName: wizardPic, theFile: "wizard.png"},
 			{varName: kobaldPic, theFile:  "kobald.png"},
+			{varName: koaToaPic, theFile:  "kuo Toa.png"},
 			//tiles (Will eventually move to one sprite sheet)
 			{trackType: TILE_FLOOR_STONE_1, theFile: "floor.png", sx: 0, sy: 0},
 			{trackType: TILE_FLOOR_STONE_2, theFile: "floor_stone_2.png", sx: 0, sy: 0},

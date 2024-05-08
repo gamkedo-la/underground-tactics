@@ -1,19 +1,34 @@
 
 var kobaldList = [];
+var kaoToaList = [];
 
 function addKobald(){
     var tempEnemy = new enemyClass("Kobald");
 	kobaldList.push(tempEnemy);
 }
 
+function addKoaToa(){
+    var tempEnemy = new enemyClass("Kao Toa");
+    kaoToaList.push(tempEnemy);
+}
+
 enemyClass.prototype = new CharacterBase();
 
 function enemyClass(enemyType) {
     this.findPlayer = true;
+    this.myPic = koaToaPic;
 
 	this.superInit = this.init;
-	this.init = function (whichGraphic, whichName){
-		this.superInit(whichGraphic, whichName, TILE_KOBALD);
+	this.init = function (whichGraphic, whichName, whichTile){
+		this.superInit(whichGraphic, whichName, whichTile);
+        console.log(whichGraphic, whichName, whichTile)
+        if(whichName == "Kobald"){
+            this.myPic = kobaldPic;
+            this.maxMovement = 8;
+        } else if (whichName == "Kao Toa"){
+            this.myPic = koaToaPic;
+            this.maxMovement = 6;
+        }
 	}
 
     this.meleeCombat = function(){
@@ -117,8 +132,8 @@ function enemyClass(enemyType) {
             this.offSetWidth = this.frame * this.width;
         }
 
-        drawIsoCharacterByFeet(kobaldPic, isoDrawX, isoDrawY, this);
+        drawIsoCharacterByFeet(this.myPic, isoDrawX, isoDrawY, this);
         //drawIsoCharacterByFeet(this.myBitmap, isoDrawX, isoDrawY, this);
-         drawIsoCharacterByFeet(playerPositionPic, isoDrawX, isoDrawY, this);
+        // drawIsoCharacterByFeet(playerPositionPic, isoDrawX, isoDrawY, this);
     }
 }

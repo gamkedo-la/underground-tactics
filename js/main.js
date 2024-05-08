@@ -109,6 +109,9 @@ function loadLevel(whichLevel) {
 		if(roomGrid[i] == TILE_KOBALD){
 			addKobald();
 		}
+		if(roomGrid[i] == TILE_KOA_TOA){
+			addKoaToa();
+		}
 	}
 
 	for(var i = 0; i < potionList.length; i++){
@@ -128,7 +131,11 @@ function loadLevel(whichLevel) {
 	}
 
 	for(var i = 0; i < kobaldList.length; i++){
-		kobaldList[i].init(wizardPic);
+		kobaldList[i].init(kobaldPic,"Kobald", TILE_KOBALD);		
+	}
+	
+	for(var i = 0; i < kaoToaList.length; i++){
+		kaoToaList[i].init(koaToaPic,"Koa Toa", TILE_KOA_TOA);
 	}
 
 	playerOne.reset();
@@ -160,6 +167,9 @@ function moveEverything() {
 		}
 		for(i = 0; i < kobaldList.length; i++){
 			kobaldList[i].movement();
+		} 
+		for(i = 0; i < kaoToaList.length; i++){
+			kaoToaList[i].movement();
 		} 
 		checkPlayerOptionBoxes();
 	}
@@ -220,6 +230,10 @@ function drawEverything() {
 		for(var i = 0; i < kobaldList.length; i++){
 			kobaldList[i].draw();
 		};
+		for(var i = 0; i < kaoToaList.length; i++){
+			kaoToaList[i].draw();
+		};
+
 		for(i = 0; i<smokeList.length; i++){
 			smokeList[i].draw();
 		}

@@ -43,10 +43,9 @@ function drawInitiativeOrder() {
             if(turnTicks == 2){
                 for(i = 0; i < kobaldList[0].maxMovement; i++){
                     kobaldList[0].usingPath = false;
-                    kobaldList[0].move();
+                    kobaldList[0].movement();
                     turnTicks++;
                 }
-                //console.log("Kobald List: " + kobaldList[0].movementArray.length)
             } else if (turnTicks > 2) {
                 kobaldWalk(0);
             }
@@ -60,16 +59,31 @@ function drawInitiativeOrder() {
             if(turnTicks == 2){
                 for(i = 0; i < kobaldList[1].maxMovement; i++){
                     kobaldList[1].usingPath = false;
-                    kobaldList[1].move();
+                    kobaldList[1].movement();
                     turnTicks++;
                 }
-                //console.log("Kobald List: " + kobaldList[1].movementArray.length)
             } else if (turnTicks > 2) {
                 kobaldWalk(1);
             }
             if(turnTicks == 60){
                 turnTicks = 0;
                 kobaldList[1].attackTurn = true;
+                turnNumber++;
+            }
+        } else if(turnNumber == 3){
+            moveBoxHovering = true;
+            if(turnTicks == 2){
+                for(i = 0; i < kaoToaList[1].maxMovement; i++){
+                    kaoToaList[0].usingPath = false;
+                    kaoToaList[0].movement();
+                    turnTicks++;
+                }
+            } else if (turnTicks > 2) {
+                koaToaWalk(0);
+            }
+            if(turnTicks == 60){
+                turnTicks = 0;
+                kaoToaList[0].attackTurn = true;
                 turnNumber++;
             }
         } else {
@@ -144,6 +158,11 @@ function kobaldWalk(whichKobald){
     kobaldList[whichKobald].animateWalk = true;
 }
 
+function koaToaWalk(whichkoaToa){
+    kaoToaList[whichkoaToa].usingPath = true;
+    kaoToaList[whichkoaToa].movement();
+    kaoToaList[whichkoaToa].animateWalk = true;
+}
 function displaySpells(){
     console.log("spellBoxHovering:" + spellBoxHovering)
     if (spellBoxHovering) {
