@@ -27,6 +27,7 @@ function initInput(){
 	});
 
 	canvas.addEventListener('mousedown', function(evt){
+		if (handleMouseClick()) { return }
 		console.log("click")
 		turnAdvance();
 		wizardWalk();

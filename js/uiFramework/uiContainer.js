@@ -12,6 +12,15 @@ function handleMousePosition() {
 	}
 }
 
+function handleMouseClick() {
+	for (const view of views) {
+		if (view.handleMouseClick(MousePosX, MousePosY)) {
+			return true;
+		}
+	}
+	return false;
+}
+
 function drawUiElements() {
 	for (const view of views) {
 		view.draw();

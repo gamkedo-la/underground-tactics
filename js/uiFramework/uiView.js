@@ -42,6 +42,25 @@ function UIView(x, y, width, height) {
 		return false;
 	}
 
+	this.handleMouseClick = function(mouseX, mouseY) {
+		if (this.hidden) {
+			return false;
+		}
+
+		if (mouseX >= this.x && mouseX < this.x + this.width && mouseY >= this.y && mouseY < this.y + this.height) {
+			for (const subview of this.subviews) {
+				const mouseXInSub = mouseX - this.x;
+				const mouseYInSub = mouseY - this.y;
+				if (subview.handleMouseClick(mouseXInSub, mouseYInSub)) {
+					return true;
+				}
+			}
+			console.log('printing the touched view', this);
+			return true;
+		}
+		return false;
+	}
+
 	this.draw = function() {
 		if (this.hidden) {
 			return;
