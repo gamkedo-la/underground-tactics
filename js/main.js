@@ -33,12 +33,6 @@ window.onload = function(){
 	document.addEventListener("keydown", keyPressed);
 	document.addEventListener("keyup", keyReleased);
 	
-	playerOne.reset();
-	addCreatureTurn("Wizard", 5);
-	addCreatureTurn("Enemy 1", 1); //Vince 4/11/24 temporary:  Will be removed when Enemy Class created
-	addCreatureTurn("Enemy 2", 2); //Vince 4/11/24 temporary:  Will be removed when Enemy Class created
-	addCreatureTurn("Enemy 3", 4); //Vince 4/13/24 temporary:  Will be removed when Enemy Class created
-
 	setupMenus();
 	mainOptions = true;
 	mainOptionsMenu.hidden = false;
@@ -64,7 +58,7 @@ function imageLoadingDoneSoStartGame(){
 		checkAllPlayerAndEnemyCollisions();
 		drawEverything();
 	}, 1000/framesPerSecond);
-	loadLevel(levelOne)
+	loadLevel(levelOne);
 	playerOne.init(wizardPic, "Nesquit");
 
 }
@@ -126,8 +120,13 @@ function loadLevel(whichLevel) {
 			potionList[i].init(spellBookPic, 375, "Spell Book 2", TILE_SPELL_BOOK_2);
 		}
 	}
-
 	playerOne.reset();
+	turnOrderList = [];
+	addCreatureTurn("Wizard");
+	enemyList.sort(()=>0.5-Math.random());
+	for(var i = 0; i<enemyList.length; i++){
+		addCreatureTurn("Enemy " + (i+1))
+	}
 	console.log("Finish Load Level");
 }
 		

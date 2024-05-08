@@ -29,7 +29,6 @@ function enemyClass() {
 	}
 
     this.meleeCombat = function(){
-        console.log("Initiate Melee Combat");
         this.combatEngaged = true;
         if(this.attackTurn){
             //kobald will attack with a dagger
@@ -37,13 +36,11 @@ function enemyClass() {
 
             let attackRoll = getRndInteger(1, 20) + 4;
             let damageRoll = getRndInteger(1,4) + 4
-            console.log("Attack Roll: " + attackRoll)
             
             //1d4 + 2 for damage
 
             if(attackRoll >= playerOne.defense){
                 playerOne.health = playerOne.health - damageRoll;
-                console.log("Health: " + playerOne.health)
             }
 
             this.attackTurn = false;

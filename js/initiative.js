@@ -5,14 +5,13 @@ var mainOptions = false;
 var spellOptions = false;
 var potionOptions = false;
 
-function addCreatureTurn(whichName, initiaveScore) {
-    var tempCreature = new TurnOrderClass(whichName, initiaveScore);
+function addCreatureTurn(whichName) {
+    var tempCreature = new TurnOrderClass(whichName);
     turnOrderList.push(tempCreature);
 }
 
-function TurnOrderClass(whichName, initiaveScore) {
+function TurnOrderClass(whichName) {
     this.name = whichName;
-    this.initiaveScore = initiaveScore;
     this.myTurn = false;
 }
 
@@ -38,62 +37,29 @@ function drawInitiativeOrder() {
     //temporary code to advance enemies until Enemy AI implemented
     if (turnNumber > 0){
         turnTicks++;
-        if (turnNumber == 1){
-            moveBoxHovering = true;
-            if(turnTicks == 2){
-                for(i = 0; i < enemyList[0].maxMovement; i++){
-                    enemyList[0].usingPath = false;
-                    enemyList[0].movement();
-                    turnTicks++;
-                }
-            } else if (turnTicks > 2) {
-                kobaldWalk(0);
-            }
-            if(turnTicks == 60){
-                turnTicks = 0;
-                enemyList[0].attackTurn = true;
-                turnNumber++;
-            }
-        } else if(turnNumber == 2){
-            moveBoxHovering = true;
-            if(turnTicks == 2){
-                for(i = 0; i < enemyList[1].maxMovement; i++){
-                    enemyList[1].usingPath = false;
-                    enemyList[1].movement();
-                    turnTicks++;
-                }
-            } else if (turnTicks > 2) {
-                kobaldWalk(1);
-            }
-            if(turnTicks == 60){
-                turnTicks = 0;
-                enemyList[1].attackTurn = true;
-                turnNumber++;
-            }
-        } else if(turnNumber == 3){
-            moveBoxHovering = true;
-            if(turnTicks == 2){
-                for(i = 0; i < enemyList[0].maxMovement; i++){
-                    enemyList[0].usingPath = false;
-                    enemyList[0].movement();
-                    turnTicks++;
-                }
-            } else if (turnTicks > 2) {
-                koaToaWalk(0);
-            }
-            if(turnTicks == 60){
-                turnTicks = 0;
-                enemyList[0].attackTurn = true;
-                turnNumber++;
-            }
-        } else {
+
+        var enemyIndex = turnNumber - 1;
+        if(enemyIndex >= enemyList.length){
             if (turnTicks > 30){
-                turnNumber++;
                 turnTicks = 0;
-                if (turnNumber == 4){
-                    turnNumber = 0;
-                }        
+                turnNumber = 0;        
             } 
+        } else {
+            moveBoxHovering = true;
+            if(turnTicks == 2){
+                for(i = 0; i < enemyList[enemyIndex].maxMovement; i++){
+                    enemyList[enemyIndex].usingPath = false;
+                    enemyList[enemyIndex].movement();
+                    turnTicks++;
+                }
+            } else if (turnTicks > 2) {
+                enemyWalk(enemyIndex);
+            }
+            if(turnTicks == 60){
+                turnTicks = 0;
+                enemyList[enemyIndex].attackTurn = true;
+                turnNumber++;
+            }
         }
     }
 }
@@ -152,27 +118,20 @@ function wizardWalk() {
     }
 }
 
-function kobaldWalk(whichKobald){
-    enemyList[whichKobald].usingPath = true;
-    enemyList[whichKobald].movement();
-    enemyList[whichKobald].animateWalk = true;
+function enemyWalk(whichEnemy){
+    enemyList[whichEnemy].usingPath = true;
+    enemyList[whichEnemy].movement();
+    enemyList[whichEnemy].animateWalk = true;
 }
 
-function koaToaWalk(whichkoaToa){
-    enemyList[whichkoaToa].usingPath = true;
-    enemyList[whichkoaToa].movement();
-    enemyList[whichkoaToa].animateWalk = true;
-}
 function displaySpells(){
-    console.log("spellBoxHovering:" + spellBoxHovering)
     if (spellBoxHovering) {
         mainOptions = false;
         mainOptionsMenu.hidden = true;
         spellOptions = true;
         spellOptionsMenu.hidden = false;
         potionOptions = false;
-        potionOptionsMenu.hidden = true;
-        console.log(mainOptions, spellOptions, potionOptions)    
+        potionOptionsMenu.hidden = true;    
     }
 }
  
