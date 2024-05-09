@@ -100,8 +100,10 @@ function loadLevel(whichLevel) {
 			}
 			addPotion(whichPotion, "Kobald");
 		}
-		if(roomGrid[i] == TILE_KOBALD || roomGrid[i] == TILE_KOA_TOA){
-			addEnemy(roomGrid[i]);
+		if( roomGrid[i] == TILE_KOBALD || 
+			roomGrid[i] == TILE_KOBALD_ARCHER ||
+			roomGrid[i] == TILE_KOA_TOA){
+			    addEnemy(roomGrid[i]);
 		}
 	}
 

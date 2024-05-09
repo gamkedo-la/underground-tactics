@@ -22,6 +22,9 @@ function enemyClass() {
         } else if (whichTile == TILE_KOA_TOA){
             whichGraphic = koaToaPic;
             this.maxMovement = 6;
+        } else if (whichTile == TILE_KOBALD_ARCHER){
+            whichGraphic = kobaldArcherPic;
+            this.maxMovement = 8;
         }
 		this.superInit(whichGraphic,'enemy', whichTile);
         console.log(whichTile)
