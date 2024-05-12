@@ -34,6 +34,7 @@ window.onload = function(){
 	document.addEventListener("keyup", keyReleased);
 	
 	setupMenus();
+	testUISetup(); // Just a function for testing out various UI elements. Comment it out as you please.
 	mainOptions = true;
 	mainOptionsMenu.hidden = false;
 }
