@@ -12,6 +12,8 @@ enemyClass.prototype = new CharacterBase();
 
 function enemyClass() {
     this.findPlayer = true;
+    this.meleeCombatTactics;
+    this.archerCombatTactics;
 
 	this.superInit = this.init;
 	this.init = function (whichTile){
@@ -19,12 +21,18 @@ function enemyClass() {
         if(whichTile == TILE_KOBALD){
             whichGraphic = kobaldPic;
             this.maxMovement = 8;
+            this.meleeCombatTactics = true;
+            this.archerCombatTactics = false;
         } else if (whichTile == TILE_KOA_TOA){
             whichGraphic = koaToaPic;
             this.maxMovement = 6;
+            this.meleeCombatTactics = true;
+            this.archerCombatTactics = false;
         } else if (whichTile == TILE_KOBALD_ARCHER){
             whichGraphic = kobaldArcherPic;
             this.maxMovement = 8;
+            this.meleeCombatTactics = false;
+            this.archerCombatTactics = true;
         }
 		this.superInit(whichGraphic,'enemy', whichTile);
         console.log(whichTile)
@@ -53,8 +61,13 @@ function enemyClass() {
     this.checkPlayerLocationForNextMove = function(currentIndex){
         var enemyRow = whichRow(currentIndex);
         var playerIndex = getTileIndexAtPixelCoord(playerOne.x,playerOne.y);
-        var enemyDestinationIndex = indexS(playerIndex);
-        var destinationRow = whichRow(enemyDestinationIndex);
+        if(this.meleeCombatTactics){
+            var enemyDestinationIndex = indexS(playerIndex);   
+            var destinationRow = whichRow(enemyDestinationIndex);
+        } else if (this.archerCombatTactics){
+            var enemyDestinationIndex = indexS(playerIndex);   
+            var destinationRow = whichRow(enemyDestinationIndex);
+        }
         var enemyCol = currentIndex%ROOM_COLS;
         var playerCol = Math.floor(playerOne.x/ROOM_W);
 

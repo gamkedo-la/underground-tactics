@@ -31,7 +31,7 @@ var levelOne = [
 					 52,  1,  1,  1,  1,  1,150,  1,  1,  1,  1, 19,  1,  1,  1,  4,  1,  1,  1,  1,
 					 50,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 19,  1,  1,  1,  1,  1,  1,  1,  1,
 					 53,  1,  1,  1,  1,  1, 55,  1,  1,  3,  1, 19,  1,  1,  1, 55,  1,  1,  1,  1,
-					 50,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 19,  3,  1,  3,  1,  1,  1,  1,  1,
+					 60,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 19,  3,  1,  3,  1,  1,  1,  1,  1,
 					 52, 18,  1,  1,  1,  1,  1,  3,  1,  1,  1, 19,  4,  1,  1,  1,  1,  1,  1,  1,
 					 54, 14,  1,  1,  1,  1,155,  1,  3,  1,  1, 19,  1,  1,  1,  1,  4,  1,  1,  1,
 					 52, 12,  1,  1,  1,  1,  1,  3,  1,  1,  1, 19, 19, 19, 19, 19, 19, 19, 19, 19,
@@ -77,6 +77,7 @@ var levelTwo =[
 	const TILE_WALL_STONE_4 = 53;
 	const TILE_WALL_STONE_5 = 54;
 	const TILE_COLUMN_STONE_1 = 55;
+	const TILE_WOODEN_DOOR_1 = 60;
 	//Player and Enemies 100 through 149
 	const TILE_PLAYER = 100;
 	const TILE_KOBALD = 110;
@@ -100,7 +101,8 @@ var levelTwo =[
 	var tileNavData = [
 		{navMode: NAVMODE_IMPASSIBLE, tileTypes: [TILE_WALL_STONE_1, TILE_WALL_STONE_2, TILE_WALL_STONE_3, TILE_WALL_STONE_4, TILE_WALL_STONE_5, TILE_COLUMN_STONE_1]},
 		{navMode: NAVMODE_WALKABLE, tileTypes: [TILE_FLOOR_SEWER_1, TILE_FLOOR_SEWER_2, TILE_FLOOR_SEWER_3, TILE_FLOOR_SEWER_4, TILE_FLOOR_SEWER_5, TILE_FLOOR_SEWER_6, TILE_FLOOR_SEWER_7, TILE_FLOOR_SEWER_8, TILE_FLOOR_SEWER_9, TILE_FLOOR_STONE_1, TILE_FLOOR_STONE_2, TILE_FLOOR_STONE_3, TILE_FLOOR_STONE_4]},
-		{navMode: NAVMODE_FLYABLE, tileTypes: [TILE_WATER]}
+		{navMode: NAVMODE_FLYABLE, tileTypes: [TILE_WATER]},
+		{navMode: NAVMODE_LOCKED, tileTypes: [TILE_WOODEN_DOOR_1]},
 	];
 
 	function tileTypeNavMode(tiletype){
