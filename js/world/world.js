@@ -53,8 +53,9 @@ var levelTwo =[
 					1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 					1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
 				];
-					
-	//Floor tiles 1 through 49
+
+        //World tiles in the spritesheet are 0-indexed, and each tile are 50x75.
+	//Floor tiles 0 through 49
 	const TILE_FLOOR_STONE_1 = 1;
 	const TILE_FLOOR_STONE_2 = 2;
 	const TILE_FLOOR_STONE_3 = 3;
@@ -130,6 +131,19 @@ function tileCoordToIsoCoord(tileC, tileR ){
 
 var drawTileIndicators = true
 var showTileNumber = true;
+
+function drawTrackTile(worldTilesSpriteSheetIndex, dx, dy){
+	// Counting from 0
+	const row = Math.floor(worldTilesSpriteSheetIndex / 10);
+	const col = worldTilesSpriteSheetIndex % 10;
+
+	const sWidth = 50;
+	const sHeight = 75;
+	const sx = col * sWidth;
+	const sy = row * sHeight;
+
+	canvasContext.drawImage(worldTilesPic, sx, sy, sWidth, sHeight, dx, dy, sWidth, sHeight);
+}
 					
 function drawTracks(){
 	var tileIndex = 0;
@@ -140,7 +154,7 @@ function drawTracks(){
 	var miniMapX = 750;
 	var miniMapY = 2;
 	sharedAnimCycle++;
-	
+
 	for(var eachRow = 0; eachRow < ROOM_ROWS; eachRow++){
 		tileLeftEdgeX = 7;
 		
@@ -150,7 +164,9 @@ function drawTracks(){
 			isoTileLeftEdgeX = (tileLeftEdgeX - tileTopEdgeY)/2;
 			isoTileTopEdgeY = (tileLeftEdgeX + tileTopEdgeY)/4;
 			tileCoordToIsoCoord(eachCol, eachRow);		
-			canvasContext.drawImage(trackPics[trackTypeHere], isoDrawX - ISO_GRID_W/2, isoDrawY - ISO_TILE_GROUND_Y);
+			drawTrackTile(trackTypeHere,
+				      isoDrawX - ISO_GRID_W/2,
+				      isoDrawY - ISO_TILE_GROUND_Y);
 			var textColor;
 			if(drawTileIndicators){
 				if(	trackTypeHere == TILE_FLOOR_STONE_1 ||
