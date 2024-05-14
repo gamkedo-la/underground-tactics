@@ -1,3 +1,5 @@
+var spacebarMoveWasRequested = false; // an alternative to clicking the move button
+
 const KEY_W = 87; // "W"
 const KEY_S = 83; // "S"
 const KEY_A = 65; // "A"
@@ -15,6 +17,15 @@ const KEY_M = 77;
 var MousePosX;
 var MousePosY;
 
+// mouse clicks and spacebar can fire this
+function executeCommand(){
+		turnAdvance();
+		wizardWalk();
+		displaySpells();
+		displayItems();
+		playerOne.fireBolt();
+	//	playerOne.levitate(); 
+}
 
 function initInput(){
 	
@@ -29,12 +40,7 @@ function initInput(){
 	canvas.addEventListener('mousedown', function(evt){
 		if (handleMouseClick()) { return }
 		console.log("click")
-		turnAdvance();
-		wizardWalk();
-		displaySpells();
-		displayItems();
-		playerOne.fireBolt();
-	//	playerOne.levitate(); 
+		executeCommand();
 	});
 	
 	document.addEventListener("keydown", keyPressed);
@@ -63,6 +69,13 @@ function keyPressed(evt) {
 	if(mute == evt.keyCode) {
 		toggleMute();
 	}
+
+	if (toggleMovement == evt.keyCode) {
+		// see initiative.js line 115 ish
+		spacebarMoveWasRequested = true;
+		executeCommand(); // don't wait for a mouse click
+	}
+
 }
 
 function keyReleased(evt) {

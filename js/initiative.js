@@ -112,9 +112,10 @@ function turnAdvance() {
 }
 
 function wizardWalk() {
-    if (moveBoxHovering) {
+    if (moveBoxHovering || spacebarMoveWasRequested) {
         playerOne.usingPath = !playerOne.usingPath;
         playerOne.animateWalk = true;
+		spacebarMoveWasRequested = false;
     }
 }
 
