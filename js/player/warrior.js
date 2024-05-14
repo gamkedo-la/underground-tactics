@@ -103,6 +103,8 @@ function warriorClass() {
 	this.draw = function(){
 		gameCoordToIsoCoord(this.x,this.y);
 
+		this.tiedUp = true; // temporary for testing
+
 		if(this.animateWalk){
 			this.ticks++;
 			if(this.ticks > 3){
@@ -120,6 +122,19 @@ function warriorClass() {
 			}
 			this.offSetWidth = this.frame * this.width;
 		}
+		if(this.tiedUp){
+			this.offSetHeight = this.height * 8;
+			this.ticks++;
+			if(this.ticks > 4){
+				this.frame++;
+				this.ticks = 0;
+				footStepSoundTurn++
+			}
+			if(this.frame > this.frames){
+				this.frame = 0;
+			}
+			this.offSetWidth = this.frame * this.width;
+		}	
 		drawIsoCharacterByFeet(this.myBitmap,isoDrawX, isoDrawY, this);
 		drawIsoCharacterByFeet(playerPositionPic,isoDrawX, isoDrawY, this);
 

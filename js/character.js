@@ -33,6 +33,7 @@ function CharacterBase (){
 	this.levitationTurn = 0;
 	this.combatEngaged = false;
     this.attackTurn = true;
+	this.tiedUp = false;
 
 	this.reset = function(tileMatch) {
         this.speed = 0;
