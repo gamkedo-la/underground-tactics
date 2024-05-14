@@ -46,7 +46,9 @@ function initInput(){
 	document.addEventListener("keydown", keyPressed);
 	document.addEventListener("keyup", keyReleased);
 	
-	playerOne.setupControls(KEY_W, KEY_D, KEY_S, KEY_A);
+	playerOne.setupControls(
+		KEY_W, KEY_D, KEY_S, KEY_A,
+		KEY_UP_ARROW, KEY_RIGHT_ARROW, KEY_DOWN_ARROW, KEY_LEFT_ARROW);
 }
 
 function keyPressed(evt) {
@@ -85,17 +87,21 @@ function keyReleased(evt) {
 
 function setKeyHoldState(thisKey, thisWarrior, setTo) {
 	
-	if(thisKey == thisWarrior.controlKeyForNorth){
+	if(thisKey == thisWarrior.controlKeyForNorth
+		|| thisKey == thisWarrior.controlKeyForNorth2){
 		thisWarrior.keyHeld_North = setTo;
 	}
-	if(thisKey == thisWarrior.controlKeyForEast){
+	if(thisKey == thisWarrior.controlKeyForEast
+		|| thisKey == thisWarrior.controlKeyForEast2){
 		thisWarrior.keyHeld_East = setTo;
 	}
-	if(thisKey == thisWarrior.controlKeyForSouth){
+	if(thisKey == thisWarrior.controlKeyForSouth
+		|| thisKey == thisWarrior.controlKeyForSouth2){
 		thisWarrior.keyHeld_South = setTo;
 	}
 	
-	if(thisKey == thisWarrior.controlKeyForWest){
+	if(thisKey == thisWarrior.controlKeyForWest
+		|| thisKey == thisWarrior.controlKeyForWest2){
 		thisWarrior.keyHeld_West = setTo;
 	}
 }
