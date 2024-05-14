@@ -103,8 +103,6 @@ function warriorClass() {
 	this.draw = function(){
 		gameCoordToIsoCoord(this.x,this.y);
 
-		this.tiedUp = true; // temporary for testing
-
 		if(this.animateWalk){
 			this.ticks++;
 			if(this.ticks > 3){
