@@ -8,6 +8,9 @@ const ROOM_H = ROOM_W;
 const ROOM_COLS = 20;
 const ROOM_ROWS = 20;
 
+// the tile cursor sprites are larger than a tile (60px vs 50px) for glow overlap
+const CURSOROFFSETX = -5;
+const CURSOROFFSETY = 0;
 
 var isoDrawX = 0;
 var isoDrawY = 0;
@@ -183,20 +186,26 @@ function drawTracks(){
 					trackTypeHere == TILE_FLOOR_SEWER_6 ||
 					trackTypeHere == TILE_FLOOR_SEWER_7){
 						canvasContext.drawImage(tileIndicatorPic, isoDrawX - ISO_GRID_W/2, isoDrawY - ISO_TILE_GROUND_Y);
-						textColor = "black"
+						textColor = "rgba(128,128,128,1)" //"black"
 				}
 
+				// draw the path the player is creating for the next move
+				// with a highlight at the cursor position
 				if(	playerOne.movementArray[0]==tileIndex ||
 					enemyList[0].movementArray[0]==tileIndex){
-						textColor = "white";
-						canvasContext.drawImage(tileIndicatorWhitePic, isoDrawX - ISO_GRID_W/2, isoDrawY - ISO_TILE_GROUND_Y);
+						// the main "TARGET CURSOR" for movement - fixme: don't do for enemies?
+						textColor = "rgba(255,255,255,1)" //"white";
+						canvasContext.globalAlpha = Math.sin(performance.now()/100)*0.5+0.5; // 0..1
+						canvasContext.drawImage(tileIndicatorWhitePic, isoDrawX - ISO_GRID_W/2 + CURSOROFFSETX, isoDrawY - ISO_TILE_GROUND_Y + CURSOROFFSETY);
+						canvasContext.globalAlpha = 1;
 				} else if(playerOne.movementArray.includes(tileIndex) ||
 						enemyList[0].movementArray.includes(tileIndex)){
-							textColor = "cyan";
-							canvasContext.drawImage(tileIndicatorCyanPic, isoDrawX - ISO_GRID_W/2, isoDrawY - ISO_TILE_GROUND_Y);
+							textColor = "rgba(0,64,255,1)" //"cyan";
+							canvasContext.drawImage(tileIndicatorCyanPic, isoDrawX - ISO_GRID_W/2 + CURSOROFFSETX, isoDrawY - ISO_TILE_GROUND_Y + CURSOROFFSETY);
 				} else {
 						
 				}
+				colorText(tileIndex, isoDrawX-10+1, isoDrawY+1, "black", "10px Arial Black" ); // drop shadow
 				colorText(tileIndex, isoDrawX-10, isoDrawY, textColor, "10px Arial Black" );
 			}	 
 			tileIndex++;
