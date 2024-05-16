@@ -9,9 +9,11 @@ function addPlayer(playerTileType){
 	if(playerTileType == TILE_WARRIOR){
 		var playerPic = warrriorPic;
 		var playerName = "Lance"
+		var tileType = TILE_WARRIOR;
+		var tiedUp = true;
 	}
 	
-	tempPlayer.init(playerPic, playerName);
+	tempPlayer.init(playerPic, playerName, tileType, tiedUp);
     playerList.push(tempPlayer);
 }
 
@@ -38,8 +40,8 @@ function warriorClass() {
 	}
 
 	this.superInit = this.init;
-	this.init = function (whichGraphic, whichName){
-		this.superInit(whichGraphic, whichName, TILE_PLAYER);
+	this.init = function (whichGraphic, whichName, whichTile, tied){
+		this.superInit(whichGraphic, whichName, whichTile, tied);
 	}
 
 

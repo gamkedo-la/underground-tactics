@@ -63,9 +63,10 @@ function CharacterBase (){
 		this.popToGrid();
     }
 
-    this.init = function(whichGraphic, whichName, tileTypeMatch) {
+    this.init = function(whichGraphic, whichName, tileTypeMatch, tied) {
         this.myBitmap = whichGraphic;
         this.myName = whichName;
+		this.tiedUp = tied;
         this.reset(tileTypeMatch);
     }
 

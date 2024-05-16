@@ -60,7 +60,7 @@ function imageLoadingDoneSoStartGame(){
 		drawEverything();
 	}, 1000/framesPerSecond);
 	loadLevel(levelOne);
-	playerOne.init(wizardPic, "Nesquit");
+	playerOne.init(wizardPic, "Nesquit", TILE_PLAYER);
 }
 
 function nextLevel() {
@@ -132,6 +132,9 @@ function loadLevel(whichLevel) {
 	for(var i = 0; i<enemyList.length; i++){
 		addCreatureTurn("Enemy " + (i+1))
 	}
+	for(var i = 0; i<playerList.length; i++){
+		addCreatureTurn("Player " + (i+1))
+	}
 	console.log("Finish Load Level");
 }
 		
@@ -160,7 +163,11 @@ function moveEverything() {
 		}
 		for(i = 0; i < enemyList.length; i++){
 			enemyList[i].movement();
+		}
+		for(i = 0; i < playerList.length; i++){
+			playerList[i].movement();
 		} 
+
 		checkPlayerOptionBoxes();
 	}
 	
@@ -219,6 +226,9 @@ function drawEverything() {
 		};
 		for(var i = 0; i < enemyList.length; i++){
 			enemyList[i].draw();
+		};
+		for(var i = 0; i < playerList.length; i++){
+			playerList[i].draw();
 		};
 		for(i = 0; i<smokeList.length; i++){
 			smokeList[i].draw();
