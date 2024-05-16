@@ -212,12 +212,16 @@ function drawPlayerOptions() {
                 } else {
                     colorText("Items", useItemX + 5, useItemY + 65, "red", "14px Arial Black");
                 }
-                canvasContext.drawImage(wizardMovementPic, moveOptionX, moveOptionY);
-                if (moveBoxHovering) {
-                    colorText("Move", moveOptionX + 5, moveOptionY + 65, "lime", "14px Arial Black");
-                } else {
-                    colorText("Move", moveOptionX + 5, moveOptionY + 65, "red", "14px Arial Black");
-                }
+
+		if (playerOne.remainingStamina <= 0) {
+		    canvasContext.drawImage(wizardMovementPic, moveOptionX, moveOptionY);
+		    if (moveBoxHovering) {
+			colorText("Move", moveOptionX + 5, moveOptionY + 65, "lime", "14px Arial Black");
+		    } else {
+			colorText("Move", moveOptionX + 5, moveOptionY + 65, "red", "14px Arial Black");
+		    }
+		}
+
                 canvasContext.drawImage(wizardSpellPic, spellBoxOptionX, spellBoxOptionY);
                 if (spellBoxHovering) {
                     colorText("Spell", spellBoxOptionX + 5, spellBoxOptionY + 65, "lime", "14px Arial Black");
