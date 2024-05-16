@@ -1,6 +1,21 @@
 const ISO_CHAR_FOOT_Y = 8;
 const COLLIDE_BUMP_MULT = 2; // this needs to be improved.  This could potentially cause enemy or player in an illegal position (wall)
 
+playerList = [];
+
+function addPlayer(playerTileType){
+    var tempPlayer = new warriorClass();
+
+	if(playerTileType == TILE_WARRIOR){
+		var playerPic = warrriorPic;
+		var playerName = "Lance"
+	}
+	
+	tempPlayer.init(playerPic, playerName);
+    playerList.push(tempPlayer);
+}
+
+
 warriorClass.prototype = new CharacterBase();
 
 function warriorClass() {

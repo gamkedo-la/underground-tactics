@@ -83,6 +83,7 @@ var levelTwo =[
 	const TILE_WOODEN_DOOR_1 = 60;
 	//Player and Enemies 100 through 149
 	const TILE_PLAYER = 100;
+	const TILE_WARRIOR = 101;
 	const TILE_KOBALD = 110;
 	const TILE_KOBALD_ARCHER = 111;
 	const TILE_KOA_TOA = 112;

@@ -61,7 +61,6 @@ function imageLoadingDoneSoStartGame(){
 	}, 1000/framesPerSecond);
 	loadLevel(levelOne);
 	playerOne.init(wizardPic, "Nesquit");
-
 }
 
 function nextLevel() {
@@ -105,6 +104,9 @@ function loadLevel(whichLevel) {
 			roomGrid[i] == TILE_KOBALD_ARCHER ||
 			roomGrid[i] == TILE_KOA_TOA){
 			    addEnemy(roomGrid[i]);
+		}
+		if(roomGrid[i] == TILE_WARRIOR){  //used to add Player that's captured
+			addPlayer(roomGrid[i]);
 		}
 	}
 
