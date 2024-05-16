@@ -22,6 +22,21 @@ function determineSequenceOrder() {
 
 var turnTicks = 0;
 
+// Called by drawInitiativeOrder and turnAdvance, but fallible, ought to be
+// called when turn number changes.
+function resetCharacterWithTurnNumber(turnNumber0) {
+    if (turnNumber0 === 0) {
+	playerOne.resetTurn();
+    } else {
+	// Can assume that it's the enemy
+	// enemyIndex calculation follows drawInitiativeOrder
+	const enemyIndex = turnNumber0 - 1;
+	if (enemyList[enemyIndex] != undefined) {
+	    enemyList[enemyIndex].resetTurn();
+	}
+    }
+}
+
 function drawInitiativeOrder() {
     colorText("INITIATIVE", canvas.width - 100, 30, "WHITE");
     let yPos = 20;
@@ -42,7 +57,8 @@ function drawInitiativeOrder() {
         if(enemyIndex >= enemyList.length){
             if (turnTicks > 30){
                 turnTicks = 0;
-                turnNumber = 0;        
+		turnNumber = 0;
+		resetCharacterWithTurnNumber(turnNumber);
             } 
         } else {
             moveBoxHovering = true;
@@ -58,7 +74,8 @@ function drawInitiativeOrder() {
             if(turnTicks == 60){
                 turnTicks = 0;
                 enemyList[enemyIndex].attackTurn = true;
-                turnNumber++;
+		turnNumber++;
+		resetCharacterWithTurnNumber(turnNumber);
             }
         }
     }
@@ -108,6 +125,7 @@ function turnAdvance() {
         if(playerOne.levitating){
             playerOne.levitationTurn++;
         }
+	resetCharacterWithTurnNumber(turnNumber);
     }
 }
 

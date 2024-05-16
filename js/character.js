@@ -1,3 +1,5 @@
+const WARRIOR_TOTAL_TURN_STAMINA = 10;
+
 function CharacterBase (){
 	this.x;
 	this.y;
@@ -19,6 +21,7 @@ function CharacterBase (){
 	this.maxHealth = 4;
 	this.trapCoolDownTimer = 0;
 	this.trapCoolDownCounter = 0;
+	this.remainingStamina = WARRIOR_TOTAL_TURN_STAMINA;
 	this.movementArray = [67];
 	this.usingPath = false;
 	this.animateWalk = false;
@@ -65,6 +68,14 @@ function CharacterBase (){
         this.myName = whichName;
         this.reset(tileTypeMatch);
     }
+
+	this.resetTurn = function(isPlayer = false) {
+		// Currently, this is called by drawInitiativeOrder in
+		// initiative.js
+		// There really ought to be logic code responsible for turn
+		// order stuff.
+		this.remainingStamina = WARRIOR_TOTAL_TURN_STAMINA;
+	}
 
 	this.popToGrid = function(){
 		var currentIndex = getTileIndexAtPixelCoord(this.x,this.y);
@@ -141,7 +152,7 @@ function CharacterBase (){
 
 			}
 
-			if(this.movementArray.length > 10){
+			if(this.movementArray.length > this.remainingStamina) {
 				this.movementArray.shift();
 			}
 		} else {
@@ -155,6 +166,9 @@ function CharacterBase (){
 			if(this.movementArray[lastNode] == currentIndex){
 				this.popToGrid();
 				this.movementArray.pop();
+				
+				this.remainingStamina--;
+
 				if(this.movementArray.length == 0){
 					this.usingPath = false;
 					this.movementArray[0] = currentIndex; // setting the head of the next array movement
