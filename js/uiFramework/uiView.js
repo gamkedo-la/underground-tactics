@@ -55,7 +55,9 @@ function UIView(x, y, width, height) {
 					return true;
 				}
 			}
-			console.log('printing the touched view', this);
+			if (this.onPress) {
+				this.onPress();
+			}
 			return true;
 		}
 		return false;

@@ -13,18 +13,27 @@ function MainOptionsMenu(x, y, width, height) {
 	// useItemButton.backgroundColor = 'white';
 	useItemButton.image = useItemPic;
 	useItemButton.title = "Items";
+	useItemButton.onPress = () => {
+		console.log('"Items" button pressed');
+	};
 	this.addSubView(useItemButton);
 
 	const moveButton = new UIComboButton(80, 40, 50, 75);
 	// moveButton.backgroundColor = 'cyan';
 	moveButton.image = wizardMovementPic;
 	moveButton.title = "Move";
+	moveButton.onPress = () => {
+		console.log('"Move" button pressed');
+	};
 	this.addSubView(moveButton);
 
 	const spellBoxButton = new UIComboButton(145, 40, 50, 75);
 	// spellBoxButton.backgroundColor = 'pink';
 	spellBoxButton.image = wizardSpellPic;
 	spellBoxButton.title = "Spell";
+	spellBoxButton.onPress = () => {
+		console.log('"Spell" button pressed');
+	};
 	this.addSubView(spellBoxButton);
 
 	const endTurnButton = new UIComboButton(210, 40, 50, 75);
@@ -32,6 +41,25 @@ function MainOptionsMenu(x, y, width, height) {
 	endTurnButton.image = endTurnPic;
 	endTurnButton.title = "End Turn";
 	endTurnButton.textOffsetX = -10;
+	endTurnButton.onPress = () => {
+		console.log('"End Turn" button pressed');
+
+		// TODO: have "button pressed" functions that can be called by both this UI and the initiative.js
+		turnNumber++;
+		if (turnNumber >= turnOrderList.length) {
+				turnNumber = 0;
+		}
+		mainOptions = true;
+		mainOptionsMenu.hidden = false;
+		spellOptions = false;
+		spellOptionsMenu.hidden = true;
+		potionOptions = false;
+		potionOptionsMenu.hidden = true;
+		if(playerOne.levitating){
+				playerOne.levitationTurn++;
+		}
+		resetCharacterWithTurnNumber(turnNumber);
+	};
 	this.addSubView(endTurnButton);
 }
 
