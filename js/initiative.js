@@ -43,11 +43,10 @@ function drawInitiativeOrder() {
         }
     }
     //temporary code to advance enemies until Enemy AI implemented
-    if (turnNumber > 0){
+    if (charList[turnNumber].isHuman == false){
         turnTicks++;
 
-        var enemyIndex = turnNumber - 1;
-        if(enemyIndex >= charList.length){
+        if(turnNumber >= charList.length){ // only wraps if Enemy is last in charList
             if (turnTicks > 30){
                 turnTicks = 0;
 		turnNumber = 0;
@@ -56,17 +55,17 @@ function drawInitiativeOrder() {
         } else {
             moveBoxHovering = true;
             if(turnTicks == 2){
-                for(i = 0; i < charList[enemyIndex].maxMovement; i++){
-                    charList[enemyIndex].usingPath = false;
-                    charList[enemyIndex].movement();
+                for(i = 0; i < charList[turnNumber].maxMovement; i++){
+                    charList[turnNumber].usingPath = false;
+                    charList[turnNumber].movement();
                     turnTicks++;
                 }
             } else if (turnTicks > 2) {
-                enemyWalk(enemyIndex);
+                enemyWalk(turnNumber);
             }
             if(turnTicks == 60){
                 turnTicks = 0;
-                charList[enemyIndex].attackTurn = true;
+                charList[turnNumber].attackTurn = true;
 		turnNumber++;
 		resetCharacterWithTurnNumber(turnNumber);
             }
@@ -197,7 +196,7 @@ function checkPlayerOptionBoxes() {
 function drawPlayerOptions() {
     colorText("Turn Options", canvas.width - 200, canvas.height - 90, "red", "14px Arial Black");
     for(var i = 0; i < turnOrderList.length; i++){
-        if (turnOrderList[i].myTurn == true && turnOrderList[i].name == "Wizard") {
+        if (charList[turnNumber].isHuman) {
             if(mainOptions){
                 mainOptionsMenu.hidden = false;
                 canvasContext.drawImage(useItemPic, useItemX, useItemY);
