@@ -2,7 +2,7 @@ var camPanX = 0;
 var camPanY = 0;
 
 function updatedCameraPosition(){
-	gameCoordToIsoCoord(playerOne.x,playerOne.y);
+	gameCoordToIsoCoord(charList[turnNumber].x,charList[turnNumber].y);
 	camPanX = isoDrawX - canvas.width/2;
 	camPanY = isoDrawY - canvas.height/2;
 	

@@ -198,15 +198,15 @@ function drawTracks(){
 
 				// draw the path the player is creating for the next move
 				// with a highlight at the cursor position
-				if(	playerOne.movementArray[0]==tileIndex ||
-					charList[0].movementArray[0]==tileIndex){
+				if(	charList[turnNumber].movementArray[0]==tileIndex ||
+					charList[turnNumber].movementArray[0]==tileIndex){
 						// the main "TARGET CURSOR" for movement - fixme: don't do for enemies?
 						textColor = "rgba(255,255,255,1)" //"white";
 						canvasContext.globalAlpha = Math.sin(performance.now()/100)*0.5+0.5; // 0..1
 						canvasContext.drawImage(tileIndicatorWhitePic, isoDrawX - ISO_GRID_W/2 + CURSOROFFSETX, isoDrawY - ISO_TILE_GROUND_Y + CURSOROFFSETY);
 						canvasContext.globalAlpha = 1;
-				} else if(playerOne.movementArray.includes(tileIndex) ||
-						charList[0].movementArray.includes(tileIndex)){
+				} else if(charList[turnNumber].movementArray.includes(tileIndex) ||
+						charList[turnNumber].movementArray.includes(tileIndex)){
 							textColor = "rgba(0,64,255,1)" //"cyan";
 							canvasContext.drawImage(tileIndicatorCyanPic, isoDrawX - ISO_GRID_W/2 + CURSOROFFSETX, isoDrawY - ISO_TILE_GROUND_Y + CURSOROFFSETY);
 				} else {

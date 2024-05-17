@@ -44,21 +44,7 @@ function MainOptionsMenu(x, y, width, height) {
 	endTurnButton.onPress = () => {
 		console.log('"End Turn" button pressed');
 
-		// TODO: have "button pressed" functions that can be called by both this UI and the initiative.js
-		turnNumber++;
-		if (turnNumber >= turnOrderList.length) {
-				turnNumber = 0;
-		}
-		mainOptions = true;
-		mainOptionsMenu.hidden = false;
-		spellOptions = false;
-		spellOptionsMenu.hidden = true;
-		potionOptions = false;
-		potionOptionsMenu.hidden = true;
-		if(playerOne.levitating){
-				playerOne.levitationTurn++;
-		}
-		resetCharacterWithTurnNumber(turnNumber);
+		turnAdvance();
 	};
 	this.addSubView(endTurnButton);
 }

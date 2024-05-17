@@ -5,7 +5,6 @@ function addEnemy(enemyTileType){
     var tempEnemy = new enemyClass();
 	tempEnemy.init(enemyTileType);
     charList.push(tempEnemy);
-
 }
 
 enemyClass.prototype = new CharacterBase();
@@ -50,8 +49,8 @@ function enemyClass() {
             
             //1d4 + 2 for damage
 
-            if(attackRoll >= playerOne.defense){
-                playerOne.health = playerOne.health - damageRoll;
+            if(attackRoll >= charList[turnNumber].defense){
+                charList[turnNumber].health = charList[turnNumber].health - damageRoll;
             }
 
             this.attackTurn = false;
@@ -60,6 +59,7 @@ function enemyClass() {
 
     this.checkPlayerLocationForNextMove = function(currentIndex){
         var enemyRow = whichRow(currentIndex);
+        var playerOne = charList[0]; // To do:  Scan for nearest is human
         var playerIndex = getTileIndexAtPixelCoord(playerOne.x,playerOne.y);
         if(this.meleeCombatTactics){
             var enemyDestinationIndex = indexS(playerIndex);   

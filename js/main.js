@@ -1,7 +1,7 @@
 var canvas;
 var canvasContext;
 //characters (Player, NPC's, Enemies)
-var playerOne = new warriorClass();
+
 
 function resetEnemyLists(){
 }
@@ -60,7 +60,7 @@ function imageLoadingDoneSoStartGame(){
 		drawEverything();
 	}, 1000/framesPerSecond);
 	loadLevel(levelOne);
-	playerOne.init(wizardPic, "Nesquit", TILE_PLAYER);
+	//playerOne.init(wizardPic, "Nesquit", TILE_PLAYER);  //Load Level should be handling this
 }
 
 function nextLevel() {
@@ -125,15 +125,11 @@ function loadLevel(whichLevel) {
 			potionList[i].init(spellBookPic, 375, "Spell Book 2", TILE_SPELL_BOOK_2);
 		}
 	}
-	playerOne.reset();
 	turnOrderList = [];
-	addCreatureTurn("Wizard");
 	charList.sort(()=>0.5-Math.random());
 	for(var i = 0; i<charList.length; i++){
-		addCreatureTurn("Enemy " + (i+1))
-	}
-	for(var i = 0; i<playerList.length; i++){
-		addCreatureTurn("Player " + (i+1))
+		charList[i].reset();
+		addCreatureTurn((charList[i].isHuman ? "Player ":"Enemy ") + (i+1))
 	}
 	console.log("Finish Load Level");
 }
@@ -141,7 +137,7 @@ function loadLevel(whichLevel) {
 //All movement occurs here.  This is called every frame.
 function moveEverything() {
 	if(liveGame){
-		playerOne.movement();
+		charList[turnNumber].movement();
 		for(i = 0; i< fireBoltList.length; i++){
 			fireBoltList[i].move();
 		}
@@ -155,7 +151,7 @@ function moveEverything() {
 		} 
 		updatedCameraPosition();
 		for(i = 0; i < potionList.length; i++){
-			if(playerOne.checkCollisionsAgainstItem(potionList[i])){
+			if(charList[turnNumber].isHuman && charList[turnNumber].checkCollisionsAgainstItem(potionList[i])){
 				console.log(potionList.length)
 				potionList.splice(i,1);
 				console.log(potionList.length)
@@ -164,10 +160,6 @@ function moveEverything() {
 		for(i = 0; i < charList.length; i++){
 			charList[i].movement();
 		}
-		for(i = 0; i < playerList.length; i++){
-			playerList[i].movement();
-		} 
-
 		checkPlayerOptionBoxes();
 	}
 	
@@ -217,19 +209,15 @@ function drawEverything() {
 		colorRect(0,0,canvas.width,canvas.height, 'black');
 		shiftForCameraPan();
 		drawTracks();
-		playerOne.draw();
 		for(i = 0; i<fireBoltList.length; i++){
 			fireBoltList[i].draw();
 		}
 		for(var i = 0; i < potionList.length; i++){
 			potionList[i].draw();
-		};
+		}
 		for(var i = 0; i < charList.length; i++){
 			charList[i].draw();
-		};
-		for(var i = 0; i < playerList.length; i++){
-			playerList[i].draw();
-		};
+		}
 		for(i = 0; i<smokeList.length; i++){
 			smokeList[i].draw();
 		}

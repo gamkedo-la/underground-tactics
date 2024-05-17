@@ -42,16 +42,16 @@ function shotClass(){
 		this.projectileXV = 0;
 		this.projectileYV = 0;
 
-		if(playerOne.offSetHeight == 0){
+		if(character.offSetHeight == 0){
 			this.projectileYV = SHOT_SPEED;
 			this.offSetHeight = 100; 
-		} else if (playerOne.offSetHeight == 75){
+		} else if (character.offSetHeight == 75){
 			this.projectileXV = SHOT_SPEED;
 			this.offSetHeight = 150;
-		} else if (playerOne.offSetHeight == 150){
+		} else if (character.offSetHeight == 150){
 			this.projectileYV = -SHOT_SPEED;
 			this.offSetHeight = 50;
-		} else if (playerOne.offSetHeight == 225){
+		} else if (character.offSetHeight == 225){
 			this.projectileXV = -SHOT_SPEED;
 			this.offSetHeight = 0;
 		}

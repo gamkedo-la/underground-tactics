@@ -19,12 +19,14 @@ var MousePosY;
 
 // mouse clicks and spacebar can fire this
 function executeCommand(){
-		turnAdvance();
-		wizardWalk();
-		displaySpells();
-		displayItems();
-		playerOne.fireBolt();
-	//	playerOne.levitate(); 
+		if(charList[turnNumber].isHuman){
+			turnAdvance();
+			charWalk(turnNumber);
+			displaySpells();
+			displayItems();
+			charList[turnNumber].fireBolt();
+		//	charList[turnNumber].levitate(); 
+		}
 }
 
 function initInput(){
@@ -45,14 +47,12 @@ function initInput(){
 	
 	document.addEventListener("keydown", keyPressed);
 	document.addEventListener("keyup", keyReleased);
-	
-	playerOne.setupControls(
-		KEY_W, KEY_D, KEY_S, KEY_A,
-		KEY_UP_ARROW, KEY_RIGHT_ARROW, KEY_DOWN_ARROW, KEY_LEFT_ARROW);
 }
 
 function keyPressed(evt) {
-	setKeyHoldState(evt.keyCode, playerOne, true);
+	if(charList[turnNumber].isHuman){
+		setKeyHoldState(evt.keyCode, charList[turnNumber], true);
+	}
 	evt.preventDefault();
 	
 	var paused = KEY_P;
@@ -81,7 +81,9 @@ function keyPressed(evt) {
 }
 
 function keyReleased(evt) {
-	setKeyHoldState(evt.keyCode, playerOne, false);
+	if(charList[turnNumber].isHuman){
+		setKeyHoldState(evt.keyCode, charList[turnNumber], false);
+	}
 }
 
 

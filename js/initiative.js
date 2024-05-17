@@ -24,17 +24,10 @@ var turnTicks = 0;
 
 // Called by drawInitiativeOrder and turnAdvance, but fallible, ought to be
 // called when turn number changes.
-function resetCharacterWithTurnNumber(turnNumber0) {
-    if (turnNumber0 === 0) {
-	playerOne.resetTurn();
-    } else {
-	// Can assume that it's the enemy
-	// enemyIndex calculation follows drawInitiativeOrder
-	const enemyIndex = turnNumber0 - 1;
-	if (charList[enemyIndex] != undefined) {
-	    charList[enemyIndex].resetTurn();
+function resetCharacterWithTurnNumber(turnNumber) {
+	if (charList[turnNumber] != undefined) {
+	    charList[turnNumber].resetTurn();
 	}
-    }
 }
 
 function drawInitiativeOrder() {
@@ -112,6 +105,9 @@ var endTurnBoxHovering = false;
 
 function turnAdvance() {
     if (endTurnBoxHovering) {
+        if(charList[turnNumber].levitating){
+            charList[turnNumber].levitationTurn++;
+        }
         turnNumber++;
         if (turnNumber >= turnOrderList.length) {
             turnNumber = 0;
@@ -122,25 +118,23 @@ function turnAdvance() {
         spellOptionsMenu.hidden = true;
         potionOptions = false;
         potionOptionsMenu.hidden = true;
-        if(playerOne.levitating){
-            playerOne.levitationTurn++;
-        }
+
 	resetCharacterWithTurnNumber(turnNumber);
     }
 }
 
-function wizardWalk() {
-    if (moveBoxHovering || spacebarMoveWasRequested) {
-        playerOne.usingPath = !playerOne.usingPath;
-        playerOne.animateWalk = true;
-		spacebarMoveWasRequested = false;
+function charWalk(whichChar){ //To Do:  These should probably use the same code?
+    if(charList[whichChar].isHuman){
+        if (moveBoxHovering || spacebarMoveWasRequested) {
+            charList[whichChar].usingPath = !charList[whichChar].usingPath;
+            charList[whichChar].animateWalk = true;
+            spacebarMoveWasRequested = false;
+        }
+    } else {
+        charList[whichChar].usingPath = true;
+        charList[whichChar].movement();
+        charList[whichChar].animateWalk = true;
     }
-}
-
-function enemyWalk(whichEnemy){
-    charList[whichEnemy].usingPath = true;
-    charList[whichEnemy].movement();
-    charList[whichEnemy].animateWalk = true;
 }
 
 function displaySpells(){
@@ -173,7 +167,7 @@ function useFireBolt(){
         spellOptionsMenu.hidden = true;
         potionOptions = false;
         potionOptionsMenu.hidden = true;
-        playerOne.fireBolt();
+        charList[turnNumber].fireBolt();
     }
 }
 
@@ -182,7 +176,7 @@ function checkPlayerOptionBoxes() {
         if (turnOrderList[i].myTurn == true && turnOrderList[i].name == "Wizard") {
             if(mainOptions){
                 useItemBoxHovering = checkMousePositionInBox(useItemX, useItemY, 50, 50);
-                if (playerOne.movementArray.length > 0) {
+                if (charList[turnNumber].movementArray.length > 0) {
                     moveBoxHovering = checkMousePositionInBox(moveOptionX, moveOptionY, 50, 50);
                 }
                 spellBoxHovering = checkMousePositionInBox(spellBoxOptionX, spellBoxOptionY, 50, 50);
@@ -213,7 +207,7 @@ function drawPlayerOptions() {
                     colorText("Items", useItemX + 5, useItemY + 65, "red", "14px Arial Black");
                 }
 
-		if (playerOne.remainingStamina <= 0) {
+		if (charList[turnNumber].remainingStamina <= 0) {
 		    canvasContext.drawImage(wizardMovementPic, moveOptionX, moveOptionY);
 		    if (moveBoxHovering) {
 			colorText("Move", moveOptionX + 5, moveOptionY + 65, "lime", "14px Arial Black");
