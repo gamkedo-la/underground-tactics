@@ -1,10 +1,10 @@
 
-var enemyList = [];
+var charList = [];
 
 function addEnemy(enemyTileType){
     var tempEnemy = new enemyClass();
 	tempEnemy.init(enemyTileType);
-    enemyList.push(tempEnemy);
+    charList.push(tempEnemy);
 
 }
 

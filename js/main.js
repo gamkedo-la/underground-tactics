@@ -128,8 +128,8 @@ function loadLevel(whichLevel) {
 	playerOne.reset();
 	turnOrderList = [];
 	addCreatureTurn("Wizard");
-	enemyList.sort(()=>0.5-Math.random());
-	for(var i = 0; i<enemyList.length; i++){
+	charList.sort(()=>0.5-Math.random());
+	for(var i = 0; i<charList.length; i++){
 		addCreatureTurn("Enemy " + (i+1))
 	}
 	for(var i = 0; i<playerList.length; i++){
@@ -161,8 +161,8 @@ function moveEverything() {
 				console.log(potionList.length)
 			}
 		}
-		for(i = 0; i < enemyList.length; i++){
-			enemyList[i].movement();
+		for(i = 0; i < charList.length; i++){
+			charList[i].movement();
 		}
 		for(i = 0; i < playerList.length; i++){
 			playerList[i].movement();
@@ -224,8 +224,8 @@ function drawEverything() {
 		for(var i = 0; i < potionList.length; i++){
 			potionList[i].draw();
 		};
-		for(var i = 0; i < enemyList.length; i++){
-			enemyList[i].draw();
+		for(var i = 0; i < charList.length; i++){
+			charList[i].draw();
 		};
 		for(var i = 0; i < playerList.length; i++){
 			playerList[i].draw();

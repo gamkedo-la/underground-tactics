@@ -31,8 +31,8 @@ function resetCharacterWithTurnNumber(turnNumber0) {
 	// Can assume that it's the enemy
 	// enemyIndex calculation follows drawInitiativeOrder
 	const enemyIndex = turnNumber0 - 1;
-	if (enemyList[enemyIndex] != undefined) {
-	    enemyList[enemyIndex].resetTurn();
+	if (charList[enemyIndex] != undefined) {
+	    charList[enemyIndex].resetTurn();
 	}
     }
 }
@@ -54,7 +54,7 @@ function drawInitiativeOrder() {
         turnTicks++;
 
         var enemyIndex = turnNumber - 1;
-        if(enemyIndex >= enemyList.length){
+        if(enemyIndex >= charList.length){
             if (turnTicks > 30){
                 turnTicks = 0;
 		turnNumber = 0;
@@ -63,9 +63,9 @@ function drawInitiativeOrder() {
         } else {
             moveBoxHovering = true;
             if(turnTicks == 2){
-                for(i = 0; i < enemyList[enemyIndex].maxMovement; i++){
-                    enemyList[enemyIndex].usingPath = false;
-                    enemyList[enemyIndex].movement();
+                for(i = 0; i < charList[enemyIndex].maxMovement; i++){
+                    charList[enemyIndex].usingPath = false;
+                    charList[enemyIndex].movement();
                     turnTicks++;
                 }
             } else if (turnTicks > 2) {
@@ -73,7 +73,7 @@ function drawInitiativeOrder() {
             }
             if(turnTicks == 60){
                 turnTicks = 0;
-                enemyList[enemyIndex].attackTurn = true;
+                charList[enemyIndex].attackTurn = true;
 		turnNumber++;
 		resetCharacterWithTurnNumber(turnNumber);
             }
@@ -138,9 +138,9 @@ function wizardWalk() {
 }
 
 function enemyWalk(whichEnemy){
-    enemyList[whichEnemy].usingPath = true;
-    enemyList[whichEnemy].movement();
-    enemyList[whichEnemy].animateWalk = true;
+    charList[whichEnemy].usingPath = true;
+    charList[whichEnemy].movement();
+    charList[whichEnemy].animateWalk = true;
 }
 
 function displaySpells(){

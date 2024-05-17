@@ -42,6 +42,7 @@ function warriorClass() {
 	this.superInit = this.init;
 	this.init = function (whichGraphic, whichName, whichTile, tied){
 		this.superInit(whichGraphic, whichName, whichTile, tied);
+		this.isHuman = true;
 	}
 
 
