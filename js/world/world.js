@@ -23,17 +23,17 @@ var roomGrid = [];
 
 var levelOne = [						
 					 51, 52, 51, 53, 52, 52, 54, 50, 52, 52, 50, 52, 52, 53, 52, 52, 54, 50, 52, 52,
-					 52,110,  1, 10, 10, 10, 13, 10, 16,  1,  1, 19,  1,  1,  1, 17, 13, 10, 10, 10,
-					 51,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 19,  1,  1,  1,  1,  1,  1,  1,  1,
-					 53,  1,  1,  2,  2,  1,111,  1,  1,  1,  1, 19,  1,153,  1,  1,  1,  1,  1,  1,
-					 51,  1,  1,  1,  1,  1,  2,  1,  4,  1,  1, 19,  1,  1,  1,  1,  1,  1,  1,  1,
-					 54, 14,  3,  3,  2,  1,112,  3,  1,  1,  1, 19,  1,  1,  1,  1,  1,  1,  1,  1,
-					 50, 12,  1,  4,  2,  1,  2,  1,  1,  1,154, 19,  1,152,  1,  1,  1,  1,  1,  1,
-					 50, 12,  1,  3,  1,  1,  2,  1,  1,  1,  1, 19,  1,  1,  1,  1,  1,  1,  1,  1,
-					 51, 15,  1,  1,  1, 1,   1,  1,  3,  2,  1, 19,  1,  1,  1,  1,  1,  1,  1,  1,
-					 52,  1,  1,  1,  1,  1,150,  1,  1,  1,  1, 19,  1,  1,  1,  4,  1,  1,  1,  1,
-					 50,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 19,  1,  1,  1,  1,  1,  1,  1,  1,
-					 53,  1,  1,  1,  1,  1, 55,  1,  1,  3,  1, 19,  1,  1,  1, 55,  1,  1,  1,  1,
+					 52,110,  1, 10, 10, 10, 13, 10, 16,  1,  1, 19,  1,  1, 57, 17, 13, 10, 10, 10,
+					 51,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 19,  1,  1, 57,  1,  1,  1,  1,  1,
+					 53,  1,  1,  2,  2,  1,111,  1,  1,  1,  1, 19,  1,153, 57,  1,  1,  1,  1,  1,
+					 51,  1,  1,  1,  1,  1,  2,  1,  4,  1,  1, 19,  1,  1, 57,  1,  1,  1,  1,  1,
+					 54, 14,  3,  3,  2,  1,112,  3,  1,  1,  1, 19,  1,  1, 57,  1,  1,  1,  1,  1,
+					 50, 12,  1,  4,  2,  1,  2,  1,  1,  1,154, 19,  1,152, 57,  1,  1,  1,  1,  1,
+					 50, 12,  1,  3,  1,  1,  2,  1,  1,  1,  1, 19,  1,  1, 57,  1,  1,  1,  1,  1,
+					 51, 15,  1,  1,  1, 1,   1,  1,  3,  2,  1, 19,  1,  1, 57,  1,  1,  1,  1,  1,
+					 52,  1,  1,  1,  1,  1,150,  1,  1,  1,  1, 19,  1,  1, 57,  4,  1,  1,  1,  1,
+					 50,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 19,  1,  1, 57,  1,  1,  1,  1,  1,
+					 53,  1,  1,  1,  1,  1, 55,  1,  1,  3,  1, 19,  1,  3, 58, 56, 56, 56, 56, 56,
 					 60,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 19,  3,  1,  3,  1,  1,  1,  1,  1,
 					 52, 18,  1,  1,  1,  1,  1,  3,  1,  1,  1, 19,  4,  1,  1,  1,  1,  1,  1,  1,
 					 54, 14,  1,  1,  1,  1,155,  1,  3,  1,  1, 19,  1,  1,  1,  1,  4,  1,  1,  1,
@@ -80,6 +80,9 @@ var levelTwo =[
 	const TILE_WALL_STONE_4 = 53;
 	const TILE_WALL_STONE_5 = 54;
 	const TILE_COLUMN_STONE_1 = 55;
+	const TILE_WALL_STONE_6 = 56;
+	const TILE_WALL_STONE_7 = 57;
+	const TILE_WALL_STONE_8 = 58;
 	const TILE_WOODEN_DOOR_1 = 60;
 	//Player and Enemies 100 through 149
 	const TILE_PLAYER = 100;
@@ -103,7 +106,7 @@ var levelTwo =[
 	const NAVMODE_PICKUP = 5;
 
 	var tileNavData = [
-		{navMode: NAVMODE_IMPASSIBLE, tileTypes: [TILE_WALL_STONE_1, TILE_WALL_STONE_2, TILE_WALL_STONE_3, TILE_WALL_STONE_4, TILE_WALL_STONE_5, TILE_COLUMN_STONE_1]},
+		{navMode: NAVMODE_IMPASSIBLE, tileTypes: [TILE_WALL_STONE_1, TILE_WALL_STONE_2, TILE_WALL_STONE_3, TILE_WALL_STONE_4, TILE_WALL_STONE_5, TILE_COLUMN_STONE_1, TILE_WALL_STONE_6, TILE_WALL_STONE_7, TILE_WALL_STONE_8]},
 		{navMode: NAVMODE_WALKABLE, tileTypes: [TILE_FLOOR_SEWER_1, TILE_FLOOR_SEWER_2, TILE_FLOOR_SEWER_3, TILE_FLOOR_SEWER_4, TILE_FLOOR_SEWER_5, TILE_FLOOR_SEWER_6, TILE_FLOOR_SEWER_7, TILE_FLOOR_SEWER_8, TILE_FLOOR_SEWER_9, TILE_FLOOR_STONE_1, TILE_FLOOR_STONE_2, TILE_FLOOR_STONE_3, TILE_FLOOR_STONE_4]},
 		{navMode: NAVMODE_FLYABLE, tileTypes: [TILE_WATER]},
 		{navMode: NAVMODE_LOCKED, tileTypes: [TILE_WOODEN_DOOR_1]},
