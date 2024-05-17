@@ -61,7 +61,7 @@ function drawInitiativeOrder() {
                     turnTicks++;
                 }
             } else if (turnTicks > 2) {
-                enemyWalk(turnNumber);
+                charWalk(turnNumber);
             }
             if(turnTicks == 60){
                 turnTicks = 0;
