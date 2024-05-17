@@ -6,14 +6,17 @@ playerList = [];
 function addPlayer(playerTileType){
     var tempPlayer = new warriorClass();
 
-	//if(playerTileType == TILE_WARRIOR){
-	var playerPic = warrriorPic;
-	var playerName = "Lance"
-	var tileType = TILE_WARRIOR;
-	var tiedUp = true;
-	//}
+	if(playerTileType == TILE_WARRIOR){
+		var playerPic = warrriorPic;
+		var playerName = "Lance"
+		var tiedUp = true;
+	} else if (playerTileType = TILE_WIZARD){
+		var playerPic = wizardPic;
+		var playerName = "Nesquit"
+		var tiedUp = false;
+	}
 	
-	tempPlayer.init(playerPic, playerName, tileType, tiedUp);
+	tempPlayer.init(playerPic, playerName, playerTileType, tiedUp);
 	tempPlayer.setupControls(
 		KEY_W, KEY_D, KEY_S, KEY_A,
 		KEY_UP_ARROW, KEY_RIGHT_ARROW, KEY_DOWN_ARROW, KEY_LEFT_ARROW);
