@@ -47,7 +47,7 @@ function drawInitiativeOrder() {
         turnTicks++;
 
         if(turnNumber >= charList.length){ // only wraps if Enemy is last in charList
-            if (turnTicks > 30){
+            if (turnTicks > 120){
                 turnTicks = 0;
 		turnNumber = 0;
 		resetCharacterWithTurnNumber(turnNumber);
@@ -172,7 +172,12 @@ function useFireBolt(){
 
 function checkPlayerOptionBoxes() { 
     for(var i = 0; i < turnOrderList.length; i++){
-        if (turnOrderList[i].myTurn == true && turnOrderList[i].name == "Wizard") {
+        if (    (turnOrderList[i].myTurn == true && turnOrderList[i].name == "Player 1") ||
+                (turnOrderList[i].myTurn == true && turnOrderList[i].name == "Player 2") ||
+                (turnOrderList[i].myTurn == true && turnOrderList[i].name == "Player 3") ||
+                (turnOrderList[i].myTurn == true && turnOrderList[i].name == "Player 4") ||
+                (turnOrderList[i].myTurn == true && turnOrderList[i].name == "Player 5")  
+        ) {
             if(mainOptions){
                 useItemBoxHovering = checkMousePositionInBox(useItemX, useItemY, 50, 50);
                 if (charList[turnNumber].movementArray.length > 0) {
