@@ -16,7 +16,6 @@ function TurnOrderClass(whichName, isHuman) {
     this.myTurn = false;
 }
 
-
 function determineSequenceOrder() {
     //determine order for active entities (player/enemies)
 }

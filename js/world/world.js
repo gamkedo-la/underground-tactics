@@ -35,7 +35,7 @@ var levelOne = [
 					 50,  1,  1,  1,  1,  1,  1,  3,  1,  1,  1, 19,  1,  1, 57,  1,  1,  1,  1,  1,
 					 53,  1,  1,  1,  1,  1, 55,  1,  1,  3,  1, 19,  1,  3, 58, 56, 56, 56, 56, 56,
 					 60,  1,  1,  1,  1,  1,  1,  3,  1,  1,  1, 19,  3,  1,  3,  1,  1,  1,  1,  1,
-					 52, 18, 69, 56, 56, 56, 56, 68,  1,  1,  1, 19,  4,  1,  1,  1,  1,  1,  1,  1,
+					 52, 18, 69, 56, 56, 56, 56, 68,  1,  1,  1, 29,  4,  1,  1,  1,  1,  1,  1,  1,
 					 54, 14, 57,  1,  1,  1,155, 57,  3,  1,  1, 19,  1,  1,  1,  1,  4,  1,  1,  1,
 					 52, 12, 57,  1,  1,  1,  1, 57,  1,  1,  1, 19, 19, 19, 19, 19, 19, 19, 19, 19,
 					 52, 12, 57,  1,  1,  1,  1, 57,  1,101,  1, 19,  1,  1,  1,  1,  1,  1,  1,  1,
@@ -73,6 +73,7 @@ var levelTwo =[
 	const TILE_FLOOR_SEWER_8 = 17;
 	const TILE_FLOOR_SEWER_9 = 18;
 	const TILE_WATER = 19;
+	const TILE_BRIDGE_1 = 29;
 	//Wall Tiles 50 through 99
 	const TILE_WALL_STONE_1 = 50;
 	const TILE_WALL_STONE_2 = 51;
@@ -85,8 +86,9 @@ var levelTwo =[
 	const TILE_WALL_STONE_8 = 58;
 	const TILE_WALL_STONE_9 = 59;
 	const TILE_WOODEN_DOOR_1 = 60;
-	const TILE_WALL_STONE_10 = 68;
-	const TILE_WALL_STONE_11 = 69;
+	const TILE_WALL_STONE_10 = 67;
+	const TILE_WALL_STONE_11 = 68;
+	const TILE_WALL_STONE_12 = 69;
 	//Player and Enemies 100 through 149
 	const TILE_WIZARD = 100;
 	const TILE_WARRIOR = 101;
@@ -110,7 +112,7 @@ var levelTwo =[
 
 	var tileNavData = [
 		{navMode: NAVMODE_IMPASSIBLE, tileTypes: [TILE_WALL_STONE_1, TILE_WALL_STONE_2, TILE_WALL_STONE_3, TILE_WALL_STONE_4, TILE_WALL_STONE_5, TILE_COLUMN_STONE_1, TILE_WALL_STONE_6, TILE_WALL_STONE_7, TILE_WALL_STONE_8]},
-		{navMode: NAVMODE_WALKABLE, tileTypes: [TILE_FLOOR_SEWER_1, TILE_FLOOR_SEWER_2, TILE_FLOOR_SEWER_3, TILE_FLOOR_SEWER_4, TILE_FLOOR_SEWER_5, TILE_FLOOR_SEWER_6, TILE_FLOOR_SEWER_7, TILE_FLOOR_SEWER_8, TILE_FLOOR_SEWER_9, TILE_FLOOR_STONE_1, TILE_FLOOR_STONE_2, TILE_FLOOR_STONE_3, TILE_FLOOR_STONE_4]},
+		{navMode: NAVMODE_WALKABLE, tileTypes: [TILE_FLOOR_SEWER_1, TILE_FLOOR_SEWER_2, TILE_FLOOR_SEWER_3, TILE_FLOOR_SEWER_4, TILE_FLOOR_SEWER_5, TILE_FLOOR_SEWER_6, TILE_FLOOR_SEWER_7, TILE_FLOOR_SEWER_8, TILE_FLOOR_SEWER_9, TILE_FLOOR_STONE_1, TILE_FLOOR_STONE_2, TILE_FLOOR_STONE_3, TILE_FLOOR_STONE_4, TILE_BRIDGE_1]},
 		{navMode: NAVMODE_FLYABLE, tileTypes: [TILE_WATER]},
 		{navMode: NAVMODE_LOCKED, tileTypes: [TILE_WOODEN_DOOR_1]},
 	];
