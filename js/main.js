@@ -130,7 +130,7 @@ function loadLevel(whichLevel) {
 	charList.sort(()=>0.5-Math.random());
 	for(var i = 0; i<charList.length; i++){
 		charList[i].reset();
-		addCreatureTurn((charList[i].isHuman ? "Player ":"Enemy ") + (i+1))
+		addCreatureTurn((charList[i].isHuman ? "Player ":"Enemy ") + (i+1), charList[i].isHuman)
 	}
 	console.log("Finish Load Level");
 }

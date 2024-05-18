@@ -5,13 +5,14 @@ var mainOptions = false;
 var spellOptions = false;
 var potionOptions = false;
 
-function addCreatureTurn(whichName) {
-    var tempCreature = new TurnOrderClass(whichName);
+function addCreatureTurn(whichName, isHuman) {
+    var tempCreature = new TurnOrderClass(whichName, isHuman);
     turnOrderList.push(tempCreature);
 }
 
-function TurnOrderClass(whichName) {
+function TurnOrderClass(whichName, isHuman) {
     this.name = whichName;
+    this.isHuman = isHuman;
     this.myTurn = false;
 }
 
@@ -172,11 +173,7 @@ function useFireBolt(){
 
 function checkPlayerOptionBoxes() { 
     for(var i = 0; i < turnOrderList.length; i++){
-        if (    (turnOrderList[i].myTurn == true && turnOrderList[i].name == "Player 1") ||
-                (turnOrderList[i].myTurn == true && turnOrderList[i].name == "Player 2") ||
-                (turnOrderList[i].myTurn == true && turnOrderList[i].name == "Player 3") ||
-                (turnOrderList[i].myTurn == true && turnOrderList[i].name == "Player 4") ||
-                (turnOrderList[i].myTurn == true && turnOrderList[i].name == "Player 5")  
+        if (    (turnOrderList[i].myTurn == true && turnOrderList[i].isHuman)  
         ) {
             if(mainOptions){
                 useItemBoxHovering = checkMousePositionInBox(useItemX, useItemY, 50, 50);
