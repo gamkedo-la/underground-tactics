@@ -1,6 +1,16 @@
 //sounds
 var footstepsSound = new SoundOverlapsClass("footsteps");
 var itemPickUpSound = new SoundOverlapsClass("pickUpItem");
+var feetPlayer001SFX = new SoundOverlapsClass("sfx_feet_player_a-001");
+var feetPlayer002SFX = new SoundOverlapsClass("sfx_feet_player_a-002");
+var feetPlayer003SFX = new SoundOverlapsClass("sfx_feet_player_a-003");
+var feetPlayer004SFX = new SoundOverlapsClass("sfx_feet_player_a-004");
+var feetPlayer005SFX = new SoundOverlapsClass("sfx_feet_player_a-005");
+var feetPlayer006SFX = new SoundOverlapsClass("sfx_feet_player_a-006");
+var feetPlayer007SFX = new SoundOverlapsClass("sfx_feet_player_a-007");
+var feetPlayer008SFX = new SoundOverlapsClass("sfx_feet_player_a-008");
+var healthPickSFX = new SoundOverlapsClass("sfx_pickup_health");
+var bowShotSFX = new SoundOverlapsClass("sfx_weapon_bow_shot")
 
 function setFormat() {
     var audio = new Audio();
@@ -14,6 +24,7 @@ function setFormat() {
 }
 
 var mainBackgroundMusic = new BackgroundMusicClass();
+
 
 function SoundOverlapsClass(filenameWithPath) {
     setFormat();

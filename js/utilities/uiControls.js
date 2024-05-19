@@ -14,6 +14,7 @@ const KEY_DOWN_ARROW = 40;
 const KEY_P = 80;
 const KEY_1 = 49;
 const KEY_M = 77;
+const KEY_2 = 50;
 var MousePosX;
 var MousePosY;
 
@@ -59,6 +60,7 @@ function keyPressed(evt) {
 	var toggleMovement = KEY_SPACEBAR;
 	var toggleDrawTileIndicators = KEY_1;
 	var mute = KEY_M;
+	var playBackgroundMusic = KEY_2
 
 	if(paused == evt.keyCode){
 		changePauseState();
@@ -70,6 +72,10 @@ function keyPressed(evt) {
 	}
 	if(mute == evt.keyCode) {
 		toggleMute();
+	}
+
+	if(playBackgroundMusic == evt.keyCode){
+		mainBackgroundMusic.loopSong("sfx_ambience_cave_drone"); //temp location
 	}
 
 	if (toggleMovement == evt.keyCode) {
