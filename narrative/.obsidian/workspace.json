@@ -4,9 +4,8 @@
     "type": "split",
     "children": [
       {
-        "id": "773bff7a9a007aca",
+        "id": "5fe5b3789a156743",
         "type": "tabs",
-        "dimension": 72.75641025641025,
         "children": [
           {
             "id": "7c2888fdcdb774c4",
@@ -15,18 +14,11 @@
               "type": "markdown",
               "state": {
                 "file": "Brainstorming.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               }
             }
-          }
-        ]
-      },
-      {
-        "id": "5fe5b3789a156743",
-        "type": "tabs",
-        "dimension": 27.24358974358974,
-        "children": [
+          },
           {
             "id": "a94500ed4c30f132",
             "type": "leaf",
@@ -50,26 +42,15 @@
               "state": {
                 "file": "Game on the Wall/Game On The Wall.canvas",
                 "viewState": {
-                  "x": 0,
-                  "y": 0,
-                  "zoom": 0
+                  "x": -640,
+                  "y": -1400,
+                  "zoom": -0.8835142575191481
                 }
               }
             }
-          },
-          {
-            "id": "c6d87aec76847adf",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Game on the Wall/Metagame/Over-Arcing Player Goals/Reuniting Party.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -135,7 +116,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Narrative States.canvas",
+                "file": "Game on the Wall/Game On The Wall.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -152,7 +133,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Narrative States.canvas",
+                "file": "Game on the Wall/Game On The Wall.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -175,11 +156,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Narrative States.canvas"
+                "file": "Game on the Wall/Game On The Wall.canvas"
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -196,39 +178,39 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "2ff3a9bea1665989",
+  "active": "469d91d316e0a53e",
   "lastOpenFiles": [
-    "Story Stack.md",
-    "Narrative States.canvas",
-    "Game Info.canvas",
-    "Brainstorming.md",
     "Game on the Wall/Game On The Wall.canvas",
-    "Game on the Wall/Metagame/Player Fantasy.md",
+    "Brainstorming.md",
     "Game on the Wall/Metagame/Over-Arcing Player Goals/Reuniting Party.md",
     "Game on the Wall/Metagame/Over-Arcing Player Goals/Dealing with Hostile boss character(s).md",
-    "Game on the Wall/Core Loop/Progression/Game Events/Encounter Key Discoveries.md",
-    "Game on the Wall/Core Loop/Progression/Game Events/Party Size Grows.md",
-    "Game on the Wall/Core Loop/Progression/Game Events/Initial Party Split.md",
-    "Game on the Wall/Core Loop/Encounters/PC Discovery Encounters/Party Split.md",
+    "Game on the Wall/Metagame/Strategy/Player Meta Actions.md",
+    "Game on the Wall/Metagame/Character Controls/Attacks.md",
+    "Game on the Wall/Metagame/Character Controls/Skipping Turn.md",
+    "Game on the Wall/Metagame/Character Controls/Using Items.md",
+    "Game on the Wall/Metagame/Character Controls/Movement.md",
+    "Game on the Wall/Metagame/Character Controls/Trap disarming.md",
+    "Game on the Wall/Metagame/Character Controls/Environmental interactions.md",
+    "Game on the Wall/Metagame/Character Controls/Class Abilities.md",
+    "Game on the Wall/Metagame/Character Controls/Universal Actions.md",
+    "Game on the Wall/Metagame/Character Controls/Character Interactions.md",
+    "Game on the Wall/Metagame/Stats/Health Points.md",
+    "Game on the Wall/Metagame/Stats/Mana Points.md",
+    "Game on the Wall/Metagame/Stats/Stamina Points.md",
     "Game on the Wall/Core Loop/Encounters/Negotiations/Key Items/Currency.md",
+    "Game on the Wall/Core Loop/Progression/Game Events/Initial Party Split.md",
+    "Game on the Wall/Core Loop/Progression/Game Events/Party Size Grows.md",
+    "Game on the Wall/Core Loop/Progression/Game Events/Encounter Key Discoveries.md",
+    "Narrative States.canvas",
+    "Story Stack.md",
+    "Game Info.canvas",
+    "Game on the Wall/Metagame/Player Fantasy.md",
+    "Game on the Wall/Core Loop/Encounters/PC Discovery Encounters/Party Split.md",
     "Game on the Wall/Core Loop/Progression/Game Events",
     "Game on the Wall/Core Loop/Progression",
-    "Game on the Wall/Metagame/Stats/Stamina Points.md",
     "Game on the Wall/Core Loop/Encounters/Negotiations/Key Items",
     "Game on the Wall/Core Loop/Encounters/Combat/Equipment/Usable Items",
     "Game on the Wall/Core Loop/Encounters/Combat/Equipment/Weapons",
-    "Game on the Wall/Metagame/Stats/Mana Points.md",
-    "Game on the Wall/Metagame/Stats/Health Points.md",
-    "Game on the Wall/Metagame/Character Controls/Character Interactions.md",
-    "Game on the Wall/Metagame/Character Controls/Universal Actions.md",
-    "Game on the Wall/Metagame/Character Controls/Class Abilities.md",
-    "Game on the Wall/Metagame/Character Controls/Environmental interactions.md",
-    "Game on the Wall/Metagame/Character Controls/Trap disarming.md",
-    "Game on the Wall/Metagame/Character Controls/Movement.md",
-    "Game on the Wall/Metagame/Character Controls/Using Items.md",
-    "Game on the Wall/Metagame/Character Controls/Skipping Turn.md",
-    "Game on the Wall/Metagame/Character Controls/Attacks.md",
-    "Game on the Wall/Metagame/Strategy/Player Meta Actions.md",
     "Game on the Wall/Metagame/Over-Arcing Player Goals",
     "Game on the Wall/Character/NPCs/Generic NPCs/Generic Hostile/Kobold.md",
     "Game on the Wall/Core Loop/Encounters/PC Discovery Encounters",
