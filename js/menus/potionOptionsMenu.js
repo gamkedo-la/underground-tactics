@@ -12,17 +12,30 @@ function PotionOptionsMenu(x, y, width, height) {
 	manaButton.image = manaPotionPic;
 	manaButton.title = "Mana";
 	this.addSubView(manaButton);
+	manaButton.onPress = () => {
+		console.log('"Mana" button pressed');
+	};
 
 	const levitationButton = new UIComboButton(80, 40, 50, 75);
 	levitationButton.image = healthPotionPic;
 	levitationButton.title = "Levitation";
 	this.addSubView(levitationButton);
+	levitationButton.onPress = () => {
+		console.log('"Levitation" button pressed');
+	};
 
 	const endTurnButton = new UIComboButton(145, 40, 50, 75);
 	endTurnButton.image = endTurnPic;
 	endTurnButton.title = "End Turn";
 	endTurnButton.textOffsetX = -10;
 	this.addSubView(endTurnButton);
+	endTurnButton.onPress = () => {
+		console.log('"End Turn" button pressed');
+
+		endTurnBoxHovering = true;
+		turnAdvance();
+		endTurnBoxHovering = false;
+	};
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor

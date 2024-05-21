@@ -15,6 +15,10 @@ function MainOptionsMenu(x, y, width, height) {
 	useItemButton.title = "Items";
 	useItemButton.onPress = () => {
 		console.log('"Items" button pressed');
+
+		useItemBoxHovering = true;
+		displayItems();
+		useItemBoxHovering = false;
 	};
 	this.addSubView(useItemButton);
 
@@ -24,6 +28,10 @@ function MainOptionsMenu(x, y, width, height) {
 	moveButton.title = "Move";
 	moveButton.onPress = () => {
 		console.log('"Move" button pressed');
+
+		moveBoxHovering = true;
+		charWalk(turnNumber);
+		moveBoxHovering = false;
 	};
 	this.addSubView(moveButton);
 
@@ -33,6 +41,10 @@ function MainOptionsMenu(x, y, width, height) {
 	spellBoxButton.title = "Spell";
 	spellBoxButton.onPress = () => {
 		console.log('"Spell" button pressed');
+
+		spellBoxHovering = true;
+		displaySpells();
+		spellBoxHovering = false;
 	};
 	this.addSubView(spellBoxButton);
 
@@ -44,7 +56,9 @@ function MainOptionsMenu(x, y, width, height) {
 	endTurnButton.onPress = () => {
 		console.log('"End Turn" button pressed');
 
+		endTurnBoxHovering = true;
 		turnAdvance();
+		endTurnBoxHovering = false;
 	};
 	this.addSubView(endTurnButton);
 }

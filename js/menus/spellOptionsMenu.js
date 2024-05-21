@@ -12,17 +12,32 @@ function SpellOptionsMenu(x, y, width, height) {
 	fireBoltButton.image = spellFirePic;
 	fireBoltButton.title = "Fire Bolt";
 	this.addSubView(fireBoltButton);
+	fireBoltButton.onPress = () => {
+		fireBoltBoxHovering = true;
+		useFireBolt()
+		fireBoltBoxHovering = false;
+	};
 
 	const magicMissileButton = new UIComboButton(80, 40, 50, 75);
 	magicMissileButton.image = magicMissilePic;
 	magicMissileButton.title = "Spell";
 	this.addSubView(magicMissileButton);
+	magicMissileButton.onPress = () => {
+		console.log('"Spell" button pressed');
+	};
 
 	const endTurnButton = new UIComboButton(145, 40, 50, 75);
 	endTurnButton.image = endTurnPic;
 	endTurnButton.title = "End Turn";
 	endTurnButton.textOffsetX = -10;
 	this.addSubView(endTurnButton);
+	endTurnButton.onPress = () => {
+		console.log('"End Turn" button pressed');
+
+		endTurnBoxHovering = true;
+		turnAdvance();
+		endTurnBoxHovering = false;
+	};
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor
