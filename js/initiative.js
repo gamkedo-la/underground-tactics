@@ -67,6 +67,9 @@ function drawInitiativeOrder() {
                 turnTicks = 0;
                 charList[turnNumber].attackTurn = true;
 		turnNumber++;
+        if (turnNumber >= turnOrderList.length) {
+            turnNumber = 0;
+        }
 		resetCharacterWithTurnNumber(turnNumber);
             }
         }
