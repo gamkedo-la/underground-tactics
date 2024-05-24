@@ -3,7 +3,13 @@ var canvasContext;
 //characters (Player, NPC's, Enemies)
 
 
-function resetEnemyLists(){
+function emptyRoomObjects(){
+	for(var i = charList.length - 1; i >= 0; i--){
+		if(charList[i].isHuman == false){
+			charList.splice(i,1);
+		}
+	}
+	potionList = [];
 }
 
 //game states
@@ -89,7 +95,7 @@ function roomChange(roomChangeC, roomChangeR) {
 }
 
 function loadLevel(whichLevel) {	
-	//resetEnemyLists();
+	emptyRoomObjects();
 	roomGrid = whichLevel.slice();
 	for(var i = 0; i < roomGrid.length; i++){
 		if( roomGrid[i] == TILE_POTION_MANA ||
