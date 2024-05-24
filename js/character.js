@@ -19,7 +19,7 @@ function CharacterBase (){
 	this.maxHealth = 4;
 	this.trapCoolDownTimer = 0;
 	this.trapCoolDownCounter = 0;
-	this.remainingStamina = 10;
+	this.remainingStamina = 100;
 	this.movementArray = [67];
 	this.usingPath = false;
 	this.animateWalk = false;
@@ -36,7 +36,7 @@ function CharacterBase (){
     this.attackTurn = true;
 	this.tiedUp = false;
 	this.isHuman = false;
-	this.maxStamina = 10;
+	this.maxStamina = 100;
 
 
 
@@ -175,6 +175,26 @@ function CharacterBase (){
 				if(this.movementArray.length == 0){
 					this.usingPath = false;
 					this.movementArray[0] = currentIndex; // setting the head of the next array movement
+					if(this.isHuman){
+						var myC = whichCol(currentIndex);
+						var myR = whichRow(currentIndex);
+						if(myC == 0){
+							roomChange(-1,0);
+							levelLoadingSkipOperations = true;
+						}
+						if(myR == 0){
+							roomChange(0,-1);
+							levelLoadingSkipOperations = true;
+						}
+						if(myC == ROOM_COLS - 1){
+							roomChange(1,0);
+							levelLoadingSkipOperations = true;
+						}
+						if(myR == ROOM_ROWS - 1){
+							roomChange(0,1);
+							levelLoadingSkipOperations = true;
+						}
+					}
 				}
 			} else if (this.movementArray[lastNode] == tileN) {
 				this.y -= this.movementSpeed;

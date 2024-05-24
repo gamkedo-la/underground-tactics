@@ -195,6 +195,10 @@ function moveEverything() {
 		}
 		for(i = 0; i < charList.length; i++){
 			charList[i].movement();
+			if(levelLoadingSkipOperations){
+				levelLoadingSkipOperations = false;
+				return;
+			}
 		}
 		checkPlayerOptionBoxes();
 	}

@@ -23,6 +23,7 @@ var sharedAnimCycle = 0;
 var levelNow = 0;
 var levelRoomC = 0;
 var levelRoomR = 0;
+var levelLoadingSkipOperations = false;
 var roomGrid = [];
 
 
@@ -453,9 +454,9 @@ function indexE(fromIndex){
 	return fromIndex + 1;
 }
 
-function whichCol(xPos){
-	var col =  xPos / ROOM_W;
-	return col = Math.floor(col)
+function whichCol(index){
+	var col =  index% ROOM_COLS;
+	return col;
 }
 
 function whichRow(index){
