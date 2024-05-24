@@ -29,8 +29,7 @@ warriorClass.prototype = new CharacterBase();
 function warriorClass() {
 	this.findPlayer = false;
 	this.fireBoltList = [];
-
-
+	
 	this.warriorPic = document.createElement("img");
 	
 	this.setupControls = function(northKey,eastKey,southKey,westKey,

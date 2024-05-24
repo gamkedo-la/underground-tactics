@@ -1,5 +1,3 @@
-const WARRIOR_TOTAL_TURN_STAMINA = 10;
-
 function CharacterBase (){
 	this.x;
 	this.y;
@@ -21,7 +19,7 @@ function CharacterBase (){
 	this.maxHealth = 4;
 	this.trapCoolDownTimer = 0;
 	this.trapCoolDownCounter = 0;
-	this.remainingStamina = WARRIOR_TOTAL_TURN_STAMINA;
+	this.remainingStamina = 10;
 	this.movementArray = [67];
 	this.usingPath = false;
 	this.animateWalk = false;
@@ -38,6 +36,7 @@ function CharacterBase (){
     this.attackTurn = true;
 	this.tiedUp = false;
 	this.isHuman = false;
+	this.maxStamina = 10;
 
 
 
@@ -78,7 +77,7 @@ function CharacterBase (){
 		// initiative.js
 		// There really ought to be logic code responsible for turn
 		// order stuff.
-		this.remainingStamina = WARRIOR_TOTAL_TURN_STAMINA;
+		this.remainingStamina = 10;
 	}
 
 	this.popToGrid = function(){
