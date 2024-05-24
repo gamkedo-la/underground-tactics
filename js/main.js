@@ -95,6 +95,13 @@ function roomChange(roomChangeC, roomChangeR) {
 }
 
 function loadLevel(whichLevel) {	
+	var alreadyLoadedPlayers = false;
+	for(var i = 0; i<charList.length; i++ ){
+		if(charList[i].isHuman){
+			alreadyLoadedPlayers = true;
+			break;
+		}
+	}
 	emptyRoomObjects();
 	roomGrid = whichLevel.slice();
 	for(var i = 0; i < roomGrid.length; i++){
@@ -130,7 +137,11 @@ function loadLevel(whichLevel) {
 		}
 		if( roomGrid[i] == TILE_WARRIOR ||
 			roomGrid[i] == TILE_WIZARD){  
-				addPlayer(roomGrid[i]);
+				if(alreadyLoadedPlayers == false){
+					addPlayer(roomGrid[i]);
+				} else {
+					roomGrid[i] = TILE_FLOOR_STONE_1;
+				}
 		}
 	}
 
@@ -149,6 +160,7 @@ function loadLevel(whichLevel) {
 			potionList[i].init(spellBookPic, 375, "Spell Book 2", TILE_SPELL_BOOK_2);
 		}
 	}
+	turnNumber = 0;
 	turnOrderList = [];
 	charList.sort(()=>0.5-Math.random());
 	for(var i = 0; i<charList.length; i++){
