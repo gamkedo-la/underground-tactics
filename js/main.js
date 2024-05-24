@@ -91,7 +91,50 @@ function roomChange(roomChangeC, roomChangeR) {
 	levelNow = levelRoomC + levelRoomR * WORLD_ROOM_COLS;
 	console.log("Loading: ",levelRoomC, levelRoomR, levelNow);
 	loadLevel(levelList[levelNow]);
-
+	var doorSpawnC = 1;
+	var doorSpawnR = 1;
+	var teamShiftC = 0;
+	var teamShiftR = 0;
+	if(roomChangeC == -1){
+		doorSpawnC = ROOM_COLS - 3;
+		doorSpawnR = Math.floor(ROOM_ROWS/2);
+		teamShiftC = -1;
+	}
+	if(roomChangeR == -1){
+		doorSpawnC = Math.floor(ROOM_COLS/2);
+		doorSpawnR = ROOM_ROWS - 3;
+		teamShiftR = -1;
+	}
+	if(roomChangeC == 1){
+		doorSpawnC = 2;
+		doorSpawnR = Math.floor(ROOM_ROWS/2);
+		teamShiftC = 1;
+	}
+	if(roomChangeR == 1){
+		doorSpawnC = Math.floor(ROOM_COLS/2);
+		doorSpawnR = 2;
+		teamShiftR = 1;
+	}
+	for(var i = 0; i< charList.length; i++){
+		if(charList[i].isHuman){
+			var targetIndex;
+			var didSpawn = false;
+			var safetyBreak = 50;
+			while(didSpawn == false && safetyBreak-- > 0){
+				targetIndex = roomTileToIndex(doorSpawnC, doorSpawnR);
+				console.log("Spawning At: ", targetIndex,doorSpawnC,doorSpawnR)
+				if(tileTypeNavMode(roomGrid[targetIndex]) == NAVMODE_WALKABLE){
+					charList[i].movementArray = [targetIndex];
+					charList[i].x = ROOM_W * doorSpawnC;
+					charList[i].y = ROOM_H * doorSpawnR;
+					charList[i].popToGrid();
+					didSpawn = true;
+				}
+				doorSpawnC += teamShiftC;
+				doorSpawnR += teamShiftR;
+			}
+		}
+	}
 }
 
 function loadLevel(whichLevel) {	
