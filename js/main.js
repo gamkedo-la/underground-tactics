@@ -59,16 +59,33 @@ function imageLoadingDoneSoStartGame(){
 		checkAllPlayerAndEnemyCollisions();
 		drawEverything();
 	}, 1000/framesPerSecond);
-	loadLevel(levelOne);
+	loadLevel(levelList[0]);
 	//playerOne.init(wizardPic, "Nesquit", TILE_WIZARD);  //Load Level should be handling this
 }
 
-function nextLevel() {
-	levelNow++;
+function roomChange(roomChangeC, roomChangeR) {
+/*	levelNow++;
 	if(levelNow > levelList.length) {
 		levelNow = 0;
+	}*/
+	levelRoomC += roomChangeC;
+	levelRoomR += roomChangeR;
+	if(levelRoomC < 0){
+		levelRoomC = 0;
 	}
+	if(levelRoomR < 0){
+		levelRoomR = 0;
+	}
+	if(levelRoomC >= WORLD_ROOM_COLS){
+		levelRoomC = WORLD_ROOM_COLS - 1;
+	}
+	if(levelRoomR >= WORLD_ROOM_ROWS){
+		levelRoomR = WORLD_ROOM_ROWS - 1;
+	}
+	levelNow = levelRoomC + levelRoomR * WORLD_ROOM_COLS;
+	console.log("Loading: ",levelRoomC, levelRoomR, levelNow);
 	loadLevel(levelList[levelNow]);
+
 }
 
 function loadLevel(whichLevel) {	

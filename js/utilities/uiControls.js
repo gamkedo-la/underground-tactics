@@ -5,6 +5,10 @@ const KEY_S = 83; // "S"
 const KEY_A = 65; // "A"
 const KEY_D = 68; // "D"
 const KEY_SPACEBAR = 32; 
+const KEY_I = 73;
+const KEY_J = 74;
+const KEY_K = 75;
+const KEY_L = 76;
 
 const KEY_LEFT_ARROW = 37;
 const KEY_UP_ARROW = 38;
@@ -60,8 +64,21 @@ function keyPressed(evt) {
 	var toggleMovement = KEY_SPACEBAR;
 	var toggleDrawTileIndicators = KEY_1;
 	var mute = KEY_M;
-	var playBackgroundMusic = KEY_2
+	var playBackgroundMusic = KEY_2;
 
+	if(KEY_I == evt.keyCode){
+		roomChange(0,-1);
+	}
+	if(KEY_J == evt.keyCode){
+		roomChange(-1,0);
+	}
+	if(KEY_K == evt.keyCode){
+		roomChange(0,1);
+	}
+	if(KEY_L == evt.keyCode){
+		roomChange(1,0);
+	}
+	
 	if(paused == evt.keyCode){
 		changePauseState();
 	}
