@@ -1,0 +1,2 @@
+Characters are limited in magical action/item use based on magic points and action cost
+- Magic classes have lower magic action costs and higher magic point pools for stronger/consistent magical ability/item use.

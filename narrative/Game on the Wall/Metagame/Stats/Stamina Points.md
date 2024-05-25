@@ -1,0 +1,2 @@
+Characters are limited in stamina actions based on Stamina points and action cost
+- Stamina classes have lower stamina action costs and higher stamina point pools for stronger/consistent stamina ability use.
