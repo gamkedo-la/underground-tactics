@@ -65,7 +65,7 @@ function imageLoadingDoneSoStartGame(){
 		checkAllPlayerAndEnemyCollisions();
 		drawEverything();
 	}, 1000/framesPerSecond);
-	loadLevel(levelList[0]);
+	loadLevel(levelList[8]);
 	//playerOne.init(wizardPic, "Nesquit", TILE_WIZARD);  //Load Level should be handling this
 }
 
