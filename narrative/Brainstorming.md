@@ -2,7 +2,7 @@ how does the party grow?  Maybe captured players that are freed then join the pa
 
 Intro story and maybe after certain milestones?  Some dialog between player/enemies?
 
-## Clarifying Questions/Actions
+## [[Clarifying Questions]]/Actions
 - Analyzing Narrative for tech debt/Ideate implementation to reduce tech debt
 - Narrative Bottlenecks (What **must** happen?)
 
@@ -18,7 +18,7 @@ Intro story and maybe after certain milestones?  Some dialog between player/enem
 	- Ranger
 - ###### Different kinds of encounters in each room (Combat, traps, puzzles, negotiations, etc)
 - ###### Player interacting with environment
-- ###### Story exists and develops within one big area
+- ###### Story exists and develops within one setting (sewers)
 - ###### Multiple kinds of enemies
 - ###### Player starts with one character and has to discover party members
 	- Party was split-up
@@ -115,12 +115,12 @@ Intro story and maybe after certain milestones?  Some dialog between player/enem
 ##### Rules
 - Combat Rules
 	- Characters are limited in movement/athletic actions based on Stamina points and action cost
-		- Athletics-based classes have lower stamina action costs and higher stamina pools that allow a short range of movement with a high costing ability, a moderate range of movement with a moderate costing ability, or a wider range of movement with a low costing/no ability use.
-	- Characters are limited in spells/magical actions/enchanted item use based on mana points and action cost
-		- Magic-based classes have lower mana action costs and higher mana pools that allow for stronger magical abilities/spells/items to be used and spell use on consecutive turns without recouping mana points
+		- Athletics-based classes have lower stamina action costs and higher stamina point pools that allow a short range of movement with a high costing ability, a moderate range of movement with a moderate costing ability, or a wider range of movement with a low costing/no ability use.
+	- Characters are limited in spells/magical actions/enchanted item use based on magic points and action cost
+		- Magic-based classes have lower magic action costs and higher magic point pools that allow for stronger magical abilities/spells/items to be used and spell use on consecutive turns without recouping magic points
 	- Characters can only take (up to) one movement and one non-movement action per turn
 		- Certain skills/items can generate reactions allowing for extra ability use per turn
-	- Action cost depends on character stats and strength of power/utility of said action
+	- Ability cost depends on character stats and strength of power/utility of said action
 	- Player characters can exit combat encounters by one character exiting 
 	- When a character loses all their HP that character dies permanently
 - Interaction Rules
@@ -139,7 +139,7 @@ Intro story and maybe after certain milestones?  Some dialog between player/enem
 	- Secret passage encounters:
 	- Locked passage/storage encounters:
 - Item Rules
-	- Single-use items can be used 
+	- Consumables have set amount of uses and disappear after that number is reached
 
 ### Characters as Goals, Resources, and Conflict
 
