@@ -1,0 +1,2 @@
+- Will map layout be static or emergent?
+- 
