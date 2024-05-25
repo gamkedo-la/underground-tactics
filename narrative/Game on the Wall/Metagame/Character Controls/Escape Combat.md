@@ -1,0 +1,2 @@
+- Player Characters can escape combat/hazards by all living PCs reaching designated "escape zones"
+	- For certain enemies PCs can exit combat by leaving enemy "leash range"
