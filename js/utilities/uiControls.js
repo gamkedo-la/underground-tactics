@@ -92,7 +92,7 @@ function keyPressed(evt) {
 	}
 
 	if(playBackgroundMusic == evt.keyCode){
-		mainBackgroundMusic.loopSong("sfx_ambience_cave_drone"); //temp location
+		mainBackgroundMusic.loopSong("Mx_UGT_Theme_MainMenu"); 
 	}
 
 	if (toggleMovement == evt.keyCode) {

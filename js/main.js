@@ -65,15 +65,10 @@ function imageLoadingDoneSoStartGame(){
 		checkAllPlayerAndEnemyCollisions();
 		drawEverything();
 	}, 1000/framesPerSecond);
-	loadLevel(levelList[8]);
-	//playerOne.init(wizardPic, "Nesquit", TILE_WIZARD);  //Load Level should be handling this
+	loadLevel(levelList[0]);
 }
 
 function roomChange(roomChangeC, roomChangeR) {
-/*	levelNow++;
-	if(levelNow > levelList.length) {
-		levelNow = 0;
-	}*/
 	levelRoomC += roomChangeC;
 	levelRoomR += roomChangeR;
 	if(levelRoomC < 0){
@@ -138,8 +133,8 @@ function roomChange(roomChangeC, roomChangeR) {
 }
 
 function loadLevel(whichLevel) {	
-	var alreadyLoadedPlayers = false;
-	for(var i = 0; i<charList.length; i++ ){
+	var alreadyLoadedPlayers = false; //need to change variable to allow when players are found
+	for(var i = 0; i<charList.length; i++ ){ 
 		if(charList[i].isHuman){
 			alreadyLoadedPlayers = true;
 			break;
@@ -180,11 +175,12 @@ function loadLevel(whichLevel) {
 		}
 		if( roomGrid[i] == TILE_WARRIOR ||
 			roomGrid[i] == TILE_WIZARD){  
+				console.log("Wizard/Warrior", alreadyLoadedPlayers)
 				if(alreadyLoadedPlayers == false){
 					addPlayer(roomGrid[i]);
 				} else {
 					roomGrid[i] = TILE_FLOOR_STONE_1;
-				}
+				} 
 		}
 	}
 

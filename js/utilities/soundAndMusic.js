@@ -25,7 +25,6 @@ function setFormat() {
 
 var mainBackgroundMusic = new BackgroundMusicClass();
 
-
 function SoundOverlapsClass(filenameWithPath) {
     setFormat();
     var altSoundTurn = false;
