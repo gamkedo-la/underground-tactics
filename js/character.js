@@ -19,7 +19,7 @@ function CharacterBase (){
 	this.maxHealth = 4;
 	this.trapCoolDownTimer = 0;
 	this.trapCoolDownCounter = 0;
-	this.remainingStamina = 10000;
+	this.remainingStamina = 10;
 	this.movementArray = [67];
 	this.usingPath = false;
 	this.animateWalk = false;
