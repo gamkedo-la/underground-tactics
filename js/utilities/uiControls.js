@@ -29,7 +29,8 @@ function executeCommand(){
 			charWalk(turnNumber);
 			displaySpells();
 			displayItems();
-			charList[turnNumber].fireBolt();
+			useFireBolt();
+			// charList[turnNumber].fireBolt();
 		//	charList[turnNumber].levitate(); 
 		}
 }
