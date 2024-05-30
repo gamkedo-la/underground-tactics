@@ -204,9 +204,20 @@ function drawHealth() {
     for(var i = 0; i < turnOrderList.length; i++) {
         let character = charList[turnNumber];
         gameCoordToIsoCoord(character.x, character.y);
-        // TODO: draw correct green/red ratio based on current health vs. max health
-        colorRect(isoDrawX - 25, isoDrawY - 80, 50, 10, 'lime');
-        colorRect(isoDrawX, isoDrawY - 80, 25, 10, 'red');
+        // draw correct green/red ratio based on current health vs. max health
+		let healthPercent = character.health / character.maxHealth;
+		if (healthPercent > 1) healthPercent = 1;
+		if (healthPercent < 0) healthPercent = 0;
+		let barX = Math.round(isoDrawX - 38);
+		let barY = Math.round(isoDrawY - 80);
+		let barH = 6;
+		let barW = 75;
+		let border = 1;
+		let greenW = Math.round(barW * healthPercent);
+		let redW = barW - greenW;
+        colorRect(barX-border, barY-border, barW+(border*2), barH+(border*2), 'black');
+		colorRect(barX, barY, greenW, barH, 'lime');
+        colorRect(barY + greenW, barY, redW, barH, 'red');
     }
 }
 
