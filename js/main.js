@@ -302,6 +302,7 @@ function drawEverything() {
 		}
 		removeSmokeFromList();
 		removeFireBoltFromList();
+		drawHealth();
 		finishedCameraPan();
 		drawInitiativeOrder();
 		drawPlayerOptions();

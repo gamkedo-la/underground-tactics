@@ -200,6 +200,16 @@ function checkPlayerOptionBoxes() {
     }
 }
 
+function drawHealth() {
+    for(var i = 0; i < turnOrderList.length; i++) {
+        let character = charList[turnNumber];
+        gameCoordToIsoCoord(character.x, character.y);
+        // TODO: draw correct green/red ratio based on current health vs. max health
+        colorRect(isoDrawX - 25, isoDrawY - 80, 50, 10, 'lime');
+        colorRect(isoDrawX, isoDrawY - 80, 25, 10, 'red');
+    }
+}
+
 function drawPlayerOptions() {
     colorText("Turn Options", canvas.width - 200, canvas.height - 90, "red", "14px Arial Black");
     for(var i = 0; i < turnOrderList.length; i++){
