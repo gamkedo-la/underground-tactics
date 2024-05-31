@@ -15,6 +15,10 @@ const WORLD_ROOM_ROWS = 3;
 const CURSOROFFSETX = -5;
 const CURSOROFFSETY = 0;
 
+// ensure that gameCoordToIsoCoord() function 
+// always returns isoDrawX and isoDrawY as integers
+// this stops graphics from looking blurry
+const SNAP_ISODRAWXY_TO_INTEGER_VALUES = true;
 var isoDrawX = 0;
 var isoDrawY = 0;
 
@@ -309,6 +313,7 @@ var levelOne = [
 
 	
 function gameCoordToIsoCoord (pixelX, pixelY){
+	
 	var camPanX = -350;
 	var camPanY = 0;
 	var tileCFraction = pixelX / ROOM_W;
@@ -316,6 +321,12 @@ function gameCoordToIsoCoord (pixelX, pixelY){
 	
 	isoDrawX = -camPanX + tileCFraction * (ISO_GRID_W/2) - tileRFraction * (ISO_GRID_W/2);
 	isoDrawY = -camPanY + tileCFraction * (ISO_GRID_H/2) + tileRFraction * (ISO_GRID_H/2);
+
+	if (SNAP_ISODRAWXY_TO_INTEGER_VALUES) {
+		isoDrawX = Math.round(isoDrawX);
+		isoDrawY = Math.round(isoDrawY);
+	}
+
 }	
 
 function tileCoordToIsoCoord(tileC, tileR ){
