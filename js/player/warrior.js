@@ -67,11 +67,22 @@ function warriorClass() {
 		if(fireBoltBoxHovering){
 			console.log("Fire Bolt Spell")
 			let tempShot = new shotClass();
+			tempShot.picture = fireBoltPic
 			tempShot.shootFrom(this);
-			fireBoltList.push(tempShot);
+			fireBoltPic.push(tempShot);
 		}
 	}
-		
+
+	this.shootArrow = function(){
+		var arrowBoxHovering = true; //To Be moved
+		if(arrowBoxHovering){
+			let tempShot = new shotClass();
+			tempShot.shootFrom(this);
+			tempShot.picture = arrowPic
+			arrowList.push(tempShot);
+		}
+	}
+	
 	this.checkCollisionsAgainst = function(otherHumanoid){
 		if(this.collisionTest(otherHumanoid)){
 			console.log("collision");

@@ -219,6 +219,10 @@ function moveEverything() {
 		for(i = 0; i< smokeList.length; i++){
 			smokeList[i].move();
 		}
+		for(i = 0; i< arrowList.length; i++){
+			arrowList[i].move();
+		}
+
 		for(var i = 0; i < turnOrderList.length; i++ ){
 			if(turnOrderList[i].myTurn == true && turnOrderList[i].name == "Enemy 1"){
 
@@ -290,6 +294,9 @@ function drawEverything() {
 		drawTracks();
 		for(i = 0; i<fireBoltList.length; i++){
 			fireBoltList[i].draw();
+		}
+		for(i = 0; i< arrowList.length; i++){
+			arrowList[i].draw();
 		}
 		for(var i = 0; i < potionList.length; i++){
 			potionList[i].draw();

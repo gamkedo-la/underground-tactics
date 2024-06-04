@@ -30,6 +30,7 @@ function executeCommand(){
 			displaySpells();
 			displayItems();
 			useFireBolt();
+			shootArrow();
 			// charList[turnNumber].fireBolt();
 		//	charList[turnNumber].levitate(); 
 		}

@@ -2,6 +2,7 @@ const SHOT_SPEED = 6.0;
 const SHOT_LIFE = 60;
 
 var fireBoltList = [];
+var arrowList = [];
 
 function removeFireBoltFromList() {
 	for(var i=0; i<fireBoltList.length; i++) {
@@ -11,9 +12,18 @@ function removeFireBoltFromList() {
 	}
 }
 
+function removeArrowFromList() {
+	for(var i=0; i<arrowList.length; i++) {
+        if(arrowList[i].readyToRemove){
+            arrowList.splice(i,1);
+        }
+	}
+}
+
 function shotClass(){
 	this.projectileX;
 	this.projectileY;
+	this.picture;
 	this.readyToRemove = false;
 	this.offSetWidth = 0; 
 	this.offSetHeight = 100; 
@@ -88,6 +98,6 @@ function shotClass(){
 		this.offSetWidth = this.frame * this.width;
 		
 		gameCoordToIsoCoord(this.projectileX,this.projectileY);
-		drawIsoCharacterByFeet(fireBoltPic,isoDrawX, isoDrawY, this);
+		drawIsoCharacterByFeet(this.picture,isoDrawX, isoDrawY, this);
 	}
 }
