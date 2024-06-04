@@ -223,9 +223,9 @@ function drawHealth() {
 
 function drawPlayerOptions() {
     colorText("Turn Options", canvas.width - 200, canvas.height - 90, "red", "14px Arial Black");
-    for(var i = 0; i < turnOrderList.length; i++){
+    for (var i = 0; i < turnOrderList.length; i++) {
         if (charList[turnNumber].isHuman) {
-            if(mainOptions){
+            if (mainOptions) {
                 mainOptionsMenu.hidden = false;
                 canvasContext.drawImage(useItemPic, useItemX, useItemY);
                 if (useItemBoxHovering) {
@@ -234,14 +234,14 @@ function drawPlayerOptions() {
                     colorText("Items", useItemX + 5, useItemY + 65, "red", "14px Arial Black");
                 }
 
-		if (charList[turnNumber].remainingStamina <= 0) {
-		    canvasContext.drawImage(wizardMovementPic, moveOptionX, moveOptionY);
-		    if (moveBoxHovering) {
-			colorText("Move", moveOptionX + 5, moveOptionY + 65, "lime", "14px Arial Black");
-		    } else {
-			colorText("Move", moveOptionX + 5, moveOptionY + 65, "red", "14px Arial Black");
-		    }
-		}
+                if (charList[turnNumber].remainingStamina <= 0) {
+                    canvasContext.drawImage(wizardMovementPic, moveOptionX, moveOptionY);
+                    if (moveBoxHovering) {
+                        colorText("Move", moveOptionX + 5, moveOptionY + 65, "lime", "14px Arial Black");
+                    } else {
+                        colorText("Move", moveOptionX + 5, moveOptionY + 65, "red", "14px Arial Black");
+                    }
+                }
 
                 canvasContext.drawImage(wizardSpellPic, spellBoxOptionX, spellBoxOptionY);
                 if (spellBoxHovering) {
@@ -255,7 +255,7 @@ function drawPlayerOptions() {
                 } else {
                     colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "red", "14px Arial Black");
                 }
-            } else if (spellOptions){
+            } else if (spellOptions) {
                 canvasContext.drawImage(spellFirePic, moveOptionX, moveOptionY);
                 if (fireBoltBoxHovering) {
                     colorText("Fire Bolt", fireBoltBoxX + 5, fireBoltBoxY + 65, "lime", "14px Arial Black");
@@ -274,7 +274,7 @@ function drawPlayerOptions() {
                 } else {
                     colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "red", "14px Arial Black");
                 }
-            } else if (potionOptions)  {              
+            } else if (potionOptions) {
                 canvasContext.drawImage(manaPotionPic, moveOptionX, moveOptionY);
                 if (moveBoxHovering) {
                     colorText("Mana", moveOptionX + 5, moveOptionY + 65, "lime", "15px Arial Black");
