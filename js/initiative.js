@@ -100,6 +100,9 @@ var moveOptionY = 525;
 var fireBoltBoxX = 600;
 var fireBoltBoxY = 525;
 var fireBoltBoxHovering = false;
+var shootArrowBoxHovering = false;
+var shootArrowBoxX = 470;
+var shootArrowBoxY = 525;
 var moveBoxHovering = false;
 var spellBoxOptionX = 665;
 var spellBoxOptionY = 525;
@@ -164,7 +167,7 @@ function displayItems(){
     }
 }
 
-function useFireBolt(){
+function useFireBolt(turnNumber){
     if (fireBoltBoxHovering) {
         mainOptions = true;
         mainOptionsMenu.hidden = false;
@@ -176,11 +179,26 @@ function useFireBolt(){
     }
 }
 
+function shootArrow(turnNumber){
+    if (shootArrowBoxHovering) {
+        mainOptions = true;
+        mainOptionsMenu.hidden = false;
+        spellOptions = false;
+        spellOptionsMenu.hidden = true;
+        potionOptions = false;
+        potionOptionsMenu.hidden = true;
+        charList[turnNumber].shootArrow();
+    }
+}
+
 function checkPlayerOptionBoxes() { 
     for(var i = 0; i < turnOrderList.length; i++){
         if (    (turnOrderList[i].myTurn == true && turnOrderList[i].isHuman)  
         ) {
             if(mainOptions){
+                if (charList[turnNumber].arrows > 0) {
+                    shootArrowBoxHovering = checkMousePositionInBox(shootArrowBoxX, shootArrowBoxY, 50, 50);
+                }
                 useItemBoxHovering = checkMousePositionInBox(useItemX, useItemY, 50, 50);
                 if (charList[turnNumber].movementArray.length > 0) {
                     moveBoxHovering = checkMousePositionInBox(moveOptionX, moveOptionY, 50, 50);
@@ -227,6 +245,14 @@ function drawPlayerOptions() {
         if (charList[turnNumber].isHuman) {
             if (mainOptions) {
                 mainOptionsMenu.hidden = false;
+
+                canvasContext.drawImage(arrowButtonPic, shootArrowBoxX, shootArrowBoxY);
+                if (shootArrowBoxHovering) {
+                    colorText("Shoot", shootArrowBoxX + 5, shootArrowBoxY + 65, "lime", "14px Arial Black");
+                } else {
+                    colorText("Shoot", shootArrowBoxX + 5, shootArrowBoxY + 65, "red", "14px Arial Black");
+                }
+
                 canvasContext.drawImage(useItemPic, useItemX, useItemY);
                 if (useItemBoxHovering) {
                     colorText("Items", useItemX + 5, useItemY + 65, "lime", "14px Arial Black");

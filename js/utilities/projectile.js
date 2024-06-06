@@ -20,7 +20,7 @@ function removeArrowFromList() {
 	}
 }
 
-function shotClass(){
+function shotClass(whichPic){
 	this.projectileX;
 	this.projectileY;
 	this.picture;
@@ -33,7 +33,8 @@ function shotClass(){
 	this.frame = 0;
 	this.frames = 3;
 	
-	this.picture = document.createElement("img");
+	this.picture = whichPic;
+
 	
 	this.reset = function() {
 		this.shotLife = 0;
@@ -72,7 +73,9 @@ function shotClass(){
 	this.move = function() {
 		this.projectileX = this.projectileX + this.projectileXV;
 		this.projectileY = this.projectileY + this.projectileYV;
-		addSmoke(this.projectileX-50, this.projectileY-20, 10);
+		if(this.picture == fireBoltPic ){
+			addSmoke(this.projectileX-50, this.projectileY-20, 10);
+		}
 		if(	this.projectileX < 0 || this.projectileX > canvas.width ||
 			this.projectileY < 0 || this.projectileY > canvas.height){
 				this.readyToRemove = true;

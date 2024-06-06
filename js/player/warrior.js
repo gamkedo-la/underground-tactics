@@ -29,6 +29,7 @@ warriorClass.prototype = new CharacterBase();
 function warriorClass() {
 	this.findPlayer = false;
 	this.fireBoltList = [];
+	this.arrows = 10;
 	
 	this.warriorPic = document.createElement("img");
 	
@@ -66,19 +67,17 @@ function warriorClass() {
 	this.fireBolt = function(){
 		if(fireBoltBoxHovering){
 			console.log("Fire Bolt Spell")
-			let tempShot = new shotClass();
-			tempShot.picture = fireBoltPic
+			let tempShot = new shotClass(fireBoltPic);
 			tempShot.shootFrom(this);
-			fireBoltPic.push(tempShot);
+			fireBoltList.push(tempShot);
 		}
 	}
 
 	this.shootArrow = function(){
 		var arrowBoxHovering = true; //To Be moved
 		if(arrowBoxHovering){
-			let tempShot = new shotClass();
+			let tempShot = new shotClass(arrowPic);
 			tempShot.shootFrom(this);
-			tempShot.picture = arrowPic
 			arrowList.push(tempShot);
 		}
 	}

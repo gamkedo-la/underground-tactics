@@ -29,8 +29,8 @@ function executeCommand(){
 			charWalk(turnNumber);
 			displaySpells();
 			displayItems();
-			useFireBolt();
-			shootArrow();
+			useFireBolt(turnNumber);
+			shootArrow(turnNumber);
 			// charList[turnNumber].fireBolt();
 		//	charList[turnNumber].levitate(); 
 		}

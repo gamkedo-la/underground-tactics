@@ -28,8 +28,7 @@ var koaToaPic = document.createElement("img");
 var fireBoltPic = document.createElement("img");
 var arrowPic = document.createElement("img");
 var worldTilesPic = document.createElement("img");
-
-
+var arrowButtonPic = document.createElement("img");
 
 var trackPics = [];
 
@@ -60,6 +59,7 @@ function loadImages() {
 			{varName: tileIndicatorPic, theFile: "tileIndicator.png",sx: 0, sy: 0},
 			{varName: tileIndicatorWhitePic, theFile: "tileIndicatorWhite.png",sx: 0, sy: 0},
 			{varName: tileIndicatorCyanPic, theFile: "tileIndicatorCyan.png",sx: 0, sy: 0},
+			{varName: arrowButtonPic, theFile: "arrowButton.png",sx: 0, sy: 0},
 			//pick up items
 			{varName: potionManaPic, theFile: "potionTiles.png",sx: 0, sy: 0},
 			{varName: potionHealthPic, theFile: "potionTiles.png",sx: 0, sy: 0},
