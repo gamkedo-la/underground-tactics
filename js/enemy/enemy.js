@@ -38,7 +38,8 @@ function enemyClass() {
         
 	}
 
-    this.meleeCombat = function(){
+    this.meleeCombat = function(target){
+        
         this.combatEngaged = true;
         if(this.attackTurn){
             //kobald will attack with a dagger
@@ -49,13 +50,17 @@ function enemyClass() {
             
             //1d4 + 2 for damage
 
-            if(attackRoll >= charList[turnNumber].defense){
-                charList[turnNumber].health = charList[turnNumber].health - damageRoll;
+            if(attackRoll >= target.defense){
+                target.health -= damageRoll;
             }
 
             this.attackTurn = false;
         }
     }
+
+    
+
+    
 
     this.checkPlayerLocationForNextMove = function(currentIndex){
         var enemyRow = whichRow(currentIndex);
@@ -83,7 +88,7 @@ function enemyClass() {
         var playerCol = Math.floor(playerOne.x/ROOM_W);
 
         if(enemyDestinationIndex == currentIndex){
-            this.meleeCombat();
+            this.meleeCombat(playerOne);
         }
 
        // console.log("Player Row: " + playerRow + " Enemy Row: " + enemyRow);
