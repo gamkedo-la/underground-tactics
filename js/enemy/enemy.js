@@ -39,6 +39,23 @@ function enemyClass() {
 	}
 
     this.meleeCombat = function(target){
+        console.log("Enemy Melee")
+
+        var myIndex = getTileIndexAtPixelCoord(this.x,this.y);
+        var targetIndex = getTileIndexAtPixelCoord(target.x,target.y);
+        var inRange = false;
+
+        if(indexN(myIndex) == myIndex ||
+           indexE(myIndex) == myIndex ||
+           indexS(myIndex) == myIndex ||
+           indexW(myIndex) == myIndex){
+            inRange = true;
+        }
+
+        if(inRange == false){
+            console.log("Not in range for Melee")
+            return;
+        }
         
         this.combatEngaged = true;
         if(this.attackTurn){

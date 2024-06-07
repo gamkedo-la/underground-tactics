@@ -70,12 +70,13 @@ function CharacterBase (){
         this.reset(tileTypeMatch);
     }
 
-	this.resetTurn = function(isPlayer = false) {
+	this.resetTurn = function() {
 		// Currently, this is called by drawInitiativeOrder in
 		// initiative.js
 		// There really ought to be logic code responsible for turn
 		// order stuff.
 		this.remainingStamina = 10;
+		console.log("Refilling Stamina for turn " + turnNumber)
 	}
 
 	this.popToGrid = function(){

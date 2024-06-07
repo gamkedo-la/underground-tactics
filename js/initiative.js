@@ -49,8 +49,8 @@ function drawInitiativeOrder() {
         if(turnNumber >= charList.length){ // only wraps if Enemy is last in charList
             if (turnTicks > 120){
                 turnTicks = 0;
-		turnNumber = 0;
-		resetCharacterWithTurnNumber(turnNumber);
+		        turnNumber = 0;
+
             } 
         } else {
             moveBoxHovering = true;
@@ -66,14 +66,14 @@ function drawInitiativeOrder() {
             if(turnTicks == 60){
                 turnTicks = 0;
                 charList[turnNumber].attackTurn = true;
-		turnNumber++;
-        if (turnNumber >= turnOrderList.length) {
-            turnNumber = 0;
-            for(var i = 0; i < charList.length; i++){
-                charList[i].remainingStamina = charList[i].maxStamina;
-            }
-        }
-		resetCharacterWithTurnNumber(turnNumber);
+                turnNumber++;
+                if (turnNumber >= turnOrderList.length) {
+                    turnNumber = 0;
+                    for(var i = 0; i < charList.length; i++){
+                        charList[i].remainingStamina = charList[i].maxStamina;
+                    }
+                }
+                resetCharacterWithTurnNumber(turnNumber);
             }
         }
     }
@@ -127,7 +127,7 @@ function turnAdvance() {
         potionOptions = false;
         potionOptionsMenu.hidden = true;
 
-	resetCharacterWithTurnNumber(turnNumber);
+	    resetCharacterWithTurnNumber(turnNumber);
     }
 }
 
