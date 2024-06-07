@@ -59,7 +59,18 @@ function enemyClass() {
 
     this.checkPlayerLocationForNextMove = function(currentIndex){
         var enemyRow = whichRow(currentIndex);
-        var playerOne = charList[0]; // To do:  Scan for nearest is human
+        var playerOne = null; // Scan for nearest is human
+        for(var i = 0; i < charList.length; i++){
+            if(charList[i].isHuman){
+                playerOne = charList[i];
+                break;
+            }
+        } 
+        if(playerOne == null){
+            console.log("AI can't find player");
+            return;
+        } 
+        //var playerOne = charList[0];
         var playerIndex = getTileIndexAtPixelCoord(playerOne.x,playerOne.y);
         if(this.meleeCombatTactics){
             var enemyDestinationIndex = indexS(playerIndex);   
