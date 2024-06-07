@@ -1,16 +1,7 @@
 const SHOT_SPEED = 6.0;
 const SHOT_LIFE = 60;
 
-var fireBoltList = [];
 var arrowList = [];
-
-function removeFireBoltFromList() {
-	for(var i=0; i<fireBoltList.length; i++) {
-        if(fireBoltList[i].readyToRemove){
-            fireBoltList.splice(i,1);
-        }
-	}
-}
 
 function removeArrowFromList() {
 	for(var i=0; i<arrowList.length; i++) {

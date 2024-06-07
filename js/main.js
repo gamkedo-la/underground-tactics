@@ -213,16 +213,12 @@ function loadLevel(whichLevel) {
 function moveEverything() {
 	if(liveGame){
 		charList[turnNumber].movement();
-		for(i = 0; i< fireBoltList.length; i++){
-			fireBoltList[i].move();
-		}
 		for(i = 0; i< smokeList.length; i++){
 			smokeList[i].move();
 		}
 		for(i = 0; i< arrowList.length; i++){
 			arrowList[i].move();
 		}
-
 		for(var i = 0; i < turnOrderList.length; i++ ){
 			if(turnOrderList[i].myTurn == true && turnOrderList[i].name == "Enemy 1"){
 
@@ -292,9 +288,6 @@ function drawEverything() {
 		colorRect(0,0,canvas.width,canvas.height, 'black');
 		shiftForCameraPan();
 		drawTracks();
-		for(i = 0; i<fireBoltList.length; i++){
-			fireBoltList[i].draw();
-		}
 		for(i = 0; i< arrowList.length; i++){
 			arrowList[i].draw();
 		}
@@ -308,7 +301,6 @@ function drawEverything() {
 			smokeList[i].draw();
 		}
 		removeSmokeFromList();
-		removeFireBoltFromList();
 		drawHealth();
 		finishedCameraPan();
 		drawInitiativeOrder();

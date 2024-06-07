@@ -103,7 +103,7 @@ function CharacterBase (){
 		console.log("Fire Bolt Spell")
 		let tempShot = new shotClass(fireBoltPic);
 		tempShot.shootFrom(this);
-		fireBoltList.push(tempShot);
+		arrowList.push(tempShot);
 	}
 
 	this.shootArrow = function(){
