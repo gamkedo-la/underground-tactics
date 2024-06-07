@@ -38,8 +38,6 @@ function CharacterBase (){
 	this.isHuman = false;
 	this.maxStamina = 10000;
 
-
-
 	this.reset = function(tileMatch) {
         this.speed = 0;
         this.keysHeld = 0;
@@ -99,6 +97,19 @@ function CharacterBase (){
 		} else {
 			console.log("cannot pass");
 		}
+	}
+
+	this.fireBolt = function(){
+		console.log("Fire Bolt Spell")
+		let tempShot = new shotClass(fireBoltPic);
+		tempShot.shootFrom(this);
+		fireBoltList.push(tempShot);
+	}
+
+	this.shootArrow = function(){
+		let tempShot = new shotClass(arrowPic);
+		tempShot.shootFrom(this);
+		arrowList.push(tempShot);
 	}
 
 	this.movement = function() {

@@ -28,7 +28,6 @@ warriorClass.prototype = new CharacterBase();
 
 function warriorClass() {
 	this.findPlayer = false;
-	this.fireBoltList = [];
 	this.arrows = 10;
 	
 	this.warriorPic = document.createElement("img");
@@ -61,24 +60,6 @@ function warriorClass() {
 			spellOptionsMenu.hidden = true;
 			potionOptions = false;
 			potionOptionsMenu.hidden = true;
-		}
-	}
-
-	this.fireBolt = function(){
-		if(fireBoltBoxHovering){
-			console.log("Fire Bolt Spell")
-			let tempShot = new shotClass(fireBoltPic);
-			tempShot.shootFrom(this);
-			fireBoltList.push(tempShot);
-		}
-	}
-
-	this.shootArrow = function(){
-		var arrowBoxHovering = true; //To Be moved
-		if(arrowBoxHovering){
-			let tempShot = new shotClass(arrowPic);
-			tempShot.shootFrom(this);
-			arrowList.push(tempShot);
 		}
 	}
 	
