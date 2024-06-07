@@ -235,11 +235,45 @@ function drawHealth() {
 		let redW = barW - greenW;
         colorRect(barX-border, barY-border, barW+(border*2), barH+(border*2), 'black');
 		colorRect(barX, barY, greenW, barH, 'lime');
-        colorRect(barY + greenW, barY, redW, barH, 'red');
+        colorRect(barX + greenW, barY, redW, barH, 'red');
+    }
+}
+
+function drawStamina() {
+    for(var i = 0; i < turnOrderList.length; i++) {
+        let character = charList[turnNumber];
+        gameCoordToIsoCoord(character.x, character.y);
+        // draw correct green/red ratio based on current health vs. max health
+        console.log(character.remainingStamina, character.maxStamina)
+		let staminaPercent = character.remainingStamina / character.maxStamina;
+        //console.log(staminaPercent)
+		if (staminaPercent > 1) staminaPercent = 1;
+		if (staminaPercent < 0) staminaPercent = 0;
+		let barX = Math.round(isoDrawX - 38);
+		let barY = Math.round(isoDrawY - 100);
+		let barH = 6;
+		let barW = 75;
+		let border = 1;
+		let orangeW = Math.round(barW * staminaPercent);
+		let yellowW = barW - orangeW;
+        colorRect(barX-border, barY-border, barW+(border*2), barH+(border*2), 'black');
+		colorRect(barX, barY, orangeW, barH, 'orange');
+        colorRect(barX + yellowW, barY, yellowW, barH, 'yellow');
     }
 }
 
 function drawPlayerOptions() {
+    colorText("Party Members", 300, 20, "white", "14px Arial Black");
+    canvasContext.drawImage(emptyPlayerPic, 0, 20, 20, 20, 300, 30, 20, 20);
+    if(warriorFound){
+        canvasContext.drawImage(emptyPlayerPic, 0, 40, 20, 20, 330, 30, 20, 20);
+    } else {
+        canvasContext.drawImage(emptyPlayerPic, 0, 0, 20, 20, 330, 30, 20, 20);
+    }
+    canvasContext.drawImage(emptyPlayerPic, 0, 0, 20, 20, 360, 30, 20, 20);
+    canvasContext.drawImage(emptyPlayerPic, 0, 0, 20, 20, 390, 30, 20, 20);
+    canvasContext.drawImage(emptyPlayerPic, 0, 0, 20, 20, 420, 30, 20, 20);
+
     colorText("Turn Options", canvas.width - 200, canvas.height - 90, "red", "14px Arial Black");
     for (var i = 0; i < turnOrderList.length; i++) {
         if (charList[turnNumber].isHuman) {

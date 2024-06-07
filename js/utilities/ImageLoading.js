@@ -29,6 +29,7 @@ var fireBoltPic = document.createElement("img");
 var arrowPic = document.createElement("img");
 var worldTilesPic = document.createElement("img");
 var arrowButtonPic = document.createElement("img");
+var emptyPlayerPic = document.createElement("img");
 
 var trackPics = [];
 
@@ -86,6 +87,7 @@ function loadImages() {
 			{varName: kobaldPic, theFile:  "kobald.png"},
 			{varName: kobaldArcherPic, theFile:  "kobaldArcher.png"},
 			{varName: koaToaPic, theFile:  "kuo Toa.png"},
+			{varName: emptyPlayerPic, theFile:  "partyMembers.png", sx: 0, sy: 0},
 
 			//world tiles sprite sheet
 			{varName: worldTilesPic, theFile: "worldTiles.png"},

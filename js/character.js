@@ -36,7 +36,7 @@ function CharacterBase (){
     this.attackTurn = true;
 	this.tiedUp = false;
 	this.isHuman = false;
-	this.maxStamina = 10000;
+	this.maxStamina = 10;
 
 	this.reset = function(tileMatch) {
         this.speed = 0;

@@ -302,6 +302,7 @@ function drawEverything() {
 		}
 		removeSmokeFromList();
 		drawHealth();
+		drawStamina();
 		finishedCameraPan();
 		drawInitiativeOrder();
 		drawPlayerOptions();
