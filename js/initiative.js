@@ -250,7 +250,7 @@ function drawStamina() {
 		if (staminaPercent > 1) staminaPercent = 1;
 		if (staminaPercent < 0) staminaPercent = 0;
 		let barX = Math.round(isoDrawX - 38);
-		let barY = Math.round(isoDrawY - 100);
+		let barY = Math.round(isoDrawY - 87);
 		let barH = 6;
 		let barW = 75;
 		let border = 1;
@@ -258,7 +258,7 @@ function drawStamina() {
 		let yellowW = barW - orangeW;
         colorRect(barX-border, barY-border, barW+(border*2), barH+(border*2), 'black');
 		colorRect(barX, barY, orangeW, barH, 'orange');
-        colorRect(barX + yellowW, barY, yellowW, barH, 'yellow');
+        colorRect(barX + orangeW, barY, yellowW, barH, 'yellow');
     }
 }
 

@@ -164,7 +164,6 @@ function CharacterBase (){
 				if(this.findPlayer){
 					this.checkPlayerLocationForNextMove(currentIndex);
 				}
-
 			}
 
 			if(this.movementArray.length > this.remainingStamina) {
