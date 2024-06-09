@@ -16,14 +16,14 @@ function setupMenus() {
   addView(potionOptionsMenu);
 
   // Render test of inventory menu
-//   inventoryMenu = new InventoryMenu(200, 125, 100, 100, 3, 3, [
-//     { image: useItemPic, title: "Test Item 1" },
-//     { image: useItemPic, title: "Test Item 2" },
-//     { image: useItemPic, title: "Test Item 3" },
-//     { image: useItemPic, title: "Test Item 4" },
-//     { image: useItemPic, title: "Test Item 5" },
-//   ]);
-//   inventoryMenu.hidden = false;
-//   inventoryMenu.backgroundColor = "purple";
-//   addView(inventoryMenu);
+  //   inventoryMenu = new InventoryMenu(200, 125, 3, 3, [
+  //     { image: useItemPic, title: "Test Item 1" },
+  //     { image: useItemPic, title: "Test Item 2" },
+  //     { image: useItemPic, title: "Test Item 3" },
+  //     { image: useItemPic, title: "Test Item 4" },
+  //     { image: useItemPic, title: "Test Item 5" },
+  //   ]);
+  //   inventoryMenu.hidden = false;
+  //   inventoryMenu.backgroundColor = "purple";
+  //   addView(inventoryMenu);
 }

@@ -1,4 +1,4 @@
-function InventoryMenu(x, y, width, height, rows, columns, items = []) {
+function InventoryMenu(x, y, rows, columns, items = []) {
   const gridStartX = 10;
   const gridStartY = 40;
   const itemWidth = 150;
