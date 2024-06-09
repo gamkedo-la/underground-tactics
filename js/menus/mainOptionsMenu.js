@@ -2,7 +2,7 @@ function MainOptionsMenu(x, y, width, height) {
 	UIView.call(this, x, y, width, height);
 
 	// TODO: create actual UILabel class
-	const exampleLabel = new UIView(15, 5, 150, 30);
+	const exampleLabel = new UIView(15, 5, 15, 30);
 	exampleLabel.drawCustomContent = function() {
 		colorText("Turn Options", 0, 20, "white", "14px Arial Black");
 	}
