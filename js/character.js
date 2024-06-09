@@ -88,6 +88,7 @@ function CharacterBase (){
 	}
 
 	this.processTileAtIndex = function(currentIndex) {
+		console.log("CI: " + currentIndex)
 		if(this.movementArray.length > 1 && this.movementArray[1] == currentIndex){ //backtracking
 			this.movementArray.shift();
 		} else if(tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_WALKABLE){
@@ -127,12 +128,11 @@ function CharacterBase (){
 		}
 
 		if(this.usingPath == false){
-			currentIndex = this.movementArray[0];
-			if(this.findPlayer){
-				if(this.movementArray.length == 1){
-					this.keyHeld_North = true;
-				}
+			currentIndex = this.movementArray[0]; //Probably a better fix.  Player needs a movement in the array, or the player can't move.  This fixes that.
+			if(this.movementArray.length == 1){
+				this.keyHeld_North = true;
 			}
+		
 			if(this.keyHeld_North){
 				currentIndex = indexN(currentIndex);
 				this.processTileAtIndex(currentIndex);

@@ -24,9 +24,7 @@ function addPlayer(playerTileType){
     charList.push(tempPlayer);
 }
 
-
 warriorClass.prototype = new CharacterBase();
-
 function warriorClass() {
 	this.findPlayer = false;
 	this.arrows = 10;
@@ -34,7 +32,7 @@ function warriorClass() {
 	this.warriorPic = document.createElement("img");
 	
 	this.setupControls = function(northKey,eastKey,southKey,westKey,
-									northKey2,eastKey2,southKey2,westKey2) {
+								northKey2,eastKey2,southKey2,westKey2) {
 		this.controlKeyForNorth = northKey;
 		this.controlKeyForEast = eastKey;			
 		this.controlKeyForSouth = southKey;
@@ -118,7 +116,6 @@ function warriorClass() {
 	}
 
 	var footStepSoundTurn = 0;
-
 		
 	this.draw = function(){
 		gameCoordToIsoCoord(this.x,this.y);
