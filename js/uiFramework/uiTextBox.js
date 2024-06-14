@@ -16,14 +16,18 @@ function UITextBox(x, y, width, height) {
 
     if (this.text) {
       const textColor = "black";
-      colorText(
-        this.text,
-        this.image.width + this.imageOffsetX + this.textOffsetX,
-        this.textOffsetY,
-        textColor,
-        "14px Arial Black"
-      );
-    }
+	  // multiple lines suported: use the \n character in the string
+	  let splitLines = this.text.split("\n");
+	  for (let lineNum=0; lineNum<splitLines.length; lineNum++) {
+		colorText(
+			splitLines[lineNum],
+			this.image.width + this.imageOffsetX + this.textOffsetX,
+			this.textOffsetY + (lineNum*16),
+			textColor,
+			"14px Arial Black"
+		);
+		}
+	}
   };
 }
 
