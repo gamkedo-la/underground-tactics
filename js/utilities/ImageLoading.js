@@ -15,6 +15,7 @@ var playerPositionPic = document.createElement("img");
 var wizardMovementPic = document.createElement("img");
 var wizardSpellPic = document.createElement("img");
 var endTurnPic = document.createElement("img");
+var messagelogBackgroundPic = document.createElement("img");
 var useItemPic = document.createElement("img");
 var magicMissilePic = document.createElement("img");
 var manaPotionPic = document.createElement("img");
@@ -76,6 +77,7 @@ function loadImages() {
 			{varName: wizardMovementPic, theFile:  "wizardWalk.png", sx: 0, sy: 0},
 			{varName: wizardSpellPic, theFile:  "spellbookIcon.png", sx: 0, sy: 0},
 			{varName: endTurnPic, theFile:  "endTurn.png", sx: 0, sy: 0},
+			{varName: messagelogBackgroundPic, theFile:  "messagelogBackground.png", sx: 0, sy: 0},
 			{varName: useItemPic, theFile:  "useItem.png", sx: 0, sy: 0},
 			{varName: magicMissilePic, theFile:  "spellMagicMissle.png", sx: 0, sy: 0},
 			{varName: manaPotionPic, theFile:  "manaPotion.png", sx: 0, sy: 0},

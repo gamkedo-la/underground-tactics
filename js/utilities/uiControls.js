@@ -57,6 +57,9 @@ function initInput(){
 }
 
 function keyPressed(evt) {
+	if (!charList[turnNumber]) {
+		console.log("ERROR: charList for turnNumber "+turnNumber+" is null.");
+	}
 	if(charList[turnNumber].isHuman){
 		setKeyHoldState(evt.keyCode, charList[turnNumber], true);
 	}

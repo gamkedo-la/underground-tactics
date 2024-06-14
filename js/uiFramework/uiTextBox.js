@@ -9,7 +9,11 @@ function UITextBox(x, y, width, height) {
 
   this.drawCustomContent = function () {
 
-    // we can use this image for things like character portraits or icons, depdending on we want to use the textbox
+    if (this.backgroundImage) {
+	  canvasContext.drawImage(this.backgroundImage, 0, 0);
+	}
+	
+	// we can use this image for things like character portraits or icons, depdending on we want to use the textbox
     if (this.image) {
       canvasContext.drawImage(this.image, this.imageOffsetX, this.imageOffsetY);
     }
