@@ -128,8 +128,14 @@ function CharacterBase (){
 		}
 
 		if(this.usingPath == false){
+			
+			if(this.movementArray.length == 0){
+				currentIndex = getTileIndexAtPixelCoord(this.x,this.y);
+				this.movementArray = [currentIndex];	
+			}
+			
 			currentIndex = this.movementArray[0]; //Probably a better fix.  Player needs a movement in the array, or the player can't move.  This fixes that.
-		
+			var arrayLength = this.movementArray.length; //just for debugging
 			if(this.keyHeld_North){
 				currentIndex = indexN(currentIndex);
 				this.processTileAtIndex(currentIndex);
@@ -162,9 +168,13 @@ function CharacterBase (){
 					this.checkPlayerLocationForNextMove(currentIndex);
 				}
 			}
+			if(this.isHuman && this.movementArray.length != arrayLength){
+				console.log(this.movementArray);
+			}
 
 			if(this.movementArray.length > this.remainingStamina) {
 				this.movementArray.shift();
+				console.log("Shifted: " + this.movementArray);
 			} 
 
 		} else {
