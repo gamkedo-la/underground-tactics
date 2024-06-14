@@ -14,7 +14,7 @@ function SpellOptionsMenu(x, y, width, height) {
 	this.addSubView(fireBoltButton);
 	fireBoltButton.onPress = () => {
 		fireBoltBoxHovering = true;
-		useFireBolt()
+		useFireBolt(turnNumber);
 		fireBoltBoxHovering = false;
 	};
 

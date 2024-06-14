@@ -105,12 +105,14 @@ function CharacterBase (){
 		let tempShot = new shotClass(fireBoltPic);
 		tempShot.shootFrom(this);
 		arrowList.push(tempShot);
+		textBoxUI.text = this.myName + " casts a fire bolt spell.";
 	}
 
 	this.shootArrow = function(){
 		let tempShot = new shotClass(arrowPic);
 		tempShot.shootFrom(this);
 		arrowList.push(tempShot);
+		textBoxUI.text = this.myName + " fires an arrow.";
 	}
 
 	this.movement = function() {

@@ -15,6 +15,7 @@ function MainOptionsMenu(x, y, width, height) {
 	useItemButton.title = "Items";
 	useItemButton.onPress = () => {
 		console.log('"Items" button pressed');
+		textBoxUI.text = "Select an item from your inventory";
 
 		useItemBoxHovering = true;
 		displayItems();
@@ -28,6 +29,7 @@ function MainOptionsMenu(x, y, width, height) {
 	moveButton.title = "Move";
 	moveButton.onPress = () => {
 		console.log('"Move" button pressed');
+		textBoxUI.text = "Moving. Use the arrow keys to\nselect a tile, then press spacebar.";
 
 		moveBoxHovering = true;
 		charWalk(turnNumber);
@@ -41,6 +43,8 @@ function MainOptionsMenu(x, y, width, height) {
 	spellBoxButton.title = "Spell";
 	spellBoxButton.onPress = () => {
 		console.log('"Spell" button pressed');
+		textBoxUI.text = "Spellbook opened. Click a spell to cast.";
+
 
 		spellBoxHovering = true;
 		displaySpells();
@@ -55,7 +59,6 @@ function MainOptionsMenu(x, y, width, height) {
 	endTurnButton.textOffsetX = -10;
 	endTurnButton.onPress = () => {
 		console.log('"End Turn" button pressed');
-
 		endTurnBoxHovering = true;
 		turnAdvance();
 		endTurnBoxHovering = false;

@@ -120,7 +120,8 @@ function turnAdvance() {
         if (turnNumber >= turnOrderList.length) {
             turnNumber = 0;
         }
-        mainOptions = true;
+		textBoxUI.text = "Advancing to turn number "+turnNumber+".";
+    	mainOptions = true;
         mainOptionsMenu.hidden = false;
         spellOptions = false;
         spellOptionsMenu.hidden = true;
@@ -175,7 +176,11 @@ function useFireBolt(turnNumber){
         spellOptionsMenu.hidden = true;
         potionOptions = false;
         potionOptionsMenu.hidden = true;
-        charList[turnNumber].fireBolt();
+		if (charList[turnNumber]) {
+        	charList[turnNumber].fireBolt();
+		} else {
+			console.log("ERROR: missing charList for turnNumber "+turnNumber);
+		}
     }
 }
 

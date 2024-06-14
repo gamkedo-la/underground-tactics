@@ -89,6 +89,8 @@ function warriorClass() {
 	this.checkCollisionsAgainstItem = function(item){
 		if(this.collisionTest(item)){
 			console.log("Picked up " + item.myName);
+			textBoxUI.text = this.myName + " picked up " + item.myName;
+
 			if(item.healingPotion){
 				this.healingPotion++;
 				itemPickUpSound.play();
@@ -164,6 +166,8 @@ function warriorClass() {
 			this.health = this.health - howMuchDamage;
 		}
 		trapCoolDownTimer = true;
+		textBoxUI.text = this.myName + " was injured by a trap\nand loses "+howMuchDamage+" hit points.";
+
 	}
 	
 	//this is used to keep traps from constantly causing damage to the player

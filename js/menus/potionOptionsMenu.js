@@ -14,6 +14,8 @@ function PotionOptionsMenu(x, y, width, height) {
 	this.addSubView(manaButton);
 	manaButton.onPress = () => {
 		console.log('"Mana" button pressed');
+		textBoxUI.text = "You drink a mana potion.";
+
 	};
 
 	const levitationButton = new UIComboButton(80, 40, 50, 75);
@@ -22,6 +24,8 @@ function PotionOptionsMenu(x, y, width, height) {
 	this.addSubView(levitationButton);
 	levitationButton.onPress = () => {
 		console.log('"Levitation" button pressed');
+		textBoxUI.text = "You drink a levitation potion.";
+
 	};
 
 	const endTurnButton = new UIComboButton(145, 40, 50, 75);
