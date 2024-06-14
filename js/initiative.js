@@ -244,7 +244,7 @@ function drawStamina() {
         let character = charList[turnNumber];
         gameCoordToIsoCoord(character.x, character.y);
         // draw correct green/red ratio based on current health vs. max health
-        console.log(character.remainingStamina, character.maxStamina)
+  //      console.log(character.remainingStamina, character.maxStamina)
 		let staminaPercent = character.remainingStamina / character.maxStamina;
         //console.log(staminaPercent)
 		if (staminaPercent > 1) staminaPercent = 1;

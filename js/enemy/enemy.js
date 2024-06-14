@@ -34,7 +34,7 @@ function enemyClass() {
             this.archerCombatTactics = true;
         }
 		this.superInit(whichGraphic,'enemy', whichTile);
-        console.log(whichTile)
+    //    console.log(whichTile)
         
 	}
 

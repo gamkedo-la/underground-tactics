@@ -42,11 +42,11 @@ function InventoryMenu(x, y, rows, columns, items = []) {
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor
-inventoryMenu.prototype = Object.create(UIView.prototype, {
+/*inventoryMenu.prototype = Object.create(UIView.prototype, {
   constructor: {
     value: InventoryMenu,
     enumerable: false,
     writable: true,
     configurable: true,
   },
-});
+}); */

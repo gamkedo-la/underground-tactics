@@ -128,10 +128,6 @@ function CharacterBase (){
 		}
 
 		if(this.usingPath == false){
-			currentIndex = this.movementArray[0]; //Probably a better fix.  Player needs a movement in the array, or the player can't move.  This fixes that.
-			if(this.movementArray.length == 1){
-				this.keyHeld_North = true;
-			}
 		
 			if(this.keyHeld_North){
 				currentIndex = indexN(currentIndex);
