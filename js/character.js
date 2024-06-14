@@ -88,7 +88,7 @@ function CharacterBase (){
 	}
 
 	this.processTileAtIndex = function(currentIndex) {
-		console.log("CI: " + currentIndex)
+	//	console.log("CI: " + currentIndex)
 		if(this.movementArray.length > 1 && this.movementArray[1] == currentIndex){ //backtracking
 			this.movementArray.shift();
 		} else if(tileTypeNavMode(roomGrid[currentIndex])==NAVMODE_WALKABLE){
@@ -128,6 +128,7 @@ function CharacterBase (){
 		}
 
 		if(this.usingPath == false){
+			currentIndex = this.movementArray[0]; //Probably a better fix.  Player needs a movement in the array, or the player can't move.  This fixes that.
 		
 			if(this.keyHeld_North){
 				currentIndex = indexN(currentIndex);
@@ -164,7 +165,8 @@ function CharacterBase (){
 
 			if(this.movementArray.length > this.remainingStamina) {
 				this.movementArray.shift();
-			}
+			} 
+
 		} else {
 			currentIndex = getTileIndexAtPixelCoord(this.x,this.y);
 			var tileN = indexN(currentIndex);
