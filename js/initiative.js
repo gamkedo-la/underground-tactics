@@ -300,7 +300,7 @@ function drawPlayerOptions() {
                     colorText("Items", useItemX + 5, useItemY + 65, "red", "14px Arial Black");
                 }
 
-                if (charList[turnNumber].remainingStamina <= 0) {
+                if (charList[turnNumber].remainingStamina > 0) {
                     canvasContext.drawImage(wizardMovementPic, moveOptionX, moveOptionY);
                     if (moveBoxHovering) {
                         colorText("Move", moveOptionX + 5, moveOptionY + 65, "lime", "14px Arial Black");
