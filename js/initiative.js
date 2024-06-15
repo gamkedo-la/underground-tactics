@@ -179,6 +179,7 @@ function useFireBolt(turnNumber){
         potionOptionsMenu.hidden = true;
 		if (charList[turnNumber]) {
         	charList[turnNumber].fireBolt();
+            fireBoltBoxHovering = false;
 		} else {
 			console.log("ERROR: missing charList for turnNumber "+turnNumber);
 		}
