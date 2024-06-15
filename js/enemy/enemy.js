@@ -22,18 +22,21 @@ function enemyClass() {
             this.maxMovement = 8;
             this.meleeCombatTactics = true;
             this.archerCombatTactics = false;
+            this.myName = "Kobald";
         } else if (whichTile == TILE_KOA_TOA){
             whichGraphic = koaToaPic;
             this.maxMovement = 6;
             this.meleeCombatTactics = true;
             this.archerCombatTactics = false;
+            this.myName = "Koa Toa";
         } else if (whichTile == TILE_KOBALD_ARCHER){
             whichGraphic = kobaldArcherPic;
             this.maxMovement = 8;
             this.meleeCombatTactics = false;
             this.archerCombatTactics = true;
+            this.myName = "Kobald Archer";
         }
-		this.superInit(whichGraphic,'enemy', whichTile);
+		this.superInit(whichGraphic,this.myName, whichTile);
     //    console.log(whichTile)
         
 	}
@@ -78,6 +81,7 @@ function enemyClass() {
     this.checkPlayerLocationForNextMove = function(currentIndex){
         var enemyRow = whichRow(currentIndex);
         var playerOne = null; // Scan for nearest is human
+     
         for(var i = 0; i < charList.length; i++){
             if(charList[i].isHuman){
                 playerOne = charList[i];
@@ -88,8 +92,9 @@ function enemyClass() {
             console.log("AI can't find player");
             return;
         } 
-        //var playerOne = charList[0];
+        
         var playerIndex = getTileIndexAtPixelCoord(playerOne.x,playerOne.y);
+        
         if(this.meleeCombatTactics){
             var enemyDestinationIndex = indexS(playerIndex);   
             var destinationRow = whichRow(enemyDestinationIndex);
