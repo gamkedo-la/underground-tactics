@@ -13,6 +13,8 @@ function enemyClass() {
     this.findPlayer = true;
     this.meleeCombatTactics;
     this.archerCombatTactics;
+    this.takeShot = false;
+    this.shotAvailable = true;
 
 	this.superInit = this.init;
 	this.init = function (whichTile){
@@ -56,7 +58,7 @@ function enemyClass() {
         }
 
         if(inRange == false){
-      //      console.log("Not in range for Melee")
+            console.log("Not in range for Melee")
             return;
         }
         
@@ -94,6 +96,8 @@ function enemyClass() {
         } 
         
         var playerIndex = getTileIndexAtPixelCoord(playerOne.x,playerOne.y);
+        var enemyCol = currentIndex%ROOM_COLS;
+        var playerCol = Math.floor(playerOne.x/ROOM_W);
         
         if(this.meleeCombatTactics){
             var enemyDestinationIndex = indexS(playerIndex);   
@@ -101,9 +105,12 @@ function enemyClass() {
         } else if (this.archerCombatTactics){
             var enemyDestinationIndex = indexS(playerIndex);   
             var destinationRow = whichRow(enemyDestinationIndex);
+            if(enemyCol == playerCol){
+                console.log("Fire Arrow");
+                this.takeShot = true;
+            }
         }
-        var enemyCol = currentIndex%ROOM_COLS;
-        var playerCol = Math.floor(playerOne.x/ROOM_W);
+
 
         if(enemyDestinationIndex == currentIndex){
             this.meleeCombat(playerOne);
@@ -118,12 +125,32 @@ function enemyClass() {
 
         if (destinationRow < enemyRow ){
             this.keyHeld_North = true;
+            if(this.takeShot && this.shotAvailable){
+                this.shootArrow();
+                this.shotAvailable = false;
+                //end turn
+            }
         } else if (destinationRow > enemyRow){
             this.keyHeld_South = true;
+            if(this.takeShot && this.shotAvailable){
+                this.shootArrow();
+                this.shotAvailable = false;
+                //end turn
+            }
         } else if (playerCol < enemyCol){
             this.keyHeld_West = true;
+            if(this.takeShot && this.shotAvailable){
+                this.shootArrow();
+                this.shotAvailable = false;
+                //end turn
+            }
         } else if (playerCol > enemyCol){
             this.keyHeld_East = true;
+            if(this.takeShot && this.shotAvailable){
+                this.shootArrow();
+                this.shotAvailable = false;
+                //end turn
+            }
         }
     }
 

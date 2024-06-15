@@ -71,6 +71,7 @@ function drawInitiativeOrder() {
                     turnNumber = 0;
                     for(var i = 0; i < charList.length; i++){
                         charList[i].remainingStamina = charList[i].maxStamina;
+                        charList[i].shotAvailable = true;
                     }
                 }
                 resetCharacterWithTurnNumber(turnNumber);
