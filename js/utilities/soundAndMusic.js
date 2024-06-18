@@ -1,4 +1,5 @@
 //sounds
+var caveAmbienceSound = new SoundOverlapsClass("sfx_ambience_cave_drone_LOFI");
 var footstepsSound = new SoundOverlapsClass("footsteps");
 var itemPickUpSound = new SoundOverlapsClass("pickUpItem");
 var feetPlayer001SFX = new SoundOverlapsClass("sfx_feet_player_a-001");

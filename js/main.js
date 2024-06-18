@@ -21,6 +21,12 @@ var mainMenu = false;
 
 window.onload = function(){
 			
+	// this causes an error in browsers due to autoplay being forbidden
+	// see handleMouseClick() function where we play on 1st click
+	// however, on itch.io this is not a problem because we've already clicked
+	// the window and are allowed to play sound immediately right here:
+	// caveAmbienceSound.play();
+	
 	canvas = document.getElementById('gameCanvas');
 	canvasContext = canvas.getContext('2d');
 
