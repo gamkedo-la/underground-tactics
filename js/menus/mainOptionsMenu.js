@@ -16,6 +16,7 @@ function MainOptionsMenu(x, y, width, height) {
 	useItemButton.onPress = () => {
 		console.log('"Items" button pressed');
 		textBoxUI.text = "Select an item from your inventory";
+		inventoryOpenSound.play();
 
 		useItemBoxHovering = true;
 		displayItems();
@@ -30,6 +31,7 @@ function MainOptionsMenu(x, y, width, height) {
 	moveButton.onPress = () => {
 		console.log('"Move" button pressed');
 		textBoxUI.text = "Moving. Use the arrow keys to\nselect a tile, then press spacebar.";
+		moveModeSound.play();
 
 		moveBoxHovering = true;
 		charWalk(turnNumber);
@@ -44,6 +46,7 @@ function MainOptionsMenu(x, y, width, height) {
 	spellBoxButton.onPress = () => {
 		console.log('"Spell" button pressed');
 		textBoxUI.text = "Spellbook opened. Click a spell to cast.";
+		spellBookSound.play();
 
 
 		spellBoxHovering = true;

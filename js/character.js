@@ -106,6 +106,7 @@ function CharacterBase (){
 		tempShot.shootFrom(this);
 		arrowList.push(tempShot);
 		textBoxUI.text = this.myName + " casts a fire bolt spell.";
+		fireBoltSound.play();
 	}
 
 	this.shootArrow = function(){
@@ -113,6 +114,7 @@ function CharacterBase (){
 		tempShot.shootFrom(this);
 		arrowList.push(tempShot);
 		textBoxUI.text = this.myName + " fires an arrow.";
+		arrowShotSound.play();
 	}
 
 	this.movement = function() {

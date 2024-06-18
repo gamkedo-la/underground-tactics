@@ -10,7 +10,15 @@ var feetPlayer006SFX = new SoundOverlapsClass("sfx_feet_player_a-006");
 var feetPlayer007SFX = new SoundOverlapsClass("sfx_feet_player_a-007");
 var feetPlayer008SFX = new SoundOverlapsClass("sfx_feet_player_a-008");
 var healthPickSFX = new SoundOverlapsClass("sfx_pickup_health");
-var bowShotSFX = new SoundOverlapsClass("sfx_weapon_bow_shot")
+var bowShotSFX = new SoundOverlapsClass("sfx_weapon_bow_shot");
+var inventoryOpenSound = new SoundOverlapsClass("inventory_open");
+var manaPotionSound = new SoundOverlapsClass("heal");
+var levitationPotionSound = new SoundOverlapsClass("teleport");
+var moveModeSound = new SoundOverlapsClass("select");
+var endTurnSound = new SoundOverlapsClass("confirm");
+var spellBookSound = new SoundOverlapsClass("inventory_open");
+var fireBoltSound = new SoundOverlapsClass("fireball");
+var arrowShotSound = new SoundOverlapsClass("arrow");
 
 function setFormat() {
     var audio = new Audio();

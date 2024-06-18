@@ -121,7 +121,8 @@ function turnAdvance() {
         if (turnNumber >= turnOrderList.length) {
             turnNumber = 0;
         }
-		textBoxUI.text = "Advancing to turn number "+turnNumber+".";
+		textBoxUI.text = "Advancing to turn number "+(turnNumber+1)+"."; // we add one to avoid turn "zero"
+		endTurnSound.play();
     	mainOptions = true;
         mainOptionsMenu.hidden = false;
         spellOptions = false;

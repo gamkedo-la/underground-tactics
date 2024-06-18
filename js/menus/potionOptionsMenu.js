@@ -15,6 +15,7 @@ function PotionOptionsMenu(x, y, width, height) {
 	manaButton.onPress = () => {
 		console.log('"Mana" button pressed');
 		textBoxUI.text = "You drink a mana potion.";
+		manaPotionSound.play();
 
 	};
 
@@ -25,6 +26,7 @@ function PotionOptionsMenu(x, y, width, height) {
 	levitationButton.onPress = () => {
 		console.log('"Levitation" button pressed');
 		textBoxUI.text = "You drink a levitation potion.";
+		levitationPotionSound.play();
 
 	};
 
