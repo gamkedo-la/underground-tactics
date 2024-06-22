@@ -218,6 +218,7 @@ function loadLevel(whichLevel) {
 //All movement occurs here.  This is called every frame.
 function moveEverything() {
 	if(liveGame){
+		checkPlayerOptionBoxes();
 		charList[turnNumber].movement();
 		for(i = 0; i< smokeList.length; i++){
 			smokeList[i].move();
@@ -239,13 +240,11 @@ function moveEverything() {
 			}
 		}
 		for(i = 0; i < charList.length; i++){
-		//	charList[i].movement();
 			if(levelLoadingSkipOperations){
 				levelLoadingSkipOperations = false;
 				return;
 			}
 		}
-		checkPlayerOptionBoxes();
 	}
 	
 	if (pauseScreen) {

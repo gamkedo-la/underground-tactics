@@ -15,6 +15,7 @@ function enemyClass() {
     this.archerCombatTactics;
     this.takeShot = false;
     this.shotAvailable = true;
+    this.moveAwayFromPlayer = false;
 
 	this.superInit = this.init;
 	this.init = function (whichTile){
@@ -105,13 +106,25 @@ function enemyClass() {
             var enemyDestinationIndex = indexS(playerIndex);   
             var destinationRow = whichRow(enemyDestinationIndex);
         } else if (this.archerCombatTactics){
-            var enemyDestinationIndex = indexS(playerIndex);   
+            var enemyDestinationIndex = playerIndex;   
             var destinationRow = whichRow(enemyDestinationIndex);
             var destinationCol = whichCol(enemyDestinationIndex);
             if( enemyCol == playerCol || 
                 playerRow == enemyRow){
                 this.takeShot = true;
             }
+        } else if (this.moveAwayFromPlayer){
+            var enemyDestinationIndex = playerIndex;   
+            var destinationRow = whichRow(enemyDestinationIndex);
+            var destinationCol = whichCol(enemyDestinationIndex);
+            if( enemyCol == playerCol){
+                if (enemyRow < playerRow){
+                    destinationRow = currentIndex - (ROOM_COLS * 5);
+                } else {
+                    destinationRow = currentIndex + (ROOM_COLS * 5);
+                }
+            }
+
         }
 
         if(enemyDestinationIndex == currentIndex){
@@ -124,13 +137,13 @@ function enemyClass() {
         this.keyHeld_South = false;
         this.keyHeld_West = false;
         this.keyHeld_East = false;
-
+    
         if (destinationRow < enemyRow ){
-
             if(this.takeShot && this.shotAvailable){
                 this.offSetHeight = 150;
                 this.shootArrow();
                 this.shotAvailable = false;
+                this.moveAwayFromPlayer = true;
             } else {
                 this.keyHeld_North = true;
             }
@@ -139,6 +152,7 @@ function enemyClass() {
                 this.offSetHeight = 0;
                 this.shootArrow();
                 this.shotAvailable = false;
+                this.moveAwayFromPlayer = true;
             } else {
                 this.keyHeld_South = true;
             }
@@ -147,6 +161,7 @@ function enemyClass() {
                 this.offSetHeight = 225;
                 this.shootArrow();
                 this.shotAvailable = false;
+                this.moveAwayFromPlayer = true;
             } else {
                 this.keyHeld_West = true;
             }
@@ -155,10 +170,11 @@ function enemyClass() {
                 this.offSetHeight = 75;
                 this.shootArrow();
                 this.shotAvailable = false;
+                this.moveAwayFromPlayer = true;
             } else {
                 this.keyHeld_East = true;
             }
-        }
+        } 
     }
 
     this.checkCollisionsAgainst = function(otherHumanoid) {
