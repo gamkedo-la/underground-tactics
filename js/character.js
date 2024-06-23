@@ -200,7 +200,10 @@ function CharacterBase (){
 				this.remainingStamina--;
 
 				if(this.movementArray.length == 0){
-					this.usingPath = false;
+					if(this.takeShot){
+						this.shootArrow();
+					}
+					//console.log("Ran out of moves.  This should only get called once per character turn");  ////This will be used as a clue to determine what is making this called more
 					this.movementArray[0] = currentIndex; // setting the head of the next array movement
 					if(this.isHuman){
 						var myC = whichCol(currentIndex);

@@ -14,7 +14,6 @@ function enemyClass() {
     this.meleeCombatTactics;
     this.archerCombatTactics;
     this.takeShot = false;
-    this.shotAvailable = true;
     this.moveAwayFromPlayer = false;
 
 	this.superInit = this.init;
@@ -114,6 +113,12 @@ function enemyClass() {
                 console.log("Firing Arrow",enemyCol,playerCol,enemyRow,playerRow);
                 this.takeShot = true;
                 this.usingPath = true;
+                this.keyHeld_North = false;
+                this.keyHeld_South = false;
+                this.keyHeld_West = false;
+                this.keyHeld_East = false;
+                return;
+
             }
         } else if (this.moveAwayFromPlayer){
             var enemyDestinationIndex = playerIndex;   
@@ -141,41 +146,13 @@ function enemyClass() {
         this.keyHeld_East = false;
     
         if (destinationRow < enemyRow ){
-            if(this.takeShot && this.shotAvailable){
-                this.offSetHeight = 150;
-                this.shootArrow();
-                this.shotAvailable = false;
-                this.moveAwayFromPlayer = true;
-            } else {
-                this.keyHeld_North = true;
-            }
+            this.keyHeld_North = true;
         } else if (destinationRow > enemyRow){
-            if(this.takeShot && this.shotAvailable){
-                this.offSetHeight = 0;
-                this.shootArrow();
-                this.shotAvailable = false;
-                this.moveAwayFromPlayer = true;
-            } else {
-                this.keyHeld_South = true;
-            }
+            this.keyHeld_South = true;
         } else if (playerCol < enemyCol){
-            if(this.takeShot && this.shotAvailable){
-                this.offSetHeight = 225;
-                this.shootArrow();
-                this.shotAvailable = false;
-                this.moveAwayFromPlayer = true;
-            } else {
-                this.keyHeld_West = true;
-            }
+            this.keyHeld_West = true;
         } else if (playerCol > enemyCol){
-            if(this.takeShot && this.shotAvailable){
-                this.offSetHeight = 75;
-                this.shootArrow();
-                this.shotAvailable = false;
-                this.moveAwayFromPlayer = true;
-            } else {
-                this.keyHeld_East = true;
-            }
+            this.keyHeld_East = true;
         } 
     }
 
