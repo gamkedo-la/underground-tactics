@@ -113,6 +113,7 @@ function enemyClass() {
                 enemyRow == playerRow){
                 console.log("Firing Arrow",enemyCol,playerCol,enemyRow,playerRow);
                 this.takeShot = true;
+                this.usingPath = true;
             }
         } else if (this.moveAwayFromPlayer){
             var enemyDestinationIndex = playerIndex;   

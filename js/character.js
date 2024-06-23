@@ -117,6 +117,9 @@ function CharacterBase (){
 		textBoxUI.text = this.myName + " fires an arrow.";
 		arrowShotSound.play();
 		turnAdvance();
+		this.usingPath = true;
+	/*	currentIndex = getTileIndexAtPixelCoord(this.x,this.y);
+		this.movementArray = [currentIndex];	*/
 	}
 
 	this.movement = function() {
