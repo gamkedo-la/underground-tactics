@@ -93,5 +93,6 @@ function shotClass(whichPic){
 		
 		gameCoordToIsoCoord(this.projectileX,this.projectileY);
 		drawIsoCharacterByFeet(this.picture,isoDrawX, isoDrawY, this);
+		colorRect(isoDrawX, isoDrawY, 3, 3, "lime");
 	}
 }

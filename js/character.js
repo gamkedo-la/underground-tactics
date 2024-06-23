@@ -113,8 +113,10 @@ function CharacterBase (){
 		let tempShot = new shotClass(arrowPic);
 		tempShot.shootFrom(this);
 		arrowList.push(tempShot);
+		this.takeShot = false;
 		textBoxUI.text = this.myName + " fires an arrow.";
 		arrowShotSound.play();
+		turnAdvance();
 	}
 
 	this.movement = function() {
