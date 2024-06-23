@@ -8,30 +8,30 @@ function UITextBox(x, y, width, height) {
   this.backgroundColor = "white";
 
   this.drawCustomContent = function () {
-
     if (this.backgroundImage) {
-	  canvasContext.drawImage(this.backgroundImage, 0, 0);
-	}
-	
-	// we can use this image for things like character portraits or icons, depdending on we want to use the textbox
+      canvasContext.drawImage(this.backgroundImage, 0, 0);
+    }
+
+    // we can use this image for things like character portraits or icons, depdending on we want to use the textbox
     if (this.image) {
       canvasContext.drawImage(this.image, this.imageOffsetX, this.imageOffsetY);
     }
 
     if (this.text) {
       const textColor = "black";
-	  // multiple lines suported: use the \n character in the string
-	  let splitLines = this.text.split("\n");
-	  for (let lineNum=0; lineNum<splitLines.length; lineNum++) {
-		colorText(
-			splitLines[lineNum],
-			this.image.width + this.imageOffsetX + this.textOffsetX,
-			this.textOffsetY + (lineNum*16),
-			textColor,
-			"14px Arial Black"
-		);
-		}
-	}
+      // multiple lines suported: use the \n character in the string
+      let splitLines = this.text.split("\n");
+      for (let lineNum = 0; lineNum < splitLines.length; lineNum++) {
+        let textBufferWidth = this.image?.width ?? 16;
+        colorText(
+          splitLines[lineNum],
+          textBufferWidth + this.imageOffsetX + this.textOffsetX,
+          this.textOffsetY + lineNum * 16,
+          textColor,
+          "14px Arial Black"
+        );
+      }
+    }
   };
 }
 
