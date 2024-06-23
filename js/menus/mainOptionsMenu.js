@@ -16,6 +16,7 @@ function MainOptionsMenu(x, y, width, height) {
 	useItemButton.onPress = () => {
 		console.log('"Items" button pressed');
 		textBoxUI.text = "Select an item from your inventory";
+		textBoxUI.image = useItemPic;
 		inventoryOpenSound.play();
 
 		useItemBoxHovering = true;
@@ -30,6 +31,7 @@ function MainOptionsMenu(x, y, width, height) {
 	moveButton.title = "Move";
 	moveButton.onPress = () => {
 		console.log('"Move" button pressed');
+		textBoxUI.image = wizardMovementPic;
 		textBoxUI.text = "Moving. Use the arrow keys to\nselect a tile, then press spacebar.";
 		moveModeSound.play();
 
