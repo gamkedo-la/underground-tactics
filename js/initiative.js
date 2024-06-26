@@ -128,6 +128,7 @@ function turnAdvance() {
         spellOptionsMenu.hidden = true;
         potionOptions = false;
         potionOptionsMenu.hidden = true;
+        endTurnBoxHovering = false;
 
 	    resetCharacterWithTurnNumber(turnNumber);
     }
