@@ -22,7 +22,7 @@ var manaPotionPic = document.createElement("img");
 var healthPotionPic = document.createElement("img");
 var spellBookPic = document.createElement("img");
 var spellBook2Pic = document.createElement("img");
-var spellBookIconPic = document.createElement("img");
+var spellbookIconPic = document.createElement("img");
 var kobaldPic = document.createElement("img");
 var kobaldArcherPic = document.createElement("img");
 var koaToaPic = document.createElement("img");
@@ -75,21 +75,21 @@ function loadImages() {
 			{varName: arrowPic, theFile: "arrow.png",sx: 0, sy: 0},
 			{varName: playerPositionPic, theFile: "playerPosition.png",sx: 0, sy: 0},
 			{varName: wizardMovementPic, theFile:  "wizardWalk.png", sx: 0, sy: 0},
-			{varName: wizardSpellPic, theFile:  "spellbookIcon.png", sx: 0, sy: 0},
+			{varName: wizardSpellPic, theFile:  "spellBookIcon.png", sx: 0, sy: 0},
 			{varName: endTurnPic, theFile:  "endTurn.png", sx: 0, sy: 0},
 			{varName: messagelogBackgroundPic, theFile:  "messagelogBackground.png", sx: 0, sy: 0},
 			{varName: useItemPic, theFile:  "useItem.png", sx: 0, sy: 0},
 			{varName: magicMissilePic, theFile:  "spellMagicMissle.png", sx: 0, sy: 0},
 			{varName: manaPotionPic, theFile:  "manaPotion.png", sx: 0, sy: 0},
-			{varName: healthPotionPic, theFile:  "healthPotion.png", sx: 0, sy: 0},
+			{varName: healthPotionPic, theFile:  "HealthPotion.png", sx: 0, sy: 0},
 			
 			//characters
 			{varName: wizardPic, theFile: "wizard.png"},
 			{varName: warrriorPic, theFile: "warrior.png"},
 			{varName: kobaldPic, theFile:  "kobald.png"},
 			{varName: kobaldArcherPic, theFile:  "kobaldArcher.png"},
-			{varName: koaToaPic, theFile:  "kuo Toa.png"},
-			{varName: emptyPlayerPic, theFile:  "partyMembers.png", sx: 0, sy: 0},
+			{varName: koaToaPic, theFile:  "Kuo Toa.png"},
+			{varName: emptyPlayerPic, theFile:  "PartyMembers.png", sx: 0, sy: 0},
 
 			//world tiles sprite sheet
 			{varName: worldTilesPic, theFile: "worldTiles.png"},
