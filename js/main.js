@@ -92,6 +92,7 @@ function roomChange(roomChangeC, roomChangeR) {
 	levelNow = levelRoomC + levelRoomR * WORLD_ROOM_COLS;
 	console.log("Loading: ",levelRoomC, levelRoomR, levelNow);
 	loadLevel(levelList[levelNow]);
+	textBoxUI.text = levelText[levelNow];
 	var doorSpawnC = 1;
 	var doorSpawnR = 1;
 	var teamShiftC = 0;

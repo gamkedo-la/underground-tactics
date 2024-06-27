@@ -237,6 +237,17 @@ var levelOne = [
 								sewerRoom1, sewerRoom2, sewerRoom3,
 								sewerRoom4, sewerRoom5, levelOne];
 
+var levelText = 	["words when we enter room A",
+						"words when we enter room B",
+							"words when we enter room C",
+				"words when we enter room D",
+						"words when we enter room E",
+							"words when we enter room F",
+				"words when we enter room G",
+						"words when we enter room H",
+							"words when we enter room I"];
+
+
         //World tiles in the spritesheet are 0-indexed, and each tile are 50x75.
 	//Floor tiles 0 through 49
 	const TILE_FLOOR_STONE_1 = 1;
