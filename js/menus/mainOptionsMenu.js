@@ -48,6 +48,7 @@ function MainOptionsMenu(x, y, width, height) {
 	spellBoxButton.onPress = () => {
 		console.log('"Spell" button pressed');
 		textBoxUI.text = "Spellbook opened. Click a spell to cast.";
+		textBoxUI.image = wizardSpellPic;
 		spellBookSound.play();
 
 
