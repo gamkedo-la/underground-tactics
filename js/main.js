@@ -181,8 +181,9 @@ function loadLevel(whichLevel) {
 			    addEnemy(roomGrid[i]);
 		}
 		if( roomGrid[i] == TILE_WARRIOR ||
+			roomGrid[i] == TILE_ARCHER ||
 			roomGrid[i] == TILE_WIZARD){  
-				console.log("Wizard/Warrior", alreadyLoadedPlayers)
+				console.log("Wizard/Warrior/Archer", alreadyLoadedPlayers)
 				if(alreadyLoadedPlayers == false){
 					addPlayer(roomGrid[i]);
 				} else {

@@ -11,11 +11,15 @@ function addPlayer(playerTileType){
 		var playerPic = warrriorPic;
 		var playerName = "Lance"
 		var tiedUp = true;
-	} else if (playerTileType = TILE_WIZARD){
+	} else if (playerTileType == TILE_WIZARD){
 		var playerPic = wizardPic;
 		var playerName = "Nesquit"
 		var tiedUp = false;
-	}
+	} else if (playerTileType == TILE_ARCHER){
+		var playerPic = archerPic;
+		var playerName = "Robin"
+		var tiedUp = false;
+	} 
 	
 	tempPlayer.init(playerPic, playerName, playerTileType, tiedUp);
 	tempPlayer.setupControls(

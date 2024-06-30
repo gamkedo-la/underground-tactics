@@ -1,5 +1,6 @@
 var wizardPic = document.createElement("img");
 var warrriorPic = document.createElement("img");
+var archerPic = document.createElement("img");
 var titleScreenPic = document.createElement("img");
 var titleScreenWizardPic = document.createElement("img");
 var titleScreenFireBAllPic = document.createElement("img");
@@ -86,6 +87,7 @@ function loadImages() {
 			//characters
 			{varName: wizardPic, theFile: "wizard.png"},
 			{varName: warrriorPic, theFile: "warrior.png"},
+			{varName: archerPic, theFile: "archer.png"},
 			{varName: kobaldPic, theFile:  "kobald.png"},
 			{varName: kobaldArcherPic, theFile:  "kobaldArcher.png"},
 			{varName: koaToaPic, theFile:  "Kuo Toa.png"},
