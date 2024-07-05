@@ -162,15 +162,29 @@ function enemyClass() {
 
         if(this.takeShot){
             console.log("Skipping walk to aim arrow");
-        } else if (destinationRow < enemyRow ){
-            this.keyHeld_North = true;
-        } else if (destinationRow > enemyRow){
-            this.keyHeld_South = true;
-        } else if (destinationCol < enemyCol){
-            this.keyHeld_West = true;
-        } else if (destinationCol > enemyCol){
-            this.keyHeld_East = true;
-        } 
+        } else if(Math.abs(destinationRow - enemyRow) < Math.abs(destinationCol-enemyCol)) {
+            if (destinationRow < enemyRow ){
+                this.keyHeld_North = true;
+            } else if (destinationRow > enemyRow){
+                this.keyHeld_South = true;
+            } else if (destinationCol < enemyCol){
+                this.keyHeld_West = true;
+            } else if (destinationCol > enemyCol){
+                this.keyHeld_East = true;
+            }
+        } else {
+            if (destinationCol < enemyCol){
+                this.keyHeld_West = true;
+            } else if (destinationCol > enemyCol){
+                this.keyHeld_East = true;
+            } else if (destinationRow < enemyRow ){
+                this.keyHeld_North = true;
+            } else if (destinationRow > enemyRow){
+                this.keyHeld_South = true;
+            } 
+        }
+        
+         
     }
 
     this.checkCollisionsAgainst = function(otherHumanoid) {
