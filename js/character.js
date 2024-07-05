@@ -115,6 +115,7 @@ function CharacterBase (){
 	}
 
 	this.shootArrow = function(){
+		
 		let tempShot = new shotClass(arrowPic);
 		tempShot.shootFrom(this);
 		arrowList.push(tempShot);

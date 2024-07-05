@@ -99,15 +99,17 @@ function enemyClass() {
         var enemyCol = currentIndex%ROOM_COLS;
         var playerCol = Math.floor(playerOne.x/ROOM_W);
         var playerRow = whichRow(playerIndex);
-        
+        var enemyDestinationIndex = playerIndex;   
+        var destinationRow = whichRow(enemyDestinationIndex);
+        var destinationCol = whichCol(enemyDestinationIndex);
         
         if(this.meleeCombatTactics){
-            var enemyDestinationIndex = indexS(playerIndex);   
-            var destinationRow = whichRow(enemyDestinationIndex);
+            enemyDestinationIndex = indexS(playerIndex);   
+            destinationRow = whichRow(enemyDestinationIndex);
         } else if (this.archerCombatTactics){
-            var enemyDestinationIndex = playerIndex;   
-            var destinationRow = whichRow(enemyDestinationIndex);
-            var destinationCol = whichCol(enemyDestinationIndex);
+            enemyDestinationIndex = playerIndex;   
+            destinationRow = whichRow(enemyDestinationIndex);
+            destinationCol = whichCol(enemyDestinationIndex);
             if( enemyCol == playerCol || 
                 enemyRow == playerRow){
                 console.log("Firing Arrow",enemyCol,playerCol,enemyRow,playerRow);
@@ -117,13 +119,26 @@ function enemyClass() {
                 this.keyHeld_South = false;
                 this.keyHeld_West = false;
                 this.keyHeld_East = false;
+                if(enemyCol == playerCol){
+                    if(enemyRow < playerRow){
+                        this.updateFacing(DIR_N);
+                    } else {
+                        this.updateFacing(DIR_S);                        
+                    }
+                } else {
+                    if(enemyCol < playerCol){
+                        this.updateFacing(DIR_E);
+                    } else {
+                        this.updateFacing(DIR_W);                        
+                    }
+                }
                 return;
 
             }
         } else if (this.moveAwayFromPlayer){
-            var enemyDestinationIndex = playerIndex;   
-            var destinationRow = whichRow(enemyDestinationIndex);
-            var destinationCol = whichCol(enemyDestinationIndex);
+            enemyDestinationIndex = playerIndex;   
+            destinationRow = whichRow(enemyDestinationIndex);
+            destinationCol = whichCol(enemyDestinationIndex);
             if( enemyCol == playerCol){
                 if (enemyRow < playerRow){
                     destinationRow = currentIndex - (ROOM_COLS * 5);
@@ -149,9 +164,9 @@ function enemyClass() {
             this.keyHeld_North = true;
         } else if (destinationRow > enemyRow){
             this.keyHeld_South = true;
-        } else if (playerCol < enemyCol){
+        } else if (destinationCol < enemyCol){
             this.keyHeld_West = true;
-        } else if (playerCol > enemyCol){
+        } else if (destinationCol > enemyCol){
             this.keyHeld_East = true;
         } 
     }
