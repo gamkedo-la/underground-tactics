@@ -188,11 +188,13 @@ function enemyClass() {
     }
 
     this.draw = function() {
+        
         if(this.movementArray.length < 2){
 			this.animateWalk = false;
 		}
 
         gameCoordToIsoCoord(this.x, this.y);
+        drawIsoCharacterByFeet(playerPositionPic,isoDrawX, isoDrawY, this);
         if (this.animateWalk) {
             this.ticks++;
             if (this.ticks > 3) {
@@ -206,6 +208,8 @@ function enemyClass() {
         }
 
         drawIsoCharacterByFeet(this.myBitmap, isoDrawX, isoDrawY, this);
+        
+
         //drawIsoCharacterByFeet(this.myBitmap, isoDrawX, isoDrawY, this);
         // drawIsoCharacterByFeet(playerPositionPic, isoDrawX, isoDrawY, this);
     }

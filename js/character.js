@@ -1,3 +1,8 @@
+const DIR_S = 0;
+const DIR_E = 1;
+const DIR_N = 2;
+const DIR_W = 3;
+
 function CharacterBase (){
 	this.x;
 	this.y;
@@ -123,6 +128,8 @@ function CharacterBase (){
 		this.movementArray = [currentIndex];	*/
 	}
 
+
+
 	this.movement = function() {
 		
 		var currentIndex;
@@ -229,35 +236,51 @@ function CharacterBase (){
 				}
 			} else if (this.movementArray[lastNode] == tileN) {
 				this.y -= this.movementSpeed;
-				if(this.levitating){
-					this.offSetHeight = 6 * this.height;
-				} else {
-					this.offSetHeight = 2 * this.height
-				}
+				this.updateFacing(DIR_N);
 			} else if (this.movementArray[lastNode] == tileS) {
 				this.y += this.movementSpeed;
+				this.updateFacing(DIR_S);
+			} else if (this.movementArray[lastNode] == tileW) {
+				this.x -= this.movementSpeed;
+				this.updateFacing(DIR_W);
+			} else if (this.movementArray[lastNode] == tileE) {
+				this.x += this.movementSpeed;
+				this.updateFacing(DIR_E);
+			}
+		}
+	}	// END OF THIS.MOVEMENT
+	 
+	this.updateFacing = function(toDir) {
+		switch(toDir){
+			case DIR_S: 
 				if(this.levitating){
 					this.offSetHeight = 4 * this.height;
 				} else {
 					this.offSetHeight = 0 * this.height;
 				}
-			} else if (this.movementArray[lastNode] == tileW) {
-				this.x -= this.movementSpeed;
-				if(this.levitating){
-					this.offSetHeight = 7 * this.height;
-				} else {
-					this.offSetHeight = 3 * this.height;
-				}
-			} else if (this.movementArray[lastNode] == tileE) {
-				this.x += this.movementSpeed;
+				break;
+			case DIR_E:
 				if(this.levitating){
 					this.offSetHeight = 5 * this.height;
 				} else {
 					this.offSetHeight = 1 * this.height;
 				}
-			}
+				break;
+			case DIR_N:
+				if(this.levitating){
+					this.offSetHeight = 6 * this.height;
+				} else {
+					this.offSetHeight = 2 * this.height
+				}
+				break;
+			case DIR_W:
+				if(this.levitating){
+					this.offSetHeight = 7 * this.height;
+				} else {
+					this.offSetHeight = 3 * this.height;
+				}
+				break;
 		}
-	}	// END OF THIS.MOVEMENT
-	 
+	}
 
 }
