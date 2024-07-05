@@ -121,9 +121,9 @@ function enemyClass() {
                 this.keyHeld_East = false;
                 if(enemyCol == playerCol){
                     if(enemyRow < playerRow){
-                        this.updateFacing(DIR_N);
+                        this.updateFacing(DIR_S);
                     } else {
-                        this.updateFacing(DIR_S);                        
+                        this.updateFacing(DIR_N);                        
                     }
                 } else {
                     if(enemyCol < playerCol){
@@ -159,8 +159,10 @@ function enemyClass() {
         this.keyHeld_South = false;
         this.keyHeld_West = false;
         this.keyHeld_East = false;
-    
-        if (destinationRow < enemyRow ){
+
+        if(this.takeShot){
+            console.log("Skipping walk to aim arrow");
+        } else if (destinationRow < enemyRow ){
             this.keyHeld_North = true;
         } else if (destinationRow > enemyRow){
             this.keyHeld_South = true;
