@@ -44,16 +44,16 @@ function shotClass(whichPic){
 		this.projectileXV = 0;
 		this.projectileYV = 0;
 
-		if(character.offSetHeight == 0){
+		if(character.facingDir == DIR_S){
 			this.projectileYV = SHOT_SPEED;
 			this.offSetHeight = 100; 
-		} else if (character.offSetHeight == 75){
+		} else if (character.facingDir == DIR_E){
 			this.projectileXV = SHOT_SPEED;
 			this.offSetHeight = 150;
-		} else if (character.offSetHeight == 150){
+		} else if (character.facingDir == DIR_N){
 			this.projectileYV = -SHOT_SPEED;
 			this.offSetHeight = 50;
-		} else if (character.offSetHeight == 225){
+		} else if (character.facingDir == DIR_W){
 			this.projectileXV = -SHOT_SPEED;
 			this.offSetHeight = 0;
 		}

@@ -42,6 +42,7 @@ function CharacterBase (){
 	this.tiedUp = false;
 	this.isHuman = false;
 	this.maxStamina = 10;
+	this.facingDir = DIR_E;
 
 	this.reset = function(tileMatch) {
         this.speed = 0;
@@ -115,7 +116,7 @@ function CharacterBase (){
 	}
 
 	this.shootArrow = function(){
-		
+
 		let tempShot = new shotClass(arrowPic);
 		tempShot.shootFrom(this);
 		arrowList.push(tempShot);
@@ -252,6 +253,7 @@ function CharacterBase (){
 	}	// END OF THIS.MOVEMENT
 	 
 	this.updateFacing = function(toDir) {
+		this.facingDir = toDir;
 		switch(toDir){
 			case DIR_S: 
 				if(this.levitating){
