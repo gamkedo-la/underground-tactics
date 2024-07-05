@@ -296,8 +296,8 @@ function CharacterBase (){
 		}
 
 		if(this.isHuman == false){
-			console.log("AI changing direction: " + this.facingDir);
-			console.trace();
+			//console.log("AI changing direction: " + this.facingDir);
+		//	console.trace();
 		}
 
 	}
