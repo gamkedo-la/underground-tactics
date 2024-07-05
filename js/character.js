@@ -36,6 +36,7 @@ function CharacterBase (){
 	this.staminaPotion = 0;
 	this.levitatePotion = 0;
 	this.levitating = false;
+	this.wasLevitating = true; //stays a frame behind to detect change
 	this.levitationTurn = 0;
 	this.combatEngaged = false;
     this.attackTurn = true;
@@ -43,6 +44,7 @@ function CharacterBase (){
 	this.isHuman = false;
 	this.maxStamina = 10;
 	this.facingDir = DIR_E;
+	this.fireProjectileDir = -1;
 
 	this.reset = function(tileMatch) {
         this.speed = 0;
@@ -116,7 +118,10 @@ function CharacterBase (){
 	}
 
 	this.shootArrow = function(){
-
+		if(this.fireProjectileDir != -1){
+			this.updateFacing(this.fireProjectileDir);
+			this.fireProjectileDir = -1;
+		}
 		let tempShot = new shotClass(arrowPic);
 		tempShot.shootFrom(this);
 		arrowList.push(tempShot);
@@ -139,6 +144,7 @@ function CharacterBase (){
 		if(this.levitationTurn > 6){
 			this.levitating = false;
 			this.levitationTurn = 0;
+			this.updateFacing(this.facingDir);
 		}
 
 		if(this.movementArray.length < 2){
@@ -253,6 +259,10 @@ function CharacterBase (){
 	}	// END OF THIS.MOVEMENT
 	 
 	this.updateFacing = function(toDir) {
+		if(this.wasLevitating == this.levitating && this.facingDir == toDir){
+			return;
+		}
+		this.wasLevitating = this.levitating;
 		this.facingDir = toDir;
 		switch(toDir){
 			case DIR_S: 
@@ -284,6 +294,12 @@ function CharacterBase (){
 				}
 				break;
 		}
+
+		if(this.isHuman == false){
+			console.log("AI changing direction: " + this.facingDir);
+			console.trace();
+		}
+
 	}
 
 }

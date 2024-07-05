@@ -81,6 +81,9 @@ function enemyClass() {
     }
 
     this.checkPlayerLocationForNextMove = function(currentIndex){
+        if(this.takeShot){
+            return;
+        }
         var enemyRow = whichRow(currentIndex);
         var playerOne = null; // Scan for nearest is human
      
@@ -121,16 +124,20 @@ function enemyClass() {
                 this.keyHeld_East = false;
                 if(enemyCol == playerCol){
                     if(enemyRow < playerRow){
-                        this.updateFacing(DIR_S);
+                        this.fireProjectileDir = DIR_S;
                     } else {
-                        this.updateFacing(DIR_N);                        
+                        this.fireProjectileDir = DIR_N;                        
                     }
                 } else {
                     if(enemyCol < playerCol){
-                        this.updateFacing(DIR_E);
+                        this.fireProjectileDir = DIR_E;
                     } else {
-                        this.updateFacing(DIR_W);                        
+                        this.fireProjectileDir = DIR_W;                        
                     }
+                } 
+
+                if(this.isHuman == false){
+                    console.log("AI finished aiming")
                 }
                 return;
 

@@ -57,7 +57,7 @@ function drawInitiativeOrder() {
             if(turnTicks == 2){
                 for(i = 0; i < charList[turnNumber].maxMovement; i++){
                     charList[turnNumber].usingPath = false;
-                    charList[turnNumber].movement();
+                    //charList[turnNumber].movement();
                     turnTicks++;
                 }
             } else if (turnTicks > 2) {
@@ -143,7 +143,7 @@ function charWalk(whichChar){ //To Do:  These should probably use the same code?
         }
     } else {
         charList[whichChar].usingPath = true;
-        charList[whichChar].movement();
+   //     charList[whichChar].movement();
         charList[whichChar].animateWalk = true;
     }
 }
