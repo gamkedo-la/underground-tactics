@@ -109,6 +109,11 @@ function enemyClass() {
         if(this.meleeCombatTactics){
             enemyDestinationIndex = indexS(playerIndex);   
             destinationRow = whichRow(enemyDestinationIndex);
+            destinationCol = whichCol(enemyDestinationIndex);
+            var myIndex = getTileIndexAtPixelCoord(this.x,this.y);
+            if(enemyDestinationIndex == myIndex){
+                this.meleeCombat(playerOne);
+            }
         } else if (this.archerCombatTactics){
             enemyDestinationIndex = playerIndex;   
             destinationRow = whichRow(enemyDestinationIndex);
