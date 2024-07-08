@@ -83,7 +83,7 @@ var levelOne = [
 				52, 64, 65,  1,  1,  1,  1,  1,  1,  1,  1,  1, 17, 13, 10, 16,  1,  1,  1, 52,
 				52,  1, 66,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 52,
 			    52,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  1,  1,  1,  1, 52,
-				52,  1,  1,  1,  1,  1,  1,  1,  3,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 52,
+				52,  1,  1,  1,  1,  1,  1,  1,  3,  1,  1,  1,  1,102,  1,  1,  1,  1,  1, 52,
 				52, 18,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  4,  1,  1,  1, 52,
 				54, 14,  1,  1,  1,111,  1,  2,  4,  1,  1,  1,  1,  1,  3,  4,  1,  1,  1, 52,
 				52, 12,  1,  1,  1,  1,  1,  1,  2,  4,  1,  1,  1,  1,  1,  1,  1,  1,  1, 52,
@@ -237,7 +237,7 @@ var levelOne = [
 								sewerRoom1, sewerRoom2, sewerRoom3,
 								sewerRoom4, sewerRoom5, levelOne];
 
-var levelText = 	["words when we enter room A",
+var levelText = 	["You suddenly emerge into the dimly lit sewer, surrounded by a pervasive stench that assaults your senses with the unmistakable odor of mold, rot, and decay",
 						"words when we enter room B",
 							"words when we enter room C",
 				"words when we enter room D",
