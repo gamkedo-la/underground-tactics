@@ -21,6 +21,7 @@ function potionClass(potionType) {
 	this.healingPotion = 0;
 	this.staminaPotion = 0;
 	this.levitationPotion = 0;
+	this.key = 0;
 
 		
 	this.reset = function() {
@@ -60,6 +61,8 @@ function potionClass(potionType) {
 			
 		} else if (this.myName == "Spell Book 2"){
 			
+		} else if (this.myName == "Key"){
+			this.key++;
 		}
 
 		this.reset();

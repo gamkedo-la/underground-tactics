@@ -83,13 +83,13 @@ var levelOne = [
 				52, 64, 65,  1,  1,  1,  1,  1,  1,  1,  1,  1, 17, 13, 10, 16,  1,  1,  1, 52,
 				52,  1, 66,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 52,
 			    52,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  1,  1,  1,  1, 52,
-				52,  1,  1,  1,  1,  1,  1,  1,  3,  1,  1,  1,  1,102,  1,  1,  1,  1,  1, 52,
+				52,  1,  1,  1,  1,  1,  1,  1,  3,  1,  1,  1,  1,102,  1,  1,156,  1,  1, 52,
 				52, 18,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  4,  1,  1,  1, 52,
 				54, 14,  1,  1,  1,111,  1,  2,  4,  1,  1,  1,  1,  1,  3,  4,  1,  1,  1, 52,
 				52, 12,  1,  1,  1,  1,  1,  1,  2,  4,  1,  1,  1,  1,  1,  1,  1,  1,  1, 52,
 				52, 12,  1,  1,  1,  1,  2,  1,  1,  1,  1,  1,  1,  1,  1,110,  1,  1,  1, 52,
-				52, 12,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
-				52, 12,  1,  4,  1,  2,  1,  1,  1,100,  1,  1,  1,  1,  1,  2,  3,  1,  1,  1,
+				52, 12,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 61,
+				52, 12,  1,  4,  1,  2,  1,  1,  1,100,  1,  1,  1,  1,  1,  2,  3,  1,  1, 60,
 				52, 12,  1,  3,  1,  1,  1,  1, 57,  1,  1,  1,  1,  1,  1,  2,  2,  1,  1, 52,
 				52, 12,  1,  1,  3,  1,  1,  1, 57,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 52,
 				52, 12,  1,  1,  1,  1,  2,  1, 57,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 52,
@@ -277,6 +277,7 @@ var levelText = 	["You suddenly emerge into the dimly lit sewer, surrounded by a
 	const TILE_WALL_STONE_8 = 58;
 	const TILE_WALL_STONE_9 = 59;
 	const TILE_WOODEN_DOOR_1 = 60;
+	const TILE_WOODEN_DOOR_2 = 61;
 	const TILE_STAIRWAY_1 = 64;
 	const TILE_STAIRWAY_2 = 65;
 	const TILE_STAIRWAY_3 = 66;
@@ -297,6 +298,7 @@ var levelText = 	["You suddenly emerge into the dimly lit sewer, surrounded by a
 	const TILE_POTION_LEVITATION = 153;
 	const TILE_SPELL_BOOK = 154;
 	const TILE_SPELL_BOOK_2 = 155;
+	const TILE_KEY = 156;
 
     const NAVMODE_IMPASSIBLE = 0;
 	const NAVMODE_WALKABLE = 1;
@@ -309,7 +311,7 @@ var levelText = 	["You suddenly emerge into the dimly lit sewer, surrounded by a
 		{navMode: NAVMODE_IMPASSIBLE, tileTypes: [TILE_WALL_STONE_1, TILE_WALL_STONE_2, TILE_WALL_STONE_3, TILE_WALL_STONE_4, TILE_WALL_STONE_5, TILE_COLUMN_STONE_1, TILE_WALL_STONE_6, TILE_WALL_STONE_7, TILE_WALL_STONE_8]},
 		{navMode: NAVMODE_WALKABLE, tileTypes: [TILE_FLOOR_SEWER_1, TILE_FLOOR_SEWER_2, TILE_FLOOR_SEWER_3, TILE_FLOOR_SEWER_4, TILE_FLOOR_SEWER_5, TILE_FLOOR_SEWER_6, TILE_FLOOR_SEWER_7, TILE_FLOOR_SEWER_8, TILE_FLOOR_SEWER_9, TILE_FLOOR_STONE_1, TILE_FLOOR_STONE_2, TILE_FLOOR_STONE_3, TILE_FLOOR_STONE_4, TILE_BRIDGE_1]},
 		{navMode: NAVMODE_FLYABLE, tileTypes: [TILE_WATER]},
-		{navMode: NAVMODE_LOCKED, tileTypes: [TILE_WOODEN_DOOR_1]},
+		{navMode: NAVMODE_LOCKED, tileTypes: [TILE_WOODEN_DOOR_1, TILE_WOODEN_DOOR_2]},
 	];
 
 	function tileTypeNavMode(tiletype){

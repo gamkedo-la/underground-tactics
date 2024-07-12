@@ -155,7 +155,8 @@ function loadLevel(whichLevel) {
 			roomGrid[i] == TILE_POTION_LEVITATION ||
 			roomGrid[i] == TILE_POTION_STAMINA ||
 			roomGrid[i] == TILE_SPELL_BOOK ||
-			roomGrid[i] == TILE_SPELL_BOOK_2){
+			roomGrid[i] == TILE_SPELL_BOOK_2 ||
+			roomGrid[i] == TILE_KEY){
 			
 			let whichPotion = roomGrid[i];
 			if(roomGrid[i] == TILE_POTION_MANA){
@@ -170,6 +171,8 @@ function loadLevel(whichLevel) {
 				whichPotion = "Spell Book";
 			} else if (roomGrid[i] == TILE_SPELL_BOOK_2){
 				whichPotion = "Spell Book 2";
+			} else if (roomGrid[i] == TILE_KEY){
+				whichPotion = "Key";
 			} else {
 				whichPotion = "Not listed";
 			}
@@ -205,6 +208,8 @@ function loadLevel(whichLevel) {
 			potionList[i].init(spellBookPic, 300, "Spell Book", TILE_SPELL_BOOK);
 		} else if (potionList[i].myName == "Spell Book 2"){
 			potionList[i].init(spellBookPic, 375, "Spell Book 2", TILE_SPELL_BOOK_2);
+		} else if (potionList[i].myName == "Key"){
+			potionList[i].init(keyTilesPic, 450, "Key", TILE_KEY);
 		}
 	}
 	turnNumber = 0;

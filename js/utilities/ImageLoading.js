@@ -32,6 +32,7 @@ var arrowPic = document.createElement("img");
 var worldTilesPic = document.createElement("img");
 var arrowButtonPic = document.createElement("img");
 var emptyPlayerPic = document.createElement("img");
+var keyTilesPic = document.createElement("img");
 
 var trackPics = [];
 
@@ -71,6 +72,7 @@ function loadImages() {
 			{varName: spellBookPic, theFile:  "potionTiles.png", sx: 0, sy: 0},
 			{varName: spellBook2Pic, theFile:  "potionTiles.png", sx: 0, sy: 0},
 			{varName: spellFirePic, theFile: "spellFire.png",sx: 0, sy: 0},
+			{varName: keyTilesPic, theFile: "potionTiles.png",sx: 0, sy: 0},
 			//spells and attacks
 			{varName: fireBoltPic, theFile: "fireBolt.png",sx: 0, sy: 0},
 			{varName: arrowPic, theFile: "arrow.png",sx: 0, sy: 0},
