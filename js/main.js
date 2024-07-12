@@ -306,9 +306,6 @@ function drawEverything() {
 		for(var i = 0; i < potionList.length; i++){
 			potionList[i].draw();
 		}
-		for(var i = 0; i < charList.length; i++){
-			charList[i].draw();
-		}
 		for(i = 0; i<smokeList.length; i++){
 			smokeList[i].draw();
 		}

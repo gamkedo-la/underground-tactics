@@ -427,6 +427,19 @@ function drawMoveTilesOrWorldArt(worldArtMode, opacityPerc){
 						canvasContext.globalAlpha = 1;
 			}
 	
+			for(var i = 0; i < charList.length; i++){
+				if(charList[i].drawIndex == tileIndex){
+					if(worldArtMode == false){
+						canvasContext.globalAlpha = opacityPerc;
+					} else { 
+						canvasContext.globalAlpha = 1; //ensure characters are solid
+					}
+					charList[i].draw();
+					canvasContext.globalAlpha = 1;
+				}
+			}
+		
+
 			tileIndex++;
 		} // end of each col
 		tileTopEdgeY += ROOM_H;

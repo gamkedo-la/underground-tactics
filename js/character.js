@@ -45,6 +45,7 @@ function CharacterBase (){
 	this.maxStamina = 10;
 	this.facingDir = DIR_E;
 	this.fireProjectileDir = -1;
+	this.drawIndex = -1;
 
 	this.reset = function(tileMatch) {
         this.speed = 0;
@@ -255,6 +256,7 @@ function CharacterBase (){
 				this.updateFacing(DIR_E);
 			}
 		}
+		this.drawIndex= getTileIndexAtPixelCoord(this.x,this.y);
 	}	// END OF THIS.MOVEMENT
 	 
 	this.updateFacing = function(toDir) {
