@@ -21,6 +21,10 @@ function setupMenus() {
   deathScreenMenu.hidden = true;
   addView(deathScreenMenu);
 
+  winScreenMenu = new WinScreenMenu(200, 200, 400, 400);
+  winScreenMenu.hidden = true;
+  addView(winScreenMenu);
+
   // Render test of inventory menu
   //   inventoryMenu = new InventoryMenu(200, 125, 3, 3, [
   //     { image: useItemPic, title: "Test Item 1" },
