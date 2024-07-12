@@ -145,7 +145,7 @@ function warriorClass() {
 				footStepSoundTurn++
 				if(footStepSoundTurn > 2 && !this.levitating){
 					feetPlayer001SFX.play();
-					console.log("Play")
+			//		console.log("Play")
 					footStepSoundTurn = 0;
 				}
 			}
