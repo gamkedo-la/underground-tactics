@@ -278,7 +278,11 @@ function drawPlayerOptions() {
     } else {
         canvasContext.drawImage(emptyPlayerPic, 0, 0, 20, 20, 330, 30, 20, 20);
     }
-    canvasContext.drawImage(emptyPlayerPic, 0, 0, 20, 20, 360, 30, 20, 20);
+    if(archerFound){
+        canvasContext.drawImage(emptyPlayerPic, 0, 60, 20, 20, 360, 30, 20, 20);
+    } else {
+        canvasContext.drawImage(emptyPlayerPic, 0, 0, 20, 20, 360, 30, 20, 20);
+    }    
     canvasContext.drawImage(emptyPlayerPic, 0, 0, 20, 20, 390, 30, 20, 20);
     canvasContext.drawImage(emptyPlayerPic, 0, 0, 20, 20, 420, 30, 20, 20);
 
