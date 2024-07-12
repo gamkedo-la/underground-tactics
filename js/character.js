@@ -138,7 +138,6 @@ function CharacterBase (){
 
 
 	this.movement = function() {
-		
 		var currentIndex;
 
 		if(this.levitationTurn > 6){
@@ -201,7 +200,7 @@ function CharacterBase (){
 				this.movementArray.shift();
 			} 
 
-		} else {
+		} else { //we are using the path
 			currentIndex = getTileIndexAtPixelCoord(this.x,this.y);
 			var tileN = indexN(currentIndex);
 			var tileS = indexS(currentIndex);
@@ -219,7 +218,6 @@ function CharacterBase (){
 					if(this.takeShot){
 						this.shootArrow();
 					}
-					console.log(this.x + "Ran out of moves.  This should only get called once per character turn");  ////This will be used as a clue to determine what is making this called more
 					this.movementArray[0] = currentIndex; // setting the head of the next array movement
 					if(this.isHuman){
 						var myC = whichCol(currentIndex);
@@ -241,6 +239,7 @@ function CharacterBase (){
 							levelLoadingSkipOperations = true;
 						}
 					}
+					endTurnNow();
 				}
 			} else if (this.movementArray[lastNode] == tileN) {
 				this.y -= this.movementSpeed;
