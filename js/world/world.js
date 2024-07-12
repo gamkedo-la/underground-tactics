@@ -365,11 +365,11 @@ function drawTrackTile(worldTilesSpriteSheetIndex, dx, dy){
 }
 					
 function drawTracks(){
-	drawMoveTilesOrWorldArt(true);
-	drawMoveTilesOrWorldArt(false);
+	drawMoveTilesOrWorldArt(true, 0.6);	
+	drawMoveTilesOrWorldArt(false, 0.2);
 }
 
-function drawMoveTilesOrWorldArt(worldArtMode){
+function drawMoveTilesOrWorldArt(worldArtMode, opacityPerc){
 	var tileIndex = 0;
 	var tileLeftEdgeX = 700
 	var tileTopEdgeY = 0;
@@ -394,38 +394,39 @@ function drawMoveTilesOrWorldArt(worldArtMode){
 				      isoDrawY - ISO_TILE_GROUND_Y);
 			}
 
-			if(worldArtMode == false){
-				if(	trackTypeHere == TILE_FLOOR_STONE_1 ||
-					trackTypeHere == TILE_FLOOR_STONE_2 ||
-					trackTypeHere == TILE_FLOOR_STONE_3 ||
-					trackTypeHere == TILE_FLOOR_STONE_4 ||
-					trackTypeHere == TILE_FLOOR_SEWER_1 ||
-					trackTypeHere == TILE_FLOOR_SEWER_2 ||
-					trackTypeHere == TILE_FLOOR_SEWER_3 ||
-					trackTypeHere == TILE_FLOOR_SEWER_4 ||
-					trackTypeHere == TILE_FLOOR_SEWER_5 ||
-					trackTypeHere == TILE_FLOOR_SEWER_6 ||
-					trackTypeHere == TILE_FLOOR_SEWER_7 ||
-					trackTypeHere == TILE_FENCE_1 ||
-					trackTypeHere == TILE_FENCE_2){
-						canvasContext.globalAlpha = 0.4;
-						canvasContext.drawImage(tileIndicatorPic, isoDrawX - ISO_GRID_W/2, isoDrawY - ISO_TILE_GROUND_Y);
-						canvasContext.globalAlpha = 1;
-					}
+			if(	trackTypeHere == TILE_FLOOR_STONE_1 ||
+				trackTypeHere == TILE_FLOOR_STONE_2 ||
+				trackTypeHere == TILE_FLOOR_STONE_3 ||
+				trackTypeHere == TILE_FLOOR_STONE_4 ||
+				trackTypeHere == TILE_FLOOR_SEWER_1 ||
+				trackTypeHere == TILE_FLOOR_SEWER_2 ||
+				trackTypeHere == TILE_FLOOR_SEWER_3 ||
+				trackTypeHere == TILE_FLOOR_SEWER_4 ||
+				trackTypeHere == TILE_FLOOR_SEWER_5 ||
+				trackTypeHere == TILE_FLOOR_SEWER_6 ||
+				trackTypeHere == TILE_FLOOR_SEWER_7 ||
+				trackTypeHere == TILE_FENCE_1 ||
+				trackTypeHere == TILE_FENCE_2){
+					canvasContext.globalAlpha = 0.8 * opacityPerc;
+					canvasContext.drawImage(tileIndicatorPic, isoDrawX - ISO_GRID_W/2, isoDrawY - ISO_TILE_GROUND_Y);
+					canvasContext.globalAlpha = 1;
+				}
 
-				// draw the path the player is creating for the next move
-				// with a highlight at the cursor position
-				if(	charList[turnNumber].movementArray[0]==tileIndex ||
-					charList[turnNumber].movementArray[0]==tileIndex){
-						// the main "TARGET CURSOR" for movement - fixme: don't do for enemies?
-						canvasContext.globalAlpha = Math.sin(performance.now()/100)*0.5+0.5; // 0..1
-						canvasContext.drawImage(tileIndicatorWhitePic, isoDrawX - ISO_GRID_W/2 + CURSOROFFSETX, isoDrawY - ISO_TILE_GROUND_Y + CURSOROFFSETY);
+			// draw the path the player is creating for the next move
+			// with a highlight at the cursor position
+			if(	charList[turnNumber].movementArray[0]==tileIndex ||
+				charList[turnNumber].movementArray[0]==tileIndex){
+					// the main "TARGET CURSOR" for movement - fixme: don't do for enemies?
+					canvasContext.globalAlpha = opacityPerc*(Math.sin(performance.now()/100)*0.5+0.5); // 0..1
+					canvasContext.drawImage(tileIndicatorWhitePic, isoDrawX - ISO_GRID_W/2 + CURSOROFFSETX, isoDrawY - ISO_TILE_GROUND_Y + CURSOROFFSETY);
+					canvasContext.globalAlpha = 1;
+			} else if(charList[turnNumber].movementArray.includes(tileIndex) ||
+					charList[turnNumber].movementArray.includes(tileIndex)){
+						canvasContext.globalAlpha = 0.8 * opacityPerc;
+						canvasContext.drawImage(tileIndicatorCyanPic, isoDrawX - ISO_GRID_W/2 + CURSOROFFSETX, isoDrawY - ISO_TILE_GROUND_Y + CURSOROFFSETY);
 						canvasContext.globalAlpha = 1;
-				} else if(charList[turnNumber].movementArray.includes(tileIndex) ||
-						charList[turnNumber].movementArray.includes(tileIndex)){
-							canvasContext.drawImage(tileIndicatorCyanPic, isoDrawX - ISO_GRID_W/2 + CURSOROFFSETX, isoDrawY - ISO_TILE_GROUND_Y + CURSOROFFSETY);
-					}
-			}	 
+			}
+	
 			tileIndex++;
 		} // end of each col
 		tileTopEdgeY += ROOM_H;
