@@ -142,7 +142,7 @@ function roomChange(roomChangeC, roomChangeR) {
 function loadLevel(whichLevel) {	
 	var alreadyLoadedPlayers = false; //need to change variable to allow when players are found
 	for(var i = 0; i<charList.length; i++ ){ 
-		if(charList[i].isHuman){
+		if(charList[i].isHuman && charList[i].tiedUp){
 			alreadyLoadedPlayers = true;
 			break;
 		}
