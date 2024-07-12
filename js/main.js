@@ -294,6 +294,7 @@ function drawEverything() {
 		if(titleScreenWizardXWaitTime > 130){
 			mainMenu = false;
 			liveGame = true;
+			deathScreenMenu.hidden = true;
 		}
 	}
 	if(liveGame){

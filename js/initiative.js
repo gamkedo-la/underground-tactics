@@ -121,7 +121,8 @@ function turnAdvance() {
 }
 
 function endTurnNow() {
-    if(charList[turnNumber].levitating){
+    console.log("ending turn "+turnNumber+" now.");
+	if(charList[turnNumber].levitating){
         charList[turnNumber].levitationTurn++;
     }
     charList[turnNumber].usingPath = false;

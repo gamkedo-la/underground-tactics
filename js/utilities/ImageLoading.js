@@ -33,6 +33,7 @@ var worldTilesPic = document.createElement("img");
 var arrowButtonPic = document.createElement("img");
 var emptyPlayerPic = document.createElement("img");
 var keyTilesPic = document.createElement("img");
+var gameOverPic = document.createElement("img");
 
 var trackPics = [];
 
@@ -64,6 +65,7 @@ function loadImages() {
 			{varName: tileIndicatorWhitePic, theFile: "tileIndicatorWhite.png",sx: 0, sy: 0},
 			{varName: tileIndicatorCyanPic, theFile: "tileIndicatorCyan.png",sx: 0, sy: 0},
 			{varName: arrowButtonPic, theFile: "arrowButton.png",sx: 0, sy: 0},
+			{varName: gameOverPic, theFile: "gameOver.png",sx: 0, sy: 0},
 			//pick up items
 			{varName: potionManaPic, theFile: "potionTiles.png",sx: 0, sy: 0},
 			{varName: potionHealthPic, theFile: "potionTiles.png",sx: 0, sy: 0},

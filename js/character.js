@@ -240,6 +240,9 @@ function CharacterBase (){
 							levelLoadingSkipOperations = true;
 						}
 					}
+					// FIXME: at game start, movement array length is zero
+					// but we don't want to end the turn before letting the player move...
+					// maybe we can check to see if we're in mid-move
 					endTurnNow();
 				}
 			} else if (this.movementArray[lastNode] == tileN) {

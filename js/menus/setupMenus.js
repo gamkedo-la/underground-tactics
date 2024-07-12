@@ -1,6 +1,8 @@
 let mainOptionsMenu;
 let spellOptionsMenu;
 let potionOptionsMenu;
+let deathScreenMenu;
+let winScreenMenu;
 
 function setupMenus() {
   mainOptionsMenu = new MainOptionsMenu(10, 10, 275, 125);
@@ -14,6 +16,10 @@ function setupMenus() {
   potionOptionsMenu = new PotionOptionsMenu(10, 10, 275, 125);
   potionOptionsMenu.hidden = true;
   addView(potionOptionsMenu);
+
+  deathScreenMenu = new DeathScreenMenu(200, 200, 400, 400);
+  deathScreenMenu.hidden = true;
+  addView(deathScreenMenu);
 
   // Render test of inventory menu
   //   inventoryMenu = new InventoryMenu(200, 125, 3, 3, [
