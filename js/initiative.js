@@ -113,25 +113,31 @@ var endTurnBoxHovering = false;
 
 function turnAdvance() {
     if (endTurnBoxHovering) {
-        if(charList[turnNumber].levitating){
-            charList[turnNumber].levitationTurn++;
-        }
-        turnNumber++;
-        if (turnNumber >= turnOrderList.length) {
-            turnNumber = 0;
-        }
-		textBoxUI.text = "Advancing to turn number "+(turnNumber+1)+"."; // we add one to avoid turn "zero"
-		endTurnSound.play();
-    	mainOptions = true;
-        mainOptionsMenu.hidden = false;
-        spellOptions = false;
-        spellOptionsMenu.hidden = true;
-        potionOptions = false;
-        potionOptionsMenu.hidden = true;
+        
         endTurnBoxHovering = false;
 
-	    resetCharacterWithTurnNumber(turnNumber);
+	    endTurnNow();
     }
+}
+
+function endTurnNow() {
+    if(charList[turnNumber].levitating){
+        charList[turnNumber].levitationTurn++;
+    }
+    charList[turnNumber].usingPath = false;
+    turnNumber++;
+    if (turnNumber >= turnOrderList.length) {
+        turnNumber = 0;
+    }
+    textBoxUI.text = "Advancing to turn number "+(turnNumber+1)+"."; // we add one to avoid turn "zero"
+    endTurnSound.play();
+    mainOptions = true;
+    mainOptionsMenu.hidden = false;
+    spellOptions = false;
+    spellOptionsMenu.hidden = true;
+    potionOptions = false;
+    potionOptionsMenu.hidden = true;
+    resetCharacterWithTurnNumber(turnNumber);
 }
 
 function charWalk(whichChar){ //To Do:  These should probably use the same code?

@@ -138,7 +138,6 @@ function CharacterBase (){
 
 
 	this.movement = function() {
-		
 		var currentIndex;
 
 		if(this.levitationTurn > 6){
@@ -201,7 +200,7 @@ function CharacterBase (){
 				this.movementArray.shift();
 			} 
 
-		} else {
+		} else { //we are using the path
 			currentIndex = getTileIndexAtPixelCoord(this.x,this.y);
 			var tileN = indexN(currentIndex);
 			var tileS = indexS(currentIndex);
@@ -241,6 +240,7 @@ function CharacterBase (){
 							levelLoadingSkipOperations = true;
 						}
 					}
+					endTurnNow();
 				}
 			} else if (this.movementArray[lastNode] == tileN) {
 				this.y -= this.movementSpeed;
