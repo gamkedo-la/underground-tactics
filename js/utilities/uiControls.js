@@ -87,11 +87,7 @@ function keyPressed(evt) {
 	if(paused == evt.keyCode){
 		changePauseState();
 	}
-	if(toggleDrawTileIndicators == evt.keyCode){
-		drawTileIndicators = !drawTileIndicators;
-		footstepsSound.play();
-		console.log(drawTileIndicators)
-	}
+
 	if(mute == evt.keyCode) {
 		toggleMute();
 	}

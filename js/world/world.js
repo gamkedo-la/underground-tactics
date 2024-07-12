@@ -82,7 +82,7 @@ var levelOne = [
 				52, 52, 52, 52, 52, 51, 50, 52, 50, 53, 50, 51, 52, 54, 52, 52, 52, 52, 52, 53,
 				52, 64, 65,  1,  1,  1,  1,  1,  1,  1,  1,  1, 17, 13, 10, 16,  1,  1,  1, 52,
 				52,  1, 66,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 52,
-			    52,  1,100,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  1,  1,  1,  1, 52,
+			    52,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  1,  1,  1,100, 52,
 				52,  1,  1,  1,  1,  1,  1,  1,  3,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 52,
 				52, 18,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  4,  1,  1,  1, 52,
 				54, 14,  1,  1,  1,  1,  1,  2,  4,  1,  1,  1,  1,  1,  3,  4,  1,  1,  1, 52,
@@ -92,7 +92,7 @@ var levelOne = [
 				52, 12,  1,  4,  1,  2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  3,  1,  1, 60,
 				52, 12,  1,  3,  1,  1,  1,  1, 57,  1,  1,  1,  1,  1,  1,  2,  2,  1,  1, 52,
 				52, 12,  1,  1,  3,  1,  1,  1, 57,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 52,
-				52, 12,  1,  1,  1,  1,  2,  1, 57,  1,  1,  1,  1,  1,  1,110,  1,  1,  1, 52,
+				52, 12,  1,  1,  1,  1,  2,  1, 57,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 52,
 				52, 15,  1,  1,  1,  1,  1,  1, 57,  1,  1,  1,  1,  1,  1,  1,  3,  4,  1, 52,
 				52,  1,  1,  1,  1,  3,  2,  1, 57,  1,  1,  1,  1,  1,  1,  1,  4,  3,  1, 52,
 				52,  1,  1,  1,  1,  1,  1,  1, 57,  1,  1,  1,  1,  1,  1,  1,  2,  2,  1, 52,
@@ -349,7 +349,6 @@ function tileCoordToIsoCoord(tileC, tileR ){
 	gameCoordToIsoCoord(tileC * ROOM_W, tileR * ROOM_H);
 }
 
-var drawTileIndicators = true
 var showTileNumber = true;
 
 function drawTrackTile(worldTilesSpriteSheetIndex, dx, dy){
@@ -366,6 +365,11 @@ function drawTrackTile(worldTilesSpriteSheetIndex, dx, dy){
 }
 					
 function drawTracks(){
+	drawMoveTilesOrWorldArt(true);
+	drawMoveTilesOrWorldArt(false);
+}
+
+function drawMoveTilesOrWorldArt(worldArtMode){
 	var tileIndex = 0;
 	var tileLeftEdgeX = 700
 	var tileTopEdgeY = 0;
@@ -384,11 +388,13 @@ function drawTracks(){
 			isoTileLeftEdgeX = (tileLeftEdgeX - tileTopEdgeY)/2;
 			isoTileTopEdgeY = (tileLeftEdgeX + tileTopEdgeY)/4;
 			tileCoordToIsoCoord(eachCol, eachRow);		
-			drawTrackTile(trackTypeHere,
+			if(worldArtMode){
+				drawTrackTile(trackTypeHere,
 				      isoDrawX - ISO_GRID_W/2,
 				      isoDrawY - ISO_TILE_GROUND_Y);
-			var textColor;
-			if(drawTileIndicators){
+			}
+
+			if(worldArtMode == false){
 				if(	trackTypeHere == TILE_FLOOR_STONE_1 ||
 					trackTypeHere == TILE_FLOOR_STONE_2 ||
 					trackTypeHere == TILE_FLOOR_STONE_3 ||
@@ -402,28 +408,23 @@ function drawTracks(){
 					trackTypeHere == TILE_FLOOR_SEWER_7 ||
 					trackTypeHere == TILE_FENCE_1 ||
 					trackTypeHere == TILE_FENCE_2){
+						canvasContext.globalAlpha = 0.4;
 						canvasContext.drawImage(tileIndicatorPic, isoDrawX - ISO_GRID_W/2, isoDrawY - ISO_TILE_GROUND_Y);
-						textColor = "rgba(128,128,128,1)" //"black"
-				}
+						canvasContext.globalAlpha = 1;
+					}
 
 				// draw the path the player is creating for the next move
 				// with a highlight at the cursor position
 				if(	charList[turnNumber].movementArray[0]==tileIndex ||
 					charList[turnNumber].movementArray[0]==tileIndex){
 						// the main "TARGET CURSOR" for movement - fixme: don't do for enemies?
-						textColor = "rgba(255,255,255,1)" //"white";
 						canvasContext.globalAlpha = Math.sin(performance.now()/100)*0.5+0.5; // 0..1
 						canvasContext.drawImage(tileIndicatorWhitePic, isoDrawX - ISO_GRID_W/2 + CURSOROFFSETX, isoDrawY - ISO_TILE_GROUND_Y + CURSOROFFSETY);
 						canvasContext.globalAlpha = 1;
 				} else if(charList[turnNumber].movementArray.includes(tileIndex) ||
 						charList[turnNumber].movementArray.includes(tileIndex)){
-							textColor = "rgba(0,64,255,1)" //"cyan";
 							canvasContext.drawImage(tileIndicatorCyanPic, isoDrawX - ISO_GRID_W/2 + CURSOROFFSETX, isoDrawY - ISO_TILE_GROUND_Y + CURSOROFFSETY);
-				} else {
-						
-				}
-			//	colorText(tileIndex, isoDrawX-10+1, isoDrawY+1, "black", "10px Arial Black" ); // drop shadow
-			//	colorText(tileIndex, isoDrawX-10, isoDrawY, textColor, "10px Arial Black" );
+					}
 			}	 
 			tileIndex++;
 		} // end of each col
