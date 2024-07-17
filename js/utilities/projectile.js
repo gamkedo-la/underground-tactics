@@ -49,19 +49,34 @@ function shotClass(whichPic){
 
 		if(character.facingDir == DIR_S){
 			this.projectileYV = SHOT_SPEED;
-			this.offSetHeight = 100; 
 		} else if (character.facingDir == DIR_E){
 			this.projectileXV = SHOT_SPEED;
-			this.offSetHeight = 150;
 		} else if (character.facingDir == DIR_N){
 			this.projectileYV = -SHOT_SPEED;
-			this.offSetHeight = 50;
 		} else if (character.facingDir == DIR_W){
 			this.projectileXV = -SHOT_SPEED;
-			this.offSetHeight = 0;
 		}
+
+		this.setFacing(character.facingDir);
 		
 		this.shotLife = SHOT_LIFE;
+	}
+
+	this.setFacing = function(newFacing){
+		switch (newFacing){
+			case DIR_S:
+				this.offSetHeight = 100;
+				break;
+			case DIR_E:
+				this.offSetHeight = 150;
+				break;
+			case DIR_N:
+				this.offSetHeight = 50;
+				break;
+			case DIR_W:
+				this.offSetHeight = 0;
+				break;
+		}
 	}
 
 	this.move = function() {
@@ -69,9 +84,24 @@ function shotClass(whichPic){
 			var dX = this.magicTarget.x - this.projectileX;
 			var dY = this.magicTarget.y - this.projectileY;
 			var len = Math.sqrt(dX*dX + dY*dY);
-			var smoothTurn = 0.95;
-			this.projectileXV = smoothTurn * this.projectileXV + (3.0 * dX / len) * (1.0 - smoothTurn);
-			this.projectileYV = smoothTurn * this.projectileYV + (3.0 * dY / len) * (1.0 - smoothTurn);
+			var smoothTurn = 0.98;
+			var shotSpeed = 9.0;
+			this.projectileXV = smoothTurn * this.projectileXV + (shotSpeed * dX / len) * (1.0 - smoothTurn);
+			this.projectileYV = smoothTurn * this.projectileYV + (shotSpeed * dY / len) * (1.0 - smoothTurn);
+			var moreXVThanYV = Math.abs(this.projectileXV > Math.abs(this.projectileYV));
+			if(moreXVThanYV){
+				if(this.projectileXV < 0){
+					this.setFacing(DIR_W);
+				} else {
+					this.setFacing(DIR_E);
+				}
+			} else {
+				if(this.projectileYV < 0){
+					this.setFacing(DIR_N);
+				} else {
+					this.setFacing(DIR_S);
+				}
+			}
 			if(len < 20){
 				this.readyToRemove = true;
 				console.log("Fireball hit target");
