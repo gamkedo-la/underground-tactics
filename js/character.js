@@ -110,12 +110,19 @@ function CharacterBase (){
 	}
 
 	this.fireBolt = function(){
+		var restoreFacing = this.facingDir;
+		var randFacing = [DIR_N, DIR_E, DIR_S, DIR_W];
+		randFacing.sort(() => 0.5 - Math.random());
+		for (i=0; i<3; i++){
+			this.facingDir = randFacing[i]
+			let tempShot = new shotClass(fireBoltPic);
+			tempShot.shootFrom(this);
+			arrowList.push(tempShot);
+			textBoxUI.text = this.myName + " casts a fire bolt spell.";
+			fireBoltSound.play();
+		}
 		console.log("Fire Bolt Spell")
-		let tempShot = new shotClass(fireBoltPic);
-		tempShot.shootFrom(this);
-		arrowList.push(tempShot);
-		textBoxUI.text = this.myName + " casts a fire bolt spell.";
-		fireBoltSound.play();
+		this.facingDir = restoreFacing;
 	}
 
 	this.shootArrow = function(){
