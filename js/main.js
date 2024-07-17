@@ -233,6 +233,7 @@ function moveEverything() {
 		for(i = 0; i< arrowList.length; i++){
 			arrowList[i].move();
 		}
+		removeArrowFromList();
 		for(var i = 0; i < turnOrderList.length; i++ ){
 			if(turnOrderList[i].myTurn == true && turnOrderList[i].name == "Enemy 1"){
 

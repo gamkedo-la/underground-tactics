@@ -113,15 +113,22 @@ function CharacterBase (){
 		var restoreFacing = this.facingDir;
 		var randFacing = [DIR_N, DIR_E, DIR_S, DIR_W];
 		randFacing.sort(() => 0.5 - Math.random());
-		for (i=0; i<3; i++){
+		var target = undefined;
+		for(var i=0; i< charList.length; i++){
+			if(charList[i].isHuman == false){
+				target = charList[i];
+				console.log("Found Target");
+				break;
+			}	
+		}
+		for (var i=0; i<3; i++){
 			this.facingDir = randFacing[i]
 			let tempShot = new shotClass(fireBoltPic);
-			tempShot.shootFrom(this);
+			tempShot.shootFrom(this, target);
 			arrowList.push(tempShot);
-			textBoxUI.text = this.myName + " casts a fire bolt spell.";
-			fireBoltSound.play();
 		}
-		console.log("Fire Bolt Spell")
+		textBoxUI.text = this.myName + " casts a fire bolt spell.";
+		fireBoltSound.play();
 		this.facingDir = restoreFacing;
 	}
 
@@ -131,7 +138,7 @@ function CharacterBase (){
 			this.fireProjectileDir = -1;
 		}
 		let tempShot = new shotClass(arrowPic);
-		tempShot.shootFrom(this);
+		tempShot.shootFrom(this, undefined);
 		arrowList.push(tempShot);
 		this.takeShot = false;
 		textBoxUI.text = this.myName + " fires an arrow.";
