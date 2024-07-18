@@ -38,14 +38,20 @@ function shotClass(whichPic){
 		return (this.shotLife <= 0);
 	}
 	
-	this.shootFrom = function(character, targetWithMagic){
+	this.shootFrom = function(character, targetWithMagic, projectileType){
 		this.projectileX = character.x;
 		this.projectileY = character.y;
 		this.magicTarget = targetWithMagic;
+		this.projectile = projectileType;
 		console.log("Has target? " + (this.magicTarget != null) );
 
 		this.projectileXV = 0;
 		this.projectileYV = 0;
+
+		if(this.projectile == "Magic Missile"){
+			this.height = 13;
+			this.width = 13;
+		}
 
 		if(character.facingDir == DIR_S){
 			this.projectileYV = SHOT_SPEED;
@@ -65,13 +71,13 @@ function shotClass(whichPic){
 	this.setFacing = function(newFacing){
 		switch (newFacing){
 			case DIR_S:
-				this.offSetHeight = 100;
+				this.offSetHeight = 2*this.height;
 				break;
 			case DIR_E:
-				this.offSetHeight = 150;
+				this.offSetHeight = 3*this.height;
 				break;
 			case DIR_N:
-				this.offSetHeight = 50;
+				this.offSetHeight = 1*this.height;
 				break;
 			case DIR_W:
 				this.offSetHeight = 0;
@@ -112,6 +118,9 @@ function shotClass(whichPic){
 		this.projectileY = this.projectileY + this.projectileYV;
 		if(this.picture == fireBoltPic){
 			addSmoke(this.projectileX-50, this.projectileY-20, 10);
+		}
+		if(this.picture == magicMissile2Pic){
+			addSmoke(this.projectileX-13, this.projectileY-13, 20);
 		}
 		if(	this.projectileX < 0 || this.projectileX > canvas.width ||
 			this.projectileY < 0 || this.projectileY > canvas.height){

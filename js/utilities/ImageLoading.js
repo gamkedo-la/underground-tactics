@@ -28,6 +28,7 @@ var kobaldPic = document.createElement("img");
 var kobaldArcherPic = document.createElement("img");
 var koaToaPic = document.createElement("img");
 var fireBoltPic = document.createElement("img");
+var magicMissile2Pic = document.createElement("img");
 var arrowPic = document.createElement("img");
 var worldTilesPic = document.createElement("img");
 var arrowButtonPic = document.createElement("img");
@@ -79,6 +80,7 @@ function loadImages() {
 			{varName: keyTilesPic, theFile: "potionTiles.png",sx: 0, sy: 0},
 			//spells and attacks
 			{varName: fireBoltPic, theFile: "fireBolt.png",sx: 0, sy: 0},
+			{varName: magicMissile2Pic, theFile: "magicMissile.png",sx: 0, sy: 0},
 			{varName: arrowPic, theFile: "arrow.png",sx: 0, sy: 0},
 			{varName: playerPositionPic, theFile: "playerPosition.png",sx: 0, sy: 0},
 			{varName: wizardMovementPic, theFile:  "wizardWalk.png", sx: 0, sy: 0},
@@ -89,6 +91,7 @@ function loadImages() {
 			{varName: magicMissilePic, theFile:  "spellMagicMissle.png", sx: 0, sy: 0},
 			{varName: manaPotionPic, theFile:  "manaPotion.png", sx: 0, sy: 0},
 			{varName: healthPotionPic, theFile:  "HealthPotion.png", sx: 0, sy: 0},
+
 			
 			//characters
 			{varName: wizardPic, theFile: "wizard.png"},

@@ -123,8 +123,8 @@ function CharacterBase (){
 		}
 		for (var i=0; i<3; i++){
 			this.facingDir = randFacing[i]
-			let tempShot = new shotClass(fireBoltPic);
-			tempShot.shootFrom(this, target);
+			let tempShot = new shotClass(magicMissile2Pic);
+			tempShot.shootFrom(this, target, "Magic Missile");
 			arrowList.push(tempShot);
 		}
 		textBoxUI.text = this.myName + " casts a fire bolt spell.";
