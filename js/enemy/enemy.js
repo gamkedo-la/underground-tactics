@@ -74,10 +74,17 @@ function enemyClass() {
 
             if(attackRoll >= target.defense){
                 target.health -= damageRoll;
+                if(target.health <= 0){
+                    target.death();
+                }
             }
 
             this.attackTurn = false;
         }
+    }
+
+    this.death = function(){
+        this.readyToRemove = true;
     }
 
     this.checkPlayerLocationForNextMove = function(currentIndex){

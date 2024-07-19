@@ -312,6 +312,7 @@ function drawEverything() {
 			smokeList[i].draw();
 		}
 		removeSmokeFromList();
+		removeCharacterFromList();
 		drawHealth();
 		drawStamina();
 		finishedCameraPan();

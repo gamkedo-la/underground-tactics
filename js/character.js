@@ -3,6 +3,14 @@ const DIR_E = 1;
 const DIR_N = 2;
 const DIR_W = 3;
 
+function removeCharacterFromList() {
+	for(var i=0; i<charList.length; i++) {
+        if(charList[i].readyToRemove){
+            charList.splice(i,1);
+        }
+	}
+}
+
 function CharacterBase (){
 	this.x;
 	this.y;
@@ -46,6 +54,7 @@ function CharacterBase (){
 	this.facingDir = DIR_E;
 	this.fireProjectileDir = -1;
 	this.drawIndex = -1;
+	this.readyToRemove = false;
 
 	this.reset = function(tileMatch) {
         this.speed = 0;
@@ -149,8 +158,6 @@ function CharacterBase (){
 	/*	currentIndex = getTileIndexAtPixelCoord(this.x,this.y);
 		this.movementArray = [currentIndex];	*/
 	}
-
-
 
 	this.movement = function() {
 		var currentIndex;
@@ -315,7 +322,7 @@ function CharacterBase (){
 
 		if(this.isHuman == false){
 			//console.log("AI changing direction: " + this.facingDir);
-		//	console.trace();
+			//console.trace();
 		}
 
 	}

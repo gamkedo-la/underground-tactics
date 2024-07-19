@@ -54,7 +54,6 @@ function warriorClass() {
 		this.isHuman = true;
 	}
 
-
 	this.levitate = function(){
 		if(spellBoxHovering){
 			this.levitating = true;
@@ -133,6 +132,11 @@ function warriorClass() {
 	}
 
 	var footStepSoundTurn = 0;
+
+	this.death = function(){
+		this.readyToRemove = true;
+		deathScreenMenu.hidden = !deathScreenMenu.hidden;
+	}
 		
 	this.draw = function(){
 		gameCoordToIsoCoord(this.x,this.y);
