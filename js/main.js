@@ -3,6 +3,7 @@ var canvasContext;
 //characters (Player, NPC's, Enemies)
 
 // Options for title screen font (feel free to use in other contexts)
+const title = "Underground Tactics";
 const fontFile1 = "FantaisieArtistique.ttf";
 const fontFile2 = "Rediviva.ttf";
 const fontFile3 = "vinque_rg.otf";
@@ -336,4 +337,12 @@ function drawEverything() {
 		drawUiElements();
 	}
     colorText("Underground Tactics", 250, 370, "white", "24px Title");
+    if (titleScreenWizardXWaitTime > 100) {
+      const titleText = canvasContext.measureText(title);
+      const startX = 200;
+      const textPadding = 50;
+      const rectWidth = titleText.width + textPadding * 2;
+      colorRect(200, 300, rectWidth, 100, "#81007f");
+      colorText(title, startX + textPadding, 370, "white", "48px Title");
+    }
 }
