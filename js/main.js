@@ -2,6 +2,21 @@ var canvas;
 var canvasContext;
 //characters (Player, NPC's, Enemies)
 
+// Options for title screen font (feel free to use in other contexts)
+const fontFile1 = "FantaisieArtistique.ttf";
+const fontFile2 = "Rediviva.ttf";
+const fontFile3 = "vinque_rg.otf";
+const fontFile4 = "wizzta.ttf";
+const fontFile5 = "MorrisRoman-Black.ttf";
+const titleScreenFont = new FontFace("Title", `url(fonts/${fontFile5})`);
+titleScreenFont
+  .load()
+  .then(function (loadedFont) {
+    document.fonts.add(loadedFont);
+  })
+  .catch(function (error) {
+    console.log("Failed to load title screen font: " + error);
+  });
 
 function emptyRoomObjects(){
 	for(var i = charList.length - 1; i >= 0; i--){
@@ -320,4 +335,5 @@ function drawEverything() {
 		drawPlayerOptions();
 		drawUiElements();
 	}
+    colorText("Underground Tactics", 250, 370, "white", "24px Title");
 }
