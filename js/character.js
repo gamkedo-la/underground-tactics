@@ -272,6 +272,9 @@ function CharacterBase (){
 							roomChange(0,1);
 							levelLoadingSkipOperations = true;
 						}
+						if(roomGrid[currentIndex] == TILE_FLOOR_GOAL){
+							console.log("Goal met")
+						}
 					}
 					// FIXME: at game start, movement array length is zero
 					// but we don't want to end the turn before letting the player move...

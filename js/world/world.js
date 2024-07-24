@@ -85,7 +85,7 @@ var levelOne = [
 			    52,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  1,  1,  1,  1, 52,
 				52,  1,  1,  1,  1,  1,  1,  1,  3,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 52,
 				52, 18,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  4,  1,  1,  1, 52,
-				54, 14,  1,  1,  1,  1,  1,  2,  4,  1,  1,110,  1,  1,  3,  4,  1,  1,  1, 52,
+				54, 14,  1,  1,  1,  4,  1,  2,  4,  1,  1,110,  1,  1,  3,  4,  1,  1,  1, 52,
 				52, 12,  1,100,  1,  1,  1,  1,  2,  4,  1,  1,  1,  1,  1,  1,  1,  1,  1, 52,
 				52, 12,  1,  1,  1,  1,  2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 52,
 				52, 12,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
@@ -254,6 +254,7 @@ var levelText = 	["You suddenly emerge into the dimly lit sewer, surrounded by a
 	const TILE_FLOOR_STONE_2 = 2;
 	const TILE_FLOOR_STONE_3 = 3;
 	const TILE_FLOOR_STONE_4 = 4;
+	const TILE_FLOOR_GOAL = TILE_FLOOR_STONE_4;
 	const TILE_FLOOR_SEWER_1 = 10;
 	const TILE_FLOOR_SEWER_2 = 11;
 	const TILE_FLOOR_SEWER_3 = 12;
