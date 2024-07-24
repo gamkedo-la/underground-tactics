@@ -24,6 +24,7 @@ function shotClass(whichPic){
 	this.frame = 0;
 	this.frames = 3;
 	this.magicTarget = undefined;
+	this.fromTeamHuman = false;
 	
 	this.picture = whichPic;
 
@@ -39,6 +40,7 @@ function shotClass(whichPic){
 	}
 	
 	this.shootFrom = function(character, targetWithMagic, projectileType){
+		this.fromTeamHuman = character.isHuman;
 		this.projectileX = character.x;
 		this.projectileY = character.y;
 		this.magicTarget = targetWithMagic;
@@ -115,6 +117,23 @@ function shotClass(whichPic){
 			}
 			if(this.magicTarget.health <= 0){
 				this.magicTarget.death();
+			}
+		} else { //not a homming magic ball - normal arrow
+			for (var i = 0; i < charList.length; i++) {
+				if(this.fromTeamHuman != charList[i].isHuman){
+					var dX = charList[i].x - this.projectileX;
+					var dY = charList[i].y - this.projectileY;
+					var len = Math.sqrt(dX*dX + dY*dY);
+					if(len < 20){
+						this.readyToRemove = true;
+						console.log("Arrow hit target");
+						charList[i].health-=2;
+						if(charList[i].health <= 0){
+							charList[i].death();
+						}
+					}
+				}
+
 			}
 		}
 		this.projectileX = this.projectileX + this.projectileXV;

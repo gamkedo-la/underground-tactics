@@ -19,6 +19,10 @@ function removeCharacterFromList() {
 				}
     		}
             charList.splice(i,1);
+			/*if(turnNumber >= i){
+				turnNumber--;
+			}*/ 
+			turnNumber = 0; //hack to ensure safe turn number, but may disrupt order
         }
 	}
 }
@@ -39,7 +43,7 @@ function CharacterBase (){
 	this.canMoveEast = true;
 	this.canMoveSouth = true;
 	this.canMoveWest = true;	
-	this.health = 10;
+	this.health = 1;
 	this.maxHealth = 10;
 	this.defense = 10;
 	this.trapCoolDownTimer = 0;

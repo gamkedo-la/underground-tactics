@@ -29,7 +29,7 @@ function DeathScreenMenu(x, y, width, height) {
 		console.log("game over exit button pressed. restarting!");
 		mainMenu = true;
 		liveGame = false;
-
+		location.reload();
 	};
 
 }
