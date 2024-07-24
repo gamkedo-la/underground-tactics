@@ -5,15 +5,16 @@ var mainOptions = false;
 var spellOptions = false;
 var potionOptions = false;
 
-function addCreatureTurn(whichName, isHuman) {
-    var tempCreature = new TurnOrderClass(whichName, isHuman);
+function addCreatureTurn(whichName, isHuman, number) {
+    var tempCreature = new TurnOrderClass(whichName, isHuman, number);
     turnOrderList.push(tempCreature);
 }
 
-function TurnOrderClass(whichName, isHuman) {
+function TurnOrderClass(whichName, isHuman, number) {
     this.name = whichName;
     this.isHuman = isHuman;
     this.myTurn = false;
+    this.turnNumberID = number;
 }
 
 function determineSequenceOrder() {

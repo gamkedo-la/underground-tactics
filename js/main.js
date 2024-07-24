@@ -29,11 +29,11 @@ function emptyRoomObjects() {
 }
 
 //game states
-var liveGame = true;
+var liveGame = true; //false
 
 var pauseScreen = false;
 var inventoryScreen = false;
-var mainMenu = false;
+var mainMenu = false; //true
 
 window.onload = function () {
   // this causes an error in browsers due to autoplay being forbidden
@@ -253,7 +253,7 @@ function loadLevel(whichLevel) {
     charList[i].reset();
     addCreatureTurn(
       (charList[i].isHuman ? "Player " : "Enemy ") + (i + 1),
-      charList[i].isHuman
+      charList[i].isHuman, (i + 1)
     );
   }
   console.log("Finish Load Level");

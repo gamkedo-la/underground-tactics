@@ -113,6 +113,9 @@ function shotClass(whichPic){
 				console.log("Fireball hit target");
 				this.magicTarget.health-=2;
 			}
+			if(this.magicTarget.health <= 0){
+				this.magicTarget.death();
+			}
 		}
 		this.projectileX = this.projectileX + this.projectileXV;
 		this.projectileY = this.projectileY + this.projectileYV;

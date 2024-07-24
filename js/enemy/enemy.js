@@ -71,9 +71,11 @@ function enemyClass() {
             let damageRoll = getRndInteger(1,4) + 4
             
             //1d4 + 2 for damage
+            console.log("1: Health: " + target.health)
 
             if(attackRoll >= target.defense){
                 target.health -= damageRoll;
+                console.log("2: Health: " + target.health)
                 if(target.health <= 0){
                     target.death();
                 }
@@ -84,7 +86,10 @@ function enemyClass() {
     }
 
     this.death = function(){
+        //initiative
+        // console.log(turnOrderList.) Need to remove enemy from turn order list
         this.readyToRemove = true;
+        addSmoke(this.x, this.y, 100);
     }
 
     this.checkPlayerLocationForNextMove = function(currentIndex){

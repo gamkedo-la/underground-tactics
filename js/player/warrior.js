@@ -118,7 +118,6 @@ function warriorClass() {
 				this.levitatePotion++;
 				itemPickUpSound.play();
 			}
-
 			return true;
 		}
 	}
