@@ -6,6 +6,18 @@ const DIR_W = 3;
 function removeCharacterFromList() {
 	for(var i=0; i<charList.length; i++) {
         if(charList[i].readyToRemove){
+			for(var ii=0; ii<turnOrderList.length; ii++) {
+				if(charList[i]==turnOrderList[ii]){
+					console.log("Updating turn over list");
+					turnOrderList.splice(ii,1);
+					break;
+				}
+			}
+			for (var iii = 0; iii < arrowList.length; iii++) {
+      			if(arrowList[iii].magicTarget == charList[i]){
+					arrowList[iii].magicTarget = undefined;
+				}
+    		}
             charList.splice(i,1);
         }
 	}

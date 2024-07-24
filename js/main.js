@@ -82,7 +82,6 @@ function imageLoadingDoneSoStartGame() {
     resetViewStates();
     handleMousePosition();
     moveEverything();
-    checkAllPlayerAndEnemyCollisions();
     drawEverything();
   }, 1000 / framesPerSecond);
   loadLevel(levelList[0]);
@@ -295,6 +294,9 @@ function moveEverything() {
         return;
       }
     }
+    checkAllPlayerAndEnemyCollisions();
+    removeSmokeFromList();
+    removeCharacterFromList();
   }
 
   if (pauseScreen) {
@@ -358,8 +360,6 @@ function drawEverything() {
     for (i = 0; i < smokeList.length; i++) {
       smokeList[i].draw();
     }
-    removeSmokeFromList();
-    removeCharacterFromList();
     drawHealth();
     drawStamina();
     finishedCameraPan();
