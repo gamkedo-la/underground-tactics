@@ -260,7 +260,9 @@ function loadLevel(whichLevel) {
 
 //All movement occurs here.  This is called every frame.
 function moveEverything() {
-  if (liveGame) {
+  if(winScreenMenu.hidden == false){
+    //skip game action while on win screen
+  } else if (liveGame) {
     checkPlayerOptionBoxes();
     charList[turnNumber].movement();
     for (i = 0; i < smokeList.length; i++) {

@@ -274,6 +274,7 @@ function CharacterBase (){
 						}
 						if(roomGrid[currentIndex] == TILE_FLOOR_GOAL){
 							console.log("Goal met")
+							winScreenMenu.hidden = false;
 						}
 					}
 					// FIXME: at game start, movement array length is zero
