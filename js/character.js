@@ -43,7 +43,7 @@ function CharacterBase (){
 	this.canMoveEast = true;
 	this.canMoveSouth = true;
 	this.canMoveWest = true;	
-	this.health = 1;
+	this.health = 10;
 	this.maxHealth = 10;
 	this.defense = 10;
 	this.trapCoolDownTimer = 0;
