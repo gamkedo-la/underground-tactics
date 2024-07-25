@@ -17,7 +17,7 @@ function DeathScreenMenu(x, y, width, height) {
 		canvasContext.globalAlpha = 1;
 		colorText("GAME OVER", 155, 32, "white", "14px Arial Black");
 		colorText("Another adventurer lost to the underground. You died", 32, 64, "white", "12px Arial Black");
-		colorText("after "+turnNumber+" turns and reached as far as level XX.", 32, 80, "white", "12px Arial Black");
+		colorText("after "+turnNumber+" turns. Try again.", 32, 80, "white", "12px Arial Black");
 	}
 	this.addSubView(exampleLabel);
 

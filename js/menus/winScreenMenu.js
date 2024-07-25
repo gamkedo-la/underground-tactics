@@ -17,7 +17,7 @@ function WinScreenMenu(x, y, width, height) {
 		canvasContext.globalAlpha = 1;
 		colorText("CONGRATULATIONS!", 125, 32, "black", "14px Arial Black");
 		colorText("You successfully explored the underground and", 32, 64, "black", "12px Arial Black");
-		colorText("escaped after "+turnNumber+" turns with XX gold. Nice work!", 32, 80, "black", "12px Arial Black");
+		colorText("escaped after "+turnNumber+" turns. Nice work!", 32, 80, "black", "12px Arial Black");
 	}
 	this.addSubView(exampleLabel);
 
