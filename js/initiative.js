@@ -38,7 +38,8 @@ function resetCharacterWithTurnNumber(turnNumber) {
 function drawInitiativeOrder() {
     let yPos = 36;
 	let xPos = canvas.width - 114;
-    colorText("INITIATIVE", xPos, yPos, "WHITE");
+    colorText("INITIATIVE", xPos+1, yPos+1, "black");
+    colorText("INITIATIVE", xPos, yPos, "white");
 	yPos += 20;
     for (var i = 0; i < turnOrderList.length; i++) {
         if (i == turnNumber) {
@@ -293,6 +294,7 @@ function drawStamina() {
 function drawPlayerOptions() {
     let partyX = 400;
 	let partyY = 44;
+	colorText("Party Members", partyX+1, partyY-8+1, "black", "14px Arial Black");
 	colorText("Party Members", partyX, partyY-8, "white", "14px Arial Black");
     canvasContext.drawImage(emptyPlayerPic, 0, 20, 20, 20, partyX, partyY, 20, 20);
     if(warriorFound){
