@@ -4,6 +4,7 @@ function MainOptionsMenu(x, y, width, height) {
 	// TODO: create actual UILabel class
 	const exampleLabel = new UIView(15, 5, 15, 30);
 	exampleLabel.drawCustomContent = function() {
+		colorText("Turn Options", 1, 21, "black", "14px Arial Black");
 		colorText("Turn Options", 0, 20, "white", "14px Arial Black");
 	}
 	// exampleLabel.backgroundColor = 'green';

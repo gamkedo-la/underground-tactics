@@ -6,7 +6,7 @@ let winScreenMenu;
 
 function setupMenus() {
   mainOptionsMenu = new MainOptionsMenu(10, 10, 275, 125);
-  mainOptionsMenu.backgroundColor = "purple";
+  //mainOptionsMenu.backgroundColor = "purple";
   addView(mainOptionsMenu);
 
   spellOptionsMenu = new SpellOptionsMenu(10, 10, 275, 125);

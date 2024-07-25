@@ -289,20 +289,22 @@ function drawStamina() {
 }
 
 function drawPlayerOptions() {
-    colorText("Party Members", 300, 20, "white", "14px Arial Black");
-    canvasContext.drawImage(emptyPlayerPic, 0, 20, 20, 20, 300, 30, 20, 20);
+    let partyX = 400;
+	let partyY = 40;
+	colorText("Party Members", partyX, partyY-8, "white", "14px Arial Black");
+    canvasContext.drawImage(emptyPlayerPic, 0, 20, 20, 20, partyX, partyY, 20, 20);
     if(warriorFound){
-        canvasContext.drawImage(emptyPlayerPic, 0, 40, 20, 20, 330, 30, 20, 20);
+        canvasContext.drawImage(emptyPlayerPic, 0, 40, 20, 20, partyX+30, partyY, 20, 20);
     } else {
-        canvasContext.drawImage(emptyPlayerPic, 0, 0, 20, 20, 330, 30, 20, 20);
+        canvasContext.drawImage(emptyPlayerPic, 0, 0, 20, 20, partyX+30, partyY, 20, 20);
     }
     if(archerFound){
-        canvasContext.drawImage(emptyPlayerPic, 0, 60, 20, 20, 360, 30, 20, 20);
+        canvasContext.drawImage(emptyPlayerPic, 0, 60, 20, 20, partyX+60, partyY, 20, 20);
     } else {
-        canvasContext.drawImage(emptyPlayerPic, 0, 0, 20, 20, 360, 30, 20, 20);
+        canvasContext.drawImage(emptyPlayerPic, 0, 0, 20, 20, partyX+60, partyY, 20, 20);
     }    
-    canvasContext.drawImage(emptyPlayerPic, 0, 0, 20, 20, 390, 30, 20, 20);
-    canvasContext.drawImage(emptyPlayerPic, 0, 0, 20, 20, 420, 30, 20, 20);
+    canvasContext.drawImage(emptyPlayerPic, 0, 0, 20, 20, partyX+90, partyY, 20, 20);
+    canvasContext.drawImage(emptyPlayerPic, 0, 0, 20, 20, partyX+120, partyY, 20, 20);
 
     if (BOTTOM_RIGHT_TURN_OPTIONS_ENABLED)  {
 		colorText("Turn Options", canvas.width - 200, canvas.height - 90, "red", "14px Arial Black");
