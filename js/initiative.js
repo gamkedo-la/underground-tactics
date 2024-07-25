@@ -7,6 +7,8 @@ var potionOptions = false;
 
 const ADD_TURN_NUMBERS_TO_LOG = false; // if true, we add a line like "advancing to turn number 1" to the info box each time it changes
 
+const BOTTOM_RIGHT_TURN_OPTIONS_ENABLED = false; // if true, original command bar including shoot button
+
 function addCreatureTurn(whichName, isHuman, number) {
     var tempCreature = new TurnOrderClass(whichName, isHuman, number);
     turnOrderList.push(tempCreature);
@@ -302,86 +304,88 @@ function drawPlayerOptions() {
     canvasContext.drawImage(emptyPlayerPic, 0, 0, 20, 20, 390, 30, 20, 20);
     canvasContext.drawImage(emptyPlayerPic, 0, 0, 20, 20, 420, 30, 20, 20);
 
-    colorText("Turn Options", canvas.width - 200, canvas.height - 90, "red", "14px Arial Black");
-    for (var i = 0; i < turnOrderList.length; i++) {
-        if (charList[turnNumber].isHuman) {
-            if (mainOptions) {
-                mainOptionsMenu.hidden = false;
+    if (BOTTOM_RIGHT_TURN_OPTIONS_ENABLED)  {
+		colorText("Turn Options", canvas.width - 200, canvas.height - 90, "red", "14px Arial Black");
+		for (var i = 0; i < turnOrderList.length; i++) {
+			if (charList[turnNumber].isHuman) {
+				if (mainOptions) {
+					mainOptionsMenu.hidden = false;
 
-                canvasContext.drawImage(arrowButtonPic, shootArrowBoxX, shootArrowBoxY);
-                if (shootArrowBoxHovering) {
-                    colorText("Shoot", shootArrowBoxX + 5, shootArrowBoxY + 65, "lime", "14px Arial Black");
-                } else {
-                    colorText("Shoot", shootArrowBoxX + 5, shootArrowBoxY + 65, "red", "14px Arial Black");
-                }
+					canvasContext.drawImage(arrowButtonPic, shootArrowBoxX, shootArrowBoxY);
+					if (shootArrowBoxHovering) {
+						colorText("Shoot", shootArrowBoxX + 5, shootArrowBoxY + 65, "lime", "14px Arial Black");
+					} else {
+						colorText("Shoot", shootArrowBoxX + 5, shootArrowBoxY + 65, "red", "14px Arial Black");
+					}
 
-                canvasContext.drawImage(useItemPic, useItemX, useItemY);
-                if (useItemBoxHovering) {
-                    colorText("Items", useItemX + 5, useItemY + 65, "lime", "14px Arial Black");
-                } else {
-                    colorText("Items", useItemX + 5, useItemY + 65, "red", "14px Arial Black");
-                }
+					canvasContext.drawImage(useItemPic, useItemX, useItemY);
+					if (useItemBoxHovering) {
+						colorText("Items", useItemX + 5, useItemY + 65, "lime", "14px Arial Black");
+					} else {
+						colorText("Items", useItemX + 5, useItemY + 65, "red", "14px Arial Black");
+					}
 
-                if (charList[turnNumber].remainingStamina > 0) {
-                    canvasContext.drawImage(wizardMovementPic, moveOptionX, moveOptionY);
-                    if (moveBoxHovering) {
-                        colorText("Move", moveOptionX + 5, moveOptionY + 65, "lime", "14px Arial Black");
-                    } else {
-                        colorText("Move", moveOptionX + 5, moveOptionY + 65, "red", "14px Arial Black");
-                    }
-                }
+					if (charList[turnNumber].remainingStamina > 0) {
+						canvasContext.drawImage(wizardMovementPic, moveOptionX, moveOptionY);
+						if (moveBoxHovering) {
+							colorText("Move", moveOptionX + 5, moveOptionY + 65, "lime", "14px Arial Black");
+						} else {
+							colorText("Move", moveOptionX + 5, moveOptionY + 65, "red", "14px Arial Black");
+						}
+					}
 
-                canvasContext.drawImage(wizardSpellPic, spellBoxOptionX, spellBoxOptionY);
-                if (spellBoxHovering) {
-                    colorText("Spell", spellBoxOptionX + 5, spellBoxOptionY + 65, "lime", "14px Arial Black");
-                } else {
-                    colorText("Spell", spellBoxOptionX + 5, spellBoxOptionY + 65, "red", "14px Arial Black");
-                }
-                canvasContext.drawImage(endTurnPic, endTurnBoxOptionX, endTurnBoxOptionY);
-                if (endTurnBoxHovering) {
-                    colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "lime", "14px Arial Black");
-                } else {
-                    colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "red", "14px Arial Black");
-                }
-            } else if (spellOptions) {
-                canvasContext.drawImage(spellFirePic, moveOptionX, moveOptionY);
-                if (fireBoltBoxHovering) {
-                    colorText("Fire Bolt", fireBoltBoxX + 5, fireBoltBoxY + 65, "lime", "14px Arial Black");
-                } else {
-                    colorText("Fire Bolt", fireBoltBoxY + 5, fireBoltBoxY + 65, "red", "14px Arial Black");
-                }
-                canvasContext.drawImage(magicMissilePic, spellBoxOptionX, spellBoxOptionY);
-                if (spellBoxHovering) {
-                    colorText("Spell", spellBoxOptionX + 5, spellBoxOptionY + 65, "lime", "14px Arial Black");
-                } else {
-                    colorText("Spell", spellBoxOptionX + 5, spellBoxOptionY + 65, "red", "14px Arial Black");
-                }
-                canvasContext.drawImage(endTurnPic, endTurnBoxOptionX, endTurnBoxOptionY);
-                if (endTurnBoxHovering) {
-                    colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "lime", "15px Arial Black");
-                } else {
-                    colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "red", "14px Arial Black");
-                }
-            } else if (potionOptions) {
-                canvasContext.drawImage(manaPotionPic, moveOptionX, moveOptionY);
-                if (moveBoxHovering) {
-                    colorText("Mana", moveOptionX + 5, moveOptionY + 65, "lime", "15px Arial Black");
-                } else {
-                    colorText("Mana", moveOptionX + 5, moveOptionY + 65, "red", "14px Arial Black");
-                }
-                canvasContext.drawImage(healthPotionPic, spellBoxOptionX, spellBoxOptionY);
-                if (spellBoxHovering) {
-                    colorText("Levitation", spellBoxOptionX, spellBoxOptionY + 65, "lime", "15px Arial Black");
-                } else {
-                    colorText("Levitation", spellBoxOptionX, spellBoxOptionY + 65, "red", "14px Arial Black");
-                }
-                canvasContext.drawImage(endTurnPic, endTurnBoxOptionX, endTurnBoxOptionY);
-                if (endTurnBoxHovering) {
-                    colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "lime", "15px Arial Black");
-                } else {
-                    colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "red", "14px Arial Black");
-                }
-            }
+					canvasContext.drawImage(wizardSpellPic, spellBoxOptionX, spellBoxOptionY);
+					if (spellBoxHovering) {
+						colorText("Spell", spellBoxOptionX + 5, spellBoxOptionY + 65, "lime", "14px Arial Black");
+					} else {
+						colorText("Spell", spellBoxOptionX + 5, spellBoxOptionY + 65, "red", "14px Arial Black");
+					}
+					canvasContext.drawImage(endTurnPic, endTurnBoxOptionX, endTurnBoxOptionY);
+					if (endTurnBoxHovering) {
+						colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "lime", "14px Arial Black");
+					} else {
+						colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "red", "14px Arial Black");
+					}
+				} else if (spellOptions) {
+					canvasContext.drawImage(spellFirePic, moveOptionX, moveOptionY);
+					if (fireBoltBoxHovering) {
+						colorText("Fire Bolt", fireBoltBoxX + 5, fireBoltBoxY + 65, "lime", "14px Arial Black");
+					} else {
+						colorText("Fire Bolt", fireBoltBoxY + 5, fireBoltBoxY + 65, "red", "14px Arial Black");
+					}
+					canvasContext.drawImage(magicMissilePic, spellBoxOptionX, spellBoxOptionY);
+					if (spellBoxHovering) {
+						colorText("Spell", spellBoxOptionX + 5, spellBoxOptionY + 65, "lime", "14px Arial Black");
+					} else {
+						colorText("Spell", spellBoxOptionX + 5, spellBoxOptionY + 65, "red", "14px Arial Black");
+					}
+					canvasContext.drawImage(endTurnPic, endTurnBoxOptionX, endTurnBoxOptionY);
+					if (endTurnBoxHovering) {
+						colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "lime", "15px Arial Black");
+					} else {
+						colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "red", "14px Arial Black");
+					}
+				} else if (potionOptions) {
+					canvasContext.drawImage(manaPotionPic, moveOptionX, moveOptionY);
+					if (moveBoxHovering) {
+						colorText("Mana", moveOptionX + 5, moveOptionY + 65, "lime", "15px Arial Black");
+					} else {
+						colorText("Mana", moveOptionX + 5, moveOptionY + 65, "red", "14px Arial Black");
+					}
+					canvasContext.drawImage(healthPotionPic, spellBoxOptionX, spellBoxOptionY);
+					if (spellBoxHovering) {
+						colorText("Levitation", spellBoxOptionX, spellBoxOptionY + 65, "lime", "15px Arial Black");
+					} else {
+						colorText("Levitation", spellBoxOptionX, spellBoxOptionY + 65, "red", "14px Arial Black");
+					}
+					canvasContext.drawImage(endTurnPic, endTurnBoxOptionX, endTurnBoxOptionY);
+					if (endTurnBoxHovering) {
+						colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "lime", "15px Arial Black");
+					} else {
+						colorText("End Turn", endTurnBoxOptionX - 10, endTurnBoxOptionY + 65, "red", "14px Arial Black");
+					}
+				}
+			}
         }
-    }
+    } // BOTTOM_RIGHT_TURN_OPTIONS_ENABLED
 }
