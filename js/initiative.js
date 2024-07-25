@@ -36,14 +36,16 @@ function resetCharacterWithTurnNumber(turnNumber) {
 }
 
 function drawInitiativeOrder() {
-    colorText("INITIATIVE", canvas.width - 100, 30, "WHITE");
-    let yPos = 20;
+    let yPos = 36;
+	let xPos = canvas.width - 114;
+    colorText("INITIATIVE", xPos, yPos, "WHITE");
+	yPos += 20;
     for (var i = 0; i < turnOrderList.length; i++) {
         if (i == turnNumber) {
-            colorText("-" + turnOrderList[i].name, canvas.width - 100, yPos * i + 50, "lime");
+            colorText("-" + turnOrderList[i].name, canvas.width - 100, yPos + i*50, "lime");
             turnOrderList[i].myTurn = true;
         } else {
-            colorText(" " + turnOrderList[i].name, canvas.width - 100, yPos * i + 50, "red");
+            colorText(" " + turnOrderList[i].name, canvas.width - 100, yPos + i*50, "red");
             turnOrderList[i].myTurn = false;
         }
     }
@@ -290,7 +292,7 @@ function drawStamina() {
 
 function drawPlayerOptions() {
     let partyX = 400;
-	let partyY = 40;
+	let partyY = 44;
 	colorText("Party Members", partyX, partyY-8, "white", "14px Arial Black");
     canvasContext.drawImage(emptyPlayerPic, 0, 20, 20, 20, partyX, partyY, 20, 20);
     if(warriorFound){

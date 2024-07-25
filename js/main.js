@@ -365,6 +365,8 @@ function drawEverything() {
     drawHealth();
     drawStamina();
     finishedCameraPan();
+
+	canvasContext.drawImage(topBarBackgroundPic,0,0);
     drawInitiativeOrder();
     drawPlayerOptions();
     drawUiElements();
