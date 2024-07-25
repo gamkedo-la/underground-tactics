@@ -5,6 +5,8 @@ var mainOptions = false;
 var spellOptions = false;
 var potionOptions = false;
 
+const ADD_TURN_NUMBERS_TO_LOG = false; // if true, we add a line like "advancing to turn number 1" to the info box each time it changes
+
 function addCreatureTurn(whichName, isHuman, number) {
     var tempCreature = new TurnOrderClass(whichName, isHuman, number);
     turnOrderList.push(tempCreature);
@@ -131,8 +133,14 @@ function endTurnNow() {
     if (turnNumber >= turnOrderList.length) {
         turnNumber = 0;
     }
-    textBoxUI.text = "Advancing to turn number "+(turnNumber+1)+"."; // we add one to avoid turn "zero"
-    endTurnSound.play();
+    
+	// tends to overwrite whatever directions the current state requires
+	//textBoxUI.text = "Advancing to turn number "+(turnNumber+1)+"."; // we add one to avoid turn "zero"
+	
+	// ADDED to whatever is already there!
+	if (ADD_TURN_NUMBERS_TO_LOG) textBoxUI.text = "Advancing to turn number "+(turnNumber+1)+".\n\n" + textBoxUI.text;
+    
+	endTurnSound.play();
     mainOptions = true;
     mainOptionsMenu.hidden = false;
     spellOptions = false;
