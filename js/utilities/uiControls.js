@@ -31,6 +31,7 @@ function executeCommand(){
 			displayItems();
 			useFireBolt(turnNumber);
 			shootArrow(turnNumber);
+			useSword(turnNumber);
 			// charList[turnNumber].fireBolt();
 		//	charList[turnNumber].levitate(); 
 		}

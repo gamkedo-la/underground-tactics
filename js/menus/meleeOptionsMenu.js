@@ -14,9 +14,9 @@ function MeleeOptionMenu(x, y, width, height) {
 	fireBoltButton.title = "Sword";
 	this.addSubView(fireBoltButton);
 	fireBoltButton.onPress = () => {
-		fireBoltBoxHovering = true;
-		useFireBolt(turnNumber);
-		fireBoltBoxHovering = false;
+		swordBoxHovering = true;
+		useSword(turnNumber);
+		swordBoxHovering = false;
 	};
 }
 

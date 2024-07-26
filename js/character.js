@@ -157,6 +157,10 @@ function CharacterBase (){
 		this.facingDir = restoreFacing;
 	}
 
+	this.swordAttack = function(){
+		textBoxUI.text = this.myName + " attacks with sword.";
+	}
+
 	this.shootArrow = function(){
 		if(this.fireProjectileDir != -1){
 			this.updateFacing(this.fireProjectileDir);

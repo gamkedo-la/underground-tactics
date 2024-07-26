@@ -109,6 +109,9 @@ var moveOptionY = 525;
 var fireBoltBoxX = 600;
 var fireBoltBoxY = 525;
 var fireBoltBoxHovering = false;
+var swordBoxX = 600;
+var swordBoxY = 525;
+var swordBoxHovering = false;
 var shootArrowBoxHovering = false;
 var shootArrowBoxX = 470;
 var shootArrowBoxY = 525;
@@ -235,6 +238,25 @@ function useFireBolt(turnNumber){
     }
 }
 
+function useSword(turnNumber){
+    if (swordBoxHovering) {
+        mainOptions = true;
+        mainOptionsMenu.hidden = false;
+        spellOptions = false;
+        spellOptionsMenu.hidden = true;
+        meleeOptions = false;
+        meleeOptionMenu.hidden = true;
+        potionOptions = false;
+        potionOptionsMenu.hidden = true;
+		if (charList[turnNumber]) {
+        	charList[turnNumber].swordAttack();
+            swordBoxHovering = false;
+		} else {
+			console.log("ERROR: missing charList for turnNumber "+turnNumber);
+		}
+    }
+}
+
 function shootArrow(turnNumber){
     if (shootArrowBoxHovering) {
         mainOptions = true;
@@ -267,6 +289,9 @@ function checkPlayerOptionBoxes() {
             } else if (spellOptions){
                 fireBoltBoxHovering = checkMousePositionInBox(fireBoltBoxX, fireBoltBoxY, 50, 50);
                 spellBoxHovering = checkMousePositionInBox(spellBoxOptionX, spellBoxOptionY, 50, 50);
+                endTurnBoxHovering = checkMousePositionInBox(endTurnBoxOptionX, endTurnBoxOptionY, 50, 50);
+            } else if (meleeOptions){
+                swordBoxHovering = checkMousePositionInBox(swordBoxX, swordBoxY, 50, 50);
                 endTurnBoxHovering = checkMousePositionInBox(endTurnBoxOptionX, endTurnBoxOptionY, 50, 50);
             } else if (potionOptions){
                 moveBoxHovering = checkMousePositionInBox(moveOptionX, moveOptionY, 50, 50);
