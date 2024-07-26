@@ -21,7 +21,7 @@ function MeleeOptionMenu(x, y, width, height) {
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor
-MeleeOptionsMenu.prototype = Object.create(UIView.prototype, {
+MeleeOptionMenu.prototype = Object.create(UIView.prototype, {
   constructor: {
     value: MeleeOptionMenu,
     enumerable: false,
