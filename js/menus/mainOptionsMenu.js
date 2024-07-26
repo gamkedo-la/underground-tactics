@@ -39,49 +39,43 @@ function MainOptionsMenu(x, y, width, height, characterCreated) {
 	};
 	this.addSubView(moveButton);
 
-	//make only available to wizard
-	
-	const spellBoxButton = new UIComboButton(145, 40, 50, 75);
-	spellBoxButton.image = wizardSpellPic;
-	spellBoxButton.title = "Spell";
-	spellBoxButton.onPress = () => {
-		console.log('"Spell" button pressed');
-		textBoxUI.text = "Spellbook opened. Click a spell to cast.";
-		textBoxUI.image = wizardSpellPic;
-		spellBookSound.play();
+	if(characterCreated){
+		console.log("Turn: " + charList[turnNumber].myName);
+		//make only available to wizard
+		const spellBoxButton = new UIComboButton(145, 40, 50, 75);
+		if(charList[turnNumber].myName == "Nesquit"){
+			spellBoxButton.image = wizardSpellPic;
+			spellBoxButton.title = "Spell";
+			spellBoxButton.onPress = () => {
+				console.log('"Spell" button pressed');
+				textBoxUI.text = "Spellbook opened. Click a spell to cast.";
+				textBoxUI.image = wizardSpellPic;
+				spellBookSound.play();
 
-		spellBoxHovering = true;
-		displaySpells();
-		spellBoxHovering = false;
+				spellBoxHovering = true;
+				displaySpells();
+				spellBoxHovering = false;
+			};
+		}
+		this.addSubView(spellBoxButton);
+
+		//make only available to warrior
+		const meleeBoxButton = new UIComboButton(145, 40, 50, 75);
+		if(charList[turnNumber].myName == "Lance"){
+			meleeBoxButton.image = meleeIconPic;
+			meleeBoxButton.title = "Melee";
+			meleeBoxButton.onPress = () => {
+				console.log('"Melee" button pressed');
+				textBoxUI.text = "Weapon Grabbed. Click attack option.";
+				textBoxUI.image = meleeIconPic;
+				spellBookSound.play();
+				meleeBoxHovering = true;
+				displayMelee();
+				meleeBoxHovering = false;
+			};
+		}
+		this.addSubView(meleeBoxButton);
 	};
-	//if(characterCreated){
-	//	console.log("Turn: " + charList[turnNumber].myName);
-	//	if(charList[turnNumber].myName == "Nesquit"){
-			this.addSubView(spellBoxButton);
-	//	}
-	//};
-
-	//make only available to warrior
-	const meleeBoxButton = new UIComboButton(145, 40, 50, 75);
-	meleeBoxButton.image = meleeIconPic;
-	meleeBoxButton.title = "Melee";
-	meleeBoxButton.onPress = () => {
-		console.log('"Melee" button pressed');
-		textBoxUI.text = "Weapon Grabbed. Click attack option.";
-		textBoxUI.image = meleeIconPic;
-		spellBookSound.play();
-
-
-		meleeBoxHovering = true;
-		displayMelee();
-		meleeBoxHovering = false;
-	};
-	//if(characterCreated){
-	//	console.log("Turn: " + charList[turnNumber].myName);
-	//	if(charList[turnNumber].myName == "Lance"){
-			this.addSubView(meleeBoxButton);
-	//	}
-	//};
 
 	const endTurnButton = new UIComboButton(210, 40, 50, 75);
 	// endTurnButton.backgroundColor = 'gray';

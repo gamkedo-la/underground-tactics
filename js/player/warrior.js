@@ -11,7 +11,7 @@ function addPlayer(playerTileType){
 	if(playerTileType == TILE_WARRIOR){
 		var playerPic = warrriorPic;
 		var playerName = "Lance"
-		var tiedUp = true;
+		var tiedUp = false;
 	} else if (playerTileType == TILE_WIZARD){
 		var playerPic = wizardPic;
 		var playerName = "Nesquit"
