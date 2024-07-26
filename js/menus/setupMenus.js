@@ -5,9 +5,8 @@ let potionOptionsMenu;
 let deathScreenMenu;
 let winScreenMenu;
 
-function setupMenus() {
-  mainOptionsMenu = new MainOptionsMenu(10, 10, 275, 125);
-  //mainOptionsMenu.backgroundColor = "purple";
+function setupMenus(characterCreated) {
+  mainOptionsMenu = new MainOptionsMenu(10, 10, 275, 125, characterCreated);
   addView(mainOptionsMenu);
 
   spellOptionsMenu = new SpellOptionsMenu(10, 10, 275, 125);
@@ -18,7 +17,6 @@ function setupMenus() {
   meleeOptionMenu.hidden = true;
   addView(meleeOptionMenu);
   
-
   potionOptionsMenu = new PotionOptionsMenu(10, 10, 275, 125);
   potionOptionsMenu.hidden = true;
   addView(potionOptionsMenu);

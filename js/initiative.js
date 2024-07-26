@@ -20,6 +20,7 @@ function TurnOrderClass(whichName, isHuman, number) {
     this.isHuman = isHuman;
     this.myTurn = false;
     this.turnNumberID = number;
+    setupMenus(true);
 }
 
 function determineSequenceOrder() {
@@ -139,6 +140,7 @@ function turnAdvance() {
 
 function endTurnNow() {
     console.log("ending turn "+turnNumber+" now.");
+    setupMenus(true);
 	if(charList[turnNumber].levitating){
         charList[turnNumber].levitationTurn++;
     }

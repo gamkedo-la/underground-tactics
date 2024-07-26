@@ -1,4 +1,4 @@
-function MainOptionsMenu(x, y, width, height) {
+function MainOptionsMenu(x, y, width, height, characterCreated) {
 	UIView.call(this, x, y, width, height);
 
 	// TODO: create actual UILabel class
@@ -7,11 +7,9 @@ function MainOptionsMenu(x, y, width, height) {
 		colorText("Turn Options", 1, 21, "black", "14px Arial Black");
 		colorText("Turn Options", 0, 20, "white", "14px Arial Black");
 	}
-	// exampleLabel.backgroundColor = 'green';
 	this.addSubView(exampleLabel);
 
 	const useItemButton = new UIComboButton(15, 40, 50, 75);
-	// useItemButton.backgroundColor = 'white';
 	useItemButton.image = useItemPic;
 	useItemButton.title = "Items";
 	useItemButton.onPress = () => {
@@ -27,7 +25,6 @@ function MainOptionsMenu(x, y, width, height) {
 	this.addSubView(useItemButton);
 
 	const moveButton = new UIComboButton(80, 40, 50, 75);
-	// moveButton.backgroundColor = 'cyan';
 	moveButton.image = wizardMovementPic;
 	moveButton.title = "Move";
 	moveButton.onPress = () => {
@@ -57,13 +54,18 @@ function MainOptionsMenu(x, y, width, height) {
 		displaySpells();
 		spellBoxHovering = false;
 	};
-	this.addSubView(spellBoxButton);
+	//if(characterCreated){
+	//	console.log("Turn: " + charList[turnNumber].myName);
+	//	if(charList[turnNumber].myName == "Nesquit"){
+			this.addSubView(spellBoxButton);
+	//	}
+	//};
 
 	//make only available to warrior
 	const meleeBoxButton = new UIComboButton(145, 40, 50, 75);
-	spellBoxButton.image = meleeIconPic;
-	spellBoxButton.title = "Melee";
-	spellBoxButton.onPress = () => {
+	meleeBoxButton.image = meleeIconPic;
+	meleeBoxButton.title = "Melee";
+	meleeBoxButton.onPress = () => {
 		console.log('"Melee" button pressed');
 		textBoxUI.text = "Weapon Grabbed. Click attack option.";
 		textBoxUI.image = meleeIconPic;
@@ -74,7 +76,12 @@ function MainOptionsMenu(x, y, width, height) {
 		displayMelee();
 		meleeBoxHovering = false;
 	};
-	this.addSubView(spellBoxButton);
+	//if(characterCreated){
+	//	console.log("Turn: " + charList[turnNumber].myName);
+	//	if(charList[turnNumber].myName == "Lance"){
+			this.addSubView(meleeBoxButton);
+	//	}
+	//};
 
 	const endTurnButton = new UIComboButton(210, 40, 50, 75);
 	// endTurnButton.backgroundColor = 'gray';
