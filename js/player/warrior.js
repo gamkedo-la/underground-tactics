@@ -61,6 +61,8 @@ function warriorClass() {
 			mainOptionsMenu.hidden = false;
 			spellOptions = false;
 			spellOptionsMenu.hidden = true;
+			meleeOptions = false;
+			meleeOptionMenu.hidden = true;
 			potionOptions = false;
 			potionOptionsMenu.hidden = true;
 		}

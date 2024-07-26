@@ -4,6 +4,7 @@ var turnNumber = 0;
 var mainOptions = false;
 var spellOptions = false;
 var potionOptions = false;
+var meleeOptions = false;
 
 const ADD_TURN_NUMBERS_TO_LOG = false; // if true, we add a line like "advancing to turn number 1" to the info box each time it changes
 
@@ -115,6 +116,11 @@ var moveBoxHovering = false;
 var spellBoxOptionX = 665;
 var spellBoxOptionY = 525;
 var spellBoxHovering = false;
+var meleeBoxOptionX = 665;
+var meleeBoxOptionY = 525;
+var meleeBoxHovering = false;
+
+
 var endTurnBoxOptionX = 730;
 var endTurnBoxOptionY = 525;
 var endTurnBoxHovering = false;
@@ -150,6 +156,8 @@ function endTurnNow() {
     mainOptionsMenu.hidden = false;
     spellOptions = false;
     spellOptionsMenu.hidden = true;
+    meleeOptions = false;
+    meleeOptionMenu.hidden = true;
     potionOptions = false;
     potionOptionsMenu.hidden = true;
     resetCharacterWithTurnNumber(turnNumber);
@@ -175,6 +183,21 @@ function displaySpells(){
         mainOptionsMenu.hidden = true;
         spellOptions = true;
         spellOptionsMenu.hidden = false;
+        meleeOptions = false;
+        meleeOptionMenu.hidden = true;
+        potionOptions = false;
+        potionOptionsMenu.hidden = true;    
+    }
+}
+
+function displayMelee(){
+    if (meleeBoxHovering) {
+        mainOptions = false;
+        mainOptionsMenu.hidden = true;
+        spellOptions = false;
+        spellOptionsMenu.hidden = true;
+        meleeOptions = true;
+        meleeOptionMenu.hidden = false;
         potionOptions = false;
         potionOptionsMenu.hidden = true;    
     }
@@ -186,6 +209,8 @@ function displayItems(){
         mainOptionsMenu.hidden = true;
         spellOptions = false;
         spellOptionsMenu.hidden = true;
+        meleeOptions = false;
+        meleeOptionMenu.hidden = true;
         potionOptions = true;
         potionOptionsMenu.hidden = false;
     }
@@ -197,6 +222,8 @@ function useFireBolt(turnNumber){
         mainOptionsMenu.hidden = false;
         spellOptions = false;
         spellOptionsMenu.hidden = true;
+        meleeOptions = false;
+        meleeOptionMenu.hidden = true;
         potionOptions = false;
         potionOptionsMenu.hidden = true;
 		if (charList[turnNumber]) {
@@ -214,6 +241,8 @@ function shootArrow(turnNumber){
         mainOptionsMenu.hidden = false;
         spellOptions = false;
         spellOptionsMenu.hidden = true;
+        meleeOptions = false;
+        meleeOptionMenu.hidden = true;
         potionOptions = false;
         potionOptionsMenu.hidden = true;
         charList[turnNumber].shootArrow();
@@ -234,6 +263,7 @@ function checkPlayerOptionBoxes() {
                 }
                 spellBoxHovering = checkMousePositionInBox(spellBoxOptionX, spellBoxOptionY, 50, 50);
                 endTurnBoxHovering = checkMousePositionInBox(endTurnBoxOptionX, endTurnBoxOptionY, 50, 50);
+                meleeBoxHovering = checkMousePositionInBox(meleeBoxOptionX, meleeBoxOptionY, 50, 50);
             } else if (spellOptions){
                 fireBoltBoxHovering = checkMousePositionInBox(fireBoltBoxX, fireBoltBoxY, 50, 50);
                 spellBoxHovering = checkMousePositionInBox(spellBoxOptionX, spellBoxOptionY, 50, 50);
@@ -345,6 +375,13 @@ function drawPlayerOptions() {
 						colorText("Spell", spellBoxOptionX + 5, spellBoxOptionY + 65, "lime", "14px Arial Black");
 					} else {
 						colorText("Spell", spellBoxOptionX + 5, spellBoxOptionY + 65, "red", "14px Arial Black");
+					}
+
+                    canvasContext.drawImage(meleeIconPic, meleeBoxOptionX, meleeBoxOptionY);
+					if (meleeBoxHovering) {
+						colorText("Melee", meleeBoxOptionX + 5, meleeBoxOptionY + 65, "lime", "14px Arial Black");
+					} else {
+						colorText("Melee", meleeBoxOptionX + 5, meleeBoxOptionY + 65, "red", "14px Arial Black");
 					}
 					canvasContext.drawImage(endTurnPic, endTurnBoxOptionX, endTurnBoxOptionY);
 					if (endTurnBoxHovering) {

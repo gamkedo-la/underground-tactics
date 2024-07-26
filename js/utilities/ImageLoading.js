@@ -24,6 +24,7 @@ var healthPotionPic = document.createElement("img");
 var spellBookPic = document.createElement("img");
 var spellBook2Pic = document.createElement("img");
 var spellbookIconPic = document.createElement("img");
+var meleeIconPic = document.createElement("img");
 var kobaldPic = document.createElement("img");
 var kobaldArcherPic = document.createElement("img");
 var koaToaPic = document.createElement("img");
@@ -93,6 +94,8 @@ function loadImages() {
 			{varName: magicMissilePic, theFile:  "spellMagicMissle.png", sx: 0, sy: 0},
 			{varName: manaPotionPic, theFile:  "manaPotion.png", sx: 0, sy: 0},
 			{varName: healthPotionPic, theFile:  "HealthPotion.png", sx: 0, sy: 0},
+			{varName: meleeIconPic, theFile:  "meleeIcon.png", sx: 0, sy: 0},
+			
 
 			
 			//characters

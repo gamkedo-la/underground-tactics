@@ -1,5 +1,6 @@
 let mainOptionsMenu;
 let spellOptionsMenu;
+let meleeOptionMenu;
 let potionOptionsMenu;
 let deathScreenMenu;
 let winScreenMenu;
@@ -12,6 +13,11 @@ function setupMenus() {
   spellOptionsMenu = new SpellOptionsMenu(10, 10, 275, 125);
   spellOptionsMenu.hidden = true;
   addView(spellOptionsMenu);
+
+  meleeOptionMenu = new MeleeOptionMenu(10, 10, 275, 125);
+  meleeOptionMenu.hidden = true;
+  addView(meleeOptionMenu);
+  
 
   potionOptionsMenu = new PotionOptionsMenu(10, 10, 275, 125);
   potionOptionsMenu.hidden = true;

@@ -42,8 +42,9 @@ function MainOptionsMenu(x, y, width, height) {
 	};
 	this.addSubView(moveButton);
 
+	//make only available to wizard
+	
 	const spellBoxButton = new UIComboButton(145, 40, 50, 75);
-	// spellBoxButton.backgroundColor = 'pink';
 	spellBoxButton.image = wizardSpellPic;
 	spellBoxButton.title = "Spell";
 	spellBoxButton.onPress = () => {
@@ -52,10 +53,26 @@ function MainOptionsMenu(x, y, width, height) {
 		textBoxUI.image = wizardSpellPic;
 		spellBookSound.play();
 
-
 		spellBoxHovering = true;
 		displaySpells();
 		spellBoxHovering = false;
+	};
+	this.addSubView(spellBoxButton);
+
+	//make only available to warrior
+	const meleeBoxButton = new UIComboButton(145, 40, 50, 75);
+	spellBoxButton.image = meleeIconPic;
+	spellBoxButton.title = "Melee";
+	spellBoxButton.onPress = () => {
+		console.log('"Melee" button pressed');
+		textBoxUI.text = "Weapon Grabbed. Click attack option.";
+		textBoxUI.image = meleeIconPic;
+		spellBookSound.play();
+
+
+		meleeBoxHovering = true;
+		displayMelee();
+		meleeBoxHovering = false;
 	};
 	this.addSubView(spellBoxButton);
 
