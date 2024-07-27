@@ -129,7 +129,7 @@ function keyPressed(evt) {
 }
 
 function keyReleased(evt) {
-	if(charList[turnNumber].isHuman){
+	if(turnNumber >= 0 && turnNumber < charList.length && charList[turnNumber].isHuman){
 		setKeyHoldState(evt.keyCode, charList[turnNumber], false);
 	}
 }
@@ -160,3 +160,73 @@ function changePauseState(){
 	pauseScreen = !pauseScreen;
 	liveGame = !pauseScreen;
 }
+
+  creditsList = [
+"Vince McKeown: Project lead, core gameplay, isometric view and turn-based movement system, main environment art, potions, spells, world design, projectile functionality, player animated sprites (Warrior, Archer, Wizard), Kobald and Koa Toa enemies, sound integration, assorted bug fixing"," ",
+"Michael Monty: Key sprites with variations, UI text box functionality, inventory menu, title layout, UI image selection support, title screen font selection, pause menu, pause toggle"," ",
+"Dan Dela Rosa: Movement system refactor, core UI system, health bars, potion and spell menus, stamina tuning, bug fixes (turn change, fire bolt casting), mute toggle"," ",
+"Chris \"BOLT\" Bolte: Main music, sounds (footsteps, water and cave ambience, health pickup, arrow shooting, player and enemy hurt sounds, healing and buff spells, sword strike)"," ",
+"Christer \"McFunkypants\" Kaitila: Win screen, game over screen, tile cursors, UI background, textbox wrap, additional keyboard controls, healthbar improvement, UI layout touch up, additional sound effects integration, header drop shadow"," ",
+"Rodrigo Bonzerr Lopez: Sprites (archer animation, 2 spellbooks, arrow), additional sounds (water effect)"," ",
+"Gwyn Henry: Narrative and related internal artifacts"," ",
+"Marvin Chong: Isometric tile spritesheet functionality, player stamina, UI fix"
+  ];
+
+function drawCredits() {
+	var lineX = 85;
+    var lineY = 25;
+    var creditsSize = 19;
+    var lineSkip = creditsSize+2;
+    for(var i=0;i<creditsList.length;i++) {
+      	colorText(creditsList[i], lineX, lineY, "white", "15px Arial");
+		lineY+=lineSkip;
+	}
+}
+
+function lineWrapCredits() {
+    const newCut = [];
+    var maxLineChar = 85;
+    var findEnd;
+
+    for(let i = 0; i < creditsList.length; i++) {
+      const currentLine = creditsList[i];
+      for(let j = 0; j < currentLine.length; j++) {
+        /*const aChar = currentLine[j];
+        if(aChar === ":") {
+          if(i !== 0) {
+            newCut.push("\n");
+          }
+
+          newCut.push(currentLine.substring(0, j + 1));
+          newCut.push(currentLine.substring(j + 2, currentLine.length));
+          break;
+        } else*/ if(j === currentLine.length - 1) {
+          if((i === 0) || (i >= creditsList.length - 2)) {
+            newCut.push(currentLine);
+          } else {
+            newCut.push(currentLine.substring(0, currentLine.length));
+          }
+        }
+      }
+    }
+
+    const newerCut = [];
+    for(var i=0;i<newCut.length;i++) {
+      while(newCut[i].length > 0) {
+        findEnd = maxLineChar;
+        if(newCut[i].length > maxLineChar) {
+          for(var ii=findEnd;ii>0;ii--) {
+            if(newCut[i].charAt(ii) == " ") {
+              findEnd=ii;
+              break;
+            }
+          }
+        }
+        newerCut.push(newCut[i].substring(0, findEnd));
+        newCut[i] = newCut[i].substring(findEnd, newCut[i].length);
+      }
+    }
+
+    creditsList = newerCut;
+  }        
+lineWrapCredits();

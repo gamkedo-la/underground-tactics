@@ -325,7 +325,7 @@ function drawEverything() {
   if (mainMenu) {
     if(showCredits) {
       colorRect(0, 0, canvas.width, canvas.height, "#333333");
-      colorText("credits will go here", 150, canvas.height/2, "white", "24px Title");
+      drawCredits();
       colorText("Click Anywhere to Continue to Gameplay", 150, canvas.height-15, "white", "24px Title");
       return;
     }
