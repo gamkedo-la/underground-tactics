@@ -323,6 +323,12 @@ var titleScreenWizardXWaitTime = 0;
 var titleScreenWizardXMoveRight = true;
 function drawEverything() {
   if (mainMenu) {
+    if(showCredits) {
+      colorRect(0, 0, canvas.width, canvas.height, "#333333");
+      colorText("credits will go here", 150, canvas.height/2, "white", "24px Title");
+      colorText("Click Anywhere to Continue to Gameplay", 150, canvas.height-15, "white", "24px Title");
+      return;
+    }
     if (titleScreenWizardX < 0 && titleScreenWizardXMoveRight) {
       titleScreenWizardX++;
     } else {
@@ -342,18 +348,20 @@ function drawEverything() {
       titleScreenWizardY
     );
     if (titleScreenWizardXWaitTime > 50) {
-		const titleText = canvasContext.measureText(title);
-		const startX = 200;
-		const textPadding = 50;
-		const rectWidth = titleText.width + textPadding * 2;
-		colorRect(200, 300, rectWidth, 100, "#81007f");
-		colorText(title, startX + textPadding, 370, "white", "48px Title");
+    	const titleText = canvasContext.measureText(title);
+    	const startX = 200;
+    	const textPadding = 50;
+    	const rectWidth = titleText.width + textPadding * 2;
+    	colorRect(200, 300, rectWidth, 100, "#81007f");
+    	colorText(title, startX + textPadding, 370, "white", "48px Title");
     }
+
+    colorText("Click for Focus - Then Spacebar to Play or C for Credits", 150, canvas.height-15, "white", "24px Title");
+
+    /* title screen changing to require input to start
     if (titleScreenWizardXWaitTime > 130) {
-      mainMenu = false;
-      liveGame = true;
-      deathScreenMenu.hidden = true;
-    }
+      
+    }*/
   }
   if (liveGame) {
     colorRect(0, 0, canvas.width, canvas.height, "black");

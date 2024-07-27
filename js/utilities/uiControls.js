@@ -4,6 +4,7 @@ const KEY_W = 87; // "W"
 const KEY_S = 83; // "S"
 const KEY_A = 65; // "A"
 const KEY_D = 68; // "D"
+const KEY_C = 67;
 const KEY_SPACEBAR = 32; 
 const KEY_I = 73;
 const KEY_J = 74;
@@ -22,6 +23,8 @@ const KEY_2 = 50;
 var MousePosX;
 var MousePosY;
 
+var showCredits = false;
+
 // mouse clicks and spacebar can fire this
 function executeCommand(){
 		if(charList[turnNumber].isHuman){
@@ -37,6 +40,12 @@ function executeCommand(){
 		}
 }
 
+function fromTitleScreenToGameplay() {
+	mainMenu = false;
+	liveGame = true;
+	deathScreenMenu.hidden = true;
+}
+
 function initInput(){
 	
 	canvas.addEventListener('mousemove', function(evt) {
@@ -48,6 +57,12 @@ function initInput(){
 	});
 
 	canvas.addEventListener('mousedown', function(evt){
+		if(mainMenu) {
+			if(showCredits) {
+				fromTitleScreenToGameplay();
+			}
+			return;
+		}
 		if (handleMouseClick()) { return }
 		console.log("click")
 		executeCommand();
@@ -58,6 +73,14 @@ function initInput(){
 }
 
 function keyPressed(evt) {
+	if(mainMenu) {
+		if(evt.keyCode == KEY_SPACEBAR) {
+			fromTitleScreenToGameplay();
+		} else if(evt.keyCode == KEY_C) {
+			showCredits = true;
+		}
+		return;
+	}
 	if (!charList[turnNumber]) {
 		console.log("ERROR: charList for turnNumber "+turnNumber+" is null.");
 	}
