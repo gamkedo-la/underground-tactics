@@ -28,12 +28,18 @@ function emptyRoomObjects() {
   potionList = [];
 }
 
+var debugSkipTitleScreen = false;
+
+if(debugSkipTitleScreen) {
+  console.log("debugSkipTitleScreen is ON, set false before upload");
+}
+
 //game states
-var liveGame = true; //false
+var liveGame = (debugSkipTitleScreen);
 
 var pauseScreen = false;
 var inventoryScreen = false;
-var mainMenu = false; //true
+var mainMenu = (debugSkipTitleScreen==false);
 
 window.onload = function () {
   // this causes an error in browsers due to autoplay being forbidden
@@ -59,7 +65,7 @@ window.onload = function () {
   document.addEventListener("keydown", keyPressed);
   document.addEventListener("keyup", keyReleased);
 
-  setupMenus(false);
+  setupMenus(true);
   testUISetup(); // Just a function for testing out various UI elements. Comment it out as you please.
   mainOptions = true;
   mainOptionsMenu.hidden = false;

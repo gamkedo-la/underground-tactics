@@ -39,8 +39,8 @@ function MainOptionsMenu(x, y, width, height, characterCreated) {
 	};
 	this.addSubView(moveButton);
 
-	if(characterCreated){
-		console.log("Turn: " + charList[turnNumber].myName);
+	if(characterCreated && liveGame==true){
+		//console.log("Turn: " + charList[turnNumber].myName);
 		//make only available to wizard
 		const spellBoxButton = new UIComboButton(145, 40, 50, 75);
 		if(charList[turnNumber].myName == "Nesquit"){
